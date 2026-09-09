@@ -50,6 +50,7 @@ export const selectedWork = {
       subtitle: 'Software / Projects',
       summary: 'Systems I build, break, refactor and occasionally ship.',
       href: '/workshop',
+      image: '/images/home/workshop.jpg',
     },
     {
       kicker: 'BUILD',
@@ -57,6 +58,7 @@ export const selectedWork = {
       subtitle: 'Gunpla / Models',
       summary: 'A visual archive of kits, progress, details and finished builds.',
       href: '/builds',
+      image: '/images/home/build-archive.jpg',
     },
     {
       kicker: 'PLAY',
@@ -64,6 +66,7 @@ export const selectedWork = {
       subtitle: 'PlayStation / Games',
       summary: 'What I am playing, what I think of it, and the screenshots worth keeping.',
       href: '/games',
+      image: '/images/home/gaming-log.jpg',
     },
     {
       kicker: 'READ',
@@ -71,6 +74,7 @@ export const selectedWork = {
       subtitle: 'Books / Goodreads',
       summary: 'Books I have read, liked, disliked, and would recommend.',
       href: '/books',
+      image: '/images/home/reading-log.jpg',
     },
   ],
 } as const;

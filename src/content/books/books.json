@@ -8,7 +8,8 @@
     "thought": "Re-reading it a decade later, the chapters I skipped the first time are the ones that matter.",
     "finishedOn": "2026-09-01",
     "current": true,
-    "status": "live"
+    "status": "live",
+    "cover": "/images/books/the-pragmatic-programmer-cover.jpg"
   },
   {
     "id": "a-philosophy-of-software-design",
@@ -19,7 +20,8 @@
     "thought": "Short, opinionated, and it changed how I name things. Deep modules over thin ones.",
     "finishedOn": "2026-06-14",
     "current": false,
-    "status": "archive"
+    "status": "archive",
+    "cover": "/images/books/a-philosophy-of-software-design-cover.jpg"
   },
   {
     "id": "the-left-hand-of-darkness",
@@ -30,7 +32,8 @@
     "thought": "Read it for the world, stayed for the patience of it.",
     "finishedOn": "2026-03-22",
     "current": false,
-    "status": "archive"
+    "status": "archive",
+    "cover": "/images/books/the-left-hand-of-darkness-cover.jpg"
   },
   {
     "id": "shape-up",
@@ -41,6 +44,7 @@
     "thought": "Useful vocabulary, though it assumes a team shaped much like the author's.",
     "finishedOn": "2026-01-09",
     "current": false,
-    "status": "archive"
+    "status": "archive",
+    "cover": "/images/books/shape-up-cover.jpg"
   }
 ]

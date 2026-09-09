@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // Project site: https://shinigamae.github.io/air-chrysalis/
@@ -9,7 +10,7 @@ export default defineConfig({
   // `withBase()` in src/config/site.ts degrades to identity, so nothing else changes.
   site: 'https://shinigamae.github.io',
   base: '/air-chrysalis',
-  integrations: [react()],
+  integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
     server: {

@@ -50,7 +50,7 @@ const ordinal = String(b.index).padStart(2, '0');
       {
         b.hero ? (
           <img
-            src={b.hero}
+            src={withBase(b.hero)}
             alt={b.title}
             class="h-full w-full object-cover"
             decoding="async"
@@ -99,7 +99,7 @@ const ordinal = String(b.index).padStart(2, '0');
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {b.gallery.map((src, i) => (
             <img
-              src={src}
+              src={withBase(src)}
               alt={`${b.title} — photo ${i + 1}`}
               loading="lazy"
               decoding="async"

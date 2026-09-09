@@ -9,10 +9,13 @@
     "preview": "astro preview",
     "check": "astro check",
     "figma:check": "node --use-system-ca scripts/figma-sync.mjs",
-    "figma:sync": "node --use-system-ca scripts/figma-sync.mjs --update"
+    "figma:sync": "node --use-system-ca scripts/figma-sync.mjs --update",
+    "placeholders": "node scripts/make-placeholders.mjs public/images"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",

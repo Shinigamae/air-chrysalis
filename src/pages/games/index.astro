@@ -4,6 +4,7 @@ import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
+import FilterControl from '@/components/ui/FilterControl.astro';
 import SpecList from '@/components/ui/SpecList.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
 import { entryFor, withBase } from '@/config/site';
@@ -21,6 +22,33 @@ const rest = games.filter((game) => game !== current);
 
 const ratingOf = (rating: number | null | undefined) =>
   rating === null || rating === undefined ? '—' : `${rating} / 10`;
+
+/**
+ * Filter by how the game was played, not by archive status — "finished" and
+ * "in progress" are what you actually want to slice a games log by.
+ * Facets with nothing in them are dropped rather than shown empty.
+ */
+const PLAY_LABELS = {
+  'in-progress': 'IN PROGRESS',
+  finished: 'FINISHED',
+  backlog: 'BACKLOG',
+  abandoned: 'ABANDONED',
+} as const;
+
+const facets = [
+  { key: 'all', label: `ALL / ${String(rest.length).padStart(2, '0')}` },
+  ...Object.entries(PLAY_LABELS)
+    .map(([key, label]) => ({
+      key,
+      count: rest.filter((game) => game.data.playStatus === key).length,
+      label,
+    }))
+    .filter((facet) => facet.count > 0)
+    .map((facet) => ({
+      key: facet.key,
+      label: `${facet.label} / ${String(facet.count).padStart(2, '0')}`,
+    })),
+];
 ---
 
 <AppShell topBarMeta={`INDEX / ${String(games.length).padStart(3, '0')}`}>
@@ -40,7 +68,7 @@ const ratingOf = (rating: number | null | undefined) =>
           <div class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well">
             {current.data.screenshots.length > 0 ? (
               <img
-                src={current.data.screenshots[0]}
+                src={withBase(current.data.screenshots[0]!)}
                 alt={current.data.title}
                 class="h-full w-full object-cover"
                 decoding="async"
@@ -89,25 +117,58 @@ const ratingOf = (rating: number | null | undefined) =>
   }
 
   <section class="mt-8 flex flex-col gap-3">
-    <SectionHeader index={current ? '02' : '01'} title="RECENT GAMES" />
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <SectionHeader index={current ? '02' : '01'} title="RECENT GAMES" />
+      {
+        facets.length > 1 && (
+          <div
+            class="flex flex-wrap items-center gap-1"
+            role="group"
+            aria-label="Filter games by play status"
+            data-filter-group
+          >
+            {facets.map((facet) => (
+              <FilterControl
+                label={facet.label}
+                active={facet.key === 'all'}
+                data-filter={facet.key}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    <p class="type-meta" role="status" data-filter-count></p>
+
+    <div
+      class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+      data-filter-target
+    >
       {
         rest.map((game) => (
-          <EditorialCard
-            kicker={`PLAY / ${game.data.year}`}
-            title={game.data.title}
-            subtitle={game.data.platform}
-            summary={game.data.review}
-            meta={`RATING ${ratingOf(game.data.rating)} · ${game.data.progress}%`}
-            status={game.data.status}
-            href={withBase(`/games/${game.id}`)}
-            action="REVIEW →"
-            mediaLabel="SCREENSHOTS"
-            image={game.data.screenshots[0]}
-            imageAlt={game.data.screenshots[0] ? game.data.title : ''}
-          />
+          <div data-facet={game.data.playStatus}>
+            <EditorialCard
+              kicker={`PLAY / ${game.data.year}`}
+              title={game.data.title}
+              subtitle={game.data.platform}
+              summary={game.data.review}
+              meta={`RATING ${ratingOf(game.data.rating)} · ${game.data.progress}%`}
+              status={game.data.status}
+              href={withBase(`/games/${game.id}`)}
+              action="REVIEW →"
+              mediaLabel="SCREENSHOTS"
+              image={game.data.screenshots[0]}
+              imageAlt={game.data.screenshots[0] ? game.data.title : ''}
+            />
+          </div>
         ))
       }
     </div>
   </section>
 </AppShell>
+
+<script>
+  import { initCollectionFilter } from '@/scripts/collection-filter';
+  initCollectionFilter();
+</script>

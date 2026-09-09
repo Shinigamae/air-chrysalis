@@ -1,6 +1,7 @@
 ---
 import StatusLabel from './StatusLabel.astro';
 import type { Status } from './status';
+import { withBase } from '@/config/site';
 
 /**
  * Figma "Editorial Card" (33:49) — 16px padding, 12px gap, panel fill on a
@@ -28,9 +29,20 @@ interface Props {
   status?: Status;
   /** Label for the empty media plate — "BOOK COVER", "SCREENSHOTS". */
   mediaLabel?: string;
+  /**
+   * Plate shape. `wide` is the Figma component (388x150). `portrait` is for
+   * book covers, which a wide plate crops into an unreadable band.
+   */
+  mediaAspect?: 'wide' | 'portrait';
   /** Heading level for the card title within the page hierarchy. */
   as?: 'h2' | 'h3' | 'h4';
 }
+
+// Written out rather than interpolated so Tailwind can see both classes.
+const PLATE = {
+  wide: 'aspect-[388/150]',
+  portrait: 'aspect-[3/4]',
+} as const;
 
 const {
   kicker,
@@ -44,6 +56,7 @@ const {
   imageAlt = '',
   status,
   mediaLabel = 'IMAGE / MEDIA',
+  mediaAspect = 'wide',
   as: Tag = 'h3',
 }: Props = Astro.props;
 ---
@@ -52,12 +65,15 @@ const {
   class="group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
 >
   <div
-    class="flex aspect-[388/150] items-center justify-center overflow-hidden border border-line bg-well"
+    class:list={[
+      'flex items-center justify-center overflow-hidden border border-line bg-well',
+      PLATE[mediaAspect],
+    ]}
   >
     {
       image ? (
         <img
-          src={image}
+          src={withBase(image)}
           alt={imageAlt}
           loading="lazy"
           decoding="async"

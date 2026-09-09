@@ -1,0 +1,14 @@
+# Normalise line endings so the repo is identical on Windows and CI.
+# Without this, git warns on ~50 files per commit and a Linux build sees
+# different bytes than a Windows checkout.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.avif binary
+*.woff binary
+*.woff2 binary
+*.ico  binary

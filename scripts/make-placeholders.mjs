@@ -1,0 +1,225 @@
+/**
+ * Render labelled placeholder JPEGs at exact dimensions via Chrome/CDP.
+ * Each image carries its own filename, size and usage, so replacing it with
+ * real photography is unambiguous.
+ *
+ *   npm run placeholders
+ *
+ * A headless Chromium-family browser does the rendering, which is why there
+ * is no image library in package.json. Set CHROME_PATH if the executable
+ * lives somewhere unusual.
+ *
+ * Regenerating is deterministic and only writes the paths listed in IMAGES
+ * below, so real photos at other filenames are left alone. See IMAGES.md.
+ */
+
+import { writeFileSync, mkdirSync, existsSync, mkdtempSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { spawn } from 'node:child_process';
+
+const OUT_ROOT = process.argv[2];
+if (!OUT_ROOT) {
+  console.error('usage: node scripts/make-placeholders.mjs <public/images dir>');
+  process.exit(2);
+}
+
+// path (relative to OUT_ROOT), width, height, usage label
+const IMAGES = [
+  // --- Home cards — EditorialCard media plate, 2.59:1 ---------------------
+  ['home/workshop.jpg', 1164, 450, 'HOME CARD / WORKSHOP'],
+  ['home/build-archive.jpg', 1164, 450, 'HOME CARD / BUILD ARCHIVE'],
+  ['home/gaming-log.jpg', 1164, 450, 'HOME CARD / GAMING LOG'],
+  ['home/reading-log.jpg', 1164, 450, 'HOME CARD / READING LOG'],
+
+  // --- Builds — hero fills the detail plate (2.09:1) and the card image ---
+  ['builds/astray-gold-frame-hero.jpg', 1720, 824, 'BUILD HERO / ASTRAY GOLD FRAME'],
+  ['builds/astray-gold-frame-01.jpg', 1200, 900, 'BUILD PHOTO 01 / ASTRAY GOLD FRAME'],
+  ['builds/astray-gold-frame-02.jpg', 1200, 900, 'BUILD PHOTO 02 / ASTRAY GOLD FRAME'],
+  ['builds/destiny-gundam-hero.jpg', 1720, 824, 'BUILD HERO / DESTINY GUNDAM'],
+  ['builds/destiny-gundam-01.jpg', 1200, 900, 'BUILD PHOTO 01 / DESTINY GUNDAM'],
+  ['builds/destiny-gundam-02.jpg', 1200, 900, 'BUILD PHOTO 02 / DESTINY GUNDAM'],
+  ['builds/sazabi-ver-ka-hero.jpg', 1720, 824, 'BUILD HERO / SAZABI VER.KA'],
+  ['builds/sazabi-ver-ka-01.jpg', 1200, 900, 'BUILD PHOTO 01 / SAZABI VER.KA'],
+  ['builds/sazabi-ver-ka-02.jpg', 1200, 900, 'BUILD PHOTO 02 / SAZABI VER.KA'],
+
+  // --- Games — 16:9; screenshot [0] is also the card image ----------------
+  ['games/where-winds-meet-01.jpg', 1920, 1080, 'GAME SHOT 01 / WHERE WINDS MEET'],
+  ['games/where-winds-meet-02.jpg', 1920, 1080, 'GAME SHOT 02 / WHERE WINDS MEET'],
+  ['games/where-winds-meet-03.jpg', 1920, 1080, 'GAME SHOT 03 / WHERE WINDS MEET'],
+  ['games/elden-ring-01.jpg', 1920, 1080, 'GAME SHOT 01 / ELDEN RING'],
+  ['games/armored-core-vi-01.jpg', 1920, 1080, 'GAME SHOT 01 / ARMORED CORE VI'],
+  ['games/silksong-01.jpg', 1920, 1080, 'GAME SHOT 01 / SILKSONG'],
+
+  // --- Books — 2:3 covers -------------------------------------------------
+  ['books/the-pragmatic-programmer-cover.jpg', 800, 1200, 'BOOK COVER / THE PRAGMATIC PROGRAMMER'],
+  ['books/a-philosophy-of-software-design-cover.jpg', 800, 1200, 'BOOK COVER / A PHILOSOPHY OF SOFTWARE DESIGN'],
+  ['books/the-left-hand-of-darkness-cover.jpg', 800, 1200, 'BOOK COVER / THE LEFT HAND OF DARKNESS'],
+  ['books/shape-up-cover.jpg', 800, 1200, 'BOOK COVER / SHAPE UP'],
+];
+
+const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+const ratio = (w, h) => {
+  const d = gcd(w, h);
+  const rw = w / d;
+  const rh = h / d;
+  // A reduced ratio only helps when small enough to recognise; otherwise a
+  // decimal is the useful form for choosing a replacement photo.
+  return rw <= 20 && rh <= 20 ? `${rw}:${rh}` : `${(w / h).toFixed(2)} : 1`;
+};
+
+const PORT = 9339;
+
+/** Find a Chromium-family browser without hard-coding one platform. */
+function findBrowser() {
+  if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
+
+  const programFiles = 'C:/Program Files';
+  const programFilesX86 = `${programFiles} (x86)`;
+  const candidates = [
+    `${programFiles}/Google/Chrome/Application/chrome.exe`,
+    `${programFilesX86}/Google/Chrome/Application/chrome.exe`,
+    `${programFilesX86}/Microsoft/Edge/Application/msedge.exe`,
+    `${programFiles}/Microsoft/Edge/Application/msedge.exe`,
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+  ];
+
+  const found = candidates.find((candidate) => existsSync(candidate));
+  if (!found) {
+    throw new Error('No Chrome/Edge found. Set CHROME_PATH to the browser executable.');
+  }
+  return found;
+}
+
+const profile = mkdtempSync(join(tmpdir(), 'placeholders-'));
+const browser = spawn(
+  findBrowser(),
+  [
+    '--headless',
+    '--disable-gpu',
+    '--hide-scrollbars',
+    `--remote-debugging-port=${PORT}`,
+    `--user-data-dir=${profile}`,
+    'about:blank',
+  ],
+  { stdio: 'ignore' },
+);
+
+/** Wait for the debugging endpoint rather than sleeping a fixed amount. */
+async function waitForBrowser() {
+  for (let i = 0; i < 80; i += 1) {
+    try {
+      await fetch(`http://localhost:${PORT}/json/version`);
+      return true;
+    } catch {
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  return false;
+}
+
+if (!(await waitForBrowser())) {
+  browser.kill();
+  throw new Error('Browser did not expose a debugging port in time.');
+}
+
+const targets = await (await fetch(`http://localhost:${PORT}/json/list`)).json();
+const target = targets.find((t) => t.type === 'page');
+const ws = new WebSocket(target.webSocketDebuggerUrl);
+
+let id = 0;
+const pending = new Map();
+const send = (method, params) =>
+  new Promise((resolve) => {
+    const i = ++id;
+    pending.set(i, resolve);
+    ws.send(JSON.stringify({ id: i, method, params }));
+  });
+ws.addEventListener('message', (event) => {
+  const message = JSON.parse(event.data);
+  if (message.id && pending.has(message.id)) {
+    pending.get(message.id)(message);
+    pending.delete(message.id);
+  }
+});
+await new Promise((resolve) => ws.addEventListener('open', resolve));
+await send('Page.enable', {});
+
+// One page, re-labelled and re-sized per image, rather than 23 navigations.
+// Colours are the site's own tokens so placeholders sit in the design.
+const shell = `
+<style>
+  html,body{margin:0;height:100%;background:#18181B;
+    font-family:ui-monospace,'Cascadia Mono','Consolas',monospace;color:#A1A1AA}
+  .frame{position:absolute;inset:0;border:1px solid #27272A;display:flex;
+    align-items:center;justify-content:center;box-sizing:border-box}
+  .inner{text-align:center;padding:4%}
+  .name{color:#38BDF8;font-weight:500;word-break:break-all;margin:0 0 0.6em}
+  .dim{color:#E4E4E7;margin:0 0 0.4em}
+  .use{margin:0;opacity:.75}
+  .tick{position:absolute;background:#27272A}
+  .t1{left:0;top:0;width:8%;height:1px}   .t2{left:0;top:0;width:1px;height:8%}
+  .t3{right:0;top:0;width:8%;height:1px}  .t4{right:0;top:0;width:1px;height:8%}
+  .t5{left:0;bottom:0;width:8%;height:1px}.t6{left:0;bottom:0;width:1px;height:8%}
+  .t7{right:0;bottom:0;width:8%;height:1px}.t8{right:0;bottom:0;width:1px;height:8%}
+  .x{position:absolute;inset:0;opacity:.25;
+    background:linear-gradient(45deg,transparent 49.7%,#27272A 49.7%,#27272A 50.3%,transparent 50.3%),
+               linear-gradient(-45deg,transparent 49.7%,#27272A 49.7%,#27272A 50.3%,transparent 50.3%)}
+</style>
+<div class="x"></div>
+<div class="frame">
+  <div class="inner">
+    <p class="name" id="name"></p>
+    <p class="dim" id="dim"></p>
+    <p class="use" id="use"></p>
+  </div>
+</div>
+<div class="tick t1"></div><div class="tick t2"></div><div class="tick t3"></div><div class="tick t4"></div>
+<div class="tick t5"></div><div class="tick t6"></div><div class="tick t7"></div><div class="tick t8"></div>
+`;
+
+await send('Page.navigate', {
+  url: 'data:text/html;charset=utf-8,' + encodeURIComponent(shell),
+});
+await new Promise((r) => setTimeout(r, 900));
+
+let written = 0;
+for (const [rel, w, h, usage] of IMAGES) {
+  await send('Emulation.setDeviceMetricsOverride', {
+    width: w,
+    height: h,
+    deviceScaleFactor: 1,
+    mobile: false,
+  });
+
+  // Scale type with the plate so every label is legible at its own size.
+  const base = Math.max(14, Math.round(Math.min(w, h) * 0.045));
+  await send('Runtime.evaluate', {
+    expression: `
+      document.getElementById('name').textContent = ${JSON.stringify(rel.split('/').pop())};
+      document.getElementById('dim').textContent = ${JSON.stringify(`${w} x ${h}  ·  ${ratio(w, h)}`)};
+      document.getElementById('use').textContent = ${JSON.stringify(usage)};
+      document.getElementById('name').style.fontSize = '${base}px';
+      document.getElementById('dim').style.fontSize = '${Math.round(base * 0.7)}px';
+      document.getElementById('use').style.fontSize = '${Math.round(base * 0.62)}px';
+      true;
+    `,
+    returnByValue: true,
+  });
+  await new Promise((r) => setTimeout(r, 120));
+
+  const shot = await send('Page.captureScreenshot', { format: 'jpeg', quality: 82 });
+  const dest = join(OUT_ROOT, rel);
+  mkdirSync(dirname(dest), { recursive: true });
+  writeFileSync(dest, Buffer.from(shot.result.data, 'base64'));
+  written += 1;
+  console.log(`${String(written).padStart(2, '0')}  ${rel.padEnd(46)} ${w}x${h}`);
+}
+
+console.log(`\n${written} placeholders written to ${OUT_ROOT}`);
+ws.close();
+browser.kill();

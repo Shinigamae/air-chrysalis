@@ -48,7 +48,7 @@ const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating
       {
         g.screenshots.length > 0 ? (
           <img
-            src={g.screenshots[0]}
+            src={withBase(g.screenshots[0]!)}
             alt={g.title}
             class="h-full w-full object-cover"
             decoding="async"
@@ -82,7 +82,7 @@ const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {g.screenshots.slice(1).map((src, i) => (
             <img
-              src={src}
+              src={withBase(src)}
               alt={`${g.title} — screenshot ${i + 2}`}
               loading="lazy"
               decoding="async"

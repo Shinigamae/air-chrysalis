@@ -49,10 +49,12 @@ instead.
 in the project and may need revision. **Read these four frames before treating
 those layouts as final.**
 
-**No photography.** Every media plate renders a `PHOTO / HERO`,
-`IMAGE / MEDIA`, `SCREENSHOTS` or `BOOK COVER` placeholder. The design
-direction is explicitly photography-driven ("photography carries emotion"), so
-this is the single largest visual gap. The system is built and waiting for it.
+**No real photography yet.** Every image slot is filled with a labelled
+placeholder that displays its own filename, dimensions and purpose, so
+replacing one is a file swap with no code change. See `IMAGES.md` for the
+full mapping. The design direction is explicitly photography-driven
+("photography carries emotion"), so this is still the largest visual gap —
+but it is now a drop-in task rather than wiring work.
 
 ### 2.2 Figma-side problems that are not code
 
@@ -89,9 +91,8 @@ differing. Treated as an oversight; the bar is implemented as active-only.
 whether 34 / 30 / 25 can collapse to two steps. Not merged unilaterally because
 all three are visibly in use.
 
-**Book covers get a landscape plate** in card grids (`aspect-[388/150]`, from
-the Editorial Card component). Consistent card rhythm, but a real cover will
-crop badly. A portrait media variant on `EditorialCard` is the fix.
+~~Book covers get a landscape plate.~~ **Fixed 2026-09-09** —
+`EditorialCard` has a `mediaAspect` prop and book cards pass `portrait` (3:4).
 
 **Mono 9px is rendered at 10px.** The Figma nodes use mono at both sizes; both
 render at 10px because 9px uppercase mono is below a comfortable reading size.
@@ -104,8 +105,13 @@ Set the real URL in `src/config/site.ts`.
 Frame, Destiny Gundam, Where Winds Meet); the books and two of three projects
 are invented placeholders. Replace them — no code depends on them.
 
-**No sitemap or RSS.** A public archive probably wants both.
-`@astrojs/sitemap` and a feed endpoint are small additions.
+~~No sitemap or RSS.~~ **Done 2026-09-09** — `@astrojs/sitemap` generates
+`sitemap-index.xml` (17 URLs) and `src/pages/rss.xml.ts` serves one combined
+feed of all four collections (14 items), linked from every page's head.
+
+*Caveat:* feed dates are best-effort. The collections store what a human would
+write (`2026-08`, or a bare year), so partial values widen to the first of the
+month or year. Ordering is sensible; the precision is not real.
 
 **The Figma token is in a chat transcript.** Revoke the current personal access
 token and issue a fresh one into `.env`; the `.env` setup makes this a one-line
@@ -137,20 +143,24 @@ In the order that unblocks the most work.
    them. This is the only unfinished work from Step 3.
 2. **Publish paint and text styles in Figma**, then reconcile the Homepage
    palette. This converts design sync from inference to fact.
-3. **Add photography.** Drop files in `public/` and set `hero`, `gallery`,
-   `screenshots`, `cover` in the content JSON. No code changes needed.
+3. **Add photography.** Overwrite the 23 placeholders in `public/images/`
+   with real files of the same name — no code or content changes needed.
+   `IMAGES.md` maps every file to where it appears and at what aspect.
 4. **Replace the seed content** with real entries.
 
 ### 3.2 Then
 
 5. **Decide what Lab is.** This is a design decision, not a code task. It has a
    route, a nav entry and no content model.
-6. **Sitemap and RSS.**
 7. **Deploy.** Configured and verified locally; see `DEPLOY.md`. Repo is
    public, Pages is on with Source: GitHub Actions, and `base: '/air-chrysalis'`
    is wired through. Ships on the next push to `main`.
-8. **Interactive filters on Games and Books**, matching the Builds index. The
-   pattern is already proven and progressive-enhancement safe.
+8. ~~Interactive filters on Games and Books.~~ **Done 2026-09-09** for Games,
+   filtering by play status (in progress / finished / backlog) rather than
+   archive status, which is what you actually want to slice a games log by.
+   The filter logic now lives in `src/scripts/collection-filter.ts` and is
+   shared with Builds. **Books deliberately has none:** four entries, and the
+   Figma books pattern shows no filter control — it would be noise.
 
 ### 3.3 Later
 

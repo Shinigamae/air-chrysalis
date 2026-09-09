@@ -13,5 +13,9 @@
   ],
   "status": "draft",
   "index": 3,
-  "gallery": []
+  "gallery": [
+    "/images/builds/sazabi-ver-ka-01.jpg",
+    "/images/builds/sazabi-ver-ka-02.jpg"
+  ],
+  "hero": "/images/builds/sazabi-ver-ka-hero.jpg"
 }

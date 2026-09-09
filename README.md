@@ -38,6 +38,9 @@ npm run figma:check  # report Figma/code drift (see below)
 
 ## Content
 
+Images are labelled placeholders for now — see `IMAGES.md` for which file
+maps to which slot, and `npm run placeholders` to regenerate them.
+
 Content lives in `src/content/`, typed by `src/content.config.ts`. The layout
 follows the structure sketched in FIGMA.md, and the schemas are shaped from
 Figma "03 — Content Systems":

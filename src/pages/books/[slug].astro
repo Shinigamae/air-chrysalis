@@ -44,7 +44,7 @@ const finished = b.finishedOn ?? '—';
       {
         b.cover ? (
           <img
-            src={b.cover}
+            src={withBase(b.cover)}
             alt={`${b.title} cover`}
             class="h-full w-full object-cover"
             decoding="async"

@@ -15,5 +15,9 @@
   ],
   "status": "live",
   "index": 1,
-  "gallery": []
+  "gallery": [
+    "/images/builds/astray-gold-frame-01.jpg",
+    "/images/builds/astray-gold-frame-02.jpg"
+  ],
+  "hero": "/images/builds/astray-gold-frame-hero.jpg"
 }

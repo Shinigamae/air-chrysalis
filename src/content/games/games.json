@@ -9,7 +9,11 @@
     "playStatus": "in-progress",
     "current": true,
     "review": "The traversal is the best part — it makes a large map feel hand-placed rather than generated. Combat takes about ten hours to click, and then it does not let go.",
-    "screenshots": [],
+    "screenshots": [
+      "/images/games/where-winds-meet-01.jpg",
+      "/images/games/where-winds-meet-02.jpg",
+      "/images/games/where-winds-meet-03.jpg"
+    ],
     "status": "live"
   },
   {
@@ -22,7 +26,9 @@
     "playStatus": "finished",
     "current": false,
     "review": "Still the benchmark for rewarding curiosity instead of punishing it.",
-    "screenshots": [],
+    "screenshots": [
+      "/images/games/elden-ring-01.jpg"
+    ],
     "status": "archive"
   },
   {
@@ -35,7 +41,9 @@
     "playStatus": "finished",
     "current": false,
     "review": "Assembly screen as the real gameplay loop. Obvious in hindsight why this one landed with me.",
-    "screenshots": [],
+    "screenshots": [
+      "/images/games/armored-core-vi-01.jpg"
+    ],
     "status": "archive"
   },
   {
@@ -48,7 +56,9 @@
     "playStatus": "backlog",
     "current": false,
     "review": "Started, set aside, will return. No verdict yet.",
-    "screenshots": [],
+    "screenshots": [
+      "/images/games/silksong-01.jpg"
+    ],
     "status": "draft"
   }
 ]
