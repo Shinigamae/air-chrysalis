@@ -1,0 +1,70 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import EditorialCard from '@/components/ui/EditorialCard.astro';
+import StatusPanel from '@/components/ui/StatusPanel.astro';
+import { hero, currentStatus, selectedWork, cardAction } from '@/config/home';
+import { withBase } from '@/config/site';
+
+/**
+ * Home — Figma "02 — Homepage" (4:3).
+ *
+ * No context strip: the hero sits directly on the canvas, as in the frame.
+ */
+---
+
+<AppShell showTopBar={false}>
+  {/* --- Hero (4:48) ------------------------------------------------- */}
+  <section
+    class="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,570px)] lg:gap-8"
+  >
+    <div>
+      <p class="type-meta text-signal">{hero.eyebrow}</p>
+      <h1 class="type-hero mt-2">
+        {
+          hero.lines.map((line) => (
+            <span class="block">{line}</span>
+          ))
+        }
+      </h1>
+    </div>
+
+    {/* Offset down to meet the first hero line, as in the frame (4:54 at y=196). */}
+    <div class="flex flex-col gap-2 lg:mt-8">
+      <p class="type-lead">{hero.lead}</p>
+      <p class="type-body">{hero.intro}</p>
+      <div class="mt-3">
+        <StatusPanel
+          label={currentStatus.label}
+          headline={currentStatus.headline}
+          items={currentStatus.items}
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* --- Selected work (4:68 - 4:102) -------------------------------- */}
+  <section class="mt-8">
+    <PageHeader
+      variant="section"
+      eyebrow={selectedWork.eyebrow}
+      title={selectedWork.title}
+      summary={selectedWork.summary}
+    />
+
+    <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        selectedWork.cards.map((card) => (
+          <EditorialCard
+            kicker={card.kicker}
+            title={card.title}
+            subtitle={card.subtitle}
+            summary={card.summary}
+            href={withBase(card.href)}
+            action={cardAction}
+          />
+        ))
+      }
+    </div>
+  </section>
+</AppShell>

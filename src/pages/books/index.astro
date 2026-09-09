@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import EditorialCard from '@/components/ui/EditorialCard.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
+import ReadingTimeline from '@/components/ui/ReadingTimeline.astro';
+import { entryFor, withBase } from '@/config/site';
+
+/**
+ * Books — Figma "03 — Content Systems" panel C (11:98-11:108):
+ * current book beside the cover, then the reading timeline, then the index.
+ *
+ * The design is explicit that a short personal thought replaces a generic
+ * review score, so the thought is the prominent text and the rating is
+ * relegated to metadata.
+ */
+const entry = entryFor(Astro.url.pathname)!;
+
+const books = (await getCollection('books')).sort((a, b) =>
+  (b.data.finishedOn ?? '').localeCompare(a.data.finishedOn ?? ''),
+);
+const current = books.find((book) => book.data.current);
+const rest = books.filter((book) => book !== current);
+
+const ratingOf = (rating: number | null | undefined) =>
+  rating === null || rating === undefined ? '—' : `${rating} / 5`;
+
+/** The timeline shows the most recent year we have finish dates for. */
+const dated = books.filter((book) => Boolean(book.data.finishedOn));
+const latestYear = dated.length
+  ? Math.max(...dated.map((book) => new Date(book.data.finishedOn!).getUTCFullYear()))
+  : new Date().getUTCFullYear();
+const timelineItems = dated
+  .filter((book) => new Date(book.data.finishedOn!).getUTCFullYear() === latestYear)
+  .map((book) => ({ title: book.data.title, finishedOn: book.data.finishedOn! }));
+---
+
+<AppShell topBarMeta={`INDEX / ${String(books.length).padStart(3, '0')}`}>
+  <PageHeader
+    eyebrow={`${entry.index} / ${entry.context}`}
+    title={entry.label}
+    summary={entry.summary}
+  />
+
+  {
+    current && (
+      <section class="mt-8 flex flex-col gap-3">
+        <SectionHeader index="01" title="CURRENT BOOK" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,180px)_minmax(0,1fr)]">
+          <div class="flex aspect-[2/3] items-center justify-center overflow-hidden rounded-standard border border-line bg-well">
+            {current.data.cover ? (
+              <img
+                src={current.data.cover}
+                alt={`${current.data.title} cover`}
+                class="h-full w-full object-cover"
+                decoding="async"
+              />
+            ) : (
+              <span class="type-micro">BOOK COVER</span>
+            )}
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <div class="flex flex-wrap items-start justify-between gap-2">
+              <div class="flex flex-col gap-0.5">
+                <h3 class="type-subhead">
+                  <a
+                    href={withBase(`/books/${current.id}`)}
+                    class="transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+                  >
+                    {current.data.title}
+                  </a>
+                </h3>
+                <p class="type-caption">{current.data.author}</p>
+              </div>
+              <StatusLabel status={current.data.status} />
+            </div>
+
+            <p class="type-meta">
+              {current.data.source} · RATING {ratingOf(current.data.rating)}
+            </p>
+
+            <p class="type-body">{current.data.thought}</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    timelineItems.length > 0 && (
+      <section class="mt-8 flex flex-col gap-3">
+        <SectionHeader index={current ? '02' : '01'} title="READING TIMELINE" />
+        <div class="rounded-standard border border-line bg-panel p-3">
+          <ReadingTimeline year={latestYear} items={timelineItems} />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader
+      index={current ? '03' : '02'}
+      title={`RECENTLY READ / ${String(rest.length).padStart(2, '0')} ITEMS`}
+    />
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        rest.map((book) => (
+          <EditorialCard
+            kicker={`READ / ${book.data.finishedOn?.slice(0, 4) ?? '—'}`}
+            title={book.data.title}
+            subtitle={book.data.author}
+            summary={book.data.thought}
+            meta={`${book.data.source} · RATING ${ratingOf(book.data.rating)}`}
+            status={book.data.status}
+            href={withBase(`/books/${book.id}`)}
+            action="ENTRY →"
+            mediaLabel="BOOK COVER"
+            image={book.data.cover}
+            imageAlt={book.data.cover ? `${book.data.title} cover` : ''}
+          />
+        ))
+      }
+    </div>
+  </section>
+</AppShell>

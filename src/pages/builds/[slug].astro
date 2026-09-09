@@ -1,0 +1,120 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import SpecList from '@/components/ui/SpecList.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
+import { withBase } from '@/config/site';
+
+/**
+ * Build detail — Figma "03 — Content Systems" panel A (11:79-11:87):
+ * photo hero, "RG / 1:144 / MOBILE SUIT", model name,
+ * "Series · Manufacturer · Build date", then build notes.
+ */
+export const getStaticPaths = (async () => {
+  const builds = await getCollection('builds');
+  return builds.map((build) => ({
+    params: { slug: build.id },
+    props: { build },
+  }));
+}) satisfies GetStaticPaths;
+
+const { build } = Astro.props;
+const b = build.data;
+const ordinal = String(b.index).padStart(2, '0');
+---
+
+<AppShell title={b.title} topBarMeta={`BUILD / ${ordinal}`}>
+  <PageHeader
+    eyebrow={`${b.grade} / ${b.scale} / ${b.kind}`}
+    title={b.title}
+    summary={`${b.series} · ${b.manufacturer} · ${b.buildDate}`}
+  />
+
+  <div class="mt-5 flex items-center gap-2">
+    <StatusLabel status={b.status} />
+    <span class="type-meta">BUILD / {ordinal}</span>
+  </div>
+
+  {/*
+    Photo beside the specification, at the proportion the design uses
+    (11:81 — a 430x206 plate inside the row), rather than a full-bleed hero
+    that would leave a very large empty plate before the photos exist.
+  */}
+  <div class="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)]">
+    <div
+      class="flex aspect-[430/206] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
+    >
+      {
+        b.hero ? (
+          <img
+            src={b.hero}
+            alt={b.title}
+            class="h-full w-full object-cover"
+            decoding="async"
+          />
+        ) : (
+          <span class="type-micro">PHOTO / HERO</span>
+        )
+      }
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <SectionHeader index="01" title="SPECIFICATION" />
+      <SpecList
+        items={[
+          { label: 'GRADE', value: b.grade },
+          { label: 'SCALE', value: b.scale },
+          { label: 'TYPE', value: b.kind },
+          { label: 'SERIES', value: b.series },
+          { label: 'MAKER', value: b.manufacturer },
+          { label: 'DATE', value: b.buildDate },
+          { label: 'STATUS', value: b.status.toUpperCase() },
+        ]}
+        columns={2}
+      />
+    </div>
+  </div>
+
+  <div class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="02" title="BUILD NOTES" />
+    <ul class="m-0 flex list-none flex-col gap-1 p-0">
+      {
+        b.notes.map((note) => (
+          <li class="type-fine flex gap-1">
+            <span aria-hidden="true" class="text-signal">/</span>
+            <span>{note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  {
+    b.gallery.length > 0 && (
+      <div class="mt-8 flex flex-col gap-3">
+        <SectionHeader index="03" title="PHOTO SET" />
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {b.gallery.map((src, i) => (
+            <img
+              src={src}
+              alt={`${b.title} — photo ${i + 1}`}
+              loading="lazy"
+              decoding="async"
+              class="aspect-[4/3] w-full rounded-standard border border-line object-cover"
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <a
+    href={withBase('/builds')}
+    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+  >
+    ← BUILD ARCHIVE
+  </a>
+</AppShell>

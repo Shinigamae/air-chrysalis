@@ -1,0 +1,103 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import SpecList from '@/components/ui/SpecList.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
+import { withBase } from '@/config/site';
+
+/**
+ * Game detail — Figma "03 — Content Systems" panel B, as the review entry:
+ * screenshots as the anchor, compact metadata, review beside it.
+ */
+export const getStaticPaths = (async () => {
+  const games = await getCollection('games');
+  return games.map((game) => ({
+    params: { slug: game.id },
+    props: { game },
+  }));
+}) satisfies GetStaticPaths;
+
+const { game } = Astro.props;
+const g = game.data;
+const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating} / 10`;
+---
+
+<AppShell title={g.title} topBarMeta={`${g.platform} / ${g.year}`}>
+  <PageHeader
+    eyebrow={`PLAY / ${g.year}`}
+    title={g.title}
+    summary={`${g.platform} · ${g.playStatus.replace('-', ' ')}`}
+  />
+
+  <div class="mt-5 flex items-center gap-2">
+    <StatusLabel status={g.status} />
+    <span class="type-meta">PROGRESS {g.progress}%</span>
+  </div>
+
+  {/*
+    Screenshots beside the review, matching panel B (11:89 / 11:90 — two
+    roughly equal plates side by side) rather than one full-bleed image.
+  */}
+  <div class="mt-5 grid grid-cols-1 gap-3 lg:grid-cols-2">
+    <div
+      class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
+    >
+      {
+        g.screenshots.length > 0 ? (
+          <img
+            src={g.screenshots[0]}
+            alt={g.title}
+            class="h-full w-full object-cover"
+            decoding="async"
+          />
+        ) : (
+          <span class="type-micro">SCREENSHOTS</span>
+        )
+      }
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <SectionHeader index="01" title="REVIEW" />
+      <p class="type-body">{g.review}</p>
+      <SpecList
+        items={[
+          { label: 'PLATFORM', value: g.platform },
+          { label: 'YEAR', value: String(g.year) },
+          { label: 'PROGRESS', value: `${g.progress}%` },
+          { label: 'RATING', value: rating },
+          { label: 'STATUS', value: g.playStatus.replace('-', ' ').toUpperCase() },
+        ]}
+        columns={2}
+      />
+    </div>
+  </div>
+
+  {
+    g.screenshots.length > 1 && (
+      <div class="mt-8 flex flex-col gap-3">
+        <SectionHeader index="02" title="SCREENSHOTS" />
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {g.screenshots.slice(1).map((src, i) => (
+            <img
+              src={src}
+              alt={`${g.title} — screenshot ${i + 2}`}
+              loading="lazy"
+              decoding="async"
+              class="aspect-[16/9] w-full rounded-standard border border-line object-cover"
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <a
+    href={withBase('/games')}
+    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+  >
+    ← GAMING LOG
+  </a>
+</AppShell>

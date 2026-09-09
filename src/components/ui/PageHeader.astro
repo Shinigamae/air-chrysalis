@@ -1,0 +1,38 @@
+---
+/**
+ * Figma "Page Header" (33:42) — col, 8px gap, 8px bottom padding.
+ * Cyan eyebrow / 34px display title / mono summary.
+ *
+ * Two variants, mirroring how the design uses the pattern:
+ *
+ *   page     the page masthead — cyan eyebrow, 34/40 title, mono summary
+ *   section  a sub-section intro — muted eyebrow, 30/38 title, editorial
+ *            summary. Figma "02 — Homepage" (4:68-4:70) is this variant.
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  summary?: string;
+  variant?: 'page' | 'section';
+  /** Headings below the page title should pass `as="h2"`. */
+  as?: 'h1' | 'h2' | 'h3';
+}
+
+const {
+  eyebrow,
+  title,
+  summary,
+  variant = 'page',
+  as: Tag = variant === 'section' ? 'h2' : 'h1',
+}: Props = Astro.props;
+
+const isSection = variant === 'section';
+---
+
+<div class="flex flex-col gap-1 pb-1">
+  <p class:list={['type-meta', isSection ? 'text-muted' : 'text-signal']}>
+    {eyebrow}
+  </p>
+  <Tag class={isSection ? 'type-section' : 'type-display'}>{title}</Tag>
+  {summary && <p class={isSection ? 'type-caption' : 'type-meta-lg'}>{summary}</p>}
+</div>

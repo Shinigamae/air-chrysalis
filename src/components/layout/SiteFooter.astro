@@ -1,0 +1,21 @@
+---
+/**
+ * Footer rule — Figma "02 — Homepage" footer row (DESIGNED AS A LIVING
+ * ARCHIVE / V1 / HOMEPAGE CONCEPT). Two mono annotations, nothing else.
+ */
+interface Props {
+  note?: string;
+  version?: string;
+}
+
+const { note = 'DESIGNED AS A LIVING ARCHIVE', version = 'V1' } = Astro.props;
+---
+
+<footer class="border-t border-line">
+  <div
+    class="layout-container flex flex-col gap-1 py-3 md:flex-row md:items-center md:justify-between"
+  >
+    <span class="type-meta">{note}</span>
+    <span class="type-meta">{version}</span>
+  </div>
+</footer>

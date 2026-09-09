@@ -1,0 +1,108 @@
+---
+import StatusLabel from './StatusLabel.astro';
+import type { Status } from './status';
+
+/**
+ * Figma "Editorial Card" (33:49) — 16px padding, 12px gap, panel fill on a
+ * 1px rule, 8px radius, with an inset media well above the text block.
+ *
+ * An editorial tile, not a dashboard widget. Hover reveals a cyan edge, per
+ * the design direction; the whole card is the link when `href` is given.
+ *
+ * The homepage cards (Figma 4:71-4:102) are this same pattern with three
+ * extra fields, so they are props here rather than a second card component:
+ *   subtitle  a muted qualifier under the title ("Software / Projects")
+ *   summary   a sentence of description
+ *   action    the "VIEW →" affordance, pinned to the bottom of the card
+ */
+interface Props {
+  kicker: string;
+  title: string;
+  subtitle?: string;
+  summary?: string;
+  meta?: string;
+  action?: string;
+  href?: string;
+  image?: string;
+  imageAlt?: string;
+  status?: Status;
+  /** Label for the empty media plate — "BOOK COVER", "SCREENSHOTS". */
+  mediaLabel?: string;
+  /** Heading level for the card title within the page hierarchy. */
+  as?: 'h2' | 'h3' | 'h4';
+}
+
+const {
+  kicker,
+  title,
+  subtitle,
+  summary,
+  meta,
+  action,
+  href,
+  image,
+  imageAlt = '',
+  status,
+  mediaLabel = 'IMAGE / MEDIA',
+  as: Tag = 'h3',
+}: Props = Astro.props;
+---
+
+<article
+  class="group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
+>
+  <div
+    class="flex aspect-[388/150] items-center justify-center overflow-hidden border border-line bg-well"
+  >
+    {
+      image ? (
+        <img
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      ) : (
+        <span class="type-micro">{mediaLabel}</span>
+      )
+    }
+  </div>
+
+  <div class="flex items-center justify-between gap-2">
+    <p class="type-micro text-signal">{kicker}</p>
+    {status && <StatusLabel status={status} />}
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <Tag class="type-title">
+      {
+        href ? (
+          <a
+            href={href}
+            class="after:absolute after:inset-0 after:content-[''] focus:outline-none"
+          >
+            {title}
+          </a>
+        ) : (
+          title
+        )
+      }
+    </Tag>
+    {subtitle && <p class="type-caption">{subtitle}</p>}
+  </div>
+
+  {summary && <p class="type-fine">{summary}</p>}
+  {meta && <p class="type-meta">{meta}</p>}
+
+  {
+    action && (
+      <p
+        aria-hidden="true"
+        class="type-micro mt-auto pt-1 text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover:opacity-80"
+      >
+        {action}
+      </p>
+    )
+  }
+</article>

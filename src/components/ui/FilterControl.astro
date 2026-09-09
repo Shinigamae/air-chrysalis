@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+/**
+ * Figma "Filter Control" (33:54) — 40px tall, 12px horizontal padding,
+ * 4px radius, panel fill on a 1px rule, mono label.
+ *
+ * Renders as a button by default, or an anchor when `href` is given. Any
+ * other attributes pass through, so callers can hang data attributes on it.
+ */
+interface Props extends Omit<HTMLAttributes<'button'>, 'class'> {
+  label: string;
+  href?: string;
+  active?: boolean;
+  class?: string;
+}
+
+const {
+  label,
+  href,
+  active = false,
+  class: className = '',
+  ...rest
+}: Props = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class:list={[
+    'type-meta inline-flex h-5 items-center gap-2 rounded-compact border px-1.5',
+    'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+    active
+      ? 'border-signal bg-panel text-signal'
+      : 'border-line bg-panel text-ink hover:border-muted',
+    className,
+  ]}
+  href={href}
+  type={href ? undefined : 'button'}
+  aria-pressed={href ? undefined : active}
+  aria-current={href && active ? 'page' : undefined}
+  {...rest}
+>
+  {label}
+</Tag>

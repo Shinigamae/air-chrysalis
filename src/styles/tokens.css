@@ -1,0 +1,104 @@
+/*
+ * SHINIGAMAE.DEV — design tokens
+ * Source of truth: Figma "01 — Design Direction" › Foundations — V1
+ *
+ * Every value here is lifted from the Figma file. Do not introduce colours,
+ * sizes or durations outside this file; add a token instead.
+ */
+
+@theme {
+  /* ---- Colour ------------------------------------------------------- */
+  --color-canvas: #09090b; /* GRAPHITE     — page ground              */
+  --color-panel: #18181b; /* PANEL        — cards, rails, menus      */
+  --color-well: #0e0e11; /* media well   — inset image placeholders */
+  --color-line: #27272a; /* BORDER       — 1px technical rules      */
+  --color-ink: #e4e4e7; /* TEXT         — primary type             */
+  --color-muted: #a1a1aa; /* MUTED        — metadata, secondary type */
+  --color-signal: #38bdf8; /* SIGNAL CYAN  — accent, used sparingly   */
+
+  /* ---- Spacing ------------------------------------------------------
+   * 8px base unit. The Figma scale (8 · 16 · 24 · 40 · 64) maps to:
+   *   1 → 8px   2 → 16px   3 → 24px   5 → 40px   8 → 64px
+   * so `gap-3` is the 24px step, `py-8` the 64px step, and so on.
+   */
+  --spacing: 8px;
+
+  /* ---- Radius -------------------------------------------------------- */
+  --radius-compact: 4px; /* labels, controls  */
+  --radius-standard: 8px; /* panels, cards     */
+
+  /* ---- Type families ------------------------------------------------- */
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', 'Cascadia Mono', monospace;
+
+  /* ---- Type scale ---------------------------------------------------
+   * Display + title in Space Grotesk 500; metadata in IBM Plex Mono 400.
+   * Letter-spacing is 0 throughout, per the Figma nodes.
+   */
+  /* Hero — Figma "02 — Homepage" (4:50-4:53): 88/82 at 1440, stacked tight.
+   * Clamped so it stays inside the gutter down to small phones. */
+  --text-hero: clamp(48px, 9vw, 88px);
+  --text-hero--line-height: 0.93;
+  --text-section: 30px;
+  --text-section--line-height: 38px;
+  --text-subhead: 25px;
+  --text-subhead--line-height: 32px;
+  --text-lead: 20px;
+  --text-lead--line-height: 26px;
+  --text-caption: 15px;
+  --text-caption--line-height: 20px;
+  --text-fine: 12px;
+  --text-fine--line-height: 16px;
+  --text-micro: 10px;
+  --text-micro--line-height: 13px;
+  --text-display: 34px;
+  --text-display--line-height: 40px;
+  --text-title: 18px;
+  --text-title--line-height: 24px;
+  --text-body: 18px;
+  --text-body--line-height: 28px;
+  --text-brand: 16px;
+  --text-brand--line-height: 20px;
+  --text-brand-sm: 14px;
+  --text-brand-sm--line-height: 18px;
+  --text-nav: 12px;
+  --text-nav--line-height: 16px;
+  --text-meta: 11px;
+  --text-meta--line-height: 14px;
+  --text-meta-lg: 12px;
+  --text-meta-lg--line-height: 16px;
+
+  /* ---- Motion -------------------------------------------------------
+   * 150–220ms, restrained, no decorative bounce.
+   */
+  --duration-fast: 150ms;
+  --duration-base: 180ms;
+  --duration-slow: 220ms;
+  --ease-technical: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Breakpoints --------------------------------------------------
+   * One small coherent system. `md` is the mobile→desktop shell switch.
+   */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1120px;
+  --breakpoint-xl: 1440px;
+}
+
+/*
+ * Layout constants. Not Tailwind theme keys — these are read directly by
+ * the shell, which is the only place that should care about page geometry.
+ * 12 columns · 24px gutters · 64px outer margin (32px below `md`).
+ */
+:root {
+  --layout-margin: 32px;
+  --layout-max: 1312px;
+  --shell-header: 56px;
+  --shell-mobile-header: 64px;
+}
+
+@media (width >= 768px) {
+  :root {
+    --layout-margin: 64px;
+  }
+}

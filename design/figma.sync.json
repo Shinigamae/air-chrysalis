@@ -1,0 +1,478 @@
+{
+  "fileKey": "bibI5631jjXvSKmKNcZqx4",
+  "version": "2396644639972320181",
+  "lastModified": "2026-09-08T01:21:29Z",
+  "foundations": {
+    "colors": {
+      "GRAPHITE": "#09090B",
+      "PANEL": "#18181B",
+      "BORDER": "#27272A",
+      "TEXT": "#E4E4E7",
+      "MUTED": "#A1A1AA",
+      "SIGNAL CYAN": "#38BDF8"
+    },
+    "layoutRules": {
+      "GRID": "12 columns · 24px gutters · 64px outer margin",
+      "SPACING": "8px base · 16 · 24 · 40 · 64",
+      "RADIUS": "8px standard · 4px compact",
+      "MOTION": "150–220ms · restrained · no decorative bounce"
+    },
+    "typography": {
+      "medium": "34/40",
+      "regular": "18/28",
+      "families": [
+        "Space Grotesk / Display",
+        "IBM Plex Mono / metadata / labels / technical annotations"
+      ]
+    }
+  },
+  "components": {
+    "33:34": {
+      "name": "Sidebar Item",
+      "type": "COMPONENT_SET",
+      "size": "103x40",
+      "radius": 5,
+      "children": [
+        {
+          "name": "=Default",
+          "type": "COMPONENT",
+          "size": "103x40",
+          "layout": "row gap=12 pad=0/12/0/12 cross=CENTER",
+          "children": [
+            {
+              "name": "Signal",
+              "type": "RECTANGLE",
+              "size": "2x16",
+              "fill": "#38BDF8"
+            },
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "65x15",
+              "fill": "#A1A1AA",
+              "copy": "WORKSHOP",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "=Active",
+          "type": "COMPONENT",
+          "size": "103x40",
+          "layout": "row gap=12 pad=0/12/0/12 cross=CENTER",
+          "children": [
+            {
+              "name": "Signal",
+              "type": "RECTANGLE",
+              "size": "2x16",
+              "fill": "#38BDF8"
+            },
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "65x15",
+              "fill": "#E4E4E7",
+              "copy": "WORKSHOP",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        }
+      ]
+    },
+    "33:41": {
+      "name": "Status Label",
+      "type": "COMPONENT_SET",
+      "size": "63x24",
+      "radius": 5,
+      "children": [
+        {
+          "name": "=Live",
+          "type": "COMPONENT",
+          "size": "43x24",
+          "layout": "row gap=0 pad=0/8/0/8 main=CENTER cross=CENTER",
+          "stroke": "#27272A w=1",
+          "radius": 4,
+          "children": [
+            {
+              "name": "Status",
+              "type": "TEXT",
+              "size": "27x14",
+              "fill": "#38BDF8",
+              "copy": "LIVE",
+              "font": "IBM Plex Mono 400 11/14 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "=Archive",
+          "type": "COMPONENT",
+          "size": "63x24",
+          "layout": "row gap=0 pad=0/8/0/8 main=CENTER cross=CENTER",
+          "stroke": "#27272A w=1",
+          "radius": 4,
+          "children": [
+            {
+              "name": "Status",
+              "type": "TEXT",
+              "size": "47x14",
+              "fill": "#A1A1AA",
+              "copy": "ARCHIVE",
+              "font": "IBM Plex Mono 400 11/14 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "=Draft",
+          "type": "COMPONENT",
+          "size": "49x24",
+          "layout": "row gap=0 pad=0/8/0/8 main=CENTER cross=CENTER",
+          "stroke": "#27272A w=1",
+          "radius": 4,
+          "children": [
+            {
+              "name": "Status",
+              "type": "TEXT",
+              "size": "33x14",
+              "fill": "#A1A1AA",
+              "copy": "DRAFT",
+              "font": "IBM Plex Mono 400 11/14 ls=0"
+            }
+          ]
+        }
+      ]
+    },
+    "33:42": {
+      "name": "Page Header",
+      "type": "COMPONENT",
+      "size": "900x97",
+      "layout": "col gap=8 pad=0/0/8/0",
+      "children": [
+        {
+          "name": "Eyebrow",
+          "type": "TEXT",
+          "size": "80x14",
+          "fill": "#38BDF8",
+          "copy": "01 / SECTION",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Title",
+          "type": "TEXT",
+          "size": "182x43",
+          "fill": "#E4E4E7",
+          "copy": "WORKSHOP",
+          "font": "Space Grotesk 500 34/43 ls=0"
+        },
+        {
+          "name": "Meta",
+          "type": "TEXT",
+          "size": "425x16",
+          "fill": "#A1A1AA",
+          "copy": "A living archive of things made, played, read, and shipped.",
+          "font": "IBM Plex Mono 400 12/16 ls=0"
+        }
+      ]
+    },
+    "33:46": {
+      "name": "Section Header",
+      "type": "COMPONENT",
+      "size": "181x48",
+      "layout": "row gap=16 pad=0/0/0/0 cross=CENTER",
+      "children": [
+        {
+          "name": "Index",
+          "type": "TEXT",
+          "size": "14x14",
+          "fill": "#38BDF8",
+          "copy": "01",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Title",
+          "type": "TEXT",
+          "size": "151x23",
+          "fill": "#E4E4E7",
+          "copy": "SELECTED BUILDS",
+          "font": "Space Grotesk 500 18/23 ls=0"
+        }
+      ]
+    },
+    "33:49": {
+      "name": "Editorial Card",
+      "type": "COMPONENT",
+      "size": "420x269",
+      "layout": "col gap=12 pad=16/16/16/16",
+      "fill": "#18181B",
+      "stroke": "#27272A w=1",
+      "radius": 8,
+      "children": [
+        {
+          "name": "Media",
+          "type": "RECTANGLE",
+          "size": "388x150",
+          "fill": "#0E0E11",
+          "stroke": "#27272A w=1"
+        },
+        {
+          "name": "Kicker",
+          "type": "TEXT",
+          "size": "80x14",
+          "fill": "#38BDF8",
+          "copy": "BUILD / 2026",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Title",
+          "type": "TEXT",
+          "size": "178x23",
+          "fill": "#E4E4E7",
+          "copy": "ASTRAY GOLD FRAME",
+          "font": "Space Grotesk 500 18/23 ls=0"
+        },
+        {
+          "name": "Meta",
+          "type": "TEXT",
+          "size": "192x14",
+          "fill": "#A1A1AA",
+          "copy": "01 — CUSTOM BUILD / PHOTO SET",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        }
+      ]
+    },
+    "33:54": {
+      "name": "Filter Control",
+      "type": "COMPONENT",
+      "size": "77x40",
+      "layout": "row gap=12 pad=0/12/0/12 cross=CENTER",
+      "fill": "#18181B",
+      "stroke": "#27272A w=1",
+      "radius": 4,
+      "children": [
+        {
+          "name": "Label",
+          "type": "TEXT",
+          "size": "53x14",
+          "fill": "#E4E4E7",
+          "copy": "ALL / 12",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        }
+      ]
+    },
+    "33:56": {
+      "name": "Spec Row",
+      "type": "COMPONENT",
+      "size": "176x40",
+      "layout": "row gap=32 pad=0/12/0/12 cross=CENTER",
+      "children": [
+        {
+          "name": "Key",
+          "type": "TEXT",
+          "size": "40x14",
+          "fill": "#38BDF8",
+          "copy": "STATUS",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Value",
+          "type": "TEXT",
+          "size": "80x16",
+          "fill": "#E4E4E7",
+          "copy": "IN PROGRESS",
+          "font": "IBM Plex Mono 400 12/16 ls=0"
+        }
+      ]
+    },
+    "33:84": {
+      "name": "Sidebar",
+      "type": "COMPONENT",
+      "size": "260x354",
+      "layout": "col gap=8 pad=24/16/24/16",
+      "fill": "#18181B",
+      "stroke": "#27272A w=1",
+      "radius": 8,
+      "children": [
+        {
+          "name": "Brand",
+          "type": "TEXT",
+          "size": "127x20",
+          "fill": "#E4E4E7",
+          "copy": "SHINIGAMAE.DEV",
+          "font": "Space Grotesk 500 16/20 ls=0"
+        },
+        {
+          "name": "Sub",
+          "type": "TEXT",
+          "size": "165x14",
+          "fill": "#A1A1AA",
+          "copy": "PERSONAL DIGITAL WORKSHOP",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Item / HOME",
+          "type": "FRAME",
+          "size": "42x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "34x15",
+              "fill": "#A1A1AA",
+              "copy": "HOME",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "Item / WORKSHOP",
+          "type": "FRAME",
+          "size": "73x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "65x15",
+              "fill": "#E4E4E7",
+              "copy": "WORKSHOP",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "Item / BUILDS",
+          "type": "FRAME",
+          "size": "49x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "41x15",
+              "fill": "#A1A1AA",
+              "copy": "BUILDS",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "Item / GAMES",
+          "type": "FRAME",
+          "size": "49x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "41x15",
+              "fill": "#A1A1AA",
+              "copy": "GAMES",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "Item / BOOKS",
+          "type": "FRAME",
+          "size": "47x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "39x15",
+              "fill": "#A1A1AA",
+              "copy": "BOOKS",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        },
+        {
+          "name": "Item / LAB",
+          "type": "FRAME",
+          "size": "31x36",
+          "layout": "row gap=0 pad=0/0/0/8 cross=CENTER",
+          "children": [
+            {
+              "name": "Label",
+              "type": "TEXT",
+              "size": "23x15",
+              "fill": "#A1A1AA",
+              "copy": "LAB",
+              "font": "Space Grotesk 500 12/15 ls=0"
+            }
+          ]
+        }
+      ]
+    },
+    "33:99": {
+      "name": "Top Bar",
+      "type": "COMPONENT",
+      "size": "335x56",
+      "layout": "row gap=0 pad=0/16/0/16 main=SPACE_BETWEEN cross=CENTER",
+      "fill": "#09090B",
+      "stroke": "#27272A w=1",
+      "children": [
+        {
+          "name": "Context",
+          "type": "TEXT",
+          "size": "86x14",
+          "fill": "#38BDF8",
+          "copy": "02 / WORKSHOP",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Title",
+          "type": "TEXT",
+          "size": "131x23",
+          "fill": "#E4E4E7",
+          "copy": "RECENT BUILDS",
+          "font": "Space Grotesk 500 18/23 ls=0"
+        },
+        {
+          "name": "Meta",
+          "type": "TEXT",
+          "size": "86x14",
+          "fill": "#A1A1AA",
+          "copy": "INDEX  /  014",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        }
+      ]
+    },
+    "33:103": {
+      "name": "Mobile Navigation",
+      "type": "COMPONENT",
+      "size": "194x64",
+      "layout": "row gap=0 pad=0/16/0/16 main=SPACE_BETWEEN cross=CENTER",
+      "fill": "#18181B",
+      "stroke": "#27272A w=1",
+      "children": [
+        {
+          "name": "Brand",
+          "type": "TEXT",
+          "size": "82x18",
+          "fill": "#E4E4E7",
+          "copy": "SHINIGAMAE",
+          "font": "Space Grotesk 500 14/18 ls=0"
+        },
+        {
+          "name": "Current",
+          "type": "TEXT",
+          "size": "53x14",
+          "fill": "#38BDF8",
+          "copy": "WORKSHOP",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        },
+        {
+          "name": "Menu",
+          "type": "TEXT",
+          "size": "27x14",
+          "fill": "#A1A1AA",
+          "copy": "MENU",
+          "font": "IBM Plex Mono 400 11/14 ls=0"
+        }
+      ]
+    }
+  },
+  "syncedAt": "2026-09-09"
+}

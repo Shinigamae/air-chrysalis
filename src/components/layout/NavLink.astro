@@ -1,0 +1,38 @@
+---
+/**
+ * A single header destination.
+ *
+ * Figma: "Sidebar Item" (33:34) — Default / Active variants. In the header
+ * the active state is the cyan label plus a 1px cyan rule beneath it, so the
+ * state is not carried by colour alone.
+ */
+interface Props {
+  href: string;
+  label: string;
+  active?: boolean;
+  class?: string;
+}
+
+const { href, label, active = false, class: className = '' } = Astro.props;
+---
+
+<a
+  href={href}
+  aria-current={active ? 'page' : undefined}
+  class:list={[
+    'type-nav relative inline-flex items-center py-1',
+    'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+    active ? 'text-signal' : 'text-muted hover:text-ink',
+    className,
+  ]}
+>
+  {label}
+  {
+    active && (
+      <span
+        aria-hidden="true"
+        class="absolute inset-x-0 -bottom-0.5 h-px bg-signal"
+      />
+    )
+  }
+</a>

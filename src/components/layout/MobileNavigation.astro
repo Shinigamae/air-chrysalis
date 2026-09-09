@@ -1,0 +1,39 @@
+---
+import { site, navigation, entryFor, withBase } from '@/config/site';
+import MobileMenu from './MobileMenu';
+
+/**
+ * Mobile header — Figma "Mobile Navigation" (33:103).
+ *
+ * 64px, panel ground, 1px rule: brand left, current section centre in cyan,
+ * MENU right. A separate structure from the desktop header rather than a
+ * squeezed version of it.
+ */
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const current = entryFor(pathname);
+---
+
+<header
+  class="border-b border-line bg-panel md:hidden"
+  style="min-height: var(--shell-mobile-header)"
+>
+  <div
+    class="flex items-center justify-between gap-2 px-2"
+    style="min-height: var(--shell-mobile-header)"
+  >
+    <a
+      href={withBase('/')}
+      class="type-brand-sm transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      {site.name}
+    </a>
+
+    {current && <span class="type-meta text-signal">{current.label}</span>}
+
+    <MobileMenu client:load entries={navigation} pathname={pathname} />
+  </div>
+</header>

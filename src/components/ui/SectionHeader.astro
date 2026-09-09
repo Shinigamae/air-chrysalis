@@ -1,0 +1,18 @@
+---
+/**
+ * Figma "Section Header" (33:46) — row, 16px gap, centre-aligned.
+ * Cyan two-digit index beside an 18px display title.
+ */
+interface Props {
+  index: string;
+  title: string;
+  as?: 'h2' | 'h3';
+}
+
+const { index, title, as: Tag = 'h2' }: Props = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+  <span class="type-meta text-signal">{index}</span>
+  <Tag class="type-title">{title}</Tag>
+</div>

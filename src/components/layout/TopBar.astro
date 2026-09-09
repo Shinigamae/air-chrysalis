@@ -1,0 +1,34 @@
+---
+/**
+ * Page context strip — Figma "Top Bar" (33:99).
+ *
+ * 56px: cyan section context left, view title centre, mono metadata right.
+ * The context is the section ("02 / WORKSHOP"); the title is the view within
+ * it ("RECENT BUILDS"), so a bare section index leaves the centre empty and
+ * the strip reads as a quiet status rail rather than repeating PageHeader.
+ *
+ * The Figma component is a boxed 1px border; here it spans the full width
+ * directly under the header, so it carries a bottom rule only — a full box
+ * would double the header's rule into a 2px line.
+ *
+ * Desktop only, and optional: Home opts out so the hero sits on the canvas.
+ */
+interface Props {
+  context: string;
+  title?: string;
+  meta?: string;
+}
+
+const { context, title, meta } = Astro.props;
+---
+
+<div class="hidden border-b border-line bg-canvas md:block">
+  <div
+    class="layout-container grid grid-cols-3 items-center gap-3"
+    style="min-height: var(--shell-header)"
+  >
+    <span class="type-meta text-signal">{context}</span>
+    <span class="type-title text-center">{title ?? ''}</span>
+    <span class="type-meta text-right">{meta ?? ''}</span>
+  </div>
+</div>

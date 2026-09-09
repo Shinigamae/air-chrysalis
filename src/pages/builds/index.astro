@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import EditorialCard from '@/components/ui/EditorialCard.astro';
+import FilterControl from '@/components/ui/FilterControl.astro';
+import { entryFor, withBase } from '@/config/site';
+import type { Status } from '@/components/ui/status';
+
+/**
+ * Builds — Figma "03 — Content Systems" panel A (11:79), rendered as the
+ * editorial index: filter controls over a grid of Editorial Cards.
+ *
+ * Filtering is a progressive enhancement. Every card ships in the HTML and is
+ * visible without JavaScript; the inline script only hides cards. It is not a
+ * React island because no state needs to live in a component tree.
+ */
+const entry = entryFor(Astro.url.pathname)!;
+const builds = (await getCollection('builds')).sort(
+  (a, b) => a.data.index - b.data.index,
+);
+
+const count = (status: Status) =>
+  builds.filter((b) => b.data.status === status).length;
+
+const facets = [
+  { key: 'all', label: `ALL / ${String(builds.length).padStart(2, '0')}` },
+  { key: 'live', label: `LIVE / ${String(count('live')).padStart(2, '0')}` },
+  { key: 'draft', label: `IN PROGRESS / ${String(count('draft')).padStart(2, '0')}` },
+  { key: 'archive', label: `ARCHIVE / ${String(count('archive')).padStart(2, '0')}` },
+].filter((facet) => facet.key === 'all' || !facet.label.endsWith('/ 00'));
+---
+
+<AppShell topBarMeta={`INDEX / ${String(builds.length).padStart(3, '0')}`}>
+  <PageHeader
+    eyebrow={`${entry.index} / ${entry.context}`}
+    title={entry.label}
+    summary={entry.summary}
+  />
+
+  <div class="mt-8 flex flex-col gap-3">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <SectionHeader index="01" title="BUILD ARCHIVE" />
+      <div
+        class="flex flex-wrap items-center gap-1"
+        role="group"
+        aria-label="Filter builds by status"
+        data-filter-group
+      >
+        {
+          facets.map((facet) => (
+            <FilterControl
+              label={facet.label}
+              active={facet.key === 'all'}
+              data-filter={facet.key}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="type-meta" role="status" data-filter-count></p>
+
+    <div
+      class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+      data-filter-target
+    >
+      {
+        builds.map((build) => (
+          <div data-status={build.data.status}>
+            <EditorialCard
+              kicker={`${build.data.grade} / ${build.data.scale}`}
+              title={build.data.title}
+              subtitle={`${build.data.series} · ${build.data.manufacturer}`}
+              summary={build.data.summary}
+              meta={`${String(build.data.index).padStart(2, '0')} — ${build.data.kind} / ${build.data.buildDate}`}
+              status={build.data.status}
+              href={withBase(`/builds/${build.id}`)}
+              action="ARCHIVE DETAIL →"
+              image={build.data.hero}
+              imageAlt={build.data.hero ? build.data.title : ''}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</AppShell>
+
+<script>
+  // Status filtering for the builds index. Cards are already in the DOM; this
+  // only toggles visibility, so the page is complete without JavaScript.
+  const group = document.querySelector<HTMLElement>('[data-filter-group]');
+  const target = document.querySelector<HTMLElement>('[data-filter-target]');
+  const readout = document.querySelector<HTMLElement>('[data-filter-count]');
+
+  if (group && target) {
+    const buttons = [...group.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const cards = [...target.querySelectorAll<HTMLElement>('[data-status]')];
+
+    const apply = (key: string) => {
+      let shown = 0;
+      for (const card of cards) {
+        const match = key === 'all' || card.dataset.status === key;
+        card.hidden = !match;
+        if (match) shown += 1;
+      }
+
+      for (const button of buttons) {
+        const isActive = button.dataset.filter === key;
+        button.setAttribute('aria-pressed', String(isActive));
+        button.classList.toggle('border-signal', isActive);
+        button.classList.toggle('text-signal', isActive);
+        button.classList.toggle('border-line', !isActive);
+        button.classList.toggle('text-ink', !isActive);
+      }
+
+      if (readout) {
+        readout.textContent =
+          key === 'all' ? '' : `SHOWING ${shown} OF ${cards.length}`;
+      }
+    };
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => apply(button.dataset.filter ?? 'all'));
+    }
+  }
+</script>

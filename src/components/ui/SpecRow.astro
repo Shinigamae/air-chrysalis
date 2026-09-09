@@ -1,0 +1,19 @@
+---
+/**
+ * Figma "Spec Row" (33:56) — 40px tall, 12px horizontal padding,
+ * cyan mono key, 32px gap, brighter mono value.
+ *
+ * A definition pair, so it renders as <dt>/<dd> and expects a <dl> parent.
+ */
+interface Props {
+  label: string;
+  value: string;
+}
+
+const { label, value } = Astro.props;
+---
+
+<div class="flex h-5 items-center gap-4 px-1.5">
+  <dt class="type-meta text-signal">{label}</dt>
+  <dd class="type-meta-lg m-0 text-ink">{value}</dd>
+</div>

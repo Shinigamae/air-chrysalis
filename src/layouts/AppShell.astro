@@ -1,0 +1,81 @@
+---
+import '@/styles/globals.css';
+import { site, entryFor, stripBase, withBase } from '@/config/site';
+import SiteHeader from '@/components/layout/SiteHeader.astro';
+import MobileNavigation from '@/components/layout/MobileNavigation.astro';
+import TopBar from '@/components/layout/TopBar.astro';
+import SiteFooter from '@/components/layout/SiteFooter.astro';
+
+/**
+ * The application shell. Every route renders through here.
+ *
+ * Desktop: horizontal header (Figma "02 — Homepage" › Header) with an
+ * optional page-context strip beneath it. Below `md` the header is replaced
+ * by MobileNavigation — a different structure, not a narrower one.
+ */
+interface Props {
+  /** Page title for <title> and, when set, the context strip centre. */
+  title?: string;
+  description?: string;
+  /** Right-hand metadata in the context strip, e.g. "INDEX / 014". */
+  topBarMeta?: string;
+  /** Home opts out so the hero sits directly on the canvas. */
+  showTopBar?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  topBarMeta,
+  showTopBar = true,
+} = Astro.props;
+
+const pathname = stripBase(Astro.url.pathname);
+const entry = entryFor(pathname);
+
+const documentTitle = title
+  ? `${title} — ${site.name}`
+  : entry
+    ? `${entry.label} — ${site.name}`
+    : site.name;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#09090B" />
+    <title>{documentTitle}</title>
+  </head>
+
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="type-nav sr-only-focusable absolute left-2 top-2 z-60 rounded-compact border border-signal bg-panel px-1 py-1 text-signal"
+    >
+      SKIP TO CONTENT
+    </a>
+
+    <MobileNavigation pathname={pathname} />
+    <SiteHeader pathname={pathname} />
+
+    {
+      showTopBar && entry && (
+        <TopBar
+          context={`${entry.index} / ${entry.label}`}
+          title={title}
+          meta={topBarMeta}
+        />
+      )
+    }
+
+    <main id="main" class="layout-container flex-1 py-5 md:py-8">
+      <slot />
+    </main>
+
+    <SiteFooter />
+  </body>
+</html>

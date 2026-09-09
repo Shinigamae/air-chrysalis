@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import SpecList from '@/components/ui/SpecList.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
+import { withBase } from '@/config/site';
+
+/**
+ * Book entry — Figma "03 — Content Systems" panel C. The personal thought is
+ * the body of the page; the rating stays metadata, per the design's note that
+ * a thought beats a generic review score.
+ */
+export const getStaticPaths = (async () => {
+  const books = await getCollection('books');
+  return books.map((book) => ({
+    params: { slug: book.id },
+    props: { book },
+  }));
+}) satisfies GetStaticPaths;
+
+const { book } = Astro.props;
+const b = book.data;
+const rating = b.rating === null || b.rating === undefined ? '—' : `${b.rating} / 5`;
+const finished = b.finishedOn ?? '—';
+---
+
+<AppShell title={b.title} topBarMeta={`READ / ${finished.slice(0, 7)}`}>
+  <PageHeader
+    eyebrow={`READ / ${finished.slice(0, 4)}`}
+    title={b.title}
+    summary={b.author}
+  />
+
+  <div class="mt-5 flex items-center gap-2">
+    <StatusLabel status={b.status} />
+    <span class="type-meta">{b.source} · RATING {rating}</span>
+  </div>
+
+  <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">
+    <div class="flex aspect-[2/3] items-center justify-center overflow-hidden rounded-standard border border-line bg-well">
+      {
+        b.cover ? (
+          <img
+            src={b.cover}
+            alt={`${b.title} cover`}
+            class="h-full w-full object-cover"
+            decoding="async"
+          />
+        ) : (
+          <span class="type-micro">BOOK COVER</span>
+        )
+      }
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <div class="flex flex-col gap-3">
+        <SectionHeader index="01" title="THOUGHT" />
+        <p class="type-body">{b.thought}</p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <SectionHeader index="02" title="RECORD" />
+        <SpecList
+          items={[
+            { label: 'AUTHOR', value: b.author },
+            { label: 'SOURCE', value: b.source },
+            { label: 'RATING', value: rating },
+            { label: 'FINISHED', value: finished },
+            { label: 'STATUS', value: b.status.toUpperCase() },
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+
+  <a
+    href={withBase('/books')}
+    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+  >
+    ← READING LOG
+  </a>
+</AppShell>

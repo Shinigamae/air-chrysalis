@@ -1,0 +1,48 @@
+---
+import type { StatusItem } from '@/config/home';
+
+/**
+ * Current-status panel — Figma "02 — Homepage" (4:56).
+ *
+ * Cyan label, display headline, a rule, then key/value pairs two-up. The
+ * pairs are deliberately not SpecRow: that component pairs a cyan mono key
+ * with a mono value, while this panel uses a muted key with an editorial
+ * value, so it is a different treatment rather than the same one reused.
+ *
+ * The Figma rule is drawn as a row of box-drawing characters; here it is a
+ * real 1px border, so screen readers do not read out thirty-two dashes.
+ */
+interface Props {
+  label: string;
+  headline: string;
+  items: readonly StatusItem[];
+}
+
+const { label, headline, items }: Props = Astro.props;
+---
+
+<section
+  aria-label={label}
+  class="flex flex-col rounded-standard border border-line bg-panel p-3"
+>
+  <p class="type-micro text-signal">{label}</p>
+  <p class="type-subhead mt-1">{headline}</p>
+
+  <hr class="my-2 h-px border-0 bg-line" />
+
+  <dl
+    class="m-0 grid grid-cols-1 gap-2 md:grid-flow-col md:grid-cols-2 md:grid-rows-2"
+  >
+    {
+      items.map((item) => (
+        <div class="flex items-baseline gap-2">
+          <dt class="type-micro w-11 shrink-0">{item.label}</dt>
+          {/* 14/18 is the same step as the mobile brand lockup. */}
+          <dd class="font-display text-brand-sm m-0 font-normal text-ink">
+            {item.value}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

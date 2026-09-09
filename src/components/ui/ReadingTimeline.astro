@@ -1,0 +1,70 @@
+---
+/**
+ * Reading timeline — Figma "03 — Content Systems" (11:107), which sketches it
+ * as "2026 ────●────●────●──→ Jan Mar Jun Sep".
+ *
+ * Drawn as a real rule with positioned markers rather than box-drawing
+ * characters, so it scales and does not get read out as punctuation. The
+ * marker list is the accessible representation; the rule is decorative.
+ */
+interface Props {
+  year: number;
+  items: readonly { title: string; finishedOn: string }[];
+}
+
+const { year, items }: Props = Astro.props;
+
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+/** Month index (0-11) → percentage across the year. */
+const markers = items
+  .map((item) => {
+    const month = new Date(item.finishedOn).getUTCMonth();
+    return { ...item, month, percent: (month / 11) * 100 };
+  })
+  .sort((a, b) => a.month - b.month);
+
+const ticks = [0, 2, 5, 8, 11];
+---
+
+<div class="flex flex-col gap-2">
+  <div class="flex items-baseline gap-2">
+    <span class="type-meta text-signal">{year}</span>
+    <span class="type-micro">{markers.length} FINISHED</span>
+  </div>
+
+  <div class="relative h-4" aria-hidden="true">
+    <div class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-line"></div>
+    {
+      markers.map((marker) => (
+        <span
+          class="absolute top-1/2 size-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal"
+          style={`left: ${marker.percent}%`}
+          title={marker.title}
+        />
+      ))
+    }
+  </div>
+
+  <div class="relative h-2" aria-hidden="true">
+    {
+      ticks.map((tick) => (
+        <span
+          class="type-micro absolute -translate-x-1/2"
+          style={`left: ${(tick / 11) * 100}%`}
+        >
+          {MONTHS[tick]}
+        </span>
+      ))
+    }
+  </div>
+
+  {/* The list is what assistive technology reads. */}
+  <ul class="sr-only m-0 list-none p-0">
+    {
+      markers.map((marker) => (
+        <li>{marker.title} — {MONTHS[marker.month]} {year}</li>
+      ))
+    }
+  </ul>
+</div>

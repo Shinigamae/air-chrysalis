@@ -1,0 +1,63 @@
+[
+  {
+    "id": "shinigamae-dev",
+    "title": "SHINIGAMAE.DEV",
+    "subtitle": "Personal digital workshop",
+    "year": 2026,
+    "problem": "Everything I make lived in four different places, none of which I owned, and none of which talked to each other.",
+    "approach": "Design the language first in Figma, then build a static Astro shell against it, with a token layer strict enough that the design cannot drift silently.",
+    "result": "One archive with a coherent visual system, and a drift report that flags when code and design disagree.",
+    "stack": [
+      "Astro",
+      "TypeScript",
+      "Tailwind CSS",
+      "Figma REST API"
+    ],
+    "lessons": [
+      "Publishing styles in Figma matters more than any sync script",
+      "A token layer is only real if nothing can bypass it",
+      "Deciding the shell before the pages saved a rewrite"
+    ],
+    "status": "live",
+    "order": 1
+  },
+  {
+    "id": "build-log-pipeline",
+    "title": "BUILD LOG PIPELINE",
+    "subtitle": "Photo ingest for the model archive",
+    "year": 2026,
+    "problem": "Build photos sat on a phone in no particular order, and writing them up by hand meant they never got written up.",
+    "approach": "A small ingest step that reads EXIF, groups shots by session, and drafts an entry skeleton to edit rather than author from scratch.",
+    "result": "Drafting a build entry went from an evening to a few minutes.",
+    "stack": [
+      ".NET",
+      "SQLite",
+      "ImageSharp"
+    ],
+    "lessons": [
+      "The bottleneck was writing, not storage",
+      "Generating a draft to edit beats generating a finished thing"
+    ],
+    "status": "draft",
+    "order": 2
+  },
+  {
+    "id": "reading-timeline",
+    "title": "READING TIMELINE",
+    "subtitle": "Goodreads without the noise",
+    "year": 2025,
+    "problem": "I wanted the shape of a reading year, not a feed of other people's reviews.",
+    "approach": "Pull my own shelf data, reduce it to finish dates and a single personal note per book, and render it as one line.",
+    "result": "A year of reading readable at a glance.",
+    "stack": [
+      "TypeScript",
+      "D3"
+    ],
+    "lessons": [
+      "One sentence per book is more honest than a star rating",
+      "Most of the data was not worth keeping"
+    ],
+    "status": "archive",
+    "order": 3
+  }
+]

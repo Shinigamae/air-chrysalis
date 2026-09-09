@@ -427,3 +427,15 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Astro / frontend build output
+dist/
+.astro/
+.output/
+.vercel/
+.netlify/
+
+# Environment
+.env
+.env.production
+.env.local

@@ -1,0 +1,54 @@
+---
+import { site, headerNavigation, isActive, withBase } from '@/config/site';
+import NavLink from './NavLink.astro';
+
+/**
+ * Desktop header — Figma "02 — Homepage" › Header (4:39).
+ *
+ * Brand lockup left, destinations centre, external link right. 56px tall,
+ * seated on the canvas with a 1px bottom rule. Hidden below `md`, where
+ * MobileNavigation takes over rather than this shrinking down.
+ */
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+---
+
+<header class="hidden border-b border-line bg-canvas md:block">
+  <div
+    class="layout-container flex items-center justify-between gap-3"
+    style="min-height: var(--shell-header)"
+  >
+    <a
+      href={withBase('/')}
+      class="group flex flex-col gap-px py-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      <span class="type-brand">{site.name}</span>
+      <span class="type-meta">{site.tagline}</span>
+    </a>
+
+    <nav aria-label="Main" class="flex items-center gap-5 lg:gap-8">
+      {
+        headerNavigation.map((entry) => (
+          <NavLink
+            href={withBase(entry.href)}
+            label={entry.label}
+            active={isActive(pathname, entry.href)}
+          />
+        ))
+      }
+    </nav>
+
+    <a
+      href={site.external.href}
+      rel="me noopener"
+      target="_blank"
+      aria-label={`${site.external.label} (opens in a new tab)`}
+      class="font-display text-signal text-[22px] leading-none transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-70"
+    >
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

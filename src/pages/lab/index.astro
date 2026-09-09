@@ -1,0 +1,21 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import { entryFor } from '@/config/site';
+
+/**
+ * Placeholder. Detail routes drop in beside this file as
+ * src/pages/lab/[slug].astro when Step 2 adds content.
+ */
+const entry = entryFor(Astro.url.pathname)!;
+---
+
+<AppShell topBarMeta="INDEX / 000">
+  <PageHeader
+    eyebrow={`${entry.index} / ${entry.context}`}
+    title={entry.label}
+    summary={entry.summary}
+  />
+
+  <p class="type-meta-lg mt-5">STEP 1 / APP SHELL — SECTION CONTENT PENDING</p>
+</AppShell>

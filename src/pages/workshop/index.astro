@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import SpecList from '@/components/ui/SpecList.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
+import { entryFor } from '@/config/site';
+
+/**
+ * Workshop — Figma "03 — Content Systems" panel D (11:109):
+ * "Case-study pattern: problem → approach → result → stack → lessons learned."
+ *
+ * The case studies read in full here rather than behind a detail route,
+ * because FIGMA.md's routing list has slug pages for builds, games and books
+ * only. Ordered by the curated `order` field, not by year.
+ */
+const entry = entryFor(Astro.url.pathname)!;
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const count = String(projects.length).padStart(3, '0');
+---
+
+<AppShell topBarMeta={`INDEX / ${count}`}>
+  <PageHeader
+    eyebrow={`${entry.index} / ${entry.context}`}
+    title={entry.label}
+    summary={entry.summary}
+  />
+
+  <div class="mt-8 flex flex-col gap-8">
+    {
+      projects.map((project, i) => (
+        <article class="flex flex-col gap-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <SectionHeader
+              index={String(i + 1).padStart(2, '0')}
+              title={project.data.title}
+            />
+            <div class="flex items-center gap-2">
+              <span class="type-meta">{project.data.year}</span>
+              <StatusLabel status={project.data.status} />
+            </div>
+          </div>
+
+          <p class="type-caption">{project.data.subtitle}</p>
+
+          <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
+            <div class="flex flex-col gap-1">
+              <p class="type-micro text-signal">PROBLEM</p>
+              <p class="type-fine">{project.data.problem}</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="type-micro text-signal">APPROACH</p>
+              <p class="type-fine">{project.data.approach}</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="type-micro text-signal">RESULT</p>
+              <p class="type-fine">{project.data.result}</p>
+            </div>
+          </div>
+
+          <SpecList
+            items={[
+              { label: 'STACK', value: project.data.stack.join(' · ') },
+              { label: 'YEAR', value: String(project.data.year) },
+            ]}
+            columns={2}
+          />
+
+          {
+            project.data.lessons.length > 0 && (
+              <div class="flex flex-col gap-1">
+                <p class="type-micro text-signal">LESSONS LEARNED</p>
+                <ul class="m-0 flex list-none flex-col gap-0.5 p-0">
+                  {project.data.lessons.map((lesson) => (
+                    <li class="type-fine flex gap-1">
+                      <span aria-hidden="true" class="text-muted">—</span>
+                      <span>{lesson}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          {
+            project.data.href && (
+              <a
+                href={project.data.href}
+                rel="noopener"
+                target="_blank"
+                class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+              >
+                VIEW SOURCE →
+              </a>
+            )
+          }
+        </article>
+      ))
+    }
+  </div>
+</AppShell>

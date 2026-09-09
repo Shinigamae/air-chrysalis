@@ -1,0 +1,25 @@
+---
+import { statusTone, type Status } from './status';
+
+/**
+ * Figma "Status Label" (33:41) — Live / Archive / Draft variants.
+ * 24px tall, 8px horizontal padding, 4px radius, 1px rule, no fill.
+ * Live is cyan; the rest are muted.
+ */
+interface Props {
+  status: Status;
+  /** Overrides the default label text ("LIVE", "ARCHIVE", "DRAFT"). */
+  label?: string;
+}
+
+const { status, label } = Astro.props;
+---
+
+<span
+  class:list={[
+    'type-meta inline-flex h-3 items-center justify-center rounded-compact border border-line px-1',
+    statusTone[status],
+  ]}
+>
+  {label ?? status.toUpperCase()}
+</span>

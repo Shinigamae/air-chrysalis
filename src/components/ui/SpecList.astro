@@ -1,0 +1,28 @@
+---
+import SpecRow from './SpecRow.astro';
+
+/**
+ * A panel of Spec Rows — the technical block on every detail page.
+ *
+ * SpecRow (Figma 33:56) is the row; this only supplies the <dl> wrapper and
+ * the hairlines between rows, so the row treatment stays in one place.
+ */
+interface Props {
+  items: readonly { label: string; value: string }[];
+  /** Two-up from `md` when there are enough rows to warrant it. */
+  columns?: 1 | 2;
+  class?: string;
+}
+
+const { items, columns = 1, class: className = '' }: Props = Astro.props;
+---
+
+<dl
+  class:list={[
+    'm-0 grid grid-cols-1 divide-y divide-line overflow-hidden rounded-standard border border-line bg-panel',
+    columns === 2 && 'md:grid-cols-2 md:divide-x',
+    className,
+  ]}
+>
+  {items.map((item) => <SpecRow label={item.label} value={item.value} />)}
+</dl>
