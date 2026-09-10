@@ -1,5 +1,16 @@
 import { navigation } from './site';
 
+/*
+ * Card art is imported, not referenced by path, so it goes through
+ * astro:assets: the build resizes and re-encodes each photo and the card
+ * serves a srcset. The originals live in src/assets/home/ for that reason —
+ * anything in public/ is copied out byte for byte. See IMAGES.md.
+ */
+import buildArchiveImage from '@/assets/home/build-archive.jpg';
+import gamingLogImage from '@/assets/home/gaming-log.jpg';
+import readingLogImage from '@/assets/home/reading-log.jpg';
+import workshopImage from '@/assets/home/workshop.jpg';
+
 /**
  * Homepage content — Figma "02 — Homepage" (4:3).
  *
@@ -61,7 +72,7 @@ export const selectedWork = {
       subtitle: 'Software / Projects',
       href: '/workshop',
       summary: summaryFor('/workshop'),
-      image: '/images/home/workshop.jpg',
+      image: workshopImage,
     },
     {
       kicker: 'BUILD',
@@ -69,7 +80,7 @@ export const selectedWork = {
       subtitle: 'Gunpla / Models',
       href: '/builds',
       summary: summaryFor('/builds'),
-      image: '/images/home/build-archive.jpg',
+      image: buildArchiveImage,
     },
     {
       kicker: 'PLAY',
@@ -77,7 +88,7 @@ export const selectedWork = {
       subtitle: 'PlayStation / Games',
       href: '/games',
       summary: summaryFor('/games'),
-      image: '/images/home/gaming-log.jpg',
+      image: gamingLogImage,
     },
     {
       kicker: 'READ',
@@ -85,7 +96,7 @@ export const selectedWork = {
       subtitle: 'Books / Goodreads',
       href: '/books',
       summary: summaryFor('/books'),
-      image: '/images/home/reading-log.jpg',
+      image: readingLogImage,
     },
   ],
 } as const;

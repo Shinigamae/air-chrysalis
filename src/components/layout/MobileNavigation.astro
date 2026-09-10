@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { site, navigation, entryFor, withBase } from '@/config/site';
 import MobileMenu from './MobileMenu';
+import mark from '@/assets/logo-trans.png';
 
 /**
  * Mobile header — Figma "Mobile Navigation" (33:103).
@@ -29,11 +31,15 @@ const current = entryFor(pathname);
       href={withBase('/')}
       class="flex items-center gap-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
     >
-      <img
-        src={withBase('/images/logo-trans.png')}
+      <Image
+        src={mark}
         alt=""
-        width="28"
-        height="28"
+        width={28}
+        height={28}
+        densities={[1, 2]}
+        format="webp"
+        quality={90}
+        loading="eager"
         class="h-3.5 w-3.5 shrink-0 object-contain"
       />
       <span class="type-brand-sm">{site.name}</span>

@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { site, headerNavigation, isActive, withBase } from '@/config/site';
 import NavLink from './NavLink.astro';
+import mark from '@/assets/logo-trans.png';
 
 /**
  * Desktop header — Figma "02 — Homepage" › Header (4:39).
@@ -25,16 +27,23 @@ const { pathname } = Astro.props;
       The mark is `logo-trans.png` rather than `logo.png`: the latter is
       matted onto opaque black, which reads as a square on the canvas.
       Decorative — the wordmark beside it already names the site.
+
+      Imported, so astro:assets serves a 32px WebP with a 2x companion
+      instead of the 465px source on every page in the site.
     */}
     <a
       href={withBase('/')}
       class="group flex items-center gap-1.5 py-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
     >
-      <img
-        src={withBase('/images/logo-trans.png')}
+      <Image
+        src={mark}
         alt=""
-        width="32"
-        height="32"
+        width={32}
+        height={32}
+        densities={[1, 2]}
+        format="webp"
+        quality={90}
+        loading="eager"
         class="h-4 w-4 shrink-0 object-contain"
       />
       <span class="flex flex-col gap-px">

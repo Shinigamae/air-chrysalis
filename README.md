@@ -361,6 +361,8 @@ src/
     ui/                   PageHeader · SectionHeader · EditorialCard · StatusLabel · FilterControl
                           SpecRow · SpecList · StatusPanel · ReadingTimeline
                           PlatformTags (games) · StarRating (books)
+  assets/                 Local art — imported, so astro:assets resizes and
+                          re-encodes it. public/ holds only the favicon.
   content.config.ts       Collection schemas (the API contract, too)
   content/                builds/*.json · games/games.json · books/books.json · projects/projects.json
   pages/                  One directory per section; [slug].astro generates detail routes
