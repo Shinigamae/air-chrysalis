@@ -18,8 +18,12 @@ import { entryFor, withBase } from '@/config/site';
  * is still in `collection-filter.ts` and on the games index.
  */
 const entry = entryFor(Astro.url.pathname)!;
+
+// Newest build first. `index` counts up from the oldest post so that an
+// entry's ordinal never changes when a new one is published — the card shows
+// it — so the newest is the highest and the sort runs descending.
 const builds = (await getCollection('builds')).sort(
-  (a, b) => a.data.index - b.data.index,
+  (a, b) => b.data.index - a.data.index,
 );
 
 /**
