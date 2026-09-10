@@ -1,0 +1,46 @@
+---
+import { platformsOf } from '@/config/platforms';
+
+/**
+ * The platform chips on a game card — one per machine, tinted per machine.
+ *
+ * A list rather than a row of spans: "PS3 / PSVITA / PS4" is three facts,
+ * and a screen reader should be told so rather than read a slash.
+ */
+interface Props {
+  /** The raw PSN string, e.g. "PS4" or "PS3 / PSVITA / PS4". */
+  platform: string;
+  /** `sm` on cards, `md` beside a page or feature heading. */
+  size?: 'sm' | 'md';
+  class?: string;
+}
+
+const { platform, size = 'sm', class: className = '' }: Props = Astro.props;
+
+const tags = platformsOf(platform);
+
+// 20px and 24px — the same two chip heights as StatusLabel and FilterControl.
+const BOX = {
+  sm: 'h-2.5 px-1 text-micro',
+  md: 'h-3 px-1 text-meta',
+} as const;
+---
+
+{
+  tags.length > 0 && (
+    <ul class:list={['flex flex-wrap items-center gap-0.5', className]}>
+      {tags.map((tag) => (
+        <li
+          title={tag.name}
+          class:list={[
+            'inline-flex items-center rounded-compact border font-mono font-medium tracking-wide',
+            BOX[size],
+            tag.tone,
+          ]}
+        >
+          {tag.label}
+        </li>
+      ))}
+    </ul>
+  )
+}

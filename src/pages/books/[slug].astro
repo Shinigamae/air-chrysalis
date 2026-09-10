@@ -6,6 +6,7 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
+import StarRating from '@/components/ui/StarRating.astro';
 import { withBase } from '@/config/site';
 
 /**
@@ -37,9 +38,10 @@ const year = (b.finishedOn ?? b.addedOn ?? '').slice(0, 4) || '—';
     summary={b.author}
   />
 
-  <div class="mt-5 flex items-center gap-2">
+  <div class="mt-5 flex flex-wrap items-center gap-2">
     <StatusLabel status={b.status} />
-    <span class="type-meta">{b.source} · RATING {rating}</span>
+    <StarRating rating={b.rating} size="md" showValue />
+    <span class="type-meta">{b.source}</span>
   </div>
 
   <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">

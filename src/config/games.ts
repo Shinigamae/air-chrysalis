@@ -45,17 +45,29 @@ export const imageOf = (game: Game) =>
 
 /**
  * `rating` and `review` are override-only and empty until written, so the
- * card falls back to what PSN does know — completion, hours, a platinum.
+ * card falls back to what PSN does know — completion and hours.
+ *
+ * A platinum used to be a word in this line and is now the card's edge and
+ * badge, so it is not repeated here.
  */
 export const metaOf = (game: Game) =>
   [
     `${game.data.progress}%`,
     game.data.playtimeHours ? `${Math.round(game.data.playtimeHours)} H` : null,
-    game.data.platinum ? 'PLATINUM' : null,
     game.data.rating ? `RATING ${ratingOf(game.data.rating)}` : null,
   ]
     .filter(Boolean)
     .join(' · ');
+
+/**
+ * The two cards worth marking out, rendered as a shining card edge.
+ *
+ * Platinum wins where a game is both, which is nearly all of them: 98 of the
+ * 293 have a platinum and only two reach 100% without one — a set with no
+ * platinum defined at all. The gold edge is for exactly those.
+ */
+export const accentOf = (game: Game): 'platinum' | 'gold' | undefined =>
+  game.data.platinum ? 'platinum' : game.data.progress === 100 ? 'gold' : undefined;
 
 /**
  * Facet links for the rail beside the section header.

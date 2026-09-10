@@ -15,6 +15,10 @@ import { withBase } from '@/config/site';
  *   subtitle  a muted qualifier under the title ("Software / Projects")
  *   summary   a sentence of description
  *   action    the "VIEW →" affordance, pinned to the bottom of the card
+ *
+ * Two slots take content the card cannot type:
+ *   tags      a row under the title — the Gaming Log's platform chips
+ *   meta      leads the metadata line — the Reading Log's stars
  */
 interface Props {
   kicker: string;
@@ -34,6 +38,19 @@ interface Props {
    * book covers, which a wide plate crops into an unreadable band.
    */
   mediaAspect?: 'wide' | 'portrait';
+  /**
+   * `compact` is the same card a quarter smaller — tighter padding and a
+   * step down the type scale, so four fit a row where three did. Used by
+   * the Reading Log, where the cover is the content and the card around it
+   * was mostly air.
+   */
+  density?: 'default' | 'compact';
+  /**
+   * Marks the card out with a travelling highlight around its edge, and a
+   * badge beside the status. The Gaming Log's two: a platinum trophy, and
+   * 100% completion without one.
+   */
+  accent?: 'platinum' | 'gold';
   /** Heading level for the card title within the page hierarchy. */
   as?: 'h2' | 'h3' | 'h4';
 }
@@ -42,6 +59,19 @@ interface Props {
 const PLATE = {
   wide: 'aspect-[388/150]',
   portrait: 'aspect-[3/4]',
+} as const;
+
+const ACCENT = {
+  platinum: {
+    label: 'PLATINUM',
+    ring: 'card-shine card-shine--platinum',
+    badge: 'border-platinum/40 bg-platinum/10 text-platinum',
+  },
+  gold: {
+    label: '100%',
+    ring: 'card-shine card-shine--gold',
+    badge: 'border-gold/45 bg-gold/12 text-gold',
+  },
 } as const;
 
 const {
@@ -57,12 +87,23 @@ const {
   status,
   mediaLabel = 'IMAGE / MEDIA',
   mediaAspect = 'wide',
+  density = 'default',
+  accent,
   as: Tag = 'h3',
 }: Props = Astro.props;
+
+const compact = density === 'compact';
+const mark = accent ? ACCENT[accent] : undefined;
+const hasMeta = Boolean(meta) || Astro.slots.has('meta');
 ---
 
 <article
-  class="group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
+  class:list={[
+    'group relative flex h-full flex-col rounded-standard border bg-panel transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+    compact ? 'gap-1 p-1.5' : 'gap-1.5 p-2',
+    // An accent card keeps its own edge on hover; the cyan would fight it.
+    mark ? mark.ring : 'border-line hover:border-signal focus-within:border-signal',
+  ]}
 >
   <div
     class:list={[
@@ -85,13 +126,30 @@ const {
     }
   </div>
 
-  <div class="flex items-center justify-between gap-2">
+  <div class="flex items-center justify-between gap-1">
     <p class="type-micro text-signal">{kicker}</p>
-    {status && <StatusLabel status={status} />}
+    <div class="flex shrink-0 items-center gap-0.5">
+      {
+        mark && (
+          <span
+            class:list={[
+              'type-meta inline-flex h-3 items-center gap-0.5 rounded-compact border px-1',
+              mark.badge,
+            ]}
+          >
+            <span aria-hidden="true">◆</span>
+            {mark.label}
+          </span>
+        )
+      }
+      {status && <StatusLabel status={status} />}
+    </div>
   </div>
 
   <div class="flex flex-col gap-0.5">
-    <Tag class="type-title">
+    {/* Clamped in compact: a full Goodreads title runs to three lines and
+        pushes the card taller than the cover it belongs to. */}
+    <Tag class:list={[compact ? 'type-brand-sm line-clamp-2' : 'type-title']}>
       {
         href ? (
           <a
@@ -105,11 +163,27 @@ const {
         )
       }
     </Tag>
-    {subtitle && <p class="type-caption">{subtitle}</p>}
+    {
+      subtitle && (
+        <p class:list={[compact ? 'type-fine line-clamp-1 text-muted' : 'type-caption']}>
+          {subtitle}
+        </p>
+      )
+    }
   </div>
 
-  {summary && <p class="type-fine">{summary}</p>}
-  {meta && <p class="type-meta">{meta}</p>}
+  <slot name="tags" />
+
+  {summary && <p class:list={['type-fine', compact && 'line-clamp-3']}>{summary}</p>}
+
+  {
+    hasMeta && (
+      <p class="type-meta flex flex-wrap items-center gap-1">
+        <slot name="meta" />
+        {meta}
+      </p>
+    )
+  }
 
   {
     action && (

@@ -45,6 +45,107 @@
   }
 }
 
+@layer components {
+  /*
+   * A card whose edge is a slowly travelling highlight — the Gaming Log's
+   * platinum and 100% markers. The tone is set by a modifier class, so the
+   * mechanism is written once.
+   *
+   * The ring is a pseudo-element, not a border: `border-image` is the
+   * obvious tool and it ignores border-radius, which these cards have. It is
+   * inset by -1px because an absolutely positioned child is laid out against
+   * the padding box, so `inset: 0` would sit inside the border it replaces;
+   * at -1px the ring lands flush against the card's fill, which is what
+   * reads as the border. Two stacked gradients — a constant edge tint and a
+   * highlight swept across it — with `mask-composite` punching out the
+   * middle to leave the 1px ring.
+   *
+   * The sweep stops on its own under the prefers-reduced-motion rule below,
+   * leaving the static edge tint.
+   */
+  .card-shine {
+    border-color: transparent;
+    box-shadow: 0 0 24px -10px var(--shine-glow);
+    transition: box-shadow var(--duration-slow) var(--ease-technical);
+  }
+
+  .card-shine::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: 1;
+    padding: 1px;
+    border-radius: calc(var(--radius-standard) + 1px);
+    background:
+      linear-gradient(
+          100deg,
+          transparent 25%,
+          var(--shine-mid) 42%,
+          var(--shine-peak) 50%,
+          var(--shine-mid) 58%,
+          transparent 75%
+        )
+        0 0 / 300% 100% no-repeat,
+      linear-gradient(var(--shine-edge), var(--shine-edge));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: card-shine 7s linear infinite;
+    pointer-events: none;
+  }
+
+  .card-shine:hover,
+  .card-shine:focus-within {
+    box-shadow: 0 0 30px -8px var(--shine-glow);
+  }
+
+  /* Negative delays, so a grid of these glints in a wave rather than a
+   * chorus. Cards are direct children of the grid, so nth-child is theirs. */
+  .card-shine:nth-child(3n + 2)::before {
+    animation-delay: -2.4s;
+  }
+
+  .card-shine:nth-child(3n + 3)::before {
+    animation-delay: -4.8s;
+  }
+
+  /* A platinum trophy. Cool, near-white, the brightest edge on the page. */
+  .card-shine--platinum {
+    --shine-edge: color-mix(in srgb, var(--color-platinum) 32%, transparent);
+    --shine-mid: color-mix(in srgb, var(--color-platinum) 55%, transparent);
+    --shine-peak: var(--color-platinum);
+    --shine-glow: color-mix(in srgb, var(--color-platinum) 42%, transparent);
+  }
+
+  /* 100% with no platinum to show for it — every trophy the set defined. */
+  .card-shine--gold {
+    --shine-edge: color-mix(in srgb, var(--color-gold) 38%, transparent);
+    --shine-mid: color-mix(in srgb, var(--color-gold) 62%, transparent);
+    --shine-peak: var(--color-gold);
+    --shine-glow: color-mix(in srgb, var(--color-gold) 48%, transparent);
+  }
+}
+
+/* 100% → 0% travels the highlight left to right; the image is 3x the card,
+ * so most of the cycle is the gap between glints. */
+@keyframes card-shine {
+  from {
+    background-position:
+      100% 0,
+      0 0;
+  }
+  to {
+    background-position:
+      0% 0,
+      0 0;
+  }
+}
+
 @layer utilities {
   /* The page gutter: 12 columns · 24px gutters · 64px outer margin. */
   .layout-container {

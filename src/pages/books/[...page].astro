@@ -8,6 +8,7 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
 import ReadingTimeline from '@/components/ui/ReadingTimeline.astro';
+import StarRating from '@/components/ui/StarRating.astro';
 import Pager from '@/components/ui/Pager.astro';
 import { entryFor, withBase } from '@/config/site';
 
@@ -59,9 +60,6 @@ interface Props {
 const { page, current, total, all }: Props = Astro.props;
 const entry = entryFor(Astro.url.pathname)!;
 const first = page.currentPage === 1;
-
-const ratingOf = (rating: number | null | undefined) =>
-  rating === null || rating === undefined ? '—' : `${rating} / 5`;
 
 /** The timeline shows the most recent year we have finish dates for. */
 const dated = all.filter((book) => Boolean(book.data.finishedOn));
@@ -116,9 +114,10 @@ const timelineItems = dated
               <StatusLabel status={current.data.status} />
             </div>
 
-            <p class="type-meta">
-              {current.data.source} · RATING {ratingOf(current.data.rating)}
-            </p>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <StarRating rating={current.data.rating} size="md" showValue />
+              <span class="type-meta">{current.data.source}</span>
+            </div>
 
             {current.data.thought ? (
               <p class="type-body">{current.data.thought}</p>
@@ -151,7 +150,12 @@ const timelineItems = dated
           : `READING LOG / PAGE ${page.currentPage} OF ${page.lastPage}`
       }
     />
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {/*
+      Four to a row on wide screens rather than three: the cards are the
+      compact density and the covers are portrait, so at the old width most
+      of a card was empty panel beside a tall image.
+    */}
+    <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
       {
         page.data.map((book) => (
           <EditorialCard
@@ -159,15 +163,24 @@ const timelineItems = dated
             title={book.data.title}
             subtitle={book.data.author}
             summary={book.data.thought}
-            meta={`${book.data.source} · RATING ${ratingOf(book.data.rating)}`}
-            status={book.data.status}
+            density="compact"
             href={withBase(`/books/${book.id}`)}
             action="ENTRY →"
             mediaLabel="BOOK COVER"
             mediaAspect="portrait"
             image={book.data.cover}
             imageAlt={book.data.cover ? `${book.data.title} cover` : ''}
-          />
+          >
+            {/*
+              No status label: every book on the shelf is `archive`, so the
+              pill said nothing and, on a card this width, pushed the kicker
+              onto a second line. The detail page still carries it.
+
+              No source either — all of these came from Goodreads. The
+              rating is the only metadata on the card worth its line.
+            */}
+            <StarRating slot="meta" rating={book.data.rating} />
+          </EditorialCard>
         ))
       }
     </div>

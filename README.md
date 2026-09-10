@@ -360,6 +360,7 @@ src/
     layout/               SiteHeader · NavLink · TopBar · MobileNavigation · MobileMenu · SiteFooter
     ui/                   PageHeader · SectionHeader · EditorialCard · StatusLabel · FilterControl
                           SpecRow · SpecList · StatusPanel · ReadingTimeline
+                          PlatformTags (games) · StarRating (books)
   content.config.ts       Collection schemas (the API contract, too)
   content/                builds/*.json · games/games.json · books/books.json · projects/projects.json
   pages/                  One directory per section; [slug].astro generates detail routes
@@ -372,7 +373,10 @@ src/
 ### Design rules worth knowing
 
 - **Colour** comes only from `tokens.css`. Cyan (`--color-signal`) is a signal,
-  not a decoration — active state, focus, metadata keys.
+  not a decoration — active state, focus, metadata keys. The platform tints
+  (`--color-ps4`, `--color-ps5`, …) and the two achievement tints
+  (`--color-platinum`, `--color-gold`) are the only other hues, and each is
+  confined to one thing: a platform chip, a shining card edge, a star.
 - **Spacing** is an 8px base: Tailwind's `--spacing` is set to `8px`, so
   `1 · 2 · 3 · 5 · 8` are the design's `8 · 16 · 24 · 40 · 64` steps.
 - **Type** has two voices: Space Grotesk for editorial, IBM Plex Mono for

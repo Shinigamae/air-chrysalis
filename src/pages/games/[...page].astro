@@ -7,6 +7,7 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
 import GameGrid from '@/components/ui/GameGrid.astro';
+import PlatformTags from '@/components/ui/PlatformTags.astro';
 import { entryFor, withBase } from '@/config/site';
 import {
   PAGE_SIZE,
@@ -89,9 +90,10 @@ const first = page.currentPage === 1;
               <StatusLabel status={current.data.status} />
             </div>
 
-            <p class="type-meta">
-              {current.data.platform} / {current.data.year}
-            </p>
+            <div class="flex flex-wrap items-center gap-1">
+              <PlatformTags platform={current.data.platform} size="md" />
+              <span class="type-meta">{current.data.year}</span>
+            </div>
 
             <SpecList
               items={[

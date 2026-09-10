@@ -1,0 +1,91 @@
+---
+/**
+ * Five stars, filled to the rating.
+ *
+ * Two identical star rows stacked: a dim track and a gold row above it,
+ * clipped to a percentage width. That renders a half star correctly without
+ * an SVG `clipPath`, which would need an id unique across the several
+ * hundred of these a paginated shelf puts on one page.
+ *
+ * Personal ratings out of 5 are whole numbers; Goodreads' community average
+ * is not, and it renders through here too — hence the fractional fill.
+ */
+interface Props {
+  /** 0–5. Null or undefined is *unrated*, not a rating of zero. */
+  rating?: number | null;
+  /** `sm` on cards, `md` beside a heading. */
+  size?: 'sm' | 'md';
+  /** Append the numeral, e.g. "4 / 5". Off on cards — the stars say it. */
+  showValue?: boolean;
+  class?: string;
+}
+
+const {
+  rating,
+  size = 'sm',
+  showValue = false,
+  class: className = '',
+}: Props = Astro.props;
+
+/** One star per 20 units of the viewBox, so five fill 0–100. */
+const STAR =
+  'M10 2.1l2.472 5.008 5.528.803-4 3.898.944 5.505L10 14.716l-4.944 2.598.944-5.505-4-3.898 5.528-.803z';
+const STARS = [0, 20, 40, 60, 80];
+
+const STEP = { sm: 12, md: 16 } as const;
+const step = STEP[size];
+const width = step * 5;
+
+const rated = rating !== null && rating !== undefined;
+const value = rated ? Math.min(5, Math.max(0, rating)) : 0;
+const percent = (value / 5) * 100;
+
+const label = rated
+  ? `Rated ${Number(value.toFixed(2))} out of 5`
+  : 'Not rated';
+---
+
+<span
+  class:list={['inline-flex items-center gap-1 align-middle', className]}
+  role="img"
+  aria-label={label}
+>
+  <span
+    class="relative inline-block shrink-0"
+    style={`width:${width}px;height:${step}px`}
+  >
+    <svg
+      width={width}
+      height={step}
+      viewBox="0 0 100 20"
+      fill="currentColor"
+      aria-hidden="true"
+      class="block text-muted/25"
+    >
+      {STARS.map((x) => <path d={STAR} transform={`translate(${x} 0)`} />)}
+    </svg>
+
+    {/* The gold row, clipped from the left. Zero-width when unrated. */}
+    <span
+      class="absolute inset-y-0 left-0 overflow-hidden"
+      style={`width:${percent}%`}
+    >
+      <svg
+        width={width}
+        height={step}
+        viewBox="0 0 100 20"
+        fill="currentColor"
+        aria-hidden="true"
+        class="block max-w-none text-gold"
+      >
+        {STARS.map((x) => <path d={STAR} transform={`translate(${x} 0)`} />)}
+      </svg>
+    </span>
+  </span>
+
+  {
+    showValue && (
+      <span class="type-meta">{rated ? `${Number(value.toFixed(2))} / 5` : 'UNRATED'}</span>
+    )
+  }
+</span>

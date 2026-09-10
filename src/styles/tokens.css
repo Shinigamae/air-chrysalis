@@ -16,6 +16,25 @@
   --color-muted: #a1a1aa; /* MUTED        — metadata, secondary type */
   --color-signal: #38bdf8; /* SIGNAL CYAN  — accent, used sparingly   */
 
+  /* ---- Platform tints -----------------------------------------------
+   * One per PlayStation machine, so the platform chips on a game card are
+   * told apart at a glance. Each is a *readable* reading of the hardware's
+   * own colour, not the brand hex: PlayStation blue (#0070D1) is far too
+   * dark to sit as type on #18181B, so these are lifted to clear AA on the
+   * panel fill and the chip carries the brand hue as a 10% wash behind it.
+   */
+  --color-ps5: #eaf0f8; /* PS5    — the white console        */
+  --color-ps4: #5aa9ff; /* PS4    — PlayStation blue, lifted */
+  --color-ps3: #b8bfcc; /* PS3    — chrome / silver          */
+  --color-psvita: #a78bfa; /* PSVITA — the handheld's violet    */
+  --color-pspc: #9ca3af; /* PSPC   — no colour of its own     */
+
+  /* ---- Achievement tints --------------------------------------------
+   * The two card accents in the Gaming Log, and the star fill in Books.
+   */
+  --color-platinum: #e3e8f0; /* a platinum trophy    */
+  --color-gold: #f5c451; /* 100% without one, and book stars */
+
   /* ---- Spacing ------------------------------------------------------
    * 8px base unit. The Figma scale (8 · 16 · 24 · 40 · 64) maps to:
    *   1 → 8px   2 → 16px   3 → 24px   5 → 40px   8 → 64px

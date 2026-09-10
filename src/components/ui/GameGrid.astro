@@ -4,7 +4,8 @@ import EditorialCard from '@/components/ui/EditorialCard.astro';
 import FilterControl from '@/components/ui/FilterControl.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import Pager from '@/components/ui/Pager.astro';
-import { imageOf, metaOf, type Game } from '@/config/games';
+import PlatformTags from '@/components/ui/PlatformTags.astro';
+import { accentOf, imageOf, metaOf, type Game } from '@/config/games';
 import { withBase } from '@/config/site';
 
 /**
@@ -52,16 +53,20 @@ const { page, index, title, facets }: Props = Astro.props;
         <EditorialCard
           kicker={`PLAY / ${game.data.year}`}
           title={game.data.title}
-          subtitle={game.data.platform}
           summary={game.data.review}
           meta={metaOf(game)}
           status={game.data.status}
+          accent={accentOf(game)}
           href={withBase(`/games/${game.id}`)}
           action="REVIEW →"
           mediaLabel="SCREENSHOTS"
           image={imageOf(game)}
           imageAlt={imageOf(game) ? game.data.title : ''}
-        />
+        >
+          {/* The platform was the card's subtitle — one grey line reading
+              "PS3 / PSVITA / PS4". As chips it is legible at a glance. */}
+          <PlatformTags slot="tags" platform={game.data.platform} />
+        </EditorialCard>
       ))
     }
   </div>

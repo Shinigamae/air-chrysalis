@@ -6,6 +6,7 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
+import PlatformTags from '@/components/ui/PlatformTags.astro';
 import { withBase } from '@/config/site';
 
 /**
@@ -43,12 +44,27 @@ const next = () => String(++section).padStart(2, '0');
   <PageHeader
     eyebrow={`PLAY / ${g.year}`}
     title={g.title}
-    summary={`${g.platform} · ${g.playStatus.replace('-', ' ')}`}
+    summary={g.playStatus.replace('-', ' ')}
   />
 
-  <div class="mt-5 flex items-center gap-2">
+  {/* The platform moved out of the summary line and into chips, matching
+      the cards on the index. */}
+  <div class="mt-5 flex flex-wrap items-center gap-2">
+    <PlatformTags platform={g.platform} size="md" />
     <StatusLabel status={g.status} />
-    <span class="type-meta">PROGRESS {g.progress}%</span>
+    {/* The 100% badge already says it; only one of the two is shown. */}
+    {g.progress < 100 && <span class="type-meta">PROGRESS {g.progress}%</span>}
+    {
+      g.platinum ? (
+        <span class="type-meta inline-flex h-3 items-center gap-0.5 rounded-compact border border-platinum/40 bg-platinum/10 px-1 text-platinum">
+          <span aria-hidden="true">◆</span>PLATINUM
+        </span>
+      ) : g.progress === 100 ? (
+        <span class="type-meta inline-flex h-3 items-center gap-0.5 rounded-compact border border-gold/45 bg-gold/12 px-1 text-gold">
+          <span aria-hidden="true">◆</span>100%
+        </span>
+      ) : null
+    }
   </div>
 
   {/*
