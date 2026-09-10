@@ -195,6 +195,20 @@ the **`PSN_NPSSO`** repository secret for Actions. When it lapses the sync
 stops with instructions rather than a stack trace, the daily workflow goes
 red, and the other two sources still sync and deploy.
 
+### The API is not reachable from every network
+
+`m.np.playstation.com` is blocked on many corporate and school networks — it
+answers with an HTML block page or resets the connection, while the auth host
+`ca.account.sony.com` works fine. The sync tells these three cases apart, so
+the message you get names the real problem instead of blaming the token:
+
+- **reached PSN, token refused** → the credential expired, go and refresh it
+- **HTML instead of JSON** → the data host is blocked; run it in CI
+- **connection failed during auth** → the network dropped it; run it in CI
+
+If your network is one of the blocked ones, set the repository secret and let
+the workflow do the syncing — `gh workflow run content-sync.yml`.
+
 ### What the importer derives
 
 Two endpoints are merged, because neither is enough alone. `getUserTitles`

@@ -43,6 +43,9 @@ const OVERRIDES = path.join(ROOT, 'src/content/games-overrides.json');
 
 const WRITE = !process.argv.includes('--check');
 
+/** The data API, kept here so the reachability error can name it. */
+const API_HOST = 'm.np.playstation.com';
+
 /** Sony caps these; both endpoints page the same way. */
 const PAGE_SIZE = 100;
 
@@ -61,6 +64,9 @@ const ACTIVE_DAYS = 60;
  * ------------------------------------------------------------------ */
 
 class TokenError extends Error {}
+
+/** The API answered with something other than JSON — a block page, usually. */
+class UnreachableError extends Error {}
 
 function readNpsso() {
   if (!process.env.PSN_NPSSO) {
@@ -192,6 +198,25 @@ async function authorise() {
     const accessCode = await exchangeNpssoForAccessCode(npsso);
     return await exchangeAccessCodeForAuthTokens(accessCode);
   } catch (error) {
+    // A dropped connection is not a bad token. Saying "your token expired"
+    // when the network is at fault sends you off to regenerate a credential
+    // that was fine, so the two are reported separately.
+    const networkish =
+      /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket hang up/i.test(
+        `${error.message} ${error.cause?.code ?? ''}`,
+      );
+    if (networkish) {
+      throw new UnreachableError(
+        [
+          'Could not reach PSN to authenticate — the connection failed before',
+          '  Sony answered, so the npsso token was never judged.',
+          '  This network may be blocking or resetting the connection.',
+          '  Run the sync from GitHub Actions instead:',
+          '    gh workflow run content-sync.yml',
+          `  (underlying error: ${error.cause?.code ?? error.message})`,
+        ].join('\n'),
+      );
+    }
     throw new TokenError(
       'PSN rejected the npsso token — it has most likely expired.\n' +
         '  They last about two months. Get a fresh one from\n' +
@@ -205,10 +230,31 @@ async function authorise() {
 async function main() {
   const auth = await authorise();
 
-  const [titles, played] = await Promise.all([
-    pageThrough((o) => getUserTitles(auth, 'me', o), 'trophyTitles'),
-    pageThrough((o) => getUserPlayedGames(auth, 'me', o), 'titles'),
-  ]);
+  let titles;
+  let played;
+  try {
+    [titles, played] = await Promise.all([
+      pageThrough((o) => getUserTitles(auth, 'me', o), 'trophyTitles'),
+      pageThrough((o) => getUserPlayedGames(auth, 'me', o), 'titles'),
+    ]);
+  } catch (error) {
+    // psn-api parses every response as JSON, so a proxy's block page or an
+    // outage arrives as an opaque `Unexpected token '<'`. Name it instead.
+    if (error instanceof SyntaxError || /not valid JSON|Unexpected token/.test(error.message)) {
+      throw new UnreachableError(
+        [
+          'PSN answered with HTML where JSON was expected, so the request',
+          '  never reached the API.',
+          `  ${API_HOST} is commonly blocked on corporate and school networks,`,
+          '  and Sony geo-restricts it in some regions. The npsso token',
+          '  authenticated fine, so this is reachability, not the credential.',
+          '  Run the sync from GitHub Actions instead, where egress is clean:',
+          '    gh workflow run content-sync.yml',
+        ].join('\n'),
+      );
+    }
+    throw error;
+  }
 
   if (titles.length === 0) {
     throw new Error('PSN returned no trophy titles — refusing to empty the gaming log.');
@@ -325,8 +371,9 @@ async function main() {
 try {
   await main();
 } catch (error) {
-  // An expired credential is a thing to go and replace, not a stack trace.
-  if (error instanceof TokenError) {
+  // An expired credential, or a network that cannot see the API, is a thing
+  // to go and deal with — not a stack trace.
+  if (error instanceof TokenError || error instanceof UnreachableError) {
     console.error(`\n${error.message}\n`);
     process.exitCode = 1;
   } else {
