@@ -5,6 +5,7 @@ name: Sync content
 #   builds  <- shinigamae.blogspot.com  (scripts/blog-sync.mjs)
 #   books   <- goodreads.com RSS        (scripts/goodreads-sync.mjs)
 #   games   <- PlayStation Network      (scripts/psn-sync.mjs)
+#   albums  <- Flickr API                (scripts/flickr-sync.mjs)
 #
 # Both live in one workflow on purpose. As two workflows on the same schedule
 # they would each check out main, each commit, and the second push would fail
@@ -68,6 +69,15 @@ jobs:
           PSN_NPSSO: ${{ secrets.PSN_NPSSO }}
         run: npm run games:sync
 
+      # The Flickr key does not expire, so this failing means something real.
+      # Isolated anyway, on the same principle as the other two.
+      - name: Sync journeys from Flickr
+        id: albums
+        continue-on-error: true
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        run: npm run albums:sync
+
       # Guards the commit: an entry that defeats a parser should fail here
       # rather than land broken on main.
       - name: Check
@@ -95,13 +105,18 @@ jobs:
       # Surfaces a failed sync after the other sources are safely committed,
       # so the run is still marked red and you go and look.
       - name: Report source failures
-        if: steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
+        if: >-
+          steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
+          || steps.albums.outcome == 'failure'
         run: |
           if [ "${{ steps.books.outcome }}" = "failure" ]; then
             echo "::error::Goodreads sync failed - is the shelf still public?"
           fi
           if [ "${{ steps.games.outcome }}" = "failure" ]; then
             echo "::error::PSN sync failed - the npsso token expires about every two months. Refresh the PSN_NPSSO secret."
+          fi
+          if [ "${{ steps.albums.outcome }}" = "failure" ]; then
+            echo "::error::Flickr sync failed - check the FLICKR_API_KEY secret. Flickr keys do not expire, so this is not a stale credential."
           fi
           echo "Whatever did sync has still been committed and deployed."
           exit 1

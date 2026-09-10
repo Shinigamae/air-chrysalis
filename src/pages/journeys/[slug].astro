@@ -1,0 +1,126 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import SpecList from '@/components/ui/SpecList.astro';
+import { withBase } from '@/config/site';
+
+/**
+ * Album detail — the whole set, as a masonry-ish column layout rather than a
+ * uniform grid, so portrait and landscape photos keep their own shape instead
+ * of being cropped square.
+ *
+ * Every frame declares its intrinsic width and height, so the page reserves
+ * the right space before any image arrives and nothing shifts under a reader.
+ */
+export const getStaticPaths = (async () => {
+  const albums = await getCollection('albums');
+  return albums.map((album) => ({
+    params: { slug: album.id },
+    props: { album },
+  }));
+}) satisfies GetStaticPaths;
+
+const { album } = Astro.props;
+const a = album.data;
+const ordinal = String(a.index).padStart(2, '0');
+
+const fmt = (iso?: string | null) =>
+  iso
+    ? new Date(iso).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        timeZone: 'UTC',
+      })
+    : '';
+
+const range =
+  a.takenFrom && a.takenTo && a.takenFrom !== a.takenTo
+    ? `${fmt(a.takenFrom)} — ${fmt(a.takenTo)}`
+    : fmt(a.takenFrom ?? a.createdOn);
+---
+
+<AppShell title={a.title} topBarMeta={`ALBUM / ${ordinal}`}>
+  <PageHeader
+    eyebrow={`${ordinal} / ALBUM`}
+    title={a.title}
+    summary={[range, `${a.photoCount} photos`].filter(Boolean).join(' · ')}
+  />
+
+  {a.description && <p class="type-body mt-5 max-w-prose">{a.description}</p>}
+
+  <div class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="01" title="RECORD" />
+    <SpecList
+      items={[
+        { label: 'PHOTOS', value: String(a.photoCount) },
+        { label: 'FROM', value: fmt(a.takenFrom) },
+        { label: 'TO', value: fmt(a.takenTo) },
+        { label: 'ADDED', value: fmt(a.createdOn) },
+      ].filter((item): item is { label: string; value: string } => Boolean(item.value))}
+      columns={2}
+    />
+  </div>
+
+  <div class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="02" title="PHOTOGRAPHS" />
+
+    {/*
+      CSS columns rather than a grid: photos keep their aspect ratio and pack
+      by height, which a uniform grid cannot do without cropping. It also
+      needs no per-item measurement, so there is no JavaScript here either.
+    */}
+    <div class="gap-3 [column-count:1] sm:[column-count:2] lg:[column-count:3]">
+      {
+        a.photos.map((photo, i) => (
+          <figure class="mb-3 break-inside-avoid">
+            <a
+              href={photo.large}
+              rel="noopener external"
+              target="_blank"
+              class="block overflow-hidden rounded-standard border border-line bg-well transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-visible:border-signal"
+            >
+              <img
+                src={photo.thumb}
+                alt={photo.title || `${a.title} — photo ${i + 1}`}
+                width={photo.thumbWidth ?? undefined}
+                height={photo.thumbHeight ?? undefined}
+                loading={i < 4 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="block h-auto w-full"
+              />
+            </a>
+            {
+              (photo.title || photo.caption) && (
+                <figcaption class="type-micro mt-1">
+                  {photo.title || photo.caption}
+                </figcaption>
+              )
+            }
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-2">
+    <a
+      href={withBase('/journeys')}
+      class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      ← JOURNEYS
+    </a>
+
+    <a
+      href={a.flickrUrl}
+      rel="noopener external"
+      target="_blank"
+      class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      ON FLICKR ↗
+    </a>
+  </div>
+</AppShell>

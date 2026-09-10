@@ -1,0 +1,15 @@
+{
+  "$comment": [
+    "Hand-maintained corrections layered over the Flickr import, keyed by slug.",
+    "Any field of the albums schema may appear here; it wins over the imported value.",
+    "",
+    "Flickr is accurate about the photos and terse about the album. The field",
+    "most worth writing here is `description` — Flickr album descriptions are",
+    "usually empty, and a sentence about where you were and why does more for",
+    "the page than any amount of metadata.",
+    "",
+    "`title` is also fair game: album names on Flickr tend to be functional.",
+    "",
+    "`npm run albums:check` writes nothing and lists what would change."
+  ]
+}

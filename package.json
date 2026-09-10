@@ -17,7 +17,9 @@
     "books:sync": "node --use-system-ca scripts/goodreads-sync.mjs",
     "games:check": "node --use-system-ca scripts/psn-sync.mjs --check",
     "games:sync": "node --use-system-ca scripts/psn-sync.mjs",
-    "content:sync": "npm run blog:sync && npm run books:sync && npm run games:sync"
+    "albums:check": "node --use-system-ca scripts/flickr-sync.mjs --check",
+    "albums:sync": "node --use-system-ca scripts/flickr-sync.mjs",
+    "content:sync": "npm run blog:sync && npm run books:sync && npm run games:sync && npm run albums:sync"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",

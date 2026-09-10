@@ -66,8 +66,8 @@ export const navigation: readonly NavEntry[] = [
     summary: "135 books, 18 of them are Murakami's.",
   },
   {
-    label: 'LAB',
-    href: '/lab',
+    label: 'JOURNEYS',
+    href: '/journeys',
     index: '06',
     context: 'SECTION',
     summary: 'Journeys through the world.',
