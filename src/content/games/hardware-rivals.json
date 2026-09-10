@@ -1,0 +1,29 @@
+{
+  "title": "HARDWARE: RIVALS",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 29,
+      "silver": 8,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2016-01-07",
+  "lastPlayedOn": "2016-01-07",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07158_00_00D39FD150C9A93E29B6F81B1B15C111CA9A263308/C25B16ED16F12B60F1E09F7AE4A90FCD6435286D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00971_00/3/i_1dae7a52ed581ca0d1a66a95f515be6691adf4dd98f342a4be4f99647cd1d397/i/icon0.png"
+}

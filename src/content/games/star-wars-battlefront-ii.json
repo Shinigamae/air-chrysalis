@@ -1,0 +1,29 @@
+{
+  "title": "STAR WARS BATTLEFRONT II",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 7,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 15,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 15.1,
+  "firstPlayedOn": "2017-11-24",
+  "lastPlayedOn": "2017-12-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11465_00_00AB3D87382BEB1FBE407D2F43ED586838AAE7295C/D9EFB1844E98400D1E4753B1673910260ADB5C7B.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05749_00/4/i_d1fb05cea9c9978c82fce182d4e79120430b33de101d0652ef91edf150fedb9b/i/icon0_01.png"
+}

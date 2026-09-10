@@ -1,0 +1,29 @@
+{
+  "title": "TITANFALL 2",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 61,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 30,
+      "silver": 6,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 11.7,
+  "firstPlayedOn": "2016-12-03",
+  "lastPlayedOn": "2018-01-28",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11704_00_006AEA3EDF64F169FCF333D910CB5B73C24AA31AED/5AF0E041C25452EAF5B8BF4A41DCD93AB77AB303.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA04013_00/2/i_836b5bbd7a8d122c6f8829b90b1d26565468b822a9470987764b9ed15a509cb5/i/icon0.png"
+}
