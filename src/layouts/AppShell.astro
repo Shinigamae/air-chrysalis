@@ -48,6 +48,23 @@ const documentTitle = title
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#09090B" />
+    {/*
+      Keep the archive out of search results for now.
+
+      This tag, not a robots.txt, is what does the work here. robots.txt is
+      only honoured at the origin root, and on GitHub Pages this site is a
+      project page under /air-chrysalis/ — the root belongs to the
+      shinigamae.github.io repository, so a robots.txt committed here would
+      be served at a path every crawler ignores. `noindex` travels with the
+      page and needs no such cooperation.
+
+      `nofollow` is here too so a crawler that reaches one page does not
+      treat it as a directory of the other 482.
+
+      To make the site public: delete this tag and re-add the sitemap
+      integration in astro.config.mjs.
+    */}
+    <meta name="robots" content="noindex, nofollow" />
     <link
       rel="alternate"
       type="application/rss+xml"

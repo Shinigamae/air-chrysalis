@@ -132,6 +132,41 @@ after that).
 
 ---
 
+## Keeping it out of search results
+
+The site is deployed but deliberately not indexed. One tag does that, in
+`src/layouts/AppShell.astro`:
+
+```html
+<meta name="robots" content="noindex, nofollow" />
+```
+
+**A `robots.txt` in this repository would not work,** which is why there
+isn't one. `robots.txt` is only read at the origin root — here that is
+`https://shinigamae.github.io/robots.txt`, which is served by the
+**`shinigamae.github.io` repository**, not this one. Anything committed to
+`public/` lands at `/air-chrysalis/robots.txt`, a path no crawler consults.
+The meta tag needs no such cooperation: it travels with the page.
+
+`@astrojs/sitemap` was removed for the same reason — a sitemap exists only to
+hand a crawler the list of all 483 URLs.
+
+Two limits worth knowing:
+
+- `noindex` asks a crawler not to *index*; it does not stop it *fetching*.
+  To stop the fetching too, add `Disallow: /air-chrysalis/` to the robots.txt
+  in the `shinigamae.github.io` repository, which is the one served at the
+  root.
+- The RSS feed at `/rss.xml` is still linked from every page and is still a
+  discovery surface. It stays because it is a feature rather than an SEO
+  artifact — delete the `<link rel="alternate">` in AppShell if that changes.
+
+**To make the site public:** delete the meta tag, re-add
+`@astrojs/sitemap` to `astro.config.mjs`, and remove any `Disallow` added
+above.
+
+---
+
 ## Migrating to shinigamae.dev later
 
 When the domain is registered:
@@ -154,6 +189,10 @@ When the domain is registered:
 
 Verify the apex IPs against GitHub's current documentation at the time — they
 have changed before.
+
+On a custom domain the site owns its own origin, so `public/robots.txt` starts
+working — at which point it becomes the better place to express whatever the
+crawl policy is by then.
 
 ---
 

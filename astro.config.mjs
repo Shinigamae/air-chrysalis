@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import sitemap from '@astrojs/sitemap';
 
 /**
  * Project site: https://shinigamae.github.io/air-chrysalis/
@@ -29,7 +28,13 @@ export default defineConfig({
   redirects: {
     '/lab': `${base}/journeys`,
   },
-  integrations: [react(), sitemap()],
+  /*
+   * No sitemap. The site is deliberately not discoverable for now — see the
+   * robots meta tag in AppShell — and a sitemap exists only to hand a
+   * crawler a list of every URL to visit, which is the opposite of that.
+   * Re-add @astrojs/sitemap here when the site should be indexed.
+   */
+  integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
     server: {
