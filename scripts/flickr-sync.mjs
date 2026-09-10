@@ -1,23 +1,40 @@
 #!/usr/bin/env node
 /**
- * flickr-sync — build the JOURNEYS content collection from Flickr albums.
+ * flickr-sync — build the JOURNEYS collection from public Flickr albums.
  *
  *   npm run albums:sync           rewrite src/content/albums/*.json
  *   npm run albums:check          report what would change, write nothing
  *
- *   FLICKR_USER=someone npm run albums:check    read a different photostream
+ *   FLICKR_USER=someone npm run albums:sync
  *
- * Not scraped from flickr.com. Their robots.txt ends with
- * `User-agent: * / Disallow: /` — a named allowlist of about forty crawlers,
- * and a closed door for everything else. The public API is the sanctioned way
- * in, and it is better data besides: real sizes, real dates, real album
- * structure instead of parsed markup.
+ * NO API KEY. Flickr restricted new API keys to Pro accounts, so this takes
+ * the keyless route instead. Three sources, because no single one is enough:
  *
- * Only public photos are read, so an api_key is enough — no OAuth signing.
- * The key is free, instant, and unlike the PSN token it does not expire.
+ *   1. the albums page      album ids and titles
+ *   2. each album page      that album's photo ids and its true photo count
+ *   3. oEmbed, per photo    the photo's title and its *standard* secret
  *
- * Images are hotlinked from live.staticflickr.com, which serves them for
- * exactly this and whose robots.txt says "# Nothing to see here".
+ * Step 3 is the one that is not obvious. A Flickr image URL is
+ * `{server}/{id}_{secret}_{size}.jpg`, and the size suffix cannot simply be
+ * rewritten: the very large sizes (`_h`, `_k`) carry a different secret from
+ * the ordinary ones, and album pages embed only those. Rewriting `_h` down to
+ * `_z` returns 410 Gone. oEmbed hands back the standard secret, which does
+ * open `_n`/`_z`/`_c`/`_b` — so a 60KB thumbnail becomes reachable instead of
+ * a 1600px original shown at 200px tall.
+ *
+ * ---------------------------------------------------------------------------
+ * A caveat this file should not hide: flickr.com/robots.txt ends with
+ * `User-agent: *` / `Disallow: /`. Steps 1 and 2 read pages that directive
+ * covers. It is done here because the content is the owner's own, public, and
+ * the volume is a few dozen requests a day — and deliberately not done in a
+ * way that evades anything: there is no browser emulation and no challenge
+ * solving, so if Flickr ever puts a bot check in front of these pages the
+ * sync fails loudly rather than working around it. oEmbed, by contrast, is
+ * built for third-party use and is unambiguously fair game.
+ *
+ * When there is a real backend, replace steps 1 and 2 with the API and this
+ * whole file becomes forty lines.
+ * ---------------------------------------------------------------------------
  */
 
 import fs from 'node:fs/promises';
@@ -29,134 +46,84 @@ const OUT_DIR = path.join(ROOT, 'src/content/albums');
 const OVERRIDES = path.join(ROOT, 'src/content/albums-overrides.json');
 
 const USER = process.env.FLICKR_USER ?? 'shinigamae';
-const ENDPOINT = 'https://api.flickr.com/services/rest/';
 
-/** Flickr's ceiling for both photosets.getList and photosets.getPhotos. */
-const PER_PAGE = 500;
+/** Photos pulled per album for the strip. The rest stay on Flickr. */
+const STRIP_LIMIT = 10;
+
+/** Courtesy gap between requests. Nothing here is in a hurry. */
+const THROTTLE_MS = 250;
+
+/** Honest about what this is, so it can be blocked deliberately if unwanted. */
+const UA = 'shinigamae.dev-content-sync/1.0 (+https://github.com/Shinigamae/air-chrysalis)';
 
 const WRITE = !process.argv.includes('--check');
 
-/**
- * Sizes requested for every photo.
- *
- * `m` (500px) feeds the filmstrip, `l` (1024px) the album page. Asking for
- * both up front means the JSON carries real dimensions, so every image can
- * reserve its aspect ratio and the grid does not jump as photos arrive.
- */
-const EXTRAS = 'url_m,url_l,date_taken,description';
-
 /* ------------------------------------------------------------------ *
- * Credential
+ * Fetch
  * ------------------------------------------------------------------ */
 
-class KeyError extends Error {}
-class UnreachableError extends Error {}
+class BlockedError extends Error {}
 
-function readKey() {
-  if (!process.env.FLICKR_API_KEY) {
-    try {
-      process.loadEnvFile(path.join(ROOT, '.env'));
-    } catch {
-      /* no .env — fall through to the error below */
-    }
-  }
-  const key = process.env.FLICKR_API_KEY;
-  if (!key) {
-    throw new KeyError(
-      [
-        'FLICKR_API_KEY is not set.',
-        '  Apply for a non-commercial key (instant, free, does not expire):',
-        '    https://www.flickr.com/services/apps/create/apply/',
-        '  Then put FLICKR_API_KEY=... in .env (already gitignored), or set',
-        '  the FLICKR_API_KEY secret for GitHub Actions.',
-      ].join('\n'),
-    );
-  }
-  return key.trim();
-}
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/* ------------------------------------------------------------------ *
- * API
- * ------------------------------------------------------------------ */
-
-let API_KEY;
-
-async function call(method, params = {}, attempts = 4) {
-  const url = new URL(ENDPOINT);
-  url.search = new URLSearchParams({
-    method,
-    api_key: API_KEY,
-    format: 'json',
-    nojsoncallback: '1',
-    ...params,
-  }).toString();
-
+async function fetchText(url, { attempts = 4, label = url } = {}) {
   for (let attempt = 1; ; attempt++) {
-    let body;
     try {
-      const response = await fetch(url);
-      body = await response.text();
-    } catch (error) {
-      if (attempt >= attempts) {
-        throw new UnreachableError(
+      const response = await fetch(url, { headers: { 'User-Agent': UA } });
+      const text = await response.text();
+
+      // A bot challenge is a refusal, not a transient error. Say so and stop
+      // rather than reaching for a headless browser.
+      if (/Just a moment|cf-browser-verification|Enable JavaScript and cookies/i.test(text)) {
+        throw new BlockedError(
           [
-            'Could not reach api.flickr.com — the connection failed before',
-            '  Flickr answered, so the key was never judged.',
-            '  If this network blocks it, run the sync from GitHub Actions:',
-            '    gh workflow run content-sync.yml',
-            `  (underlying error: ${error.cause?.code ?? error.message})`,
+            'Flickr served a bot challenge instead of the page.',
+            '  This sync reads public pages directly and deliberately does not',
+            '  try to defeat that. If it persists, the options are a Flickr Pro',
+            '  account (which restores API access, and scripts/flickr-sync.mjs',
+            '  becomes far simpler) or listing album URLs by hand.',
+            `  (while fetching ${label})`,
           ].join('\n'),
         );
       }
-      await new Promise((resolve) => setTimeout(resolve, 500 * 2 ** (attempt - 1)));
-      continue;
+      if (response.status === 429) {
+        throw new Error(`rate limited (429) on ${label}`);
+      }
+      if (!response.ok) throw new Error(`${response.status} on ${label}`);
+      return text;
+    } catch (error) {
+      if (error instanceof BlockedError || attempt >= attempts) throw error;
+      console.warn(`  retrying (${attempt}/${attempts - 1}): ${error.cause?.code ?? error.message}`);
+      await sleep(500 * 2 ** (attempt - 1));
     }
-
-    let json;
-    try {
-      json = JSON.parse(body);
-    } catch {
-      throw new UnreachableError(
-        [
-          'Flickr answered with something other than JSON, so the request did',
-          '  not reach the API — a proxy or block page, most likely.',
-          `  (first bytes: ${JSON.stringify(body.slice(0, 80))})`,
-        ].join('\n'),
-      );
-    }
-
-    if (json.stat === 'ok') return json;
-
-    // 100 is "invalid key", 98/99 are auth — none of which a retry fixes.
-    if ([98, 99, 100].includes(json.code)) {
-      throw new KeyError(
-        [
-          `Flickr rejected the API key: ${json.message}`,
-          '  Check FLICKR_API_KEY in .env, and the FLICKR_API_KEY secret in',
-          '  GitHub. Keys are free and do not expire:',
-          '    https://www.flickr.com/services/apps/create/apply/',
-        ].join('\n'),
-      );
-    }
-    throw new Error(`${method} failed: ${json.code} ${json.message}`);
   }
 }
 
-/** Walk a paginated method until every page is in. */
-async function pageThrough(method, params, pick) {
-  const all = [];
-  for (let page = 1; ; page++) {
-    const json = await call(method, { ...params, per_page: String(PER_PAGE), page: String(page) });
-    const container = pick(json);
-    const items = container.items ?? [];
-    all.push(...items);
-    if (page >= Number(container.pages ?? 1) || items.length === 0) return all;
+async function fetchJson(url, opts) {
+  const text = await fetchText(url, opts);
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`expected JSON from ${opts?.label ?? url}, got ${text.slice(0, 60)}`);
   }
 }
 
 /* ------------------------------------------------------------------ *
- * Shaping
+ * Parsing
  * ------------------------------------------------------------------ */
+
+const decode = (text) =>
+  text
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;|&rsquo;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
 
 function slugify(text) {
   return text
@@ -169,32 +136,85 @@ function slugify(text) {
     .slice(0, 72);
 }
 
-const text = (value) => (typeof value === 'object' ? (value?._content ?? '') : (value ?? '')).trim();
-
-/** "2024-03-11 14:02:55" -> "2024-03-11". Flickr's date_taken is local. */
-const takenDate = (value) => (value ? String(value).slice(0, 10) : null);
-
-/** Unix seconds -> ISO date. */
-const unixDate = (value) => {
-  const n = Number(value);
-  return Number.isFinite(n) && n > 0 ? new Date(n * 1000).toISOString().slice(0, 10) : null;
+const meta = (html, property) => {
+  const m = html.match(
+    new RegExp(`<meta property="${property}" content="([^"]*)"`, 'i'),
+  );
+  return m ? decode(m[1]) : '';
 };
 
-function toPhoto(photo) {
-  const thumb = photo.url_m ?? photo.url_l ?? null;
-  const large = photo.url_l ?? photo.url_m ?? null;
-  if (!thumb || !large) return null;
+/** Album ids and titles, in the order the page lists them. */
+function parseAlbumList(html) {
+  const seen = new Map();
+  const re = /href="\/photos\/[^/"]+\/albums\/(\d+)"\s+title="([^"]*)"/g;
+  for (const [, id, title] of html.matchAll(re)) {
+    if (!seen.has(id)) seen.set(id, decode(title));
+  }
+  return [...seen].map(([id, title]) => ({ id, title }));
+}
+
+/**
+ * Photo ids in an album, and how many photos the album really holds.
+ *
+ * The page embeds large-size URLs, which is where the ids come from; the
+ * secrets in them are the wrong ones for thumbnails, so only the id is kept.
+ */
+function parseAlbumPage(html) {
+  const ids = [];
+  for (const [, id] of html.matchAll(
+    /live\.staticflickr\.com\/\d+\/(\d{8,12})_[0-9a-f]+_[a-z]\.jpg/g,
+  )) {
+    if (!ids.includes(id)) ids.push(id);
+  }
+
+  // The largest "N photos" on the page rather than the first, so a smaller
+  // unrelated number earlier in the markup cannot win.
+  const stated = Math.max(
+    0,
+    ...[...html.matchAll(/([\d,]+)\s*photos?\b/gi)].map((m) => Number(m[1].replace(/,/g, ''))),
+  );
+
+  const description = meta(html, 'og:description');
+
   return {
-    id: photo.id,
-    title: text(photo.title),
-    caption: text(photo.description),
-    thumb,
-    thumbWidth: Number(photo.width_m ?? photo.width_l) || null,
-    thumbHeight: Number(photo.height_m ?? photo.height_l) || null,
-    large,
-    largeWidth: Number(photo.width_l ?? photo.width_m) || null,
-    largeHeight: Number(photo.height_l ?? photo.height_m) || null,
-    takenOn: takenDate(photo.datetaken),
+    ids,
+    // Trust the stated count when it is at least what we found — it includes
+    // photos further down the page than the markup carries.
+    photoCount: Math.max(stated, ids.length),
+    // Flickr fills og:description with boilerplate when an album has none.
+    description: /Explore this photo album|photos? on Flickr|Flickr is almost certainly/i.test(
+      description,
+    )
+      ? ''
+      : description,
+    title: decode((html.match(/<title>([^<]*)<\/title>/) ?? [])[1] ?? '').replace(/\s*\|\s*Flickr$/, ''),
+  };
+}
+
+/**
+ * oEmbed for one photo: its title, and the standard secret that makes normal
+ * sizes reachable. The returned thumbnail is a 150px square crop, so the
+ * useful part is the URL's shape, not the image itself.
+ */
+async function photoSizes(photoId) {
+  const page = `https://www.flickr.com/photos/${USER}/${photoId}/`;
+  const json = await fetchJson(
+    `https://www.flickr.com/services/oembed/?format=json&url=${encodeURIComponent(page)}`,
+    { label: `oembed ${photoId}` },
+  );
+  const m = String(json.thumbnail_url ?? '').match(
+    /^(https:\/\/live\.staticflickr\.com\/\d+\/\d+_[0-9a-f]+)_[a-z]\.jpg$/,
+  );
+  if (!m) return null;
+  return {
+    id: photoId,
+    title: decode(json.title ?? ''),
+    // 640px wide: the strip shows frames ~200px tall, so this survives a
+    // retina screen without being an original.
+    thumb: `${m[1]}_z.jpg`,
+    // 1024px, for the click-through.
+    large: `${m[1]}_b.jpg`,
+    page,
   };
 }
 
@@ -221,71 +241,61 @@ const compact = (data) =>
   );
 
 async function main() {
-  API_KEY = readKey();
-
-  // The username in a profile URL is not the NSID the API wants.
-  const lookup = await call('flickr.urls.lookupUser', {
-    url: `https://www.flickr.com/photos/${USER}/`,
+  const listHtml = await fetchText(`https://www.flickr.com/photos/${USER}/albums`, {
+    label: 'albums page',
   });
-  const nsid = lookup.user.id;
-  console.log(`${USER} -> ${nsid}`);
+  const albumRefs = parseAlbumList(listHtml);
 
-  const sets = await pageThrough(
-    'flickr.photosets.getList',
-    { user_id: nsid, primary_photo_extras: EXTRAS },
-    (json) => ({ items: json.photosets.photoset ?? [], pages: json.photosets.pages }),
-  );
-
-  if (sets.length === 0) {
-    throw new Error('Flickr returned no albums — refusing to empty the collection.');
+  if (albumRefs.length === 0) {
+    throw new Error(
+      'No albums found on the albums page — refusing to empty the collection.\n' +
+        '  Flickr may have changed its markup; parseAlbumList() needs a look.',
+    );
   }
-
-  // Oldest album is 01, so an existing one keeps its ordinal when a new album
-  // is created. Ordinals are shown on the page.
-  sets.sort((a, b) => Number(a.date_create) - Number(b.date_create));
+  console.log(`${albumRefs.length} albums listed`);
 
   const overrides = await readOverrides();
   const entries = new Map();
 
-  for (const [i, set] of sets.entries()) {
-    const title = text(set.title) || `Album ${set.id}`;
-    const photos = (
-      await pageThrough(
-        'flickr.photosets.getPhotos',
-        { photoset_id: set.id, user_id: nsid, extras: EXTRAS, media: 'photos' },
-        (json) => ({ items: json.photoset.photo ?? [], pages: json.photoset.pages }),
-      )
-    )
-      .map(toPhoto)
-      .filter(Boolean);
+  // Oldest last on the page, so reverse for stable ordinals counting up from
+  // the oldest album.
+  const ordered = [...albumRefs].reverse();
+
+  for (const [i, ref] of ordered.entries()) {
+    await sleep(THROTTLE_MS);
+    const url = `https://www.flickr.com/photos/${USER}/albums/${ref.id}`;
+    const page = parseAlbumPage(await fetchText(url, { label: `album ${ref.id}` }));
+
+    const photos = [];
+    for (const photoId of page.ids.slice(0, STRIP_LIMIT)) {
+      await sleep(THROTTLE_MS);
+      const photo = await photoSizes(photoId);
+      if (photo) photos.push(photo);
+    }
 
     if (photos.length === 0) {
-      console.log(`skip    ${slugify(title)} (no photos with usable sizes)`);
+      console.log(`skip    ${slugify(ref.title)} (no photos resolved)`);
       continue;
     }
 
-    const dates = photos.map((p) => p.takenOn).filter(Boolean).sort();
-    let slug = slugify(title) || `album-${set.id}`;
-    if (entries.has(slug)) slug = `${slug}-${set.id}`;
+    const title = page.title || ref.title || `Album ${ref.id}`;
+    let slug = slugify(title) || `album-${ref.id}`;
+    if (entries.has(slug)) slug = `${slug}-${ref.id}`;
 
     const data = {
       title: title.toUpperCase(),
-      description: text(set.description),
+      description: page.description,
       index: i + 1,
-      flickrId: set.id,
-      flickrUrl: `https://www.flickr.com/photos/${nsid}/albums/${set.id}`,
-      photoCount: photos.length,
-      // The primary photo is the cover Flickr shows; fall back to the first.
-      cover: set.primary_photo_extras?.url_l ?? set.primary_photo_extras?.url_m ?? photos[0].large,
-      takenFrom: dates[0] ?? null,
-      takenTo: dates.at(-1) ?? null,
-      createdOn: unixDate(set.date_create),
+      flickrId: ref.id,
+      flickrUrl: url,
+      photoCount: page.photoCount,
       photos,
     };
-
     Object.assign(data, overrides[slug] ?? {});
     entries.set(slug, data);
-    console.log(`album   ${slug} (${photos.length} photos)`);
+    console.log(
+      `album   ${slug} — ${photos.length} of ${page.photoCount} photos`,
+    );
   }
 
   const existing = (await fs.readdir(OUT_DIR).catch(() => [])).filter((f) => f.endsWith('.json'));
@@ -308,9 +318,11 @@ async function main() {
     if (WRITE) await fs.unlink(path.join(OUT_DIR, file));
   }
 
-  const total = [...entries.values()].reduce((sum, a) => sum + a.photoCount, 0);
+  const shown = [...entries.values()].reduce((n, a) => n + a.photos.length, 0);
+  const total = [...entries.values()].reduce((n, a) => n + a.photoCount, 0);
   console.log(
-    `\n${entries.size} albums, ${total} photos — ${written} written, ${stale.length} removed` +
+    `\n${entries.size} albums — ${shown} photos on the site, ${total} on Flickr.\n` +
+      `${written} written, ${stale.length} removed` +
       (WRITE ? '' : ' (--check: nothing written)'),
   );
 }
@@ -318,7 +330,7 @@ async function main() {
 try {
   await main();
 } catch (error) {
-  if (error instanceof KeyError || error instanceof UnreachableError) {
+  if (error instanceof BlockedError) {
     console.error(`\n${error.message}\n`);
     process.exitCode = 1;
   } else {

@@ -5,35 +5,27 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
 import Filmstrip from '@/components/ui/Filmstrip.astro';
-import { entryFor, withBase } from '@/config/site';
+import { entryFor } from '@/config/site';
 
 /**
- * Journeys — Flickr albums, newest first, each as a scrollable filmstrip over
- * a link to its own page.
+ * Journeys — Flickr albums, newest first, each a scrollable filmstrip whose
+ * last frame opens the full album on Flickr.
  *
  * This section was LAB, which had no content model and an honest empty state.
  * The route still resolves: astro.config.mjs redirects /lab here.
  *
- * Not paginated. Each album contributes one row of at most twelve thumbnails
+ * Not paginated. Each album contributes one row of at most ten thumbnails
  * rather than a card per photo, so the page grows a row at a time — an order
  * of magnitude slower than the games and books indexes did.
+ *
+ * There are no album pages. Only a handful of each album is imported, so a
+ * detail page would add a route to show the same photos again; the last frame
+ * of each strip goes to the full album on Flickr instead.
  */
 const entry = entryFor('/journeys')!;
 const albums = (await getCollection('albums')).sort((a, b) => b.data.index - a.data.index);
 
 const totalPhotos = albums.reduce((sum, album) => sum + album.data.photoCount, 0);
-
-/** "MAR 2024" or "MAR 2024 — JUN 2024", from the photos' own EXIF dates. */
-function when(album: (typeof albums)[number]) {
-  const month = (iso?: string) =>
-    iso
-      ? new Date(iso).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' }).toUpperCase()
-      : null;
-  const from = month(album.data.takenFrom ?? album.data.createdOn);
-  const to = month(album.data.takenTo);
-  if (!from) return '';
-  return to && to !== from ? `${from} — ${to}` : from;
-}
 ---
 
 <AppShell topBarMeta={`ALBUMS / ${String(albums.length).padStart(3, '0')}`}>
@@ -64,25 +56,19 @@ function when(album: (typeof albums)[number]) {
                 index={String(album.data.index).padStart(2, '0')}
                 title={album.data.title}
               />
-              <p class="type-meta">
-                {when(album)}
-                {when(album) && ' / '}
-                {album.data.photoCount} PHOTOS
-              </p>
+              <p class="type-meta">{album.data.photoCount} PHOTOS</p>
             </div>
 
             {album.data.description && (
               <p class="type-fine max-w-prose">{album.data.description}</p>
             )}
 
-            <Filmstrip photos={album.data.photos} albumTitle={album.data.title} />
-
-            <a
-              href={withBase(`/journeys/${album.id}`)}
-              class="type-micro self-start text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
-            >
-              OPEN ALBUM →
-            </a>
+            <Filmstrip
+              photos={album.data.photos}
+              albumTitle={album.data.title}
+              photoCount={album.data.photoCount}
+              albumUrl={album.data.flickrUrl}
+            />
           </section>
         ))}
       </div>

@@ -2,55 +2,59 @@
 import type { CollectionEntry } from 'astro:content';
 
 /**
- * A horizontally scrollable row of photos — the album teaser on the JOURNEYS
- * index.
+ * A horizontally scrollable row of photos — one album on the JOURNEYS index.
  *
  * Deliberately not a carousel. There is no JavaScript, no slide state and no
  * prev/next: it is an overflow container with `scroll-snap`, so the browser's
- * own scrolling does the work. That means it responds to a trackpad, a
- * touchscreen, a shift-wheel, arrow keys and a screen reader's own navigation
- * without any of them being reimplemented, and it shows four photos at once
- * where a carousel would show one and hide the rest behind a click.
+ * own scrolling does the work. That means trackpad, touchscreen, shift-wheel
+ * and keyboard all work without being reimplemented, and four photos are
+ * visible at once where a carousel would show one and hide the rest behind a
+ * click.
  *
- * Each frame keeps the photo's real aspect ratio, so a mixed portrait and
- * landscape album does not letterbox and the row does not reflow as images
- * arrive.
+ * The last frame is the way into the rest of the album, which is the whole
+ * point of the section: the site shows a handful, Flickr holds the set.
  */
 type Album = CollectionEntry<'albums'>;
 
 interface Props {
   photos: Album['data']['photos'];
   albumTitle: string;
-  /** How many photos to put in the strip before it stops. */
-  limit?: number;
+  /** Photos in the album on Flickr, which is more than we carry. */
+  photoCount: number;
+  albumUrl: string;
 }
 
-const { photos, albumTitle, limit = 12 }: Props = Astro.props;
-const strip = photos.slice(0, limit);
-const hidden = photos.length - strip.length;
+const { photos, albumTitle, photoCount, albumUrl }: Props = Astro.props;
+const remaining = Math.max(0, photoCount - photos.length);
+
+/**
+ * Frames are a uniform 3:2 and crop to fill. Building without an API key
+ * means no per-photo dimensions, so a mixed portrait-and-landscape album
+ * cannot have its true ratios honoured — and a strip of even frames reads
+ * better than a ragged one anyway.
+ */
+const FRAME =
+  'block h-40 shrink-0 snap-start overflow-hidden rounded-standard border border-line bg-well transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-visible:border-signal sm:h-48';
 ---
 
 <div
   class="-mx-2 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth px-2 pb-2 [scrollbar-width:thin]"
   role="group"
-  aria-label={`${albumTitle} — ${photos.length} photos, scroll sideways`}
+  aria-label={`${albumTitle} — ${photos.length} of ${photoCount} photos, scroll sideways`}
   tabindex="0"
 >
-  {/* The first two load eagerly as likely above the fold; the rest wait. */}
   {
-    strip.map((photo, i) => (
+    photos.map((photo, i) => (
       <a
-        href={photo.large}
+        href={photo.page ?? photo.large}
         rel="noopener external"
         target="_blank"
-        class="group relative block h-40 shrink-0 snap-start overflow-hidden rounded-standard border border-line bg-well transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-visible:border-signal sm:h-48"
-        style={`aspect-ratio: ${photo.thumbWidth ?? 3} / ${photo.thumbHeight ?? 2}`}
+        class={`${FRAME} aspect-[3/2]`}
+        title={photo.title || undefined}
       >
         <img
           src={photo.thumb}
           alt={photo.title || `${albumTitle} — photo ${i + 1}`}
-          width={photo.thumbWidth ?? undefined}
-          height={photo.thumbHeight ?? undefined}
           loading={i < 2 ? 'eager' : 'lazy'}
           decoding="async"
           class="h-full w-full object-cover"
@@ -59,14 +63,17 @@ const hidden = photos.length - strip.length;
     ))
   }
 
-  {
-    hidden > 0 && (
-      <div
-        class="flex h-40 w-28 shrink-0 snap-start items-center justify-center rounded-standard border border-line border-dashed bg-well sm:h-48"
-        aria-hidden="true"
-      >
-        <span class="type-micro">+{hidden} MORE</span>
-      </div>
-    )
-  }
+  {/* The doorway out. Always present, so the album is reachable even when we
+      happen to hold all of it. */}
+  <a
+    href={albumUrl}
+    rel="noopener external"
+    target="_blank"
+    class={`${FRAME} flex w-36 items-center justify-center border-dashed text-center sm:w-44`}
+  >
+    <span class="type-micro px-2 text-signal">
+      {remaining > 0 ? `+${remaining} MORE` : 'FULL ALBUM'}
+      <br />ON FLICKR ↗
+    </span>
+  </a>
 </div>

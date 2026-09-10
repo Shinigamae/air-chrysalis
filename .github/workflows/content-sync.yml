@@ -69,13 +69,11 @@ jobs:
           PSN_NPSSO: ${{ secrets.PSN_NPSSO }}
         run: npm run games:sync
 
-      # The Flickr key does not expire, so this failing means something real.
-      # Isolated anyway, on the same principle as the other two.
+      # No credential: Flickr restricted API keys to Pro accounts, so this
+      # reads public pages and oEmbed instead. Isolated like the others.
       - name: Sync journeys from Flickr
         id: albums
         continue-on-error: true
-        env:
-          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
         run: npm run albums:sync
 
       # Guards the commit: an entry that defeats a parser should fail here
@@ -116,7 +114,7 @@ jobs:
             echo "::error::PSN sync failed - the npsso token expires about every two months. Refresh the PSN_NPSSO secret."
           fi
           if [ "${{ steps.albums.outcome }}" = "failure" ]; then
-            echo "::error::Flickr sync failed - check the FLICKR_API_KEY secret. Flickr keys do not expire, so this is not a stale credential."
+            echo "::error::Flickr sync failed - most likely a markup change or a bot challenge. See the header of scripts/flickr-sync.mjs."
           fi
           echo "Whatever did sync has still been committed and deployed."
           exit 1
