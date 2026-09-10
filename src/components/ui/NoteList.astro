@@ -1,0 +1,29 @@
+---
+/**
+ * The slash-prefixed bullet list used for build notes — the "/ item" pattern
+ * from Figma "03 — Content Systems" panel A.
+ *
+ * Extracted because the build detail page renders it three times over
+ * (unclassified notes, pros, cons) and they must stay visually identical.
+ */
+interface Props {
+  items: readonly string[];
+  /** Leading glyph. `!` marks the cons column apart from the pros column. */
+  marker?: string;
+}
+
+const { items, marker = '/' }: Props = Astro.props;
+---
+
+<ul class="m-0 flex list-none flex-col gap-1 p-0">
+  {
+    items.map((item) => (
+      <li class="type-fine flex gap-1">
+        <span aria-hidden="true" class="text-signal">
+          {marker}
+        </span>
+        <span>{item}</span>
+      </li>
+    ))
+  }
+</ul>

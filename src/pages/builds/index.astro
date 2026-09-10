@@ -4,32 +4,31 @@ import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
-import FilterControl from '@/components/ui/FilterControl.astro';
 import { entryFor, withBase } from '@/config/site';
-import type { Status } from '@/components/ui/status';
 
 /**
  * Builds — Figma "03 — Content Systems" panel A (11:79), rendered as the
- * editorial index: filter controls over a grid of Editorial Cards.
+ * editorial index: a grid of Editorial Cards.
  *
- * Filtering is a progressive enhancement. Every card ships in the HTML and is
- * visible without JavaScript; the inline script only hides cards. It is not a
- * React island because no state needs to live in a component tree.
+ * The facet rail that sat beside the section header is deliberately empty.
+ * It used to filter by status, which stopped meaning anything once the
+ * archive became an import of published posts — every entry is `archive`, so
+ * the control offered one real choice. The slot is reserved for a facet worth
+ * having (series or manufacturer are the obvious candidates); the machinery
+ * is still in `collection-filter.ts` and on the games index.
  */
 const entry = entryFor(Astro.url.pathname)!;
 const builds = (await getCollection('builds')).sort(
   (a, b) => a.data.index - b.data.index,
 );
 
-const count = (status: Status) =>
-  builds.filter((b) => b.data.status === status).length;
-
-const facets = [
-  { key: 'all', label: `ALL / ${String(builds.length).padStart(2, '0')}` },
-  { key: 'live', label: `LIVE / ${String(count('live')).padStart(2, '0')}` },
-  { key: 'draft', label: `IN PROGRESS / ${String(count('draft')).padStart(2, '0')}` },
-  { key: 'archive', label: `ARCHIVE / ${String(count('archive')).padStart(2, '0')}` },
-].filter((facet) => facet.key === 'all' || !facet.label.endsWith('/ 00'));
+/**
+ * "MG / 1:100", or whichever half is known. Third-party kits often have no
+ * grade and non-scale kits no scale, so an unconditional join would leave a
+ * dangling separator on a third of the archive.
+ */
+const kickerFor = (b: (typeof builds)[number]) =>
+  [b.data.grade, b.data.scale].filter(Boolean).join(' / ') || b.data.kind;
 ---
 
 <AppShell topBarMeta={`INDEX / ${String(builds.length).padStart(3, '0')}`}>
@@ -42,53 +41,27 @@ const facets = [
   <div class="mt-8 flex flex-col gap-3">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <SectionHeader index="01" title="BUILD ARCHIVE" />
-      <div
-        class="flex flex-wrap items-center gap-1"
-        role="group"
-        aria-label="Filter builds by status"
-        data-filter-group
-      >
-        {
-          facets.map((facet) => (
-            <FilterControl
-              label={facet.label}
-              active={facet.key === 'all'}
-              data-filter={facet.key}
-            />
-          ))
-        }
-      </div>
+      <p class="type-meta">{builds.length} ENTRIES</p>
     </div>
 
-    <p class="type-meta" role="status" data-filter-count></p>
-
-    <div
-      class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
-      data-filter-target
-    >
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {
         builds.map((build) => (
-          <div data-facet={build.data.status}>
-            <EditorialCard
-              kicker={`${build.data.grade} / ${build.data.scale}`}
-              title={build.data.title}
-              subtitle={`${build.data.series} · ${build.data.manufacturer}`}
-              summary={build.data.summary}
-              meta={`${String(build.data.index).padStart(2, '0')} — ${build.data.kind} / ${build.data.buildDate}`}
-              status={build.data.status}
-              href={withBase(`/builds/${build.id}`)}
-              action="ARCHIVE DETAIL →"
-              image={build.data.hero}
-              imageAlt={build.data.hero ? build.data.title : ''}
-            />
-          </div>
+          <EditorialCard
+            kicker={kickerFor(build)}
+            title={build.data.title}
+            subtitle={[build.data.series, build.data.manufacturer]
+              .filter(Boolean)
+              .join(' · ')}
+            summary={build.data.summary}
+            meta={`${String(build.data.index).padStart(2, '0')} — ${build.data.kind} / ${build.data.buildDate}`}
+            href={withBase(`/builds/${build.id}`)}
+            action="ARCHIVE DETAIL →"
+            image={build.data.hero}
+            imageAlt={build.data.hero ? build.data.title : ''}
+          />
         ))
       }
     </div>
   </div>
 </AppShell>
-
-<script>
-  import { initCollectionFilter } from '@/scripts/collection-filter';
-  initCollectionFilter();
-</script>

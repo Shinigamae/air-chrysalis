@@ -37,10 +37,16 @@ export async function GET(context: APIContext) {
   const items = [
     ...builds.map((entry) => ({
       title: `BUILD / ${entry.data.title}`,
-      description: entry.data.summary,
+      // A photo-only post has no prose; fall back to the kit's identity so the
+      // item is not published with an empty description.
+      description:
+        entry.data.summary ||
+        [entry.data.manufacturer, entry.data.scale, entry.data.kind].filter(Boolean).join(' · '),
       link: withBase(`/builds/${entry.id}`),
       pubDate: toDate(entry.data.buildDate),
-      categories: ['builds', entry.data.grade],
+      // grade is unset for makers with no product line; drop it rather than
+      // emitting an empty <category/>.
+      categories: ['builds', entry.data.grade].filter((c): c is string => Boolean(c)),
     })),
     ...games.map((entry) => ({
       title: `PLAY / ${entry.data.title}`,

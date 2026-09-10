@@ -9,6 +9,10 @@ on:
     branches: [main]
   # Lets you re-deploy from the Actions tab without pushing.
   workflow_dispatch:
+  # Called by blog-sync.yml. A push made with GITHUB_TOKEN deliberately does
+  # not trigger other workflows, so the daily sync would otherwise commit new
+  # builds and never publish them.
+  workflow_call:
 
 # Pages needs these; the default token has neither.
 permissions:

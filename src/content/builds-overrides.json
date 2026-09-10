@@ -1,0 +1,34 @@
+{
+  "$comment": [
+    "Hand-maintained corrections layered over the Blogspot import, keyed by slug.",
+    "Any field of the builds schema may appear here; it wins over the parsed value.",
+    "",
+    "This file exists because the post title cannot carry everything the archive",
+    "renders. Third-party makers do not use Bandai grade names, several kits are",
+    "non-scale, and the blog has no notion of a build being in progress.",
+    "",
+    "Leaving a field out is fine. grade, scale and series are all optional and the",
+    "pages drop the separator rather than render an empty slot, so a grade is set",
+    "here only where the maker actually has a product line — inventing one to fill",
+    "the kicker would be worse than showing the scale alone. Run",
+    "`npm run blog:check` to list what is still unset."
+  ],
+
+  "mnp-xh05a-zhao-yun": { "grade": "HiRM", "scale": "NON-SCALE" },
+  "mnp-xh04-nezha": { "grade": "HiRM", "scale": "NON-SCALE" },
+  "mnp-xh02-cao-ren": { "scale": "NON-SCALE" },
+
+  "nbd-009-lone-shadow": { "scale": "NON-SCALE", "series": "Hemoxian Original" },
+  "utx-6030-tastier": { "scale": "NON-SCALE", "series": "Hemoxian Original" },
+  "tengu-judge-yoshitsune": { "scale": "NON-SCALE", "series": "Ming Jiang Legend" },
+  "yr-04-fire-lord": { "scale": "NON-SCALE" },
+  "thunderbolt-2-0-03m-mobulidae-devil-fish": { "scale": "NON-SCALE", "series": "Thunderbolt" },
+  "horizons-thunderjaw": { "scale": "NON-SCALE" },
+
+  "tc-03-star-fall": { "series": "Star Series" },
+  "tc-02-star-eternal": { "series": "Star Series" },
+
+  "meteor-mobile-suit-embedded-tactical-enforcer": { "scale": "1:100" },
+  "wing-gundam-zero-custom-ew": { "scale": "1:100" },
+  "rx-93-nu-gundam-ver-ka-titanium-finish": { "grade": "MG" }
+}

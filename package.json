@@ -10,7 +10,9 @@
     "check": "astro check",
     "figma:check": "node --use-system-ca scripts/figma-sync.mjs",
     "figma:sync": "node --use-system-ca scripts/figma-sync.mjs --update",
-    "placeholders": "node scripts/make-placeholders.mjs public/images"
+    "placeholders": "node scripts/make-placeholders.mjs public/images",
+    "blog:check": "node --use-system-ca scripts/blog-sync.mjs --check",
+    "blog:sync": "node --use-system-ca scripts/blog-sync.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",

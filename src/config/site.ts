@@ -96,8 +96,15 @@ export const headerNavigation = navigation.filter((entry) => entry.href !== '/')
 /** '' when there is no base, otherwise '/air-chrysalis' (no trailing slash). */
 const BASE = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
-/** Prefix an internal, root-relative path with the base. */
+/**
+ * Prefix an internal, root-relative path with the base.
+ *
+ * Absolute and scheme-relative URLs pass through untouched. Build photos are
+ * hotlinked from the Blogspot CDN, so image props are a mix of local paths and
+ * remote URLs, and every caller would otherwise have to test which it holds.
+ */
 export function withBase(path: string): string {
+  if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(path)) return path;
   const rooted = path.startsWith('/') ? path : `/${path}`;
   return `${BASE}${rooted}`;
 }

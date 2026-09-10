@@ -51,31 +51,18 @@ media plate (**2.59 : 1**), so keep the subject centred.
 
 ---
 
-## 2. Builds — 9 images
+## 2. Builds — no images to replace
 
-Each build has one **hero** and two **photo set** images.
+The BUILD ARCHIVE is generated from the Blogspot feed by `npm run blog:sync`,
+and its images come with it:
 
-The hero appears twice, cropped differently each time: the detail page plate
-(**2.09 : 1**) and the card in the index grid (**2.59 : 1**). A wide shot with
-the model centred survives both crops.
+- **hero** — the YouTube thumbnail of the build's video, at `maxresdefault`.
+- **photo set** — the photos in the post, hotlinked from Google's CDN and
+  rewritten to `/s1600/` so the archive shows the originals rather than
+  Blogger's display crops.
 
-| File | Size | Where it appears |
-| --- | --- | --- |
-| `builds/astray-gold-frame-hero.jpg` | 1720 × 824 | Detail hero + index card |
-| `builds/astray-gold-frame-01.jpg` | 1200 × 900 | Photo set, first |
-| `builds/astray-gold-frame-02.jpg` | 1200 × 900 | Photo set, second |
-| `builds/destiny-gundam-hero.jpg` | 1720 × 824 | Detail hero + index card |
-| `builds/destiny-gundam-01.jpg` | 1200 × 900 | Photo set, first |
-| `builds/destiny-gundam-02.jpg` | 1200 × 900 | Photo set, second |
-| `builds/sazabi-ver-ka-hero.jpg` | 1720 × 824 | Detail hero + index card |
-| `builds/sazabi-ver-ka-01.jpg` | 1200 × 900 | Photo set, first |
-| `builds/sazabi-ver-ka-02.jpg` | 1200 × 900 | Photo set, second |
-
-Photo-set images are shown at **4 : 3**.
-
-**Adding more photos to a build:** drop `…-03.jpg`, `…-04.jpg` into
-`public/images/builds/` and add them to that build's `gallery` array. The photo
-set grid takes any number.
+Nothing lives in `public/images/builds/`. To change what a build shows, change
+the post: the next sync picks it up.
 
 ---
 

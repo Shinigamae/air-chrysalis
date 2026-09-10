@@ -5,7 +5,7 @@ import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
-import StatusLabel from '@/components/ui/StatusLabel.astro';
+import NoteList from '@/components/ui/NoteList.astro';
 import { withBase } from '@/config/site';
 
 /**
@@ -24,19 +24,20 @@ export const getStaticPaths = (async () => {
 const { build } = Astro.props;
 const b = build.data;
 const ordinal = String(b.index).padStart(2, '0');
+
+// grade, scale and series are absent on roughly a third of the archive —
+// third-party makers have no Bandai grade and several kits are non-scale — so
+// both lines are joined from whatever is actually known.
+const eyebrow = [b.grade, b.scale, b.kind].filter(Boolean).join(' / ');
+const attribution = [b.series, b.manufacturer, b.buildDate].filter(Boolean).join(' · ');
+
+/** Numbered so the sections below stay in order as optional ones drop out. */
+let section = 0;
+const next = () => String(++section).padStart(2, '0');
 ---
 
 <AppShell title={b.title} topBarMeta={`BUILD / ${ordinal}`}>
-  <PageHeader
-    eyebrow={`${b.grade} / ${b.scale} / ${b.kind}`}
-    title={b.title}
-    summary={`${b.series} · ${b.manufacturer} · ${b.buildDate}`}
-  />
-
-  <div class="mt-5 flex items-center gap-2">
-    <StatusLabel status={b.status} />
-    <span class="type-meta">BUILD / {ordinal}</span>
-  </div>
+  <PageHeader eyebrow={eyebrow} title={b.title} summary={attribution} />
 
   {/*
     Photo beside the specification, at the proportion the design uses
@@ -44,11 +45,26 @@ const ordinal = String(b.index).padStart(2, '0');
     that would leave a very large empty plate before the photos exist.
   */}
   <div class="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)]">
+    {/*
+      Every archived post opens with a turntable video, so when there is one it
+      takes the hero slot and the still becomes its poster. `youtube-nocookie`
+      keeps the archive from setting tracking cookies on a page nobody agreed
+      to be tracked on.
+    */}
     <div
-      class="flex aspect-[430/206] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
+      class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
     >
       {
-        b.hero ? (
+        b.video ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${b.video}`}
+            title={`${b.title} — build video`}
+            class="h-full w-full border-0"
+            loading="lazy"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          />
+        ) : b.hero ? (
           <img
             src={withBase(b.hero)}
             alt={b.title}
@@ -62,7 +78,7 @@ const ordinal = String(b.index).padStart(2, '0');
     </div>
 
     <div class="flex flex-col gap-3">
-      <SectionHeader index="01" title="SPECIFICATION" />
+      <SectionHeader index={next()} title="SPECIFICATION" />
       <SpecList
         items={[
           { label: 'GRADE', value: b.grade },
@@ -71,31 +87,56 @@ const ordinal = String(b.index).padStart(2, '0');
           { label: 'SERIES', value: b.series },
           { label: 'MAKER', value: b.manufacturer },
           { label: 'DATE', value: b.buildDate },
-          { label: 'STATUS', value: b.status.toUpperCase() },
-        ]}
+        ].filter((item): item is { label: string; value: string } => Boolean(item.value))}
         columns={2}
       />
     </div>
   </div>
 
-  <div class="mt-8 flex flex-col gap-3">
-    <SectionHeader index="02" title="BUILD NOTES" />
-    <ul class="m-0 flex list-none flex-col gap-1 p-0">
-      {
-        b.notes.map((note) => (
-          <li class="type-fine flex gap-1">
-            <span aria-hidden="true" class="text-signal">/</span>
-            <span>{note}</span>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  {
+    b.body.length > 0 && (
+      <div class="mt-8 flex flex-col gap-3">
+        <SectionHeader index={next()} title="BUILD LOG" />
+        <div class="flex max-w-[68ch] flex-col gap-2">
+          {b.body.map((para) => (
+            <p class="type-fine">{para}</p>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    (b.notes.length > 0 || b.pros.length > 0 || b.cons.length > 0) && (
+      <div class="mt-8 flex flex-col gap-3">
+        <SectionHeader index={next()} title="BUILD NOTES" />
+
+        {b.notes.length > 0 && <NoteList items={b.notes} />}
+
+        {(b.pros.length > 0 || b.cons.length > 0) && (
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {b.pros.length > 0 && (
+              <div class="flex flex-col gap-1">
+                <p class="type-micro text-signal">PROS</p>
+                <NoteList items={b.pros} />
+              </div>
+            )}
+            {b.cons.length > 0 && (
+              <div class="flex flex-col gap-1">
+                <p class="type-micro text-signal">CONS</p>
+                <NoteList items={b.cons} marker="!" />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    )
+  }
 
   {
     b.gallery.length > 0 && (
       <div class="mt-8 flex flex-col gap-3">
-        <SectionHeader index="03" title="PHOTO SET" />
+        <SectionHeader index={next()} title="PHOTO SET" />
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {b.gallery.map((src, i) => (
             <img
@@ -111,10 +152,25 @@ const ordinal = String(b.index).padStart(2, '0');
     )
   }
 
-  <a
-    href={withBase('/builds')}
-    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
-  >
-    ← BUILD ARCHIVE
-  </a>
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-2">
+    <a
+      href={withBase('/builds')}
+      class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      ← BUILD ARCHIVE
+    </a>
+
+    {
+      b.sourceUrl && (
+        <a
+          href={b.sourceUrl}
+          rel="noopener external"
+          target="_blank"
+          class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+        >
+          ORIGINAL POST ↗
+        </a>
+      )
+    }
+  </div>
 </AppShell>

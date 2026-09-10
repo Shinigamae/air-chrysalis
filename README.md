@@ -27,6 +27,8 @@ npm run dev      # dev server on http://localhost:4321
 npm run build    # static build to dist/
 npm run preview  # serve dist/
 npm run check    # astro check (types + template diagnostics)
+npm run blog:check   # report what a build-archive sync would change
+npm run blog:sync    # import the build archive from Blogspot (see below)
 npm run figma:check  # report Figma/code drift (see below)
 ```
 
@@ -53,18 +55,68 @@ src/content/
   projects/projects.json single array
 ```
 
-Adding a build is a new JSON file; its detail page at `/builds/<slug>` is
-generated automatically. `astro check` validates every entry against its
-schema, so a malformed field fails the build rather than rendering blank.
+`astro check` validates every entry against its schema, so a malformed field
+fails the build rather than rendering blank.
+
+**`builds/` is generated — do not hand-edit it.** See below.
 
 These schemas are also the contract a future .NET API has to satisfy, which is
 why they are explicit rather than loose. Ordering is explicit too — `builds`
 sort by `index` and `projects` by `order`, because sorting by year alone left
 same-year entries in arbitrary alphabetical order.
 
-Current entries are **seed data** — real examples where the design supplied
-them (Astray Gold Frame, Destiny Gundam, Where Winds Meet) and plausible
+Entries in `games/`, `books/` and `projects/` are still **seed data** — real
+examples where the design supplied them (Where Winds Meet) and plausible
 placeholders elsewhere. Replace them; nothing in the code depends on them.
+
+## The build archive comes from Blogspot
+
+`src/content/builds/*.json` is generated from
+<https://shinigamae.blogspot.com/feeds/posts/default> by `npm run blog:sync`,
+and committed. Post on the blog, run the sync, commit the result — there is no
+second copy of a build to keep in step.
+
+The generated files are overwritten on every sync, so corrections do not go in
+them. They go in `src/content/builds-overrides.json`, keyed by slug:
+
+```json
+"mnp-xh04-nezha": { "grade": "HiRM", "scale": "NON-SCALE" }
+```
+
+Anything in the schema may be overridden. In practice one field needs it:
+
+- **`grade`** — third-party makers (Daban, Shenma, Hemoxian) have no Bandai
+  grade, so it is usually absent. That is fine: the kicker falls back to the
+  scale alone rather than rendering a dangling separator.
+
+`status` is imported but no longer rendered anywhere on the builds pages. Every
+published post is `archive`, which left the label and its facet rail saying the
+same thing 33 times, so both were removed. The field and the slot beside the
+section header are reserved for a facet worth having — series or manufacturer.
+
+`npm run blog:check` writes nothing and lists both what would change and which
+entries are still missing `grade`, `scale` or `series`.
+
+### What the importer derives
+
+| Field | From |
+| --- | --- |
+| `manufacturer`, `title` | post title, split on `\|` |
+| `grade`, `scale` | any grade token or `1/144` anywhere in the title |
+| `series`, `kind`, `tags` | post labels, normalised in `scripts/blog-sync.mjs` |
+| `summary`, `body` | post prose, stripped of markup |
+| `pros`, `cons` | bullets under the post's `Pros:` / `Cons:` headings |
+| `hero`, `video` | the post's YouTube embed |
+| `gallery` | post images, rewritten to `/s1600/` originals |
+| `buildDate`, `sourceUrl` | post date and permalink |
+
+The title convention is `Brand | Scale/Grade | Model kit name`, but the
+importer does not depend on it: a post that drops the middle segment still
+imports, just with more to fill in by hand.
+
+Photos are **hotlinked** from Google's CDN rather than downloaded, so the repo
+stays small — at the cost of depending on those URLs surviving. If that becomes
+a problem, the fix is a download step in `blog-sync.mjs`, not a schema change.
 
 ## Following Figma over time
 
