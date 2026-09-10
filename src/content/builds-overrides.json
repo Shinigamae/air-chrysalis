@@ -28,7 +28,14 @@
   "tc-03-star-fall": { "series": "Star Series" },
   "tc-02-star-eternal": { "series": "Star Series" },
 
-  "meteor-mobile-suit-embedded-tactical-enforcer": { "scale": "1:100" },
+  "//kind": [
+    "Both of these are standalone add-on sets with no mobile suit in the box,",
+    "but they carry the `mobile suit` label alongside `equipment` and the more",
+    "general tag wins. The Daban Strike variants keep MOBILE SUIT: those are",
+    "full kits that happen to ship with an equipment pack."
+  ],
+  "a-gxq754-v2-zeus-silhouette": { "kind": "EQUIPMENT" },
+  "meteor-mobile-suit-embedded-tactical-enforcer": { "kind": "EQUIPMENT", "scale": "1:100" },
   "wing-gundam-zero-custom-ew": { "scale": "1:100" },
   "rx-93-nu-gundam-ver-ka-titanium-finish": { "grade": "MG" }
 }
