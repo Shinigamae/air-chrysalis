@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY VII REBIRTH",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 80,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 50,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 54,
+      "silver": 5,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 98,
+  "firstPlayedOn": "2024-02-29",
+  "lastPlayedOn": "2026-06-24",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR35316_00/bd6c3068-37e0-40eb-8081-eee7323b04f0.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202308/3005/6de6b1c4b0c475b5c28fd2011655ab8206ed846926fa1671.png"
+}

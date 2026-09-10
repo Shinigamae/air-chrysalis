@@ -1,0 +1,29 @@
+{
+  "title": "SUPER BOMBERMAN R ONLINE",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 58,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 7,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4.8,
+  "firstPlayedOn": "2021-06-10",
+  "lastPlayedOn": "2021-07-24",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR22502_00_00E7A6BE85580C82892FBB4008CA0CA1557ED2D015/9C6D025CCF20C84B6A76F17401B0F67DD7D7E54C.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202103/1621/PjyYAn9NRH917bXrE8Bm6mjw.png"
+}

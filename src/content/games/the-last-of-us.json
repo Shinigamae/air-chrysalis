@@ -1,0 +1,29 @@
+{
+  "title": "THE LAST OF US",
+  "platform": "PS3",
+  "year": 2017,
+  "progress": 69,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 16,
+      "silver": 10,
+      "gold": 7,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 18,
+      "gold": 9,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 8.6,
+  "firstPlayedOn": "2015-10-16",
+  "lastPlayedOn": "2017-10-23",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03073_00_00982ACA690865BF39A52624C65BDC9515DE4031EB/E0F3BAA831E39F5D3B948A165564E4C05C33D096.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/1020/FKgazVvG7BcWouCr39mIiXkW.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "DRAGON BALL XENOVERSE",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4.9,
+  "firstPlayedOn": "2015-10-02",
+  "lastPlayedOn": "2019-05-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07325_00_00AE25591C763BB234F8A2CF277BD0B5F1A68E6545/3E5CA7E4E3FB9D00B133738650A48908A501892D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01186_00/3/i_baf39787a86a39eab6744daa22b3d35fbc97438037b5585beb47c77b40b0ec83/i/icon0.png"
+}

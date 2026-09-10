@@ -1,0 +1,26 @@
+{
+  "title": "ZUMA",
+  "platform": "PS3",
+  "year": 2011,
+  "progress": 42,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 3,
+      "silver": 6,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2011-05-28",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00571_00_00FE18EBB6DFCA7F7B81B31225A4ADCAD76B1F8B46/6010D5D663D56972A6380324FB955E8EED50DE94.PNG"
+}

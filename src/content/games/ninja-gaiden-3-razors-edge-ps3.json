@@ -1,0 +1,26 @@
+{
+  "title": "NINJA GAIDEN 3: RAZOR'S EDGE",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 42,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-10-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04317_00_00FF2F3D5EDAA09CDDB170FF859C4CD3320D4A6B0E/0C0EC41D5C3126D932ACDAF2E668105C652E7854.PNG"
+}

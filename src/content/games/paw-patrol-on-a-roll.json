@@ -1,0 +1,29 @@
+{
+  "title": "PAW PATROL: ON A ROLL!",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 85,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 11,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 12,
+      "silver": 4,
+      "gold": 0,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 8.2,
+  "firstPlayedOn": "2022-08-17",
+  "lastPlayedOn": "2025-04-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14872_00_008562D472A45FDAAB060EB888A2135EEFD1CE3DAC/34B84C9593140E012F0B989A2635133F4E829CCB.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA11095_00/3/i_30984fc0591a186a95306f27f4a86d2bd3b70c20b954c959d53b5a206f479c53/i/icon0.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "FALL GUYS",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 17,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 21,
+      "silver": 8,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2020-08-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19418_00_00DD64BDB8FDDEC62DE6E561F32D6232100339A04A/4E1DE7EDED859551704FF395BA37CADEB296E48D.PNG"
+}

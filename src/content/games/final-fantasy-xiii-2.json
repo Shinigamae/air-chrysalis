@@ -1,0 +1,26 @@
+{
+  "title": "FINAL FANTASY XIII-2",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 19,
+      "silver": 6,
+      "gold": 6,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 19,
+      "silver": 6,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-06-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02391_00_00BCC2DB33DA63C053DCF6D8F8F3D7BC7FFAD61057/551B2C8949FD6A4803E6864B513D79B9D8D1E91F.PNG"
+}

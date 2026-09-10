@@ -1,0 +1,29 @@
+{
+  "title": "RATCHET & CLANK",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 30,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2018-07-29",
+  "lastPlayedOn": "2018-07-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07942_00_006F781DB9EE3B1A96EB9472B006DA21899A916D8F/0A529D9F4EA9446B6946C0CDC64C5DD853DC79D8.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/1020/2sD70skhUEhaf3gwCWJsEfGt.png"
+}

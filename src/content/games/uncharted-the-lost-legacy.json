@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED: THE LOST LEGACY",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 21,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 11,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2017-09-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13408_00_0048C6FBCAAB8AD3570530BDE9AF5F503C79A1985A/5B82A3F92DE117928614487FAE5CA140A7A26A81.PNG"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "GOD OF WAR III REMASTERED",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 35,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 13,
+      "silver": 6,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 18,
+      "silver": 11,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 14.7,
+  "firstPlayedOn": "2018-09-16",
+  "lastPlayedOn": "2021-09-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR08268_00_007C6460B26BBD12317E647A8F311FBF91DD928D4A/8E57416AFC918847A599DD0F7097FE4F64D1A552.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0711/p8JCvA8692BICXAPoyylh7ed.png"
+}

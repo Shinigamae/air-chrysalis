@@ -1,0 +1,26 @@
+{
+  "title": "PRO EVOLUTION SOCCER 2013",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 45,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 10,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 4,
+      "silver": 21,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2012-12-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03760_00_0074846B4E00F8A59D5DB9A82963DF24E584F895D3/239DFF0793993B38E45E5D40E607B137DF5A28FC.PNG"
+}

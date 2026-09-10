@@ -1,0 +1,29 @@
+{
+  "title": "STAR OCEAN - THE LAST HOPE - 4K & FULL HD REMASTER",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 30,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 3.9,
+  "firstPlayedOn": "2021-01-02",
+  "lastPlayedOn": "2024-12-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14334_00_0031A91E7867900A9C64A6F554021C683A11839943/C8299CFDE583CCF0E83E3543273D4454D7E19286.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA09481_00/2/i_feafba7ab8ad3afd4e423f9b1dd9709b7412e2ba7453e0b2574a7b6fe9a2e2ba/i/icon0.png"
+}

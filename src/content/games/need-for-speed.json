@@ -1,0 +1,29 @@
+{
+  "title": "NEED FOR SPEED",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 87,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 13,
+      "silver": 19,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 23,
+      "silver": 19,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 42.4,
+  "firstPlayedOn": "2016-02-07",
+  "lastPlayedOn": "2016-06-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR08538_00_005BCD0C95E2E5EDAB4E272262983CCE2406A84C56/9E030E907739B174AB95B8B95645FBBDADB659BB.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01866_00/5/i_8da3e78c79bdea01cf3a5f1f19080934f035222d562066ecc7d375eed333c096/i/icon0_01.png"
+}

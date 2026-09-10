@@ -1,0 +1,26 @@
+{
+  "title": "FAT PRINCESS",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 70,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 18,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 24,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2013-08-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00737_00_00FA3A73EE3A2DEB2B40BF284C58DE0F58460C3C3F/D823EA0FFFEE6DEF4E8010EA7905C73747197693.PNG"
+}

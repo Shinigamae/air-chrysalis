@@ -1,0 +1,29 @@
+{
+  "title": "DRAGON QUEST HEROES: THE WORLD TREE'S WOE AND THE BLIGHT BELOW",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.1,
+  "firstPlayedOn": "2022-10-22",
+  "lastPlayedOn": "2022-11-07",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09359_00_00EFF0550F4091E990933C2029152B2A27B1C56EEA/CC5C58B850C5E1F04116F9A473CF243E95E43D15.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA02694_00/2/i_02889dde43b8e4d939350ffb3e23a4a7b1f11df6659f58b2f6b3cbaec3ca1cb4/i/icon0.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "STAR WARS JEDI: FALLEN ORDER",
+  "platform": "PS5",
+  "year": 2020,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 25,
+      "silver": 11,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 25,
+      "silver": 11,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 30.7,
+  "firstPlayedOn": "2019-11-22",
+  "lastPlayedOn": "2020-02-08",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23631_00/ee967b85-6f76-4294-84af-ac7112dd4e7e.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202012/1013/DKYIpVhskEQ4jbzr1PVxsO0Z.png"
+}

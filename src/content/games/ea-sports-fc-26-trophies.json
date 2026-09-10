@@ -1,0 +1,26 @@
+{
+  "title": "EA SPORTS FC 26 TROPHIES",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 2,
+  "playStatus": "in-progress",
+  "current": true,
+  "status": "live",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2026-09-05",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR49547_00/c8237009-d5b3-4976-bda2-aa864152bc91.png"
+}

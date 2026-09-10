@@ -1,0 +1,26 @@
+{
+  "title": "NINJA GAIDEN Σ2",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2013-03-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00757_00_005C8FE66FFEFB30394DCB7B6E970D2128284DF210/080C12DB09C22C84C855E70EC1D952E2FDE758D5.PNG"
+}

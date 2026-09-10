@@ -1,0 +1,26 @@
+{
+  "title": "SLEEPING DOGS",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 75,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 41,
+      "silver": 7,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 45,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-04-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02972_00_00D35D068C24861E35365B471A6969DE4F847D22A9/98B3F2F36A824EC883F7D5E15F172526E9DE4AC2.PNG"
+}

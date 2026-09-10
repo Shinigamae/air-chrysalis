@@ -1,0 +1,29 @@
+{
+  "title": "ONE PIECE: PIRATE WARRIORS 4",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 23,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 23,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 36.3,
+  "firstPlayedOn": "2021-01-10",
+  "lastPlayedOn": "2022-07-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR18513_00_0030F9119D2E54FB7CD1210E8965AD8CB869EAD98C/B4CC8142C128093AD4E0FD6469A32158B289EF7F.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA17226_00/3/i_434a32e0bdb77244766c7255870f8d8d137fd455307eddbe02ff8507a7eaef2c/i/icon0.png"
+}

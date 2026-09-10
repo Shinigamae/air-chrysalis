@@ -1,0 +1,26 @@
+{
+  "title": "INFAMOUS 2",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 40,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-11-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR01730_00_00F8EBA41BC7733BB46CF1FDCB0F8A26E44EE9FCF5/C84A62DD1D67398AA198619A048EE5AEDBDF0D9F.PNG"
+}

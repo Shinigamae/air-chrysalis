@@ -1,0 +1,29 @@
+{
+  "title": "SAKUNA: OF RICE AND RUIN",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 8,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 8,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 27,
+  "firstPlayedOn": "2024-08-12",
+  "lastPlayedOn": "2024-08-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR20871_00_00733ABF062452CB7D687C92222302AA43D7647E0D/420B0C15E202DB2BDDA4CA4D0EA33CFD46C90BDD.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202009/0421/LUMjBRzWYhwYltvFWpvCr4ct.png"
+}

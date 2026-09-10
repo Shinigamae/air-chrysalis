@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY VIII REMASTERED",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 14,
+      "silver": 16,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 14,
+      "silver": 16,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 27.3,
+  "firstPlayedOn": "2021-05-03",
+  "lastPlayedOn": "2021-05-22",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13604_00_00C655091B38D0C9F36DCEFE0D9240977A79DAC3FC/9B6528D11282F6305338501A94B1D8E10F35E060.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA08751_00/1/i_48d7cdc1f6f4fb3cebfb0c7d54e3faea96d94de30608df8b8f36672eb17127db/i/icon0.png"
+}

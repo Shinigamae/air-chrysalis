@@ -1,0 +1,29 @@
+{
+  "title": "EFOOTBALL PES 2021 SEASON UPDATE",
+  "platform": "PS4",
+  "year": 2026,
+  "progress": 60,
+  "playStatus": "in-progress",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 3,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 41,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 787.6,
+  "firstPlayedOn": "2020-09-25",
+  "lastPlayedOn": "2026-09-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19984_00_007AFF18E8BF3C2E9A0177D60FA9C45F6559B427C6/A1E9737A413BFE5AA74387AF27C928A44E340E20.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202008/2500/9g5ZfQIoqSP1lcsmPaCZtDtt.png"
+}

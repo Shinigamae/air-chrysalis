@@ -1,0 +1,29 @@
+{
+  "title": "DRAGON QUEST XI S: ECHOES OF AN ELUSIVE AGE",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 48,
+      "silver": 7,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 3.3,
+  "firstPlayedOn": "2022-10-19",
+  "lastPlayedOn": "2022-11-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21117_00_00EE32838033A5FD9A12A31516C8BCBC19ECAA0935/D86FAC71ED363AF6B4C281B58ACCFC23A39B28C2.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202007/1607/7PxHVp3tCaQQkVeHalUtPcND.png"
+}

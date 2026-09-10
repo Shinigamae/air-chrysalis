@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY: ADVANCED WARFARE",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 7,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 74,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 57.9,
+  "firstPlayedOn": "2014-11-13",
+  "lastPlayedOn": "2015-07-09",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07116_00_004F7B61A90E7694A2805486C566D6B8927F0068CA/41CE6C0FE0FD9C6701FC587B30CD7E5765547B52.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00851_00/5/i_f3cd09be39e293d6a642c78a6e8d9e99bc066d23a11ef3a03b8a52964a88e172/i/icon0.png"
+}

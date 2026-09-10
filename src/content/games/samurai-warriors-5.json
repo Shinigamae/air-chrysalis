@@ -1,0 +1,29 @@
+{
+  "title": "SAMURAI WARRIORS 5",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 10,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2023-07-24",
+  "lastPlayedOn": "2023-08-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21487_00_0004749818EB42BB76BAA56121BD06D3A6F87A5F3D/CD02572BB828833E933C5854C94600F5FDB33FED.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202104/2602/jIRiYO758aoaUYTX77Wsx2lb.png"
+}

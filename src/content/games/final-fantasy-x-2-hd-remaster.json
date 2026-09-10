@@ -1,0 +1,26 @@
+{
+  "title": "FINAL FANTASY X-2 HD REMASTER",
+  "platform": "PS3 / PSVITA / PS4",
+  "year": 2014,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 7,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-04-09",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05019_00_002C499B0AA99AECB0EEE06E351C301393BE6854CB/49A426D74BCE0005BE90B85A7D28C01A9751436C.PNG"
+}

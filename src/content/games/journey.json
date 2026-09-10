@@ -1,0 +1,29 @@
+{
+  "title": "JOURNEY",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 66,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 11,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5,
+  "firstPlayedOn": "2015-10-16",
+  "lastPlayedOn": "2016-09-21",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR06812_00_003FEBD0B0438CBF4F60428AB1ADC9D484A0E26D79/63F46A74E0D29AE504765EEAE6214E77FDE19051.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2917/Cj8ngIRc3MB1uhNR40BQhzXv.png"
+}

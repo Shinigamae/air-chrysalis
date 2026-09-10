@@ -1,0 +1,26 @@
+{
+  "title": "WARRIORS OROCHI 3",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 18,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 18,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-04-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03116_00_0049A778293E8C00DF01234F2D165D9ED40CAEB55D/FE41EFE97B6A8E9663703FDEA7E14350CE9D7BDA.PNG"
+}

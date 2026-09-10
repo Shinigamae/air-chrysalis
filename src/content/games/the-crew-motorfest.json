@@ -1,0 +1,29 @@
+{
+  "title": "THE CREW MOTORFEST",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 2.8,
+  "firstPlayedOn": "2026-05-28",
+  "lastPlayedOn": "2026-06-28",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23200_00/b22cc4a4-3cca-4215-adf4-9853a4599546.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2315/607d9ed1ac762c9de33ef73fd09b3431d0b96ef4985ac2fb.png"
+}

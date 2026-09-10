@@ -1,0 +1,29 @@
+{
+  "title": "NIOH 2",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 55,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 43,
+      "silver": 3,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 87,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 131.1,
+  "firstPlayedOn": "2020-03-16",
+  "lastPlayedOn": "2022-05-11",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21360_00/eeee9d63-ac96-47cd-962c-790141f23e6f.png",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0623/OKKpWNnsCZpURW2N6nnhMcj6.png"
+}

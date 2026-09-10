@@ -1,0 +1,29 @@
+{
+  "title": "HOT WHEELS UNLEASHED 2 - TURBOCHARGED",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.9,
+  "firstPlayedOn": "2024-11-05",
+  "lastPlayedOn": "2024-11-22",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR33188_00/52c723b8-5bfb-408d-9021-a264cd88a061.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202305/1610/a63668c38fbe4c31f62d77a2863300dcf26c3e50576d75e2.png"
+}

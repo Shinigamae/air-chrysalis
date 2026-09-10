@@ -1,0 +1,29 @@
+{
+  "title": "LIKE A DRAGON: INFINITE WEALTH",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 12,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 67,
+      "silver": 5,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5.5,
+  "firstPlayedOn": "2026-03-07",
+  "lastPlayedOn": "2026-04-28",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR27969_00/6108850b-2be7-4e36-b857-6ccde5e62e0f.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202308/2906/6f49857e453aaebe72a7b32f07d2ae999be69fac5bbda1ea.png"
+}

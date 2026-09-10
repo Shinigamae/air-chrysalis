@@ -1,0 +1,29 @@
+{
+  "title": "YAKUZA: LIKE A DRAGON",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 82,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 54,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 58,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 79.7,
+  "firstPlayedOn": "2022-08-04",
+  "lastPlayedOn": "2022-10-28",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22499_00/60ca78c8-5f13-4c12-be1c-56ab6407309e.png",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA16745_00/1/i_7b2f4e6eb77ae1f364b1c3be21ea7326c6baaa7c12cd5351fddaf756a0029a47/i/icon0_01.png"
+}

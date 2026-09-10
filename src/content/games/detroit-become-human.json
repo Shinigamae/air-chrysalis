@@ -1,0 +1,29 @@
+{
+  "title": "DETROIT: BECOME HUMAN",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.7,
+  "firstPlayedOn": "2019-07-09",
+  "lastPlayedOn": "2019-07-10",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13872_00_00BE2C548A4C58B53BB438538BF2552A5EC3CB2454/9411A02B801534FF93B46D29DF61282875512079.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2119/wl4DB5QGzlEHAXy1KLUVgOAu.png"
+}

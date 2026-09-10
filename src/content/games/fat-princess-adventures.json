@@ -1,0 +1,29 @@
+{
+  "title": "FAT PRINCESS ADVENTURES",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 12,
+      "gold": 6,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 12,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 21,
+  "firstPlayedOn": "2017-07-09",
+  "lastPlayedOn": "2021-09-09",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07811_00_00F12A7E7C328EC0964C9CCF6E7FAB9527A0427EB1/F4D693B54517426C9AD7ADEC5F022D73342CF7C3.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00836_00/1/i_8fa46a80e9e8e105deab20f72d7fc010e06ccc3f887306b0564753b085dae69f/i/icon0.png"
+}

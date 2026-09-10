@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY MODERN WARFARE",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 98,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 6,
+      "silver": 15,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 7,
+      "silver": 15,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 140.3,
+  "firstPlayedOn": "2019-10-29",
+  "lastPlayedOn": "2021-01-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13463_00_006ABB71B1E32457171EDC8FABBA39213164972DE2/BF8D1D967A7560E420CB73F41D1F845E6399F287.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202212/1917/OS18LBxAVpQ1iPeGWAqSnxem.png"
+}

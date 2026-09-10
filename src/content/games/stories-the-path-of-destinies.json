@@ -1,0 +1,29 @@
+{
+  "title": "STORIES: THE PATH OF DESTINIES",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 13,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 13,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 18.4,
+  "firstPlayedOn": "2016-12-09",
+  "lastPlayedOn": "2021-09-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR10116_00_0007A6B5DD963E2B36694649259A308053406DE2BF/C08BA773ACE2E03CB4731D383ACCB66FE49A0E4A.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA04104_00/2/i_e9f43b97d299800cc6418bf93181c6f8773c5bd0a59484349a78623ab342e520/i/icon0.png"
+}

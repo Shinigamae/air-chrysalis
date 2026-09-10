@@ -1,0 +1,29 @@
+{
+  "title": "LARA CROFT AND THE TEMPLE OF OSIRIS",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 70,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 9.2,
+  "firstPlayedOn": "2015-08-07",
+  "lastPlayedOn": "2015-08-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR06934_00_0031B41D1E77326DA4DB39212F4A24FE2309CE5FCE/FD2CB9348C6A05C90DABC65CF5AD03B57F83F40D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00806_00/4/i_ea00b7ffe085340616ab8bd23b6771ca7868962f7592a857676c08ab946062c0/i/icon0.png"
+}

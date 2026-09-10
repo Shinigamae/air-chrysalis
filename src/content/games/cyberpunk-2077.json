@@ -1,0 +1,29 @@
+{
+  "title": "CYBERPUNK 2077",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 17,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.8,
+  "firstPlayedOn": "2025-08-29",
+  "lastPlayedOn": "2025-09-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19785_00_00157A5FE9FC5D51F15199BF5555DBA323DF24700A/A9C15439E4D4B02C86C0412D2FBA0D1394CE7C9C.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202202/1517/UyPJCxbE3EoeLtUxjoFBnsD4.png"
+}

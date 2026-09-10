@@ -1,0 +1,29 @@
+{
+  "title": "LEGO HORIZON ADVENTURES",
+  "platform": "PS5 / PSPC",
+  "year": 2025,
+  "progress": 9,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.6,
+  "firstPlayedOn": "2025-12-03",
+  "lastPlayedOn": "2025-12-06",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR37082_00/ab7daeb9-8cdf-4164-ae7b-ed7913a72ac2.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202406/0615/49738f6fcecfdb8d9aeef78ac743a0caa69317a3671f0a97.png"
+}

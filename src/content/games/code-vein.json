@@ -1,0 +1,29 @@
+{
+  "title": "CODE VEIN",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 37.3,
+  "firstPlayedOn": "2025-02-26",
+  "lastPlayedOn": "2025-09-17",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14318_00_00ED5C9FFA150D7D17CFE2C8930CE46713949B2361/6F3920E968F334ABE84E578FBEEC838FBA158FC2.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA10246_00/3/i_06fc514296b4cca943150a930b83b524313a49e99a333c696126692629258fd6/i/icon0.png"
+}

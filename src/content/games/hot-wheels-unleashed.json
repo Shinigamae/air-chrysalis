@@ -1,0 +1,29 @@
+{
+  "title": "HOT WHEELS UNLEASHED",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 43,
+      "silver": 6,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2022-10-06",
+  "lastPlayedOn": "2022-10-06",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22987_00/917f6481-875d-4aa2-b81c-b995b3895187.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202102/0813/kiJhC325Kns3OaBzJeFWmENK.png"
+}

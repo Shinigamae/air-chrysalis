@@ -1,0 +1,29 @@
+{
+  "title": "DRAGON QUEST HEROES II",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 45.8,
+  "firstPlayedOn": "2021-02-07",
+  "lastPlayedOn": "2021-03-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR12103_00_00FBA502945C3E03A0974CA38DB66D3A8C78FDDED1/9B33905E41B895A46DA7FE2040228B9C8850B9D8.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA06740_00/1/i_766fb729ddbde732f61f0ce0cecae168600325fa432e24e81045360ebe5f09a9/i/icon0_01.png"
+}

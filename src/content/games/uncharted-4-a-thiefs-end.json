@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED 4: A THIEF’S END",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 92,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 52,
+      "silver": 9,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 56,
+      "silver": 10,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2019-05-12",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07028_00_00328912165EFFF45B65627D1975AB169F7A096025/0CAA52366C0F14C85A71FACB36BDD29122DF85D6.PNG"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "TOM CLANCY’S GHOST RECON WILDLANDS",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.7,
+  "firstPlayedOn": "2022-09-03",
+  "lastPlayedOn": "2022-09-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09395_00_00295539F071D1213181651287E5EB5BDFD034B090/FCBB713945AE2615D022E25B665D52A51B88F520.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202607/0808/a0b12dbede049aedfb7650056f4eda03b924ac524482388b.png"
+}

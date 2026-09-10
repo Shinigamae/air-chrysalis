@@ -1,0 +1,26 @@
+{
+  "title": "CALL OF DUTY GHOSTS",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 63,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 51,
+      "silver": 1,
+      "gold": 4,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 77,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-07-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04874_00_00B333161649471791446B742D4449FB80B8283A50/ECDC1CC53D7D6B92A06CCB67CA24812DF2EB74F0.PNG"
+}

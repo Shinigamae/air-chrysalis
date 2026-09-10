@@ -1,0 +1,29 @@
+{
+  "title": "SD GUNDAM BATTLE ALLIANCE",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 20.9,
+  "firstPlayedOn": "2024-08-13",
+  "lastPlayedOn": "2024-09-07",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR26197_00/4d2a1cca-4bf4-46ad-a7f9-e1285104a7af.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202205/1716/YYSWgTajPNVCU1falvNX3gaf.png"
+}

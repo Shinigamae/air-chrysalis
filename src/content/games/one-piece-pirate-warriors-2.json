@@ -1,0 +1,26 @@
+{
+  "title": "ONE PIECE: PIRATE WARRIORS 2",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 23,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 23,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2013-09-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04898_00_00A93C3E9F29921379CBA32CFC4D7FA7D83A1D30F9/C42798D324B1DAEAE60B263E0EB20DB656578C46.PNG"
+}

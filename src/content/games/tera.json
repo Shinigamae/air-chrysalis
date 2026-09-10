@@ -1,0 +1,29 @@
+{
+  "title": "TERA",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 7,
+      "silver": 12,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 2.6,
+  "firstPlayedOn": "2018-04-04",
+  "lastPlayedOn": "2018-04-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11885_00_00F7BCDE3C2F9CED641E337B44238FB4B871AFE2F8/4C1601B3EE154A3204599A10EA9EA9BB268C7BE6.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202404/1801/807c5b4010af73805215f8dbf4b17a920de8b6a77949c893.png"
+}

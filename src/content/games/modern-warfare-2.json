@@ -1,0 +1,26 @@
+{
+  "title": "MODERN WARFARE 2",
+  "platform": "PS3",
+  "year": 2011,
+  "progress": 65,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 6,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2011-02-23",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00791_00_0075D21B07B0B4EDA90CF12C1F394CE44BAD0207E5/58E5A097A8D249F05A604777729D66B089B5BE49.PNG"
+}

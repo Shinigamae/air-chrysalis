@@ -1,0 +1,29 @@
+{
+  "title": "FIREFIGHTING SIMULATOR - THE SQUAD",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 9,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 6,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 18,
+      "silver": 6,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5.3,
+  "firstPlayedOn": "2025-09-08",
+  "lastPlayedOn": "2025-10-31",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR28584_00/de3bfb21-dc33-47e9-9ff0-9586275a76fb.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202209/3014/ksvTqJR1L5rtWG9qVKwda6bo.png"
+}

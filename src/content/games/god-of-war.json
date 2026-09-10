@@ -1,0 +1,29 @@
+{
+  "title": "GOD OF WAR",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 66.8,
+  "firstPlayedOn": "2018-04-20",
+  "lastPlayedOn": "2018-05-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR12518_00_009C1232E900005FE409857E926767DFE9CAC7F371/CCDC60CADE4B3970C348FEFDE0094BA95C0A802F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/1021/X3WIAh63yKhRRiMohLoJMeQu.png"
+}

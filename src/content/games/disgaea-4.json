@@ -1,0 +1,26 @@
+{
+  "title": "DISGAEA 4",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 22,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 16,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-04-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02060_00_006EDDFEA53EE1A394B460E2D85D4868AA470214DC/1466369106EB28F65740A5D8379F588953A6BC65.PNG"
+}

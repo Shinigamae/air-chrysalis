@@ -1,0 +1,29 @@
+{
+  "title": "DISSIDIA FINAL FANTASY NT",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 48,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 48,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 142.8,
+  "firstPlayedOn": "2018-01-30",
+  "lastPlayedOn": "2019-09-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14075_00_00EC7E439572B10425EC0F8D01B5FB951A9D144FF9/9CE44787014035143C53087266260AF536E2B4AD.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202009/1809/KgLuIDynatDYNob9xZK2XFj2.png"
+}

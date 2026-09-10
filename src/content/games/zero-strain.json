@@ -1,0 +1,29 @@
+{
+  "title": "ZERO STRAIN",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 17,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 0,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 0,
+      "silver": 5,
+      "gold": 10,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.2,
+  "firstPlayedOn": "2022-07-30",
+  "lastPlayedOn": "2022-07-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR20503_00_004F1F63624F3733DFEC4E24EF7EED7F95C764FCB0/AD82EEA43BF934457EBB4472F1E200997541EFF7.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202106/2814/unUG7PIlBFsqQl6lFntnX8Px.png"
+}

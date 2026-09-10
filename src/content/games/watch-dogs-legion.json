@@ -1,0 +1,29 @@
+{
+  "title": "WATCH DOGS: LEGION",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 25,
+      "silver": 22,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.8,
+  "firstPlayedOn": "2023-09-02",
+  "lastPlayedOn": "2023-09-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16685_00_00294E3876238E443D89DD0FAACFB9E512A36E63AF/4B293C0FB91CDED30CFDBD7CE87C43E442B47A3F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202007/0200/ohDfr1TcylLqbwva38ONyLHO.png"
+}

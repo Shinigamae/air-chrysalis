@@ -1,0 +1,29 @@
+{
+  "title": "DISNEY•PIXAR WALL-E",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 2,
+      "silver": 10,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.6,
+  "firstPlayedOn": "2026-02-19",
+  "lastPlayedOn": "2026-02-19",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR36603_00/7738a422-5077-4791-b80b-4cc9ec834284.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202502/0418/14bb7762f77cb65fb92a4e273732880c3a0c90fa2b3feeeb.png"
+}

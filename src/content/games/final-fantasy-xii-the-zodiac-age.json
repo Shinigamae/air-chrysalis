@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY Ⅻ THE ZODIAC AGE",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 61.6,
+  "firstPlayedOn": "2019-05-30",
+  "lastPlayedOn": "2020-10-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11367_00_00DC6788ADDA02CC1788CFE22C61B83EF652E099A4/5215DEF4A76ED4B482FC68A2F9B45911C7230D80.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05531_00/1/i_8b5c96052ad7484202eced5b6a31f5613f426cf00bbdd4a2804e43ce4656f706/i/icon0.png"
+}

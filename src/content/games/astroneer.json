@@ -1,0 +1,29 @@
+{
+  "title": "ASTRONEER",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 41,
+      "silver": 13,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2026-04-17",
+  "lastPlayedOn": "2026-04-23",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR54219_00/57ad87db-2250-4e5d-873a-6e53cb1090f0.png",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202112/2003/nbujA0GRPoK5H6SXWKVuPMsQ.png"
+}

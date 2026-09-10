@@ -1,0 +1,29 @@
+{
+  "title": "PRO EVOLUTION SOCCER 2019",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 52,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 19,
+      "silver": 3,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 437.6,
+  "firstPlayedOn": "2018-09-05",
+  "lastPlayedOn": "2020-01-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14937_00_00E3C27790787C6989AD74251F0E3DE6DF11113C11/E1A2381D39D2DAC94D4B3D6186B43D7D976458B4.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA11154_00/2/i_84add66f479b27c8e3aa24cadf9360ef93c6dbcf7d0779968785509d229ebb7a/i/icon0.png"
+}

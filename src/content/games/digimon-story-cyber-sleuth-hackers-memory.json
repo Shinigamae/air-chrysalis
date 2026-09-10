@@ -1,0 +1,29 @@
+{
+  "title": "DIGIMON STORY: CYBER SLEUTH - HACKER'S MEMORY",
+  "platform": "PSVITA / PS4",
+  "year": 2025,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 33,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.3,
+  "firstPlayedOn": "2025-04-04",
+  "lastPlayedOn": "2025-04-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13844_00_00EEED19117D61EFBDDE3F27C03B2F6DD8CBE396C9/992FC583D2E665AE813ADFAAE1E3E62F0E43F637.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA09923_00/4/i_861b32f8545b6249e86aa37aafbd72d5296c6740af3a7f877b50a453f8434ceb/i/icon0.png"
+}

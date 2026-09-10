@@ -1,0 +1,26 @@
+{
+  "title": "DANTE'S INFERNO",
+  "platform": "PS3",
+  "year": 2010,
+  "progress": 84,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 35,
+      "silver": 16,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2010-11-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00745_00_00187C8EC593811D1C942B4949AE0557C67F1A2A81/F5BB0D12585DD0DC0A34411B4E9FA08EDD2D4852.PNG"
+}

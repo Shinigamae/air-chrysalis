@@ -1,0 +1,26 @@
+{
+  "title": "GUNDAM BREAKER 3",
+  "platform": "PSVITA / PS4",
+  "year": 2022,
+  "progress": 75,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 22,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 25,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2022-03-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09890_00_0021F3062C88728BAAA2DE7FB5261DE4A3B32D11AA/4B0EE6B78CA6B13D88798AC2BDAB1F22219E8019.PNG"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "INJUSTICE: GODS AMONG US ULTIMATE EDITION",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0,
+  "firstPlayedOn": "2025-08-31",
+  "lastPlayedOn": "2025-10-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05327_00_001153B1B9BA2667758474CB766CB75E648FDB3ABA/0BAF57BCEF6B6D46F592F3C76A17B6C92EF56CA4.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00051_00/3/i_710458194e8e9c9c83b69e9adac49e253269dc550787e946ef25dc0030c89136/i/icon0.png"
+}

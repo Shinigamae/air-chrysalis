@@ -1,0 +1,29 @@
+{
+  "title": "KNACK",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 11,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 9,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4.9,
+  "firstPlayedOn": "2018-02-22",
+  "lastPlayedOn": "2025-03-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05170_00_00E93DC715741E698213E181A2FA09080EF704526A/822C92C922A51855BA52E8A411B74532B91AE73D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00202_00/1/i_3e8a02c4f4a7a0c1169ff43e268190752ee534f86d814bc4f04e05ab15111c6e/i/icon0.png"
+}

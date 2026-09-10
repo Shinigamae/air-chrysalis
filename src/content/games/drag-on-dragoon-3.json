@@ -1,0 +1,26 @@
+{
+  "title": "DRAG-ON DRAGOON 3",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 56,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 34,
+      "silver": 9,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 49,
+      "silver": 14,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-12-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04682_00_002F242BDF470A0F8E245A7148FA936E5C672E7210/30CC09434ADC1358DD56150C7A6BF18BB71AF9D8.PNG"
+}

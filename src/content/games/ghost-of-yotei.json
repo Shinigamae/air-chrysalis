@@ -1,0 +1,29 @@
+{
+  "title": "GHOST OF YŌTEI",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 41,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 48,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 45.7,
+  "firstPlayedOn": "2025-10-04",
+  "lastPlayedOn": "2025-12-13",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR51746_00/ac2a4c07-5c47-4e29-b4db-2d147cfde454.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/050bb77f895515e0b0e906b0b9d75b6174b37eece097b462.png"
+}

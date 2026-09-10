@@ -1,0 +1,29 @@
+{
+  "title": "GAUNTLET",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 13,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 19,
+      "silver": 17,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 14.1,
+  "firstPlayedOn": "2015-12-03",
+  "lastPlayedOn": "2015-12-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07121_00_0084601A5EDEDDC6C0CE7EE6F4A7B4ECDD9CC6FF57/C4D7721A1DF820C800A08C887331191EE0E3224D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00690_00/2/i_4503b7072a07b3744ea43a4f853bc9257deafd521067d7b6170a09d2cee7489f/i/icon0.png"
+}

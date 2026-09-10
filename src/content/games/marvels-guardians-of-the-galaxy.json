@@ -1,0 +1,29 @@
+{
+  "title": "MARVEL'S GUARDIANS OF THE GALAXY",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 54,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 54,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 25.8,
+  "firstPlayedOn": "2022-06-13",
+  "lastPlayedOn": "2022-07-10",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21586_00/e4cba10a-c4ef-4c63-8632-c0d2d6632874.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202106/0215/Pw9cWnyqkix3EoCOGqrN1cgN.png"
+}

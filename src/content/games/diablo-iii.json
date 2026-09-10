@@ -1,0 +1,26 @@
+{
+  "title": "DIABLO III",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 37,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-05-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04150_00_0072001F3B06130BF550BC1475AAAB5CC8B957BBA4/5F09F159A75D8FD346A4212BCB869DCA962ED018.PNG"
+}

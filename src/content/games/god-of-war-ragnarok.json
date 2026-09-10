@@ -1,0 +1,29 @@
+{
+  "title": "GOD OF WAR RAGNARÖK",
+  "platform": "PS5 / PSPC",
+  "year": 2024,
+  "progress": 91,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 15,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 27,
+      "silver": 16,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 91.3,
+  "firstPlayedOn": "2022-11-09",
+  "lastPlayedOn": "2024-01-19",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22392_00/e7fdc8c6-d6ee-4345-b174-3ccb46f617b0.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202503/2016/b69c06fb108299866057126b0d3a0530bdf96a39d2ce1cb9.png"
+}

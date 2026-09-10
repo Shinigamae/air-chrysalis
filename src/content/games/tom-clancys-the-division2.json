@@ -1,0 +1,29 @@
+{
+  "title": "TOM CLANCY’S THE DIVISION2",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 49,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 4,
+      "gold": 3,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 52,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 151.5,
+  "firstPlayedOn": "2019-03-16",
+  "lastPlayedOn": "2019-06-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR15895_00_006A250E088FDBA0DBBBF7E1289A630DDD59E23B3B/1171667E4233C7C2972D811CD7783B47A5FE4D62.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202602/2319/3ee75bc58d82528c9c54bbbd3acff5ba3867ea55c360ac62.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "NI NO KUNI II: REVENANT KINGDOM",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 74,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 46,
+      "silver": 4,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 47,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 59.5,
+  "firstPlayedOn": "2021-03-17",
+  "lastPlayedOn": "2021-05-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14858_00_0085355C1F05B3865E7E48D64824689DD97BADD7BD/633AF401F2EC0964B98DEEE47833BFDE1762C2A1.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA09243_00/3/i_308c9470d03aee1bb516e9198dccf31f836dd1e4d6b38c8cde5832a30e8505e9/i/icon0_01.png"
+}

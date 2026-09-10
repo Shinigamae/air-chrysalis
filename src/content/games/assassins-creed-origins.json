@@ -1,0 +1,29 @@
+{
+  "title": "ASSASSIN'S CREED ORIGINS",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 71,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 34,
+      "silver": 15,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 21,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 61.4,
+  "firstPlayedOn": "2018-03-31",
+  "lastPlayedOn": "2021-09-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11424_00_00B0C1B25B2BC046B57977D1690CE5A22AFC430A01/FD3786571EEA68F65321230E711DCAE92BC53794.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05625_00/3/i_1918d4f78a3ed7521b7936984d525927a03a03e241bdd3d748bfd23c104d45db/i/icon0.png"
+}

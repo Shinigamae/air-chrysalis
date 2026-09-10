@@ -1,0 +1,29 @@
+{
+  "title": "HORIZON FORBIDDEN WEST",
+  "platform": "PS5",
+  "year": 2023,
+  "progress": 83,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 59,
+      "silver": 9,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 67,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 93.5,
+  "firstPlayedOn": "2022-02-27",
+  "lastPlayedOn": "2023-05-04",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21008_00/2b1ab462-7ee0-4415-81d8-bf2632f03850.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202010/2915/kifM3lnke5lExwRd96mIDojQ.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "PAW PATROL THE MOVIE - ADVENTURE CITY CALLS",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 11,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 6,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 14,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.9,
+  "firstPlayedOn": "2025-04-09",
+  "lastPlayedOn": "2025-04-12",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR29811_00/2004d51e-bb95-4774-ba99-db1eeb440f4b.png",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202107/1613/gRh3PkRRNeTiiXbUQQayKk6t.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "LIGHTNING RETURNS: FINAL FANTASY XIII",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 31,
+      "silver": 7,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 31,
+      "silver": 7,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-03-31",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04148_00_009BD0C4B26E4D0A6DAC0BE9E516AAF886D6506DB0/154555D50E5CF286B994802FE18251FE52DD5AB0.PNG"
+}

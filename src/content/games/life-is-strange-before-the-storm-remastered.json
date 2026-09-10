@@ -1,0 +1,26 @@
+{
+  "title": "LIFE IS STRANGE: BEFORE THE STORM REMASTERED",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 15,
+      "silver": 15,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2025-09-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR26529_00_0074F886BEFE2F3FEDDA6EFB5832ED82D90B1F7224/B966119D450C2C1104453EE6A265C2A6D3938CDF.PNG"
+}

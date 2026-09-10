@@ -1,0 +1,26 @@
+{
+  "title": "RAIN",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-01-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04980_00_00CD0923A5DE2D088C8824A83E9D9CCC405C1B4DDD/133ADE832A218FA8AE490CE59C7A800635D65053.PNG"
+}

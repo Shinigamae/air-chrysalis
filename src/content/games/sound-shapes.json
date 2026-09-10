@@ -1,0 +1,29 @@
+{
+  "title": "SOUND SHAPES",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 88,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 0,
+      "silver": 77,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 0,
+      "silver": 87,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 0.6,
+  "firstPlayedOn": "2015-08-09",
+  "lastPlayedOn": "2015-08-09",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05318_00_007D90E5A1B9534C336EDFCA5D82142A89FE983BB8/91E77852719A7B95D3012F0FEEC5290C8C3B2EE6.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00040_00/2/i_2b6b631233aae719eda2b01cd088713aeb5fc7c273e2c653b7d85881c64a33d2/i/icon0.png"
+}

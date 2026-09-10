@@ -1,0 +1,26 @@
+{
+  "title": "GOD OF WAR: CHAINS OF OLYMPUS",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-06-21",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02070_00_005449CE8B744ECED684213A11496BBD32E6680E1E/E6D05CD070A2F8D8A36EE2F6742890F954463E4A.PNG"
+}

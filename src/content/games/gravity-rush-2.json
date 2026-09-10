@@ -1,0 +1,29 @@
+{
+  "title": "GRAVITY RUSH 2",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 15,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2018-12-09",
+  "lastPlayedOn": "2019-06-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09071_00_008990718F2B1BA12B2C7E4978E9FBF50BB12B4805/6E699293D267403A8A1A36A69E07F3438D2B2DA9.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2320/UQRzoZKzI3PjOYfPa2XOqS19.png"
+}

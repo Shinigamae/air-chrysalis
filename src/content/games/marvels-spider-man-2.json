@@ -1,0 +1,29 @@
+{
+  "title": "MARVEL'S SPIDER-MAN 2",
+  "platform": "PS5 / PSPC",
+  "year": 2024,
+  "progress": 97,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 17,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 18,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 29.2,
+  "firstPlayedOn": "2024-11-15",
+  "lastPlayedOn": "2024-12-16",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23378_00/2ef8f325-47bd-4e1d-b731-cb8647b06a70.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/1c7b75d8ed9271516546560d219ad0b22ee0a263b4537bd8.png"
+}

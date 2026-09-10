@@ -1,0 +1,29 @@
+{
+  "title": "LIFE IS STRANGE",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 59,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 2.7,
+  "firstPlayedOn": "2015-12-19",
+  "lastPlayedOn": "2016-02-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07875_00_0026D95B298228B7F693D8DDBFF42C4F4BCC3FF2D2/ACC2A8C6C222E9B89D76B7A10E7209EDF1F56E0C.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01435_00/5/i_b9d71e8c5eef851e1c3c4f463bed26ec6a5fa2dd5200c82aa024a76ece672eee/i/icon0.png"
+}

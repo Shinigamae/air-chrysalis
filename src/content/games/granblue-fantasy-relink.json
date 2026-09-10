@@ -1,0 +1,29 @@
+{
+  "title": "GRANBLUE FANTASY: RELINK",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 50,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 44,
+      "silver": 7,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 67,
+      "silver": 24,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 63,
+  "firstPlayedOn": "2024-01-28",
+  "lastPlayedOn": "2026-07-11",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22166_00/e3818c4b-285d-479d-8a8b-fcb6ee74193a.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202308/0403/c72af8212e6bfbe853cb3769b3b6513d0685a497227c23ad.png"
+}

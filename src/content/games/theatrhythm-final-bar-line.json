@@ -1,0 +1,29 @@
+{
+  "title": "THEATRHYTHM FINAL BAR LINE",
+  "platform": "PS4",
+  "year": 2026,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 14,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 24,
+      "silver": 14,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 52.1,
+  "firstPlayedOn": "2025-07-21",
+  "lastPlayedOn": "2026-01-17",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR28405_00_009C50FB49C23197868DDC61EDD4AAB1CB353256BF/30488FC151618B6DEE91BD7C66D96D4B4E4F8835.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202208/2203/9MRhGeyXNTnPikgTqWQbBqiv.png"
+}

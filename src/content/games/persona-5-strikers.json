@@ -1,0 +1,29 @@
+{
+  "title": "PERSONA 5 STRIKERS",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 37,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 29.6,
+  "firstPlayedOn": "2021-09-22",
+  "lastPlayedOn": "2021-12-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21992_00_00B001EA59F38600E67C9600C9EF7D68C1438E98F2/4305F159D936604D8072202DD712A1C2E6122E68.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202011/0422/8wKy1fKfmlJ9AJEJaEwtWqb4.png"
+}

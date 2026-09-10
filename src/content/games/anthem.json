@@ -1,0 +1,29 @@
+{
+  "title": "ANTHEM",
+  "platform": "PS4",
+  "year": 2026,
+  "progress": 86,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 30,
+      "silver": 11,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 33,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 126.9,
+  "firstPlayedOn": "2019-02-22",
+  "lastPlayedOn": "2026-01-12",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11262_00_0070E51C3CA594EB2E7139094E9A47175C695DFBB0/8916095F6CBEA64912910E7193A862601B78DB07.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05359_00/2/i_658ac5ac754c398a7db9ebf5a29dd692df5d21430bcc1fc82e91ac29b50c8f85/i/icon0_01.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "BUS SIMULATOR 21",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 25,
+      "silver": 7,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2024-08-24",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR22065_00_009C6C27C8076829452073A791B0C8FA8FB0223802/20206CEA67350668232E104A38E2C8210D796A2C.PNG"
+}

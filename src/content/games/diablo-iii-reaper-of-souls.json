@@ -1,0 +1,26 @@
+{
+  "title": "DIABLO III: REAPER OF SOULS",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 59,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 25,
+      "silver": 12,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 32,
+      "silver": 19,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2020-05-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05974_00_00A37BA542EC46DBF8A24E0B1177E1172B4F1FB8EC/636175FE59DB1D85DE059BA7EEE8188C7B63FD7B.PNG"
+}

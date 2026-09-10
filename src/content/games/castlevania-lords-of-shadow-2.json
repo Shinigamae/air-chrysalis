@@ -1,0 +1,26 @@
+{
+  "title": "CASTLEVANIA: LORDS OF SHADOW 2",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 43,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-06-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04918_00_00B1F0A3FFC3F445CC387BF19C95F61B4C68BB2CA7/E18194499F8AC0733515C4CE4C314C727ADF1CB7.PNG"
+}

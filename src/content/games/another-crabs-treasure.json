@@ -1,0 +1,29 @@
+{
+  "title": "ANOTHER CRAB'S TREASURE",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 6,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4.8,
+  "firstPlayedOn": "2025-06-18",
+  "lastPlayedOn": "2025-07-17",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR41750_00/a5c27c2f-0e09-454a-97b5-df207186d8ef.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202401/0301/30aac0dabbd3e8a390d7b5a75bc558e7f593e09765034080.png"
+}

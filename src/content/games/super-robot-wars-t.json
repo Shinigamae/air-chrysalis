@@ -1,0 +1,29 @@
+{
+  "title": "SUPER ROBOT WARS T",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 63,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 19,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 21,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 12.4,
+  "firstPlayedOn": "2022-07-28",
+  "lastPlayedOn": "2022-11-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16889_00_0023DE6EE07527435E018189B2A8C88E2F42872827/4ECE6319FFB3016649D3A1D22D602BFEFF66A037.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA14934_00/3/i_711754275bf8027cad5adb54c4b7a21bbc5eafcd96ab1d14b98e78fa76b44c2c/i/icon0.png"
+}

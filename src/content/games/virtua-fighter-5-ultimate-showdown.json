@@ -1,0 +1,29 @@
+{
+  "title": "VIRTUA FIGHTER 5 ULTIMATE SHOWDOWN",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 12,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2023-04-02",
+  "lastPlayedOn": "2023-04-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21317_00_00D089A8E4D4792CBCD4D44A9A409D0B3143A5805E/5371B2BAAEC0530A3750ADBE7C0E848BDC103A00.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202104/1423/tRhs3jVoxuue0oKccMptv5MD.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "GOD OF WAR: GHOST OF SPARTA",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-12-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02071_00_0054B84134B8D9CEB60760CEF052F6E2D0E59739CB/127D26489536F90B886A4F5531A237FAB3522269.PNG"
+}

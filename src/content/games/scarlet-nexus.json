@@ -1,0 +1,29 @@
+{
+  "title": "SCARLET NEXUS",
+  "platform": "PS5",
+  "year": 2023,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 42,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 41.5,
+  "firstPlayedOn": "2023-03-05",
+  "lastPlayedOn": "2023-04-15",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21715_00/eae8acd1-2421-4f87-80d9-c90cace50ff8.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1100/R9Qab0osYhWXi0djq8ZatRLi.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "STRAY",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 9,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.9,
+  "firstPlayedOn": "2022-07-19",
+  "lastPlayedOn": "2022-07-20",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22008_00/6c1d6ee2-469a-4b97-ad63-98ec651ad4f2.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202206/0300/E2vZwVaDJbhLZpJo7Q10IyYo.png"
+}

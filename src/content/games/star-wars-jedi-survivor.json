@@ -1,0 +1,29 @@
+{
+  "title": "STAR WARS JEDI: SURVIVOR",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 44,
+      "silver": 7,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 7,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 48.1,
+  "firstPlayedOn": "2024-01-23",
+  "lastPlayedOn": "2024-11-08",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR33639_00/481c29b9-b5cf-4996-aa55-1b3346050e17.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202211/2222/l8QTN7ThQK3lRBHhB3nX1s7h.png"
+}

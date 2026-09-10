@@ -1,0 +1,26 @@
+{
+  "title": "MAFIA III: DEFINITIVE EDITION",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 77,
+      "silver": 7,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2018-09-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09988_00_00EFE91B0D1C20712D5E52724C65169AC5F687BBA7/6F0F6BA4434D2A21E88ACEAC2BB3B2B4DDF69162.PNG"
+}

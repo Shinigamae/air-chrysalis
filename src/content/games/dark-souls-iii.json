@@ -1,0 +1,29 @@
+{
+  "title": "DARK SOULS III",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 61,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 23,
+      "silver": 7,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 137.6,
+  "firstPlayedOn": "2016-04-12",
+  "lastPlayedOn": "2020-09-23",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07897_00_00B1B88693A993473272413EDB83CC197E895B34D1/3F49215DC1A348E47575B58B205808F148F3D3A8.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA03365_00/2/i_1bf8d3317ff642710196c85c859320f0a9345e3c65a9132d588239fab877d81a/i/icon0.png"
+}

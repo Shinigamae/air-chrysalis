@@ -1,0 +1,26 @@
+{
+  "title": "NI NO KUNI: WRATH OF THE WHITE WITCH",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 19,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 19,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2013-09-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03632_00_00040A2E1FC91A8C54DE8D02CD84BE9A7B6C6C9305/BF9C8D09624C5CEBDB5C0E6DF7B94C50F559D925.PNG"
+}

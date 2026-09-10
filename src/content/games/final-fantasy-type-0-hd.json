@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY TYPE-0 HD",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 38,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 60.7,
+  "firstPlayedOn": "2015-03-19",
+  "lastPlayedOn": "2015-06-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07031_00_008325C7149AD9CA9534805F51F14D92B3273CB5FB/4448954CE78C5E326A97FFC1E56CD83774065EE3.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00937_00/3/i_ffe7af2da2111a951ea4fb31e6b84915ba99a3460f3778640db23b40b6c258b2/i/icon0.png"
+}

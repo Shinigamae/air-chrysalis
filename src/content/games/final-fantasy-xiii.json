@@ -1,0 +1,26 @@
+{
+  "title": "FINAL FANTASY XIII",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 21,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 21,
+      "silver": 9,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-04-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00774_00_00F4E56EF4C9EB9BAFFDC44C5C831B9BB660014DF6/F7AABD1742D2ECF3D5141312798287EA32AE0B88.PNG"
+}

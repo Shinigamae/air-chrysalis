@@ -1,0 +1,29 @@
+{
+  "title": "DARKSIDERS III",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 68,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 32,
+      "silver": 16,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 24,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 18.2,
+  "firstPlayedOn": "2020-02-16",
+  "lastPlayedOn": "2021-01-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16566_00_0017175A8558DDA522802B2968454DB124FD827385/88DA2799B0B379B0A4C2BBDEDF0855DEF75B4BFE.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/1409/mxor3yYHLkDUuWkl4ilDUFf2.png"
+}

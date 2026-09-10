@@ -1,0 +1,29 @@
+{
+  "title": "DESTINY 2",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 91,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 5,
+      "silver": 2,
+      "gold": 11,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 4,
+      "gold": 11,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 185.2,
+  "firstPlayedOn": "2017-09-06",
+  "lastPlayedOn": "2022-02-24",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21575_00/45976ee9-344e-423d-940d-5e42fc82e5b8.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202605/2700/67e26ca577583cd8189696baa2181bfc51820ecab1709869.png"
+}

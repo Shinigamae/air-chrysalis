@@ -1,0 +1,26 @@
+{
+  "title": "STAR OCEAN THE LAST HOPE -INTERNATIONAL-",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 21,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 30,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2012-10-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00997_00_0048AEBE510EEF5EE8BB2C9B24E4CE842668DAF957/CB15E493D6221E5E81F0001F966B6E5EEFC138FB.PNG"
+}

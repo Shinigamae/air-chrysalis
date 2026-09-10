@@ -1,0 +1,29 @@
+{
+  "title": "THE FIRST DESCENDANT",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 6,
+      "silver": 12,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2024-07-02",
+  "lastPlayedOn": "2024-08-11",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR37258_00/f537e4fe-0359-4ed8-a3ed-dd7816573562.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202608/2007/e1261f08c8722cadb4f52177b1de3ad1b558d1a47ca54ee7.png"
+}

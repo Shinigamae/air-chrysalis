@@ -1,0 +1,29 @@
+{
+  "title": "YU-GI-OH! LEGACY OF THE DUELIST : LINK EVOLUTION",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 9,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 131.6,
+  "firstPlayedOn": "2021-07-30",
+  "lastPlayedOn": "2021-09-08",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19237_00_001272E89ED351F47CB4E2E848E03F0F8B7EAE1E0E/C94C01CFCF6C669E2FC3A3572107DB22C28D2C65.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0112/ZkrCJGdMnokOv6tzAlTsdYFV.png"
+}

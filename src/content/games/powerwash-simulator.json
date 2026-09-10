@@ -1,0 +1,29 @@
+{
+  "title": "POWERWASH SIMULATOR",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 72,
+      "silver": 23,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.8,
+  "firstPlayedOn": "2025-07-18",
+  "lastPlayedOn": "2025-08-23",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR28461_00/addc18b5-7d20-49b5-84b7-3e2f8d4f8e64.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202301/1117/mOtdY7LHEsMrtMp0VvTyXeiE.png"
+}

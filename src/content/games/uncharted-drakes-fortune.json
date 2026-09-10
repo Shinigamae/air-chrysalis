@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED: DRAKE'S FORTUNE",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 36,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2013-01-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00449_00_00727FDB8B71A3D03045ABCC7984807B8991254509/7CFF4AF57E944459DA3F079205E96BE52ECCA663.PNG"
+}

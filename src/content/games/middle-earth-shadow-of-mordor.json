@@ -1,0 +1,29 @@
+{
+  "title": "MIDDLE-EARTH: SHADOW OF MORDOR",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 6,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 56,
+      "silver": 17,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5.4,
+  "firstPlayedOn": "2015-12-17",
+  "lastPlayedOn": "2015-12-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05403_00_00B07604D4ECD2D438F2A95C1060CF61DCE3F7F544/D66987774E48791E93B33550080DCBA28077887F.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00053_00/5/i_9cfbf49ba8841d02495fca9ad0e0d065a4bc4d1113b7f51c9bfe21fccdf9d719/i/icon0.png"
+}

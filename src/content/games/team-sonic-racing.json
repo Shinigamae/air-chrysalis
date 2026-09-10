@@ -1,0 +1,29 @@
+{
+  "title": "TEAM SONIC RACING",
+  "platform": "PS4",
+  "year": 2026,
+  "progress": 40,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 10.7,
+  "firstPlayedOn": "2020-01-31",
+  "lastPlayedOn": "2026-02-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14885_00_00F2A3274FDB932ACC6913B736135C6C2A0AA71AC5/450AE114CAD07400668DC48ECCC960581E5F8842.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA11115_00/2/i_f0b61619a4f13cb1749a986d662716ef654005c153193e48723c09fb5a2abc37/i/icon0.png"
+}

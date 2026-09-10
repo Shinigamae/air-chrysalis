@@ -1,0 +1,29 @@
+{
+  "title": "JUDGMENT",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 38,
+      "silver": 4,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 4,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 44.4,
+  "firstPlayedOn": "2021-12-19",
+  "lastPlayedOn": "2022-09-11",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16617_00_0017B71BFFE0D117EB9E9FB0DCE0965CDC39A276AA/04096130CAE938649C6766B95FA393F939935D75.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA13197_00/2/i_55c8341c4ec119ffb3e30db9c40a0d6f164491493e0d14079382ca533a3bb4e7/i/icon0_01.png"
+}

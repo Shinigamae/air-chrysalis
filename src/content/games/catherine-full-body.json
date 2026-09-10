@@ -1,0 +1,29 @@
+{
+  "title": "CATHERINE: FULL BODY",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 91,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 46,
+      "silver": 3,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 48,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 44.9,
+  "firstPlayedOn": "2021-07-23",
+  "lastPlayedOn": "2021-09-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR17582_00_00D4D20D75C560601AE1762D561D133DEFC8F7BE27/CC783FBD3191EE124E3EAB9C1B31811862D50890.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA15036_00/1/i_d7e8606a19858f3ba6f15acb0afbedb95afeebc385de8b7b9eb4d2aa8b1d9763/i/icon0.png"
+}

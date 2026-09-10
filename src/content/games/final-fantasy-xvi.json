@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY XVI",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 84,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 45,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 59,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 91.8,
+  "firstPlayedOn": "2023-07-09",
+  "lastPlayedOn": "2024-01-20",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR19955_00/9b46dcf1-aedd-429a-907f-6ea2e6090e0a.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202211/3007/lgFVhRm5BfoX02pRUt3lSmLV.png"
+}

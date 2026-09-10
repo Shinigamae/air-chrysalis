@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY: WWII",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 66,
+      "silver": 22,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 18.4,
+  "firstPlayedOn": "2018-03-25",
+  "lastPlayedOn": "2018-04-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11595_00_00F101528D668EF21B72E363608FEB3858F77AD165/31356DA924E250168437704E9D2978C6B9AEF54F.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA08630_00/2/i_35cd932aef94645fe0612672cd98b4a8cdd31918627571069b99491d30ba781c/i/icon0.png"
+}

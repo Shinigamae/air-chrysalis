@@ -1,0 +1,26 @@
+{
+  "title": "DISGAEA D2",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 90,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 58,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 66,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-05-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05028_00_00CD246340B5C87C5C60FBA69333F9E534F4559A3C/ED7880657FB271ADBBD0867D73DDBE512B93F7A3.PNG"
+}

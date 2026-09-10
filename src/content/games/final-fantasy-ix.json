@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY IX",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 40,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 22,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 4,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 13.6,
+  "firstPlayedOn": "2022-05-25",
+  "lastPlayedOn": "2022-09-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13486_00_0073E7EF8622EA5AA6A418EA9D3C1F13A6B2D2F8C3/D21EA83DD914E3281C8EE1483AF5984C248CD3E2.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA08918_00/3/i_a9daeee440eec8e477f9b07170c2ac4a9b1a09faf52291e5312866aa4aefa081/i/icon0.png"
+}

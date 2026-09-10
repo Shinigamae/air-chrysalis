@@ -1,0 +1,29 @@
+{
+  "title": "SAND LAND",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 40,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 64.8,
+  "firstPlayedOn": "2025-05-20",
+  "lastPlayedOn": "2025-07-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR30734_00_002A1EFD4252AD9451C4B18D2384AD25705F205768/23D57EF81DBDE34A356436ECDF653026F0519E2A.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202401/1123/34d1be99229db6ea9b6bd84550c47ffb5f56d33606d365f2.png"
+}

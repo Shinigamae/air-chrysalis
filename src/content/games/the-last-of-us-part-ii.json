@@ -1,0 +1,29 @@
+{
+  "title": "THE LAST OF US PART II",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 95,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 11,
+      "silver": 9,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 50.8,
+  "firstPlayedOn": "2020-06-23",
+  "lastPlayedOn": "2023-01-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13348_00_00B23E79CB15709D3B459815B6DE97B0885530CFC3/4F0195E8FBCEF12F5410716F3E4C409DB6A098CF.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2618/w48z6bzefZPrRcJHc7L8SO66.png"
+}

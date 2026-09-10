@@ -1,0 +1,29 @@
+{
+  "title": "SKYFORGE",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 39,
+      "silver": 17,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2017-04-16",
+  "lastPlayedOn": "2017-04-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR12654_00_00D0CEDA2CECF5BC9C8928BE274ED6E62058596338/2ACCF8ED5DFBF506FF139B1A101338E2CF8C471D.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202208/3014/jCgTypdzjF4OU4iCqCYamris.png"
+}

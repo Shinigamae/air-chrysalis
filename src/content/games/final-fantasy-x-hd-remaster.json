@@ -1,0 +1,26 @@
+{
+  "title": "FINAL FANTASY X HD REMASTER",
+  "platform": "PS3 / PSVITA / PS4",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 8,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 8,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-05-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04915_00_00D958EB781996F7F036DF4C258A0F92D02038F6D4/3C26B1E6C1DCBD401CA18CC42E295EA6D6271621.PNG"
+}

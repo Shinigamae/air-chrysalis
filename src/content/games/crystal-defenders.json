@@ -1,0 +1,26 @@
+{
+  "title": "CRYSTAL DEFENDERS",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 55,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 5,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2012-04-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00664_00_00BD028EE49FC01DB1BAE56F969749FDDC6C99180D/9ED7BF5EF3348E84A3A682E4691FFFAEB2C5726B.PNG"
+}

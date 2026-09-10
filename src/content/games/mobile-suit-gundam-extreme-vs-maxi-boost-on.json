@@ -1,0 +1,29 @@
+{
+  "title": "MOBILE SUIT GUNDAM: EXTREME VS. MAXI BOOST ON",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 10,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 7,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 23,
+      "silver": 7,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5.7,
+  "firstPlayedOn": "2022-10-12",
+  "lastPlayedOn": "2024-08-25",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR17572_00_0089B86FCA1F648BB02266A09E7F3C45EF99D5CBE5/AD35B3B8B6500DE60C4445B442DC5C1A9451CDA0.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/1006/MNxdGzNxLajd9cDfE4LT7M44.png"
+}

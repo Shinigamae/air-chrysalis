@@ -1,0 +1,29 @@
+{
+  "title": "OMNO",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 4,
+      "silver": 9,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2023-11-04",
+  "lastPlayedOn": "2023-11-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR24559_00_007F5590189EB71E69F9E60A0AC1405A883B7DA884/ED3D9578E62F8843D81069101836C16C792E4550.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202105/2614/XH1B1VNaFirvpYxYWpFlLuQN.png"
+}

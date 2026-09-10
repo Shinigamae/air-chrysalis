@@ -1,0 +1,26 @@
+{
+  "title": "スターオーシャン５ -INTEGRITY AND FAITHLESSNESS-",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 18,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 16,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2019-09-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09715_00_00E7CF3C1BE6A0AB427362C56749E32BB564B3BE7B/2DF8001B06147EE03A1ABDAB8F0D514F3D47933A.PNG"
+}

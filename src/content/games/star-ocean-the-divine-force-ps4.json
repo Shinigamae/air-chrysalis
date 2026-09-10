@@ -1,0 +1,29 @@
+{
+  "title": "STAR OCEAN THE DIVINE FORCE",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 43,
+      "silver": 9,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 34.2,
+  "firstPlayedOn": "2023-11-27",
+  "lastPlayedOn": "2024-04-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR28601_00_00FD1084BD5A722A5B5533572BF92495E20088ED1F/E1266D6C86AABBD5859418DEB2B51E9BC397E066.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202209/1601/dHaZOlRmMaa5ZECJqpBYkdeP.png"
+}

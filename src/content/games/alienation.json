@@ -1,0 +1,29 @@
+{
+  "title": "ALIENATION",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 17,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 11,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 23,
+      "silver": 14,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 7.2,
+  "firstPlayedOn": "2016-06-05",
+  "lastPlayedOn": "2017-11-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09388_00_00866B1B566A1E960E8577E8D7B7CBF0C6627A8934/5BCC4DF1FD3319A12D88B68D83D4FC24907BB249.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00062_00/5/i_df944ec008a8463f1ca3b0a99d6c2ae2250a23d06b748d26c190326479ca456a/i/icon0.png"
+}

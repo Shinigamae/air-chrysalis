@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY VII",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 13,
+      "silver": 13,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2018-04-01",
+  "lastPlayedOn": "2018-04-01",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR08323_00_00A0E4F65036C08E32B6E7C84CF823B8CC540440FF/7CF0698579BC69C4D6AD0B23F1CCC487BFEBBE55.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01847_00/1/i_7ef731a0ce915a8aeeb22cf7d717f8ce6db942d38dcc30a8bb63810137f83fb4/i/icon0.png"
+}

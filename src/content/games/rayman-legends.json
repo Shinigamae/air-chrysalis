@@ -1,0 +1,29 @@
+{
+  "title": "RAYMAN LEGENDS",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2024-07-25",
+  "lastPlayedOn": "2024-08-24",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05677_00_00BD77F5447CA0F051AE625519D68CE384A1BE9744/73A00B61317AC0F094B943B666B61CB816F6506E.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA00031_00/1/i_de7f2d4471d56be1911987fdae0711e95cd6f21b0ae43c57c70d0bf785ae4acb/i/icon0.png"
+}

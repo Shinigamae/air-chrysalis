@@ -1,0 +1,29 @@
+{
+  "title": "OVERCOOKED",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 7,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.2,
+  "firstPlayedOn": "2021-09-04",
+  "lastPlayedOn": "2021-09-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11263_00_00BA1B9DDA3C3C2D18F3B1EAB4A4BBADB1D5561726/8725FC55D9F148A31C544CA5D9675A308FA0BE90.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05399_00/2/i_4180a5c9bef23d908ab9b492e9768264aab2c23571d593dc685aff391dd6c1d8/i/icon0.png"
+}

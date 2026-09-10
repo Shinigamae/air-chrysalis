@@ -1,0 +1,29 @@
+{
+  "title": "NEED FOR SPEED HEAT",
+  "platform": "PS4",
+  "year": 2026,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 31,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 31,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 73,
+  "firstPlayedOn": "2021-05-28",
+  "lastPlayedOn": "2026-03-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR18041_00_005939904E99277C7FBD3A6FFEE1A781FC684496B6/877A808A99C061E4B17D85E284654963545681B9.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202210/3121/Xz6kd2CORZxe8JnfNJwvA35A.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "MARVEL'S SPIDER-MAN",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 62,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 54,
+      "silver": 14,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 44.9,
+  "firstPlayedOn": "2018-09-11",
+  "lastPlayedOn": "2020-09-11",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09167_00_007280BC379B5701D2D862A6574F73488DA1CDFBBA/871AF040ECAA2A94B7EB5534E062AEAF13D72C35.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202011/0402/C784xeOFo2wViCf4m5bxgoeH.png"
+}

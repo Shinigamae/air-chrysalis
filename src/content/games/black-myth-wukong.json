@@ -1,0 +1,29 @@
+{
+  "title": "BLACK MYTH: WUKONG",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 92,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 21,
+      "silver": 7,
+      "gold": 4,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 22,
+      "silver": 9,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 50.5,
+  "firstPlayedOn": "2024-09-28",
+  "lastPlayedOn": "2025-06-28",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR34992_00/61830ea4-0722-4ad5-95cc-f313135de0b4.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/bd406f42e9352fdb398efcf21a4ffe575b2306ac40089d21.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "THE KING OF FIGHTERS XV",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 9,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2025-07-13",
+  "lastPlayedOn": "2025-07-13",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21653_00/9f47d2c2-87fe-40bf-96d2-a0590cd1f082.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202107/2808/vVXksFeLeVoUTUgqPM9FlcVv.png"
+}

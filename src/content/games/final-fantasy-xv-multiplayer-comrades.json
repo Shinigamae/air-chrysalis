@@ -1,0 +1,26 @@
+{
+  "title": "FINAL FANTASY XV MULTIPLAYER: COMRADES",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 55,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 3,
+      "gold": 3,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2021-12-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16653_00_003D90388AFB7D3C253893CCF618AA75E855DC8AAD/96EB208AD0B917DF2B0183F6467057BBA5241AD2.PNG"
+}

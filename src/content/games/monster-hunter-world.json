@@ -1,0 +1,29 @@
+{
+  "title": "MONSTER HUNTER: WORLD",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 562.3,
+  "firstPlayedOn": "2018-01-26",
+  "lastPlayedOn": "2022-07-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11631_00_00AF96CD661F7ECAC2E9F9DBADC3A1C0C2BBB04299/40F98318A4254F94244CB9E9D0FE1ABC3EBE75C3.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA07708_00/4/i_f67bf14d3e83d266c618db72087c180869334fbbbc1b972936848e2489190681/i/icon0.png"
+}

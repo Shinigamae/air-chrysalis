@@ -1,0 +1,29 @@
+{
+  "title": "SONIC FORCES",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 35,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2023-04-02",
+  "lastPlayedOn": "2023-04-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11600_00_0034B28756434970DC73A42C48945E0686BB41C601/73C512E32FA858876377C084F701EF74A74CC719.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05674_00/3/i_8fbb26a455da29a687a99f841b72bb48d030c0988093db57d09e2ae14b00e070/i/icon0.png"
+}

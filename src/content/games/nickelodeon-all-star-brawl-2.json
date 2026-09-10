@@ -1,0 +1,29 @@
+{
+  "title": "NICKELODEON ALL-STAR BRAWL 2",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 13,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.6,
+  "firstPlayedOn": "2026-06-03",
+  "lastPlayedOn": "2026-06-11",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR38367_00/264d1ba7-10b6-485b-8db1-d9f646a32c74.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202308/1614/1055968351b6dce7f43579788b031e590a3d2c62600c177e.png"
+}

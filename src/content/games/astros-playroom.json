@@ -1,0 +1,29 @@
+{
+  "title": "ASTRO’S PLAYROOM",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 6,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 31,
+      "silver": 14,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.6,
+  "firstPlayedOn": "2022-01-30",
+  "lastPlayedOn": "2024-02-16",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR20188_00/9f84e2fc-0cd2-40f1-bfdb-6774fe3a69f6.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202502/1908/3d17c33239dab88c7e2f24af50140b3f6fa555e6030d5704.png"
+}

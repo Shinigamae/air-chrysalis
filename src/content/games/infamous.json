@@ -1,0 +1,26 @@
+{
+  "title": "INFAMOUS",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 37,
+      "silver": 11,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 11,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-11-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00660_00_003CC702A6A6E46ED00BFC61BD5F289C414DCC7C25/707A365EC53D59D4AE9F9C7B55CE6AFBBDE09960.PNG"
+}

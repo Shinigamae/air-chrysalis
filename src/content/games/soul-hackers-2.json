@@ -1,0 +1,29 @@
+{
+  "title": "SOUL HACKERS 2",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 34,
+      "silver": 9,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2025-05-21",
+  "lastPlayedOn": "2025-05-21",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR26465_00_005F586A2ACB6B3692296600CCE58AA8CFF9428527/8CDE1FE3D1D8C6C7C9A025A91E49BF58CBC99A13.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202202/1003/nirpJVcfTE8kK5KARPJ0RiLY.png"
+}

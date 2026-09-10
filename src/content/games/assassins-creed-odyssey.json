@@ -1,0 +1,29 @@
+{
+  "title": "ASSASSIN'S CREED ODYSSEY",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 95,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 69,
+      "silver": 15,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 75,
+      "silver": 15,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 188.4,
+  "firstPlayedOn": "2018-10-05",
+  "lastPlayedOn": "2019-09-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR13822_00_00E63FD8AB71E35431D284C875D26290C020A6ED1A/DEE0D4E5A10A52EA06309E73E38FDA92B759C1DC.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA09303_00/3/i_d6b485c473b4b3d739197a5f020aeb7428f69d6c29e0dda514f6db41916dc3b6/i/icon0.png"
+}

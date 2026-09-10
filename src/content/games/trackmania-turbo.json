@@ -1,0 +1,29 @@
+{
+  "title": "TRACKMANIA TURBO",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2018-04-04",
+  "lastPlayedOn": "2018-04-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09746_00_0045A3F548A190BA5FE4328A7905F3C58AA3F4CD1C/1C2B9050C23BD90EFA0CC464790A36276F6529C4.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01210_00/6/i_d0b1607bc07a416ce656360c9dff11b19f32b4831403073b5b45a605378d01b5/i/icon0.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED 2: AMONG THIEVES",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 91,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 49,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 57,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-02-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00462_00_00534AD6647D743E1E7466BB16667F7E6334D643DD/4226B4020FFEBD3538E0A4FB2BB8375E4BD4643B.PNG"
+}

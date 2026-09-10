@@ -1,0 +1,29 @@
+{
+  "title": "INFAMOUS SECOND SON",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 34,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 34,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 25.9,
+  "firstPlayedOn": "2017-10-26",
+  "lastPlayedOn": "2021-09-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05740_00_0017967C4188CE8097C9F90449BD2673428F2F5C4E/084BD02D892260735318CE1DE2BB2FB1D42F22BD.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0700/enLAr4eVGBxWjrHh5nLTUSnn.png"
+}

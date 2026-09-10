@@ -1,0 +1,29 @@
+{
+  "title": "NARUTO SHIPPUDEN: ULTIMATE NINJA STORM 4",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 13,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 11,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 32,
+      "silver": 18,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4.8,
+  "firstPlayedOn": "2020-10-04",
+  "lastPlayedOn": "2020-10-12",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09367_00_003749B4A9292461EBFCDF8776B10A7ABB43963682/28D2D43392E91572BBCCC3D5B57F63BCEF353AA5.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA02854_00/2/i_312b49d77c370ee1797be4ee74d814909845f4d5c88fe18a6dc79f9c1982bfb4/i/icon0.png"
+}

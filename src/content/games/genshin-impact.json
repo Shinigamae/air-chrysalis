@@ -1,0 +1,29 @@
+{
+  "title": "GENSHIN IMPACT",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 83,
+      "silver": 23,
+      "gold": 12,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 185.4,
+  "firstPlayedOn": "2020-10-10",
+  "lastPlayedOn": "2022-02-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21233_00_0073A8E47CEEA74176FE1AF93F111B4719D96D9319/CE6602CCD55D657FC48F1C078CB5AC38298AFA7F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202608/0109/4d4f67a277b41db5d4f78d7827784e80188086ee6c526161.png"
+}

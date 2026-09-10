@@ -1,0 +1,29 @@
+{
+  "title": "NEED FOR SPEED HOT PURSUIT REMASTERED",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 51,
+      "silver": 13,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2025-01-22",
+  "lastPlayedOn": "2025-08-31",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21229_00_00327AEE49464F2E22937420C56FF77D444AD90135/CC9E843D44B59FD20E5CA21DF8725258D33C19D5.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202209/2916/rqxVOS10A7YYdpHE2LwYgbAU.png"
+}

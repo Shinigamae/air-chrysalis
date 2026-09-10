@@ -1,0 +1,29 @@
+{
+  "title": "PERSONA 5 ROYAL",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 44,
+      "silver": 7,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 7,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 75.3,
+  "firstPlayedOn": "2022-04-18",
+  "lastPlayedOn": "2022-06-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19151_00_00E78B6E341DB57E52DFF46931A6652ABE04B0785B/2F1CBD4FE36E5453C438E31CC9E3DA1FD460208E.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA08644_00/3/i_30bcfcab6746c1c5b1aee7baffcfa25f23aeeef4346b27a1c6dcfe6a6e3ead45/i/icon0.png"
+}

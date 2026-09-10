@@ -1,0 +1,29 @@
+{
+  "title": "MARVEL'S SPIDER-MAN: MILES MORALES",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 24,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 17,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 7.9,
+  "firstPlayedOn": "2022-05-25",
+  "lastPlayedOn": "2022-06-22",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR20684_00/baa4acc4-a8e5-42f6-ae09-3ae51b6a38fb.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202008/1020/T45iRN1bhiWcJUzST6UFGBvO.png"
+}

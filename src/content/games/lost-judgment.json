@@ -1,0 +1,29 @@
+{
+  "title": "LOST JUDGMENT",
+  "platform": "PS5",
+  "year": 2023,
+  "progress": 81,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 40,
+      "silver": 3,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 6,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 51.4,
+  "firstPlayedOn": "2023-08-26",
+  "lastPlayedOn": "2023-12-04",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23865_00/93ff8963-6182-405d-9c75-6c4c44fdefd0.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202106/1115/wQDzz8HqbaRvFqVKWDiy9qdQ.png"
+}

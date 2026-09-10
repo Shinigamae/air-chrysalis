@@ -1,14 +1,29 @@
 {
   "title": "ELDEN RING",
-  "platform": "PLAYSTATION",
-  "year": 2025,
+  "platform": "PS5",
+  "year": 2024,
   "progress": 100,
-  "rating": 9.5,
   "playStatus": "finished",
   "current": false,
-  "review": "Still the benchmark for rewarding curiosity instead of punishing it.",
-  "screenshots": [
-    "/images/games/elden-ring-01.jpg"
-  ],
-  "status": "archive"
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 14,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 24,
+      "silver": 14,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 110.7,
+  "firstPlayedOn": "2022-02-25",
+  "lastPlayedOn": "2024-06-26",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR25067_00/98e8431b-6a2b-4575-bb1e-135beb3f4896.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202107/0902/fS3Hhaq06TqLrbjMVplA8MaY.png"
 }

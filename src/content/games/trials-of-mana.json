@@ -1,0 +1,29 @@
+{
+  "title": "TRIALS OF MANA",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 35.9,
+  "firstPlayedOn": "2020-05-30",
+  "lastPlayedOn": "2021-06-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR18678_00_0069B0FE3195860F758DB7CD85F19E242E6515825E/16D259CABD213BE9F2A04B6387D58EE7AB0F50F1.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/0109/6zQVgm5Hx7kcBNrwv0ZIohog.png"
+}

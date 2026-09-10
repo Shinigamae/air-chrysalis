@@ -1,0 +1,29 @@
+{
+  "title": "EVERYBODY'S GOLF",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 15,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.1,
+  "firstPlayedOn": "2024-08-25",
+  "lastPlayedOn": "2024-08-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05961_00_0087B1E223603949B5A1F14449276DD4DE14BB3C89/1E1CF5CC7C488C9BD8CB888F776F1F64F692027A.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2320/PT1PAMO5aZHYRoOkrVNhybKD.png"
+}

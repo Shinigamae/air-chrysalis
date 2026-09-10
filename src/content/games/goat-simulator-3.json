@@ -1,0 +1,29 @@
+{
+  "title": "GOAT SIMULATOR 3",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 49,
+      "silver": 11,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 8.1,
+  "firstPlayedOn": "2025-10-08",
+  "lastPlayedOn": "2026-04-17",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR25716_00/582a0e08-68ee-403b-862a-8f61e45a4201.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202510/3012/66ffc377ec191e3b0fa870d82c07136c320e9c736c6be443.png"
+}

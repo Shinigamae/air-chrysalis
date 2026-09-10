@@ -1,0 +1,29 @@
+{
+  "title": "UNCHARTED: LEGACY OF THIEVES COLLECTION",
+  "platform": "PS5",
+  "year": 2017,
+  "progress": 31,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 32,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 76,
+      "silver": 20,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 214.4,
+  "firstPlayedOn": "2016-05-10",
+  "lastPlayedOn": "2017-09-01",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR26589_00/93c9484f-db6e-4951-a46b-4be97f4cd3b3.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202111/2000/gTUWTlvPHzxFJ2JAxtDyI2eS.png"
+}

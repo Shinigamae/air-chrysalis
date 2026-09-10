@@ -1,0 +1,29 @@
+{
+  "title": "NEED FOR SPEED PAYBACK",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 50,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 47,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 37,
+  "firstPlayedOn": "2019-08-06",
+  "lastPlayedOn": "2023-07-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11619_00_00C9019FFB34CD1FEBE6CCDCA91FC664AB4561C053/26EDFCCDE962840728E58CBA3736C35ACC82CA26.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202210/3122/P3Apt9Q4oXtXArsrnl0R6XTh.png"
+}

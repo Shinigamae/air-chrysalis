@@ -1,0 +1,29 @@
+{
+  "title": "RISE OF THE TOMB RAIDER",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 7,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 118,
+      "silver": 5,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.5,
+  "firstPlayedOn": "2022-04-18",
+  "lastPlayedOn": "2022-04-21",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11453_00_00094E790F4EFEFE2495B522E982D20528432FF99A/149075FB4FB57A1F3BA94F2B1DF479347405AC40.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA05716_00/3/i_8d554b8e828fb0b49e8f79f55ff9f1e7ab01c979d4009b001a3615935be3a127/i/icon0.png"
+}

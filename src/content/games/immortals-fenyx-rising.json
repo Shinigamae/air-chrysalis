@@ -1,0 +1,29 @@
+{
+  "title": "IMMORTALS FENYX RISING",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 47,
+      "silver": 16,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5,
+  "firstPlayedOn": "2021-10-03",
+  "lastPlayedOn": "2021-11-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR18488_00_00739A980297AFB4D56851B528337DC38724071566/64E271BCEBA6C7590719CDED8C1493689D31DF0F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202008/1708/IU319rd7ohrXUZTCQt5OWdct.png"
+}

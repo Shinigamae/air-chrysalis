@@ -1,0 +1,29 @@
+{
+  "title": "SCARLET NEXUS",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 41.5,
+  "firstPlayedOn": "2023-03-05",
+  "lastPlayedOn": "2023-04-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21040_00_003533B0EDF77F8B912403E088C88179533C862705/B76763B10790591CFFA9E297E0A932D849B0FE6F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1100/R9Qab0osYhWXi0djq8ZatRLi.png"
+}

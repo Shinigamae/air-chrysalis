@@ -1,0 +1,26 @@
+{
+  "title": "ADVANCED WARFARE",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 31,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 74,
+      "silver": 14,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-12-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07096_00_00F69578EF09F51E32CC80EFD3F4105DFA66C9168D/7CA9D3E233B490B266D02D1E313E2A0969C2AD9C.PNG"
+}

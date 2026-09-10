@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY: BLACK OPS III",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 5,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 72,
+      "silver": 25,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 71.6,
+  "firstPlayedOn": "2015-11-06",
+  "lastPlayedOn": "2018-07-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR08801_00_00164BF2B729BCF4C3F5083E55A49F3BCD6E4A0F91/CFA5D56C27423A504D7F63AEB01033BED6EB50D1.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA02624_00/6/i_c215706b64aaf3a61d26f8496a19ff5e4151fa30f504c8510ff66c7561965ec3/i/icon0.png"
+}

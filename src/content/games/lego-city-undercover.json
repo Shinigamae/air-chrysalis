@@ -1,0 +1,29 @@
+{
+  "title": "LEGO CITY UNDERCOVER",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 9,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 0,
+      "silver": 0,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 8,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.7,
+  "firstPlayedOn": "2025-06-07",
+  "lastPlayedOn": "2025-06-17",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR12138_00_00C375D08F1CE505512CE1FAA688DE3B1D17E73E13/4D7037C55DE6F3553D81EC5023681596E9F1D39F.PNG",
+  "art": "https://image.api.playstation.com/cdn/UP1018/CUSA06549_00/lSv1tSHFmg1CdqJ3slsBKA4Za1saolb6StllqAvaTEk1vP8hY18lcl0WFumlaBSP.png"
+}

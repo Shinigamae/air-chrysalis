@@ -1,0 +1,29 @@
+{
+  "title": "SIFU",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 21,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2024-03-31",
+  "lastPlayedOn": "2024-03-31",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR24991_00_00289511BD9AD114696C7876D9D3C281281C48D473/5AE526343FCDD28E274A00EFC62EC44A6E822CAA.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202201/1616/THJbARAq2YiRVUv5abCQ8GYQ.png"
+}

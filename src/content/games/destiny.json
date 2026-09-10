@@ -1,0 +1,29 @@
+{
+  "title": "DESTINY",
+  "platform": "PS3 / PS4",
+  "year": 2017,
+  "progress": 96,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 39,
+      "silver": 17,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 18,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 3673.2,
+  "firstPlayedOn": "2014-10-27",
+  "lastPlayedOn": "2017-07-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR04936_00_0009941117B251664D0DF43E16ED52CFCD066BAF0B/9CD8E0B93D98952CB73788200BEAD1341913827F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202009/1422/XuLStsILcwJut5U7tNkZcMRG.png"
+}

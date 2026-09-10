@@ -1,0 +1,29 @@
+{
+  "title": "MARVEL'S GUARDIANS OF THE GALAXY",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 10,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 7,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 54,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 25.8,
+  "firstPlayedOn": "2022-06-13",
+  "lastPlayedOn": "2022-07-10",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR21583_00_000D308C0EDE9CE1355B3D5092CA8BF6BA269D35E6/95DA801AB3062B74A27832075B6FA7C95621D6E6.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202106/0215/Pw9cWnyqkix3EoCOGqrN1cgN.png"
+}

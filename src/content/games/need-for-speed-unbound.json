@@ -1,0 +1,29 @@
+{
+  "title": "NEED FOR SPEED UNBOUND",
+  "platform": "PS5",
+  "year": 2024,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 29,
+      "silver": 8,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.3,
+  "firstPlayedOn": "2024-02-28",
+  "lastPlayedOn": "2024-02-28",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR28517_00/5c03df33-47ba-4849-aea5-e7e5bc94d240.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202209/0913/3CmlwTUjrvYOei0WDNdBsYPp.png"
+}

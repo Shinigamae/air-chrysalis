@@ -1,0 +1,29 @@
+{
+  "title": "YU-GI-OH! MASTER DUEL",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 47,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 5,
+      "silver": 5,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 102,
+  "firstPlayedOn": "2022-01-28",
+  "lastPlayedOn": "2025-11-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR23959_00_00FB39995E01EFE9A501EF72557A5E89115B7F4688/55FB76353D36B90F62F350C78D036B558E07D49D.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202607/3101/9b60952bc52e9af93ae5a3e282ea9cc489f545c88c57326a.png"
+}

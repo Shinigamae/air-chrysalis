@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED 3: DRAKE’S DECEPTION REMASTERED",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 71,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 41,
+      "silver": 3,
+      "gold": 2,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 49,
+      "silver": 5,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2022-05-28",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09801_00_0003DB32F8F3DD21C49BEFE52FE4341AC768FEC122/A66289B0C7CFF0FF4C2FB3B6E6D23BDA03D90A38.PNG"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "ASSASSIN'S CREED VALHALLA",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 54,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 35,
+      "silver": 14,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 62,
+      "silver": 29,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 112.3,
+  "firstPlayedOn": "2021-09-22",
+  "lastPlayedOn": "2022-01-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR19842_00_00697D40FB93E3CB99CC8AB0B31E2C059BFAEB5BC0/1F9800BA53BE9C1B3BFEC2AF3DE93AA86A6B20F3.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202006/1520/EDtkdijFRwbmGKk1G9lrDoEF.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "DIGIMON SURVIVE",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 17,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 12,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 34,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 8.6,
+  "firstPlayedOn": "2024-11-20",
+  "lastPlayedOn": "2024-11-25",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16200_00_00E45D9B36BF34C02C10C8DA062E8AD8349B650968/2332C6CF571DDA96418504B1589590BC9F739364.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202207/1517/VkyCYVJKFa29K1m1rgsnYXfG.png"
+}

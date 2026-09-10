@@ -1,0 +1,29 @@
+{
+  "title": "HORIZON ZERO DAWN REMASTERED",
+  "platform": "PS5 / PSPC",
+  "year": 2019,
+  "progress": 72,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 50,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 65,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 67.7,
+  "firstPlayedOn": "2017-03-25",
+  "lastPlayedOn": "2019-04-30",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR24321_00/96674236-573c-422c-9754-0357cfde931d.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0221/vC7trMorHJgbImp8PCQvpI0p.png"
+}

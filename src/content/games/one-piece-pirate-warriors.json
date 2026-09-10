@@ -1,0 +1,26 @@
+{
+  "title": "ONE PIECE: PIRATE WARRIORS",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2013-08-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03526_00_00355C29D10829F5296FBE9BDFFB33AA03DB9B05CF/7CBBF5A66FBAC68155523A25996E2B54830F9624.PNG"
+}

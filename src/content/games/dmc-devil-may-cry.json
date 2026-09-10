@@ -1,0 +1,29 @@
+{
+  "title": "DMC DEVIL MAY CRY",
+  "platform": "PS3",
+  "year": 2020,
+  "progress": 26,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 45,
+      "silver": 10,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2017-09-18",
+  "lastPlayedOn": "2020-09-25",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03805_00_00380D4ED8452DE94BE79CCEE8BA4989D6045B6A6F/2829C032C5F2656F5DFD4A9F6102B1A560470771.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01022_00/9/i_f304665898ad167f1bb2a59961aece7190bd7316d48936f959b993bb25fc785b/i/icon0.png"
+}

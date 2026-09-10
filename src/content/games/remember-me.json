@@ -1,0 +1,26 @@
+{
+  "title": "REMEMBER ME",
+  "platform": "PS3",
+  "year": 2014,
+  "progress": 10,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 7,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 43,
+      "silver": 4,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2014-01-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03814_00_008AADE62699FD2AD4900435179FEE0B408167E143/B2B8424A5AB2148AF7392618EFF878C1BBC40707.PNG"
+}

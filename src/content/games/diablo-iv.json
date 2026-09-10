@@ -1,0 +1,29 @@
+{
+  "title": "DIABLO IV",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 0,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 21,
+      "silver": 18,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 4,
+  "firstPlayedOn": "2025-12-14",
+  "lastPlayedOn": "2026-03-22",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22810_00/5ada1d24-434d-450b-ad6f-374bc6566d46.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202405/3123/1abfc0f37be11993bd5e67fcb1a9e2c0d656142ace2f232e.png"
+}

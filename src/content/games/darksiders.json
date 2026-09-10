@@ -1,0 +1,26 @@
+{
+  "title": "DARKSIDERS",
+  "platform": "PS3",
+  "year": 2010,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2010-07-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00986_00_0075E388BA80529D73196514429625620C4940A6B7/9B52BA001C5931CB4093E9996FEB4C8AD26D6395.PNG"
+}

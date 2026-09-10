@@ -1,0 +1,29 @@
+{
+  "title": "EA SPORTSUFC4",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 3,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 14,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 2.7,
+  "firstPlayedOn": "2023-02-20",
+  "lastPlayedOn": "2023-07-28",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16815_00_00B640A62513984746AC750E7D3F5EEAB7A9680872/E4C20F88BC9DA47B759A4E7B5AD50E4A3BD6E9FF.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA14209_00/1/i_3dc2dd7dcb5d018484d0fa6eddf5830a1dacf9ab430103f33c2915e6de58a397/i/icon0.png"
+}

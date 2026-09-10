@@ -1,0 +1,26 @@
+{
+  "title": "ASPHALT LEGENDS UNITE",
+  "platform": "PS5",
+  "year": 2026,
+  "progress": 72,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 8,
+      "silver": 4,
+      "gold": 6,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 7,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2026-02-01",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR41008_00/1e3561fb-8a2e-47e1-960f-4eb7766b65a3.PNG"
+}

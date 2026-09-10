@@ -1,0 +1,26 @@
+{
+  "title": "RESISTANCE 3",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 53,
+      "silver": 4,
+      "gold": 1,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 53,
+      "silver": 4,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2012-04-24",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR01841_00_001EACAD3FF5694786D9B1817B304D47512C33D519/44A4E5D0FAAF136648D0E346FA148747A08B4139.PNG"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "LITTLEBIGPLANET3",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.2,
+  "firstPlayedOn": "2017-05-15",
+  "lastPlayedOn": "2017-05-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07221_00_00016D6BCD432E0DD797AE186F2A4B94D441B8B9ED/168C02CDB47A20E4BD583A2E0DDFEF8853173A71.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0523/uCNQSzE3APHneMXOdWeBAyeR.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "UNCHARTED 2: AMONG THIEVES REMASTERED",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 45,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 25,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2016-05-04",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09799_00_0009FFAF42CF52FE5336A7C64CF4E1C0ECC1AE2D98/24B608015A2419B349F0D9A29C439C6AA7FD63A7.PNG"
+}

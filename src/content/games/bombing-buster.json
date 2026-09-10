@@ -1,0 +1,26 @@
+{
+  "title": "BOMBING BUSTER",
+  "platform": "PSVITA / PS4",
+  "year": 2018,
+  "progress": 10,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 11,
+      "silver": 1,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2018-03-10",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR08517_00_009FA1F0022D4751B3054E8821CC779B081A8641CB/70BF06C6215A29DDF4C8D40382B1C97C63CC6ACB.PNG"
+}

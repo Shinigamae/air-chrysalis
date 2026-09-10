@@ -1,0 +1,26 @@
+{
+  "title": "WORLD WAR Z",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 18,
+      "silver": 14,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2019-04-20",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16741_00_0013CA5609332275F74E6B9F27A4CDE2C90A808741/647B54BCA668FBD7C78C777ABCCF2CBD0794EFE2.PNG"
+}

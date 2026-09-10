@@ -1,0 +1,26 @@
+{
+  "title": "CATHERINE TROPHY",
+  "platform": "PS3",
+  "year": 2012,
+  "progress": 30,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 17,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2012-07-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00906_00_00B3A6E2E82548802D769FBB9532649FA33F0B2065/F30256E9FEC43CC5756D167F44C49856C14A6415.PNG"
+}

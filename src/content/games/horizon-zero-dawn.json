@@ -1,0 +1,29 @@
+{
+  "title": "HORIZON ZERO DAWN",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 70,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 48,
+      "silver": 5,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 65,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 67.7,
+  "firstPlayedOn": "2017-03-25",
+  "lastPlayedOn": "2019-04-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11556_00_005122C6D8E4545DAC325B8E748CBE7180ED11F3E7/F24674E946809EB0A2E214DB490149851BCEC0EC.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0221/vC7trMorHJgbImp8PCQvpI0p.png"
+}

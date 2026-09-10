@@ -1,0 +1,26 @@
+{
+  "title": "GUILTY GEAR XRD -REVELATOR- TROPHY",
+  "platform": "PS3 / PS4",
+  "year": 2022,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 13,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2022-12-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR10126_00_00B71A99A02F0CBA06FD43F769BD6779B115B44825/2271ABD0BB48D27B8557943FDEA2C2AC4C58470A.PNG"
+}

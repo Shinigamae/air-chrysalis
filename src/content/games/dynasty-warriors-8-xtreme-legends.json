@@ -1,0 +1,26 @@
+{
+  "title": "DYNASTY WARRIORS 8: XTREME LEGENDS",
+  "platform": "PS3 / PSVITA",
+  "year": 2014,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 3,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 28,
+      "silver": 12,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "lastPlayedOn": "2014-05-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR06052_00_00F0F97BA8C9F9BFD71BEB77E38FF61A2AA1465E12/AAC6AE21D297E165C90020005DC89D963F30A6F5.PNG"
+}

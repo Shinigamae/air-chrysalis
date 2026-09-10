@@ -1,0 +1,29 @@
+{
+  "title": "BLOODBORNE",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 92,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 7,
+      "gold": 7,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 24,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 163.3,
+  "firstPlayedOn": "2015-03-24",
+  "lastPlayedOn": "2021-07-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR05818_00_00347A646D41E9660F4153AD7A0274E2BC597C5A27/AE3477BA91121142BEB82AB2B7E2F8BAB9B3C17A.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0713/WSZqsrnejjt85wYmUqeBQvMQ.png"
+}

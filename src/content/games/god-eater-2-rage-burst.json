@@ -1,0 +1,29 @@
+{
+  "title": "GOD EATER 2: RAGE BURST",
+  "platform": "PSVITA / PS4",
+  "year": 2018,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 7,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2018-12-09",
+  "lastPlayedOn": "2018-12-09",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07863_00_00E95B45F4025D46083C8A222772E270E3A1253BDA/467D9CABAC0022EF2DECA245EEA69054F2DBE84C.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA03370_00/3/i_8ad4efdeca527aefb17ee13e91bebbad6fa2d85829376e88fd6753012305b5ee/i/icon0.png"
+}

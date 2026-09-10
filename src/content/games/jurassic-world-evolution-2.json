@@ -1,0 +1,29 @@
+{
+  "title": "JURASSIC WORLD EVOLUTION 2",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 2,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 2,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 35,
+      "silver": 18,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.6,
+  "firstPlayedOn": "2023-06-26",
+  "lastPlayedOn": "2023-07-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR24506_00_00E10BACC77F00FDCDF558A815A4653234A7491814/EAE7707AEE691B2869229C55D4C4293AA95C2486.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202107/2708/WZhQmSMCGEJgLHhnikOcuMnu.png"
+}

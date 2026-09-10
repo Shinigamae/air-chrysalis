@@ -1,0 +1,26 @@
+{
+  "title": "CALL OF DUTY: BLACK OPS II",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 28,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 3,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 77,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2013-09-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR02059_00_00221989F86A5F51895DB2CD91E0FC7C0FCE672A1D/BF57BB5EEF3B7675FBCEE030BFA0699D22599CD9.PNG"
+}

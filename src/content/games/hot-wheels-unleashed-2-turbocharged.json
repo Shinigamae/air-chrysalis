@@ -1,0 +1,29 @@
+{
+  "title": "HOT WHEELS UNLEASHED 2 - TURBOCHARGED",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 12,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 44,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.9,
+  "firstPlayedOn": "2024-11-05",
+  "lastPlayedOn": "2024-11-22",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR33307_00_00153C72F8B184EEE29641C961E4F60B0079A5D7A6/614713246771BB8E4F25599108E7EF9835FA4C2E.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202305/1610/a63668c38fbe4c31f62d77a2863300dcf26c3e50576d75e2.png"
+}

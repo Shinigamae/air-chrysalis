@@ -1,0 +1,29 @@
+{
+  "title": "ROCKET LEAGUE",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 41,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 21,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 51,
+      "silver": 24,
+      "gold": 12,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 50.5,
+  "firstPlayedOn": "2015-07-12",
+  "lastPlayedOn": "2021-03-07",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07466_00_002B372EA023E6E03E3194E148C0B2BF285AD8CE49/7E97D451B278DACDDD0CA8D59AFF7BF62E1A6560.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202606/0221/277e59721466f3501c675e2420eb16824ccda13b106e6da8.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "HITMAN 2",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 92,
+      "silver": 19,
+      "gold": 14,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 11,
+  "firstPlayedOn": "2023-09-11",
+  "lastPlayedOn": "2023-09-13",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16339_00_0059AD2F4989F991A5932B943B2363B88B5441E639/EF26D4C4451EBE7E74F7970A33B62FDE785CCA1A.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA12414_00/2/i_b370c5dff005744ec640dab6d344ea80be9284f376fd6f69da658d2bb85fa82a/i/icon0.png"
+}

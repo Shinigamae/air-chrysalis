@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY: BLACK OPS 4",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 3,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 89,
+      "silver": 12,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 205.4,
+  "firstPlayedOn": "2018-11-12",
+  "lastPlayedOn": "2021-09-21",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR16409_00_009BD3030E36B7A8CAF3B943FDB144D2C88F2E34C4/B2BF3A9058DCF51454C6B84157C405043408F496.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA12443_00/3/i_574d91bf4cf0e6167042e5ffcf3c2b2e3b1f1e770922a54dcdec404095aa7060/i/icon0.png"
+}

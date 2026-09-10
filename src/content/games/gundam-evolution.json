@@ -1,0 +1,26 @@
+{
+  "title": "GUNDAM EVOLUTION",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 5,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 9,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2022-12-04",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR24481_00/b12bdd33-515e-4271-8fe8-6864ab007bad.png"
+}

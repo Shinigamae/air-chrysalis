@@ -1,0 +1,26 @@
+{
+  "title": "MONSTER HUNTER WORLD: ICEBORNE",
+  "platform": "PS4",
+  "year": 2022,
+  "progress": 54,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 28,
+      "silver": 5,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 36,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2022-01-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR15240_00_001E3E3E29347A400AD2A1D78A9A7F72AE7C50F682/0B551C28193B0071A8DA80728B54DD0D0CCA8A30.PNG"
+}

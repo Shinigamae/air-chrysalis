@@ -1,0 +1,29 @@
+{
+  "title": "NIOH",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 50,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 31,
+      "silver": 8,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 73,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 152.9,
+  "firstPlayedOn": "2017-02-07",
+  "lastPlayedOn": "2021-08-23",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR10261_00_00CAA2186FFF8ED4ABC8FA441A9B72DB43BFD322F8/B4C5186F0DC63A3704590DCEAC632E16BB3B249F.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0700/Hsx91ywFFT0r6iRzcOS69FwD.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "CALL OF DUTY: MODERN WARFARE REMASTERED",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 38,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 13,
+      "silver": 7,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 34,
+      "silver": 15,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 140.3,
+  "firstPlayedOn": "2019-10-29",
+  "lastPlayedOn": "2021-01-30",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR11068_00_009522590D242EABC274F61D603D4FE237555F7E32/5C491DD8F8C8A54375D017279EDA1D9443E38247.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202212/1917/OS18LBxAVpQ1iPeGWAqSnxem.png"
+}

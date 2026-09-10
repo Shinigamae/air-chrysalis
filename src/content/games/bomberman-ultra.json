@@ -1,0 +1,26 @@
+{
+  "title": "BOMBERMAN ULTRA",
+  "platform": "PS3",
+  "year": 2011,
+  "progress": 60,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 4,
+      "silver": 1,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 6,
+      "silver": 4,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2011-01-24",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00389_00_00EF77F3D09A4948145205FD1771A9BD0F50B0E6DB/167CA29CE96DB9BA6F90BB4FE33C56D61FEBF1FE.PNG"
+}

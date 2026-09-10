@@ -1,0 +1,29 @@
+{
+  "title": "HAWKEN",
+  "platform": "PS4",
+  "year": 2016,
+  "progress": 25,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 10,
+      "silver": 2,
+      "gold": 1,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 5.1,
+  "firstPlayedOn": "2016-07-24",
+  "lastPlayedOn": "2016-08-03",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR10508_00_00098955E7C0D9610B2ED4F95CD6EB1CFB8F05F927/72A5E05F14FF0869CD7BD77321463B5945F9BC79.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA04210_00/2/i_b4372f76d8ef21f8953442ac7eeb465da4787d2e062ed7e975f0b49055806937/i/icon0.png"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "NAUGHTY BEAR: PANIC IN PARADISE",
+  "platform": "PS3",
+  "year": 2013,
+  "progress": 42,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 9,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 19,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2013-05-19",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03616_00_00D8B3D8E64A61B1E47AB0504E4FDD38AC700B1EA5/1E907D9A02DE72B62DFAF9DF1C45537C695FA87B.PNG"
+}

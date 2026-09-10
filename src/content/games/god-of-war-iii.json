@@ -1,0 +1,29 @@
+{
+  "title": "GOD OF WAR III",
+  "platform": "PS3",
+  "year": 2021,
+  "progress": 100,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 10,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 14.7,
+  "firstPlayedOn": "2018-09-16",
+  "lastPlayedOn": "2021-09-27",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR00801_00_007CA5B0A11275E93A3609C24E5F5B12C07A205CE0/76940BA9595F5BF61D68E5231FB888ED72227382.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/0711/p8JCvA8692BICXAPoyylh7ed.png"
+}

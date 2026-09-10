@@ -1,0 +1,29 @@
+{
+  "title": "EFOOTBALL PES 2020",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 6,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 41,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 145.2,
+  "firstPlayedOn": "2020-01-16",
+  "lastPlayedOn": "2020-09-25",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR17375_00_00E1286C4C9151ED051D62DD63A347F23344377B40/8403A130A280052A2F9B3D3974CB9306497E361D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA14918_00/3/i_54b82636f5a09b208a811e66a2ae787c5e4175fb290e5f3555b040a0ef5aa099/i/icon0.png"
+}

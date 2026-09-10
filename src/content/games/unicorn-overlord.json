@@ -1,0 +1,29 @@
+{
+  "title": "UNICORN OVERLORD",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 10,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2025-08-29",
+  "lastPlayedOn": "2025-08-29",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR24180_00_00FA5FCF7EEDC670E8455396898819E9D60E880AF9/A7D66F623B880ED74417D5105A3427D04CE335BF.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202310/1212/cac3f55580620af4a8668882618e2d776e27188be9c861d6.png"
+}

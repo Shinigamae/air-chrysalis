@@ -1,0 +1,29 @@
+{
+  "title": "STYX: MASTER OF SHADOWS",
+  "platform": "PS4",
+  "year": 2015,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 20,
+      "silver": 8,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.9,
+  "firstPlayedOn": "2015-07-12",
+  "lastPlayedOn": "2015-07-18",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR07297_00_009DD4130CE517542117429D2E233D8F2CF11D1D3F/D83983C513CFC158ABC50375D5ACDEE9FD1CAB0B.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01069_00/3/i_e639f49610c446726a939b64084819f6d2f50b526bd8f22ce58a1ee631a801fe/i/icon0.png"
+}

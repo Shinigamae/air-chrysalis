@@ -1,0 +1,29 @@
+{
+  "title": "SKATE.",
+  "platform": "PS5",
+  "year": 2025,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 8,
+      "silver": 5,
+      "gold": 8,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.5,
+  "firstPlayedOn": "2025-09-28",
+  "lastPlayedOn": "2025-11-12",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR35812_00/6ba3cf83-d2b2-4059-b707-b8e064686ea5.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202604/2122/41d5a3beff5a2b0b9ac56b9b23869dad7821df71a60f4b02.png"
+}

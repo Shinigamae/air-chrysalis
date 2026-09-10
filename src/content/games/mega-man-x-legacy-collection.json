@@ -1,0 +1,29 @@
+{
+  "title": "MEGA MAN X LEGACY COLLECTION",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 38,
+      "silver": 13,
+      "gold": 1,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 2.6,
+  "firstPlayedOn": "2021-08-31",
+  "lastPlayedOn": "2021-09-06",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14747_00_008BA8B900D41CBD3FA1C047AAFE064A136C8BB368/806AF729440773C3E7E036CA0C318BFFED9E107D.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA10713_00/2/i_87fa16819f2fc611953a37a513ab33859014ccbb79116f0ed7a2097491d96ee4/i/icon0.png"
+}

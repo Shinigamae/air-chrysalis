@@ -1,0 +1,29 @@
+{
+  "title": "THE LAST OF US PART II REMASTERED",
+  "platform": "PS5 / PSPC",
+  "year": 2023,
+  "progress": 68,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 8,
+      "gold": 7,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 25,
+      "silver": 10,
+      "gold": 9,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 50.8,
+  "firstPlayedOn": "2020-06-23",
+  "lastPlayedOn": "2023-01-02",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR33408_00/e66332c2-c7c3-48d4-8e31-51fa2b8c98b7.png",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/2618/w48z6bzefZPrRcJHc7L8SO66.png"
+}

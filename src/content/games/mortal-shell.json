@@ -1,0 +1,29 @@
+{
+  "title": "MORTAL SHELL",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 19,
+      "silver": 12,
+      "gold": 6,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.5,
+  "firstPlayedOn": "2021-12-07",
+  "lastPlayedOn": "2021-12-07",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR20893_00_00CAF29255DB943411BAAC53F7554E782F4AC94A23/593DFE15B239192E8FE53A49FAE4E01B36FA147C.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202103/0410/GKT3pw7UrRCWNOujHj38aIjv.png"
+}

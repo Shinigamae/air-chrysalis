@@ -1,0 +1,26 @@
+{
+  "title": "DARKSIDERS II",
+  "platform": "PS4",
+  "year": 2017,
+  "progress": 31,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 20,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 40,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2017-11-02",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR09304_00_003FC56A70158BC23E7C5A7B8B97989C4AAF7E1C8B/56BC33B67701827A9F96643A7D67E18ED7F2F2FD.PNG"
+}

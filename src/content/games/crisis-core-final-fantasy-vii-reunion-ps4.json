@@ -1,0 +1,29 @@
+{
+  "title": "CRISIS CORE –FINAL FANTASY VII– REUNION",
+  "platform": "PS4",
+  "year": 2023,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 42,
+      "silver": 5,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 51.6,
+  "firstPlayedOn": "2022-12-14",
+  "lastPlayedOn": "2023-03-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR27243_00_001D0B70A35586CBB0AC434780E03F57411B8493FF/9B66FED4E2B8012F27F7E80B7DD4EBDDCFDDCEA1.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202208/2505/DE9sevLlnfHm7vLrRwDFEZpO.png"
+}

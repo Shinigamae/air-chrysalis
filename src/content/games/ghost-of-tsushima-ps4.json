@@ -1,0 +1,29 @@
+{
+  "title": "GHOST OF TSUSHIMA",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 71,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 44,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 59,
+      "silver": 13,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 161.7,
+  "firstPlayedOn": "2020-07-17",
+  "lastPlayedOn": "2025-08-28",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR15120_00_00736F40BFE5A427C57A238478A141FABB81ABA3C7/F7780A7B9141F2A1D0B68E578787D962D7F69C31.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/niMUubpU9y1PxNvYmDfb8QFD.png"
+}

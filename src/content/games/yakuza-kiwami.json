@@ -1,0 +1,29 @@
+{
+  "title": "YAKUZA KIWAMI",
+  "platform": "PS4",
+  "year": 2019,
+  "progress": 1,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 1,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 46,
+      "silver": 6,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.4,
+  "firstPlayedOn": "2019-01-26",
+  "lastPlayedOn": "2019-01-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR12845_00_0061D0EB2AAE962E4F41F1D59D8A83FF3BF2B55464/A2725F4B0F549409BE9B431F430545CD0C313F7A.PNG",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202508/0800/b180750941d664ac7410bf79b65f4acecbae2ebe02f95807.png"
+}

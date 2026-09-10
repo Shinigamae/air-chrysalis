@@ -1,0 +1,26 @@
+{
+  "title": "NINJA GAIDEN Σ2",
+  "platform": "PS4",
+  "year": 2021,
+  "progress": 40,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 24,
+      "silver": 2,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 26,
+      "silver": 10,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2021-07-05",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR22648_00_00604CA193C68757FE74BC118BD1F717453620E9C4/3872923F40400398B530894B9946D83AC0509C51.PNG"
+}

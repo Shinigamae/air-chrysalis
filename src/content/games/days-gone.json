@@ -1,0 +1,29 @@
+{
+  "title": "DAYS GONE",
+  "platform": "PS4",
+  "year": 2020,
+  "progress": 12,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 1,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 19,
+      "gold": 4,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 8.5,
+  "firstPlayedOn": "2019-07-06",
+  "lastPlayedOn": "2020-04-07",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR17130_00_002D14DB28AA079AB444D1AA3527D40F8F780DBAEE/81687E4B5151D16193E5EC2A558719BBCB6BD363.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202011/1204/wYL4v2r8uMQFvVTJlfuj8ICk.png"
+}

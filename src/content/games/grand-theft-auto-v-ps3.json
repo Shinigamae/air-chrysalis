@@ -1,0 +1,26 @@
+{
+  "title": "GRAND THEFT AUTO V",
+  "platform": "PS3",
+  "year": 2018,
+  "progress": 16,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 5,
+      "silver": 1,
+      "gold": 1,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 47,
+      "silver": 8,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "lastPlayedOn": "2018-10-14",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR03885_00_006D0E2FCAF8F452269011A1D6E3A52E16290E404F/A368147A58136F1834993996296A61535E897D56.PNG"
+}

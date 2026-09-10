@@ -1,0 +1,29 @@
+{
+  "title": "TALES OF ARISE",
+  "platform": "PS4",
+  "year": 2024,
+  "progress": 83,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 34,
+      "silver": 11,
+      "gold": 2,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 43,
+      "silver": 13,
+      "gold": 2,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 53.5,
+  "firstPlayedOn": "2021-09-17",
+  "lastPlayedOn": "2024-12-26",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR18928_00_00010FAFA5478200C90035046A41FCF3FC150FA3BC/698533A5FCE36B8090176E26F2009277190EAA21.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202107/2321/AEsEfC42YwowOdvJ1GXZqhhS.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "FINAL FANTASY XV",
+  "platform": "PS4",
+  "year": 2025,
+  "progress": 57,
+  "playStatus": "finished",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 50,
+      "silver": 7,
+      "gold": 4,
+      "platinum": 1
+    },
+    "defined": {
+      "bronze": 77,
+      "silver": 11,
+      "gold": 9,
+      "platinum": 1
+    }
+  },
+  "platinum": true,
+  "playtimeHours": 181.5,
+  "firstPlayedOn": "2016-11-25",
+  "lastPlayedOn": "2025-09-15",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR10877_00_00DD1A23FA873DDA9A58A6C6D3032764E77E2BDD65/FDBCF6150029EF2D74AB2F5ED6686AEF9715B1E1.PNG",
+  "art": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA01615_00/5/i_d0fdf4ae434e480b9536662f48df7f7180a4c75a96f410c97c76e3bd5f4ef27e/i/icon0.png"
+}

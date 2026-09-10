@@ -1,0 +1,29 @@
+{
+  "title": "BIOMUTANT",
+  "platform": "PS5",
+  "year": 2022,
+  "progress": 4,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 3,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 37,
+      "silver": 6,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.6,
+  "firstPlayedOn": "2022-12-13",
+  "lastPlayedOn": "2022-12-21",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR28019_00/f54f6952-09c8-4b14-9699-7d710ac6f384.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202102/0418/cfbTDvs2m1P9mArX74ClI9HR.png"
+}

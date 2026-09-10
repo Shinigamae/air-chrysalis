@@ -1,0 +1,29 @@
+{
+  "title": "KENA: BRIDGE OF SPIRITS",
+  "platform": "PS5",
+  "year": 2023,
+  "progress": 7,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 5,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 29,
+      "silver": 9,
+      "gold": 3,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 1.8,
+  "firstPlayedOn": "2023-05-10",
+  "lastPlayedOn": "2023-05-15",
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21924_00/617bd3b6-459d-404a-962d-bda5e59f71f4.png",
+  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/kQzDCY5RCrSXCeeFjPGUzkGI.png"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "JURASSIC WORLD EVOLUTION",
+  "platform": "PS4",
+  "year": 2018,
+  "progress": 8,
+  "playStatus": "abandoned",
+  "current": false,
+  "status": "archive",
+  "trophies": {
+    "earned": {
+      "bronze": 10,
+      "silver": 0,
+      "gold": 0,
+      "platinum": 0
+    },
+    "defined": {
+      "bronze": 53,
+      "silver": 15,
+      "gold": 5,
+      "platinum": 1
+    }
+  },
+  "platinum": false,
+  "playtimeHours": 0.7,
+  "firstPlayedOn": "2018-06-13",
+  "lastPlayedOn": "2018-06-16",
+  "icon": "https://image.api.playstation.com/trophy/np/NPWR14287_00_00E58FB610AA57A31A8C8C261586AB40B38B6C4275/1645C3D94367E2AFCB89449B96AE9B7E6C4504DF.PNG",
+  "art": "https://image.api.playstation.com/vulcan/img/rnd/202010/0214/GbTvNx2lWRDOFK7VuQzAUma6.png"
+}
