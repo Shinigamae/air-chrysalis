@@ -5,39 +5,58 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
+import ClientCard from '@/components/ui/ClientCard.astro';
+import { byRecency } from '@/config/clients';
 import { entryFor } from '@/config/site';
 
 /**
  * Workshop — Figma "03 — Content Systems" panel D (11:109):
  * "Case-study pattern: problem → approach → result → stack → lessons learned."
  *
- * The case studies read in full here rather than behind a detail route,
- * because FIGMA.md's routing list has slug pages for builds, games and books
- * only. Ordered by the curated `order` field, not by year.
+ * Two sections. PROJECTS is the case studies, which read in full here rather
+ * than behind a detail route, because FIGMA.md's routing list has slug pages
+ * for builds, games and books only. Ordered by the curated `order` field,
+ * not by year.
+ *
+ * CLIENTS is who the work was for. It sits second deliberately: the projects
+ * are the argument and the client list is the evidence, and a page that opens
+ * with logos reads as a pitch rather than a workshop.
+ *
+ * A project's own title is `type-subhead` under a `SectionHeader`, larger
+ * than the header above it. That inversion is the house style — the games
+ * page does the same under "CURRENTLY PLAYING" — because section headers
+ * here are technical labels and entry titles are editorial.
  */
 const entry = entryFor(Astro.url.pathname)!;
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order,
 );
-const count = String(projects.length).padStart(3, '0');
+const clients = (await getCollection('clients')).sort(byRecency);
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
-<AppShell topBarMeta={`INDEX / ${count}`}>
+<AppShell
+  topBarMeta={`${pad(projects.length)} PROJECTS / ${pad(clients.length)} CLIENTS`}
+>
   <PageHeader
     eyebrow={`${entry.index} / ${entry.context}`}
     title={entry.label}
     summary={entry.summary}
   />
 
-  <div class="mt-8 flex flex-col gap-8">
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="01" title="PROJECTS" />
+  </section>
+
+  <div class="mt-3 flex flex-col gap-8">
     {
       projects.map((project, i) => (
         <article class="flex flex-col gap-3">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <SectionHeader
-              index={String(i + 1).padStart(2, '0')}
-              title={project.data.title}
-            />
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <div class="flex items-baseline gap-2">
+              <span class="type-meta text-signal">{pad(i + 1)}</span>
+              <h3 class="type-subhead">{project.data.title}</h3>
+            </div>
             <div class="flex items-center gap-2">
               <span class="type-meta">{project.data.year}</span>
               <StatusLabel status={project.data.status} />
@@ -101,4 +120,15 @@ const count = String(projects.length).padStart(3, '0');
       ))
     }
   </div>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <SectionHeader index="02" title="CLIENTS" />
+      <p class="type-meta">WHO THE WORK WAS FOR</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+      {clients.map((client) => <ClientCard client={client} />)}
+    </div>
+  </section>
 </AppShell>

@@ -61,6 +61,7 @@ src/content/
   games/<slug>.json      one file per game   — generated, see below
   albums/<slug>.json     one file per album  — generated, see below
   projects/projects.json single array (file loader)
+  clients/clients.json   single array (file loader) — hand-written
 ```
 
 `astro check` validates every entry against its schema, so a malformed field
@@ -361,10 +362,12 @@ src/
     ui/                   PageHeader · SectionHeader · EditorialCard · StatusLabel · FilterControl
                           SpecRow · SpecList · StatusPanel · ReadingTimeline
                           PlatformTags (games) · StarRating (books)
+                          ClientCard (workshop)
   assets/                 Local art — imported, so astro:assets resizes and
                           re-encodes it. public/ holds only the favicon.
   content.config.ts       Collection schemas (the API contract, too)
-  content/                builds/*.json · games/games.json · books/books.json · projects/projects.json
+  content/                builds/*.json · games/games.json · books/books.json
+                          projects/projects.json · clients/clients.json
   pages/                  One directory per section; [slug].astro generates detail routes
   styles/
     tokens.css            Colour, spacing, radius, type scale, motion, breakpoints

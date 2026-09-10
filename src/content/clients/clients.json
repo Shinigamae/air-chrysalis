@@ -1,0 +1,122 @@
+[
+  {
+    "id": "northwind-freight",
+    "name": "Northwind Freight",
+    "href": "https://northwind-freight.example",
+    "industry": "Logistics",
+    "via": "TMA Solutions",
+    "summary": "Container tracking that three regional offices each maintained a private spreadsheet copy of. Replaced the copies with one event-sourced service the offices read from instead of re-keying.",
+    "roles": [
+      {
+        "title": "Senior Software Engineer",
+        "from": "2022",
+        "to": "2024"
+      },
+      {
+        "title": "Solution Architect",
+        "from": "2024"
+      }
+    ],
+    "stack": [
+      ".NET",
+      "PostgreSQL",
+      "Kafka",
+      "Azure"
+    ],
+    "logo": "../../assets/clients/northwind-freight-logo.png",
+    "shot": "../../assets/clients/northwind-freight-shot.jpg"
+  },
+  {
+    "id": "halcyon-health",
+    "name": "Halcyon Health",
+    "href": "https://halcyon-health.example",
+    "industry": "Healthcare",
+    "via": "TMA Solutions",
+    "summary": "A patient intake flow that failed its own accessibility audit twice. Rebuilt the form layer against the audit rather than around it, and wrote the regression suite that keeps it passing.",
+    "roles": [
+      {
+        "title": "Tech Lead",
+        "from": "2021",
+        "to": "2023"
+      }
+    ],
+    "stack": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Playwright"
+    ],
+    "logo": "../../assets/clients/halcyon-health-logo.png",
+    "shot": "../../assets/clients/halcyon-health-shot.jpg"
+  },
+  {
+    "id": "orpheus-media",
+    "name": "Orpheus Media",
+    "href": "https://orpheus-media.example",
+    "industry": "Broadcast",
+    "summary": "Ingest for a video archive that had outgrown a nightly cron. Moved transcoding onto a queue with back-pressure, which turned a nine-hour window into something that kept up during the day.",
+    "roles": [
+      {
+        "title": "Senior Software Engineer",
+        "from": "2019",
+        "to": "2021"
+      }
+    ],
+    "stack": [
+      "Go",
+      "FFmpeg",
+      "RabbitMQ",
+      "S3"
+    ],
+    "logo": "../../assets/clients/orpheus-media-logo.png",
+    "shot": "../../assets/clients/orpheus-media-shot.jpg"
+  },
+  {
+    "id": "kestrel-pay",
+    "name": "Kestrel Pay",
+    "href": "https://kestrel-pay.example",
+    "industry": "Payments",
+    "via": "TMA Solutions",
+    "summary": "Reconciliation between a card processor and a ledger that disagreed about roughly one transaction in four thousand. Built the tooling that found the disagreements before finance did.",
+    "roles": [
+      {
+        "title": "Backend Engineer",
+        "from": "2017",
+        "to": "2018"
+      },
+      {
+        "title": "Senior Backend Engineer",
+        "from": "2018",
+        "to": "2019"
+      }
+    ],
+    "stack": [
+      "Java",
+      "Spring",
+      "Oracle"
+    ],
+    "logo": "../../assets/clients/kestrel-pay-logo.png",
+    "shot": "../../assets/clients/kestrel-pay-shot.jpg"
+  },
+  {
+    "id": "atlas-civic",
+    "name": "Atlas Civic",
+    "href": "https://atlas-civic.example",
+    "industry": "Public sector",
+    "summary": "A permit portal used a few thousand times a week by people who would never use it twice. Most of the work was removing steps, not adding features.",
+    "roles": [
+      {
+        "title": "Software Engineer",
+        "from": "2015",
+        "to": "2017"
+      }
+    ],
+    "stack": [
+      "C#",
+      "SQL Server",
+      "jQuery"
+    ],
+    "logo": "../../assets/clients/atlas-civic-logo.png",
+    "shot": "../../assets/clients/atlas-civic-shot.jpg"
+  }
+]

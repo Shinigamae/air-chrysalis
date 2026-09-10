@@ -17,13 +17,17 @@ Nothing in the code changes and the next build re-optimises it.
 Regenerate the placeholders at any time (they are deterministic):
 
 ```sh
-npm run placeholders
+npm run placeholders            # only writes files that do not exist
+npm run placeholders -- --force # overwrite, including real photos
 ```
+
+**It will not overwrite an existing file without `--force`.** It used to, and
+since every path it knows about now holds a real photo, one stray run painted
+labelled boxes over all four home cards. Without the flag it prints
+`exists, kept` and moves on.
 
 It launches a headless browser to render them, so there is no image library in
 `package.json` for that. Set `CHROME_PATH` if it cannot find Chrome or Edge.
-It only writes the filenames it knows about, so real photos at other names are
-safe.
 
 ---
 
@@ -95,6 +99,31 @@ fetches about 1.4KB of WebP rather than the 63KB source.
 
 The favicon is `public/favicon.svg` — the same mark as a vector, and the one
 image that still needs a fixed URL.
+
+---
+
+## 1c. Clients — 2 images each
+
+Shown on `/workshop` under CLIENTS. Both are optional and the card degrades
+without either: no shot leaves the plate showing the bare host, no logo leaves
+the client's name doing the work.
+
+| File | Size | What |
+| --- | --- | --- |
+| `src/assets/clients/<id>-shot.jpg` | 1680 × 1050 | Their site. 16:10, cropped from the top — a homepage screenshot reads better anchored at the masthead than centred. |
+| `src/assets/clients/<id>-logo.png` | 480 × 120 | Their mark. Contained, not cropped, so the plate size is a maximum rather than a target. |
+
+`<id>` is the entry's `id` in `src/content/clients/clients.json`, and the two
+paths are written into that file as `logo` and `shot`.
+
+**Logos want a light-on-transparent export** — the "reverse" or "on dark"
+variant most brand kits ship. The chip behind the logo is the panel fill
+(`#18181B`), so a dark logo disappears into it. PNG or any format with an
+alpha channel; the build re-encodes to WebP either way.
+
+The placeholder logos are white wordmarks on transparency for exactly this
+reason: they stand in for the shape of a real reverse logo, not for a
+labelled box.
 
 ---
 

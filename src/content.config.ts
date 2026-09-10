@@ -238,6 +238,68 @@ const albums = defineCollection({
 });
 
 /**
+ * D2 / WORKSHOP / CLIENTS — who the work was for, beside what it was.
+ *
+ * Hand-written and short, like `projects`, so it stays one JSON array.
+ *
+ * Two things are deliberately *not* fields here:
+ *
+ * `current` / `status` — a client is current when a role has no `to`, and
+ * deriving it means a stale "LIVE" label cannot outlive the end date sitting
+ * two lines below it. `clientIsCurrent()` in src/config/clients.ts is the
+ * only place that decides.
+ *
+ * `order` — projects carry one because a tie on year there is arbitrary.
+ * Here the dates are the real ordering: most recent first, current first of
+ * all. A curated order would only be a way to disagree with the CV.
+ */
+const clients = defineCollection({
+  loader: file('./src/content/clients/clients.json'),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      /** Their site. The card links to it, and shows the bare host. */
+      href: z.url().optional(),
+      /** A word or two of context — "Logistics", "Public sector". */
+      industry: z.string().optional(),
+      /** Two sentences at most: what they needed, what I did about it. */
+      summary: z.string(),
+      /**
+       * Every title held there, oldest first — one client is often three
+       * titles, and collapsing that to the last one loses the shape of the
+       * engagement. `to` omitted means still there.
+       */
+      roles: z
+        .array(
+          z.object({
+            title: z.string(),
+            /** 'YYYY' or 'YYYY-MM'. */
+            from: z.string(),
+            /** Omitted while the role is current. */
+            to: z.string().optional(),
+          }),
+        )
+        .min(1),
+      stack: z.array(z.string()).default([]),
+      /**
+       * Who the work was delivered through, where it was not direct — the
+       * consultancy or agency holding the contract. Most of this list is
+       * that shape, and a page that implies otherwise is overstating it.
+       */
+      via: z.string().optional(),
+      /**
+       * Their mark. Wants a light-on-transparent export: the plate behind it
+       * is the panel fill, and a dark logo disappears into it. Optional —
+       * the card falls back to the name set in display type, which is a
+       * reasonable wordmark in its own right.
+       */
+      logo: image().optional(),
+      /** A shot of their site. Optional; the plate falls back to the host. */
+      shot: image().optional(),
+    }),
+});
+
+/**
  * D / WORKSHOP / PROJECTS — the case-study pattern:
  * problem → approach → result → stack → lessons learned.
  */
@@ -259,4 +321,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { builds, games, books, projects, albums };
+export const collections = { builds, games, books, projects, clients, albums };

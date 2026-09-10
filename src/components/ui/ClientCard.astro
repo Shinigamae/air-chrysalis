@@ -1,0 +1,144 @@
+---
+import { Image, Picture } from 'astro:assets';
+import StatusLabel from './StatusLabel.astro';
+import { clientIsCurrent, hostOf, periodOf, spanOf, type Client } from '@/config/clients';
+
+/**
+ * A client on the Workshop page: their site as the plate, their mark on it,
+ * and the titles held there underneath.
+ *
+ * Built rather than borrowed from EditorialCard. That card's media plate is
+ * decorative and its metadata is one line; this one has to carry a logo over
+ * the plate and a role history under it, and bending the shared card into
+ * that shape would have made it worse for the four pages already using it.
+ *
+ * The logo sits on the shot instead of in a plate of its own, because two
+ * stacked plates per card across a grid of them reads as clutter — and a
+ * mark on a screenshot is how the pairing is usually shown anyway.
+ */
+interface Props {
+  client: Client;
+}
+
+const { client }: Props = Astro.props;
+const c = client.data;
+
+const current = clientIsCurrent(client);
+const host = hostOf(c.href);
+/** Newest first here — the current title is the one being looked for. */
+const roles = [...c.roles].reverse();
+---
+
+<article
+  class="group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
+>
+  <div
+    class="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-compact border border-line bg-well"
+  >
+    {
+      c.shot ? (
+        <Picture
+          src={c.shot}
+          formats={['avif', 'webp']}
+          quality={80}
+          widths={[420, 840]}
+          sizes="(min-width: 1440px) 405px, (min-width: 768px) calc(50vw - 76px), calc(100vw - 96px)"
+          alt={`${c.name} website`}
+          loading="lazy"
+          decoding="async"
+          pictureAttributes={{ class: 'block h-full w-full' }}
+          class="h-full w-full object-cover object-top"
+        />
+      ) : (
+        <span class="type-micro">{host || 'WEBSITE'}</span>
+      )
+    }
+
+    {/* A scrim, so a light screenshot cannot swallow the mark sitting on it. */}
+    {
+      c.logo && c.shot && (
+        <div
+          aria-hidden="true"
+          class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-canvas/85 to-transparent"
+        />
+      )
+    }
+
+    {
+      c.logo && (
+        <div class="absolute bottom-1 left-1 flex h-4 items-center rounded-compact border border-line bg-panel/95 px-1">
+          <Image
+            src={c.logo}
+            alt={`${c.name} logo`}
+            height={40}
+            densities={[1, 2]}
+            format="webp"
+            quality={90}
+            loading="lazy"
+            decoding="async"
+            class="h-2.5 w-auto max-w-[140px] object-contain"
+          />
+        </div>
+      )
+    }
+  </div>
+
+  <div class="flex items-start justify-between gap-2">
+    <div class="flex min-w-0 flex-col gap-0.5">
+      <h3 class="type-title">
+        {
+          c.href ? (
+            <a
+              href={c.href}
+              rel="noopener"
+              target="_blank"
+              class="after:absolute after:inset-0 after:content-[''] focus:outline-none"
+            >
+              {c.name}
+            </a>
+          ) : (
+            c.name
+          )
+        }
+      </h3>
+      <p class="type-caption">
+        {[c.industry, c.via && `via ${c.via}`].filter(Boolean).join(' · ')}
+      </p>
+    </div>
+    <StatusLabel
+      status={current ? 'live' : 'archive'}
+      label={current ? 'CURRENT' : spanOf(client)}
+    />
+  </div>
+
+  <p class="type-fine">{c.summary}</p>
+
+  {/*
+    The titles, newest first. A definition list rather than a table: each row
+    is a title and when it ran, which is a pair, and it lets the period sit
+    in mono against the display-type title without a grid to align.
+  */}
+  <dl class="m-0 mt-auto flex flex-col gap-0.5 border-t border-line pt-1">
+    {
+      roles.map((role) => (
+        <div class="flex flex-wrap items-baseline justify-between gap-x-2">
+          <dt class="type-fine">{role.title}</dt>
+          <dd class="type-meta m-0 shrink-0">{periodOf(role)}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  {c.stack.length > 0 && <p class="type-meta">{c.stack.join(' · ')}</p>}
+
+  {
+    host && (
+      <p
+        aria-hidden="true"
+        class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover:opacity-80"
+      >
+        {host.toUpperCase()} ↗
+      </p>
+    )
+  }
+</article>
