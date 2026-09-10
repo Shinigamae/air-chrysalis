@@ -1,22 +1,30 @@
+import { navigation } from './site';
+
 /**
  * Homepage content — Figma "02 — Homepage" (4:3).
  *
- * Kept out of the template so the copy is editable in one place. These are a
- * personal status block and four navigational cards rather than a collection,
- * so they live in config; builds / games / books become real content
- * collections when those pages are built.
+ * Kept out of the template so the copy is editable in one place.
  *
- * When the .NET API arrives, `currentStatus` is the obvious first thing to
- * fetch rather than hard-code.
+ * The four cards do not carry their own descriptions. Each one is a door to a
+ * section, and the section already has a line describing itself in
+ * `navigation` — writing it twice meant the homepage and the page it linked
+ * to could disagree about what the section was for, and for a while they did.
  */
+
+/** The section's own tagline, so a card and its destination cannot drift. */
+function summaryFor(href: string): string {
+  const entry = navigation.find((nav) => nav.href === href);
+  if (!entry) throw new Error(`No navigation entry for ${href}`);
+  return entry.summary;
+}
 
 export const hero = {
   eyebrow: '01 / HELLO',
   /** Rendered as stacked lines, one per array entry (Figma 4:50-4:53). */
   lines: ['CODE.', 'BUILD.', 'PLAY.', 'READ.'] as const,
   lead: 'Engineer by trade. The rest is to recreate.',
-  intro:
-    'I like making things — sometimes with code, sometimes with plastic, sometimes with a controller, sometimes with a good book.',
+  /** Reads directly off the four words stacked beside it. */
+  intro: 'One of these pays the bills. The other three explain where the evenings went.',
 } as const;
 
 export interface StatusItem {
@@ -24,56 +32,59 @@ export interface StatusItem {
   value: string;
 }
 
+/**
+ * The status panel is half declared and half observed.
+ *
+ * `PLAYING` and `READING` are filled in from the collections by the homepage,
+ * because the syncs already know the answer and a hand-typed one goes stale
+ * silently — this panel claimed a game the gaming log had not shown as
+ * current for months. `BUILDING` and `NEXT BUILD` stay here: they are
+ * intentions, and no feed can tell you what you mean to do next.
+ */
 export const currentStatus = {
   label: 'CURRENT STATUS',
   headline: 'WORKSHOP / ONLINE',
-  /**
-   * Rendered two-up, filling down each column before moving across, which is
-   * how the Figma panel reads: BUILDING / PLAYING, then READING / NEXT BUILD.
-   */
-  items: [
-    { label: 'BUILDING', value: 'Personal website' },
-    { label: 'PLAYING', value: 'Where Winds Meet' },
-    { label: 'READING', value: '—' },
-    { label: 'NEXT BUILD', value: 'Gunpla' },
-  ] satisfies StatusItem[],
+  building: { label: 'BUILDING', value: 'Personal website' } satisfies StatusItem,
+  nextBuild: { label: 'NEXT BUILD', value: 'Qubeley Mk. II' } satisfies StatusItem,
+  /** Shown when nothing on a shelf is marked current. */
+  idle: '—',
 } as const;
 
 export const selectedWork = {
   eyebrow: '02 / SELECTED WORK',
   title: 'A FEW THINGS I MAKE',
-  summary: 'Not a résumé. More like a record of what I am into right now.',
+  summary: 'Not a résumé. A record of where the time goes.',
   cards: [
     {
       kicker: 'CODE',
       title: 'WORKSHOP',
       subtitle: 'Software / Projects',
-      summary: 'Systems I build, break, refactor and occasionally ship.',
       href: '/workshop',
+      summary: summaryFor('/workshop'),
       image: '/images/home/workshop.jpg',
     },
     {
       kicker: 'BUILD',
       title: 'BUILD ARCHIVE',
       subtitle: 'Gunpla / Models',
-      summary: 'A visual archive of kits, progress, details and finished builds.',
       href: '/builds',
+      summary: summaryFor('/builds'),
       image: '/images/home/build-archive.jpg',
     },
     {
       kicker: 'PLAY',
       title: 'GAMING LOG',
       subtitle: 'PlayStation / Games',
-      summary: 'What I am playing, what I think of it, and the screenshots worth keeping.',
       href: '/games',
+      summary: summaryFor('/games'),
       image: '/images/home/gaming-log.jpg',
     },
     {
       kicker: 'READ',
       title: 'READING LOG',
       subtitle: 'Books / Goodreads',
-      summary: 'Books I have read, liked, disliked, and would recommend.',
       href: '/books',
+      summary: summaryFor('/books'),
       image: '/images/home/reading-log.jpg',
     },
   ],

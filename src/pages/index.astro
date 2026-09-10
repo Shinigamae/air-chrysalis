@@ -1,9 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
-import { hero, currentStatus, selectedWork, cardAction } from '@/config/home';
+import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
 import { withBase } from '@/config/site';
 
 /**
@@ -11,6 +12,33 @@ import { withBase } from '@/config/site';
  *
  * No context strip: the hero sits directly on the canvas, as in the frame.
  */
+
+/**
+ * PLAYING and READING come from the collections rather than from config. The
+ * syncs already mark what is current, and a second hand-typed copy of the
+ * answer only rots — this panel named a game the gaming log had long since
+ * stopped calling current.
+ */
+const [games, books] = await Promise.all([
+  getCollection('games'),
+  getCollection('books'),
+]);
+
+const playing = games.find((game) => game.data.current);
+// Several books can be on the shelf at once; the panel has room for one, so
+// it takes whichever was picked up most recently.
+const reading = books
+  .filter((book) => book.data.current)
+  .sort((a, b) => (b.data.addedOn ?? '').localeCompare(a.data.addedOn ?? ''))[0];
+
+// Order matters: the panel fills down each column before moving across, so
+// this is BUILDING / PLAYING, then READING / NEXT BUILD.
+const statusItems: StatusItem[] = [
+  currentStatus.building,
+  { label: 'PLAYING', value: playing?.data.title ?? currentStatus.idle },
+  { label: 'READING', value: reading?.data.title ?? currentStatus.idle },
+  currentStatus.nextBuild,
+];
 ---
 
 <AppShell showTopBar={false}>
@@ -37,7 +65,7 @@ import { withBase } from '@/config/site';
         <StatusPanel
           label={currentStatus.label}
           headline={currentStatus.headline}
-          items={currentStatus.items}
+          items={statusItems}
         />
       </div>
     </div>
