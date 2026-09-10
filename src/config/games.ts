@@ -15,6 +15,7 @@ export type Game = CollectionEntry<'games'>;
 export const PLAY_LABELS = {
   'in-progress': 'IN PROGRESS',
   finished: 'FINISHED',
+  played: 'PLAYED',
   backlog: 'BACKLOG',
   abandoned: 'ABANDONED',
 } as const;

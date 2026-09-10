@@ -14,7 +14,7 @@ export const hero = {
   eyebrow: '01 / HELLO',
   /** Rendered as stacked lines, one per array entry (Figma 4:50-4:53). */
   lines: ['CODE.', 'BUILD.', 'PLAY.', 'READ.'] as const,
-  lead: 'Software engineer · Gunpla builder · gamer · reader',
+  lead: 'Engineer by trade. The rest is to recreate.',
   intro:
     'I like making things — sometimes with code, sometimes with plastic, sometimes with a controller, sometimes with a good book.',
 } as const;

@@ -157,14 +157,18 @@ const daysSince = (iso) =>
   iso ? (Date.now() - new Date(iso).getTime()) / 86_400_000 : Infinity;
 
 /**
- * The schema's four states, inferred rather than declared: PSN has no notion
- * of giving up on something. A stalled game reads as `abandoned`, which is
- * a judgement — override it where that is unfair.
+ * Inferred rather than declared, and deliberately incurious about the rest.
+ *
+ * This used to return `abandoned` for anything stalled, which labelled 190
+ * games as failures purely because they were old. PSN cannot tell the
+ * difference between a game you gave up on and one you finished your way
+ * without the trophies, so it does not guess: `played` is the honest word.
+ * `abandoned` and `backlog` exist, but only an override may claim them.
  */
 function playStatusFor({ progress, platinum, lastPlayed }) {
   if (progress >= 100 || platinum) return 'finished';
   if (daysSince(lastPlayed) <= ACTIVE_DAYS) return 'in-progress';
-  return 'abandoned';
+  return 'played';
 }
 
 /* ------------------------------------------------------------------ *

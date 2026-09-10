@@ -6,7 +6,7 @@
 
 export const site = {
   name: 'SHINIGAMAE.DEV',
-  tagline: 'PERSONAL DIGITAL WORKSHOP',
+  tagline: 'CREATE, PLAY, SLAY, ELATE',
   description:
     'A personal digital workshop and archive — things made, played, read, and shipped.',
   /** Rendered as the ↗ in the header. */
@@ -34,42 +34,43 @@ export const navigation: readonly NavEntry[] = [
     href: '/',
     index: '01',
     context: 'HELLO',
-    summary: 'Software engineer · Gunpla builder · gamer · reader.',
+    summary: 'Engineer by trade. The rest is to recreate.',
   },
   {
     label: 'WORKSHOP',
     href: '/workshop',
     index: '02',
     context: 'SECTION',
-    summary: 'A living archive of things made, played, read, and shipped.',
+    summary: 'Systems I build, break, refactor, and occasionally ship.',
   },
   {
     label: 'BUILDS',
     href: '/builds',
     index: '03',
     context: 'SECTION',
-    summary: 'Scale model kits — panel lining, custom paint, decals, modifications.',
+    summary:
+      'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.',
   },
   {
     label: 'GAMES',
     href: '/games',
     index: '04',
     context: 'SECTION',
-    summary: 'What I am playing, what I think of it, and the screenshots I kept.',
+    summary: '293 games, 98 platinums, and over 600 days I am not getting back.',
   },
   {
     label: 'BOOKS',
     href: '/books',
     index: '05',
     context: 'SECTION',
-    summary: 'Books read, liked, disliked, and would recommend.',
+    summary: "135 books, 18 of them are Murakami's.",
   },
   {
     label: 'LAB',
     href: '/lab',
     index: '06',
     context: 'SECTION',
-    summary: 'Experiments that are not finished enough to be anything else.',
+    summary: 'Journeys through the world.',
   },
 ] as const;
 

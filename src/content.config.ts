@@ -101,12 +101,17 @@ const games = defineCollection({
     /** Out of 10, matching "Rating 8.5 / 10". Override-only. */
     rating: z.number().min(0).max(10).nullish(),
     /**
-     * Inferred from trophy progress and recency, because PSN has no notion of
-     * giving up on a game: 100% or a platinum is `finished`, a recent trophy
-     * is `in-progress`, and a stalled game reads as `abandoned`. That last one
-     * is a judgement — override it where it is unfair.
+     * Mostly inferred, because PSN has no notion of how you feel about a game:
+     * 100% or a platinum is `finished`, a trophy within 60 days is
+     * `in-progress`, and everything else is simply `played`.
+     *
+     * `played` is deliberately flat. The inference used to call that last
+     * group `abandoned`, which labelled 190 games — most of a decade-old
+     * library — as failures on no evidence. `abandoned` and `backlog` remain
+     * in the enum, but only an override can claim them: giving up on
+     * something is a judgement a person makes, not a sync.
      */
-    playStatus: z.enum(['in-progress', 'finished', 'abandoned', 'backlog']),
+    playStatus: z.enum(['in-progress', 'finished', 'played', 'backlog', 'abandoned']),
     /** True for the single "CURRENTLY PLAYING" feature slot. */
     current: z.boolean().default(false),
     /** Override-only: PSN has no opinion to import. */

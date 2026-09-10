@@ -66,14 +66,15 @@ the post: the next sync picks it up.
 
 ---
 
-## 3. Games — screenshots only, and optional
+## 3. Games — nothing to replace
 
-The GAMING LOG is generated from PlayStation Network by `npm run games:sync`.
-Cover art comes with it, hotlinked: the trophy-set `icon`, plus store `art`
-where a played-games record matched.
+The GAMING LOG is generated from PlayStation Network by `npm run games:sync`,
+and its art comes with it, hotlinked: the trophy-set `icon`, plus store `art`
+where a played-games record matched. Every game has an image without you
+doing anything.
 
-What does **not** come from PSN is your own captures. Those still go in
-`public/images/games/` at **16 : 9** and are attached per game in
+Your own captures are optional and take precedence when present. Put them in
+`public/images/games/` at **16 : 9** and attach them per game in
 `src/content/games-overrides.json`:
 
 ```json
@@ -81,8 +82,7 @@ What does **not** come from PSN is your own captures. Those still go in
 ```
 
 The **first** screenshot wins the card, the "CURRENTLY PLAYING" plate and the
-detail hero, outranking PSN's art. With none set, the art is used instead, so
-a game always has an image.
+detail hero, outranking PSN's art.
 
 ---
 
