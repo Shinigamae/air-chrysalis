@@ -21,12 +21,26 @@ const { pathname } = Astro.props;
     class="layout-container flex items-center justify-between gap-3"
     style="min-height: var(--shell-header)"
   >
+    {/*
+      The mark is `logo-trans.png` rather than `logo.png`: the latter is
+      matted onto opaque black, which reads as a square on the canvas.
+      Decorative — the wordmark beside it already names the site.
+    */}
     <a
       href={withBase('/')}
-      class="group flex flex-col gap-px py-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+      class="group flex items-center gap-1.5 py-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
     >
-      <span class="type-brand">{site.name}</span>
-      <span class="type-meta">{site.tagline}</span>
+      <img
+        src={withBase('/images/logo-trans.png')}
+        alt=""
+        width="32"
+        height="32"
+        class="h-4 w-4 shrink-0 object-contain"
+      />
+      <span class="flex flex-col gap-px">
+        <span class="type-brand">{site.name}</span>
+        <span class="type-meta">{site.tagline}</span>
+      </span>
     </a>
 
     <nav aria-label="Main" class="flex items-center gap-5 lg:gap-8">

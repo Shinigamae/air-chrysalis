@@ -27,9 +27,16 @@ const current = entryFor(pathname);
   >
     <a
       href={withBase('/')}
-      class="type-brand-sm transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+      class="flex items-center gap-1 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
     >
-      {site.name}
+      <img
+        src={withBase('/images/logo-trans.png')}
+        alt=""
+        width="28"
+        height="28"
+        class="h-3.5 w-3.5 shrink-0 object-contain"
+      />
+      <span class="type-brand-sm">{site.name}</span>
     </a>
 
     {current && <span class="type-meta text-signal">{current.label}</span>}
