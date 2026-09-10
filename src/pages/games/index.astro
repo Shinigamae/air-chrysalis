@@ -23,6 +23,24 @@ const rest = games.filter((game) => game !== current);
 const ratingOf = (rating: number | null | undefined) =>
   rating === null || rating === undefined ? '—' : `${rating} / 10`;
 
+/** Own captures first, then PSN's store art, then the trophy-set icon. */
+const imageOf = (game: (typeof games)[number]) =>
+  game.data.screenshots[0] ?? game.data.art ?? game.data.icon;
+
+/**
+ * `rating` and `review` are override-only and empty until written, so the
+ * card falls back to what PSN does know — completion, hours, a platinum.
+ */
+const metaOf = (game: (typeof games)[number]) =>
+  [
+    `${game.data.progress}%`,
+    game.data.playtimeHours ? `${Math.round(game.data.playtimeHours)} H` : null,
+    game.data.platinum ? 'PLATINUM' : null,
+    game.data.rating ? `RATING ${ratingOf(game.data.rating)}` : null,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+
 /**
  * Filter by how the game was played, not by archive status — "finished" and
  * "in progress" are what you actually want to slice a games log by.
@@ -66,9 +84,9 @@ const facets = [
         <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
           {/* Screenshots carry the emotion; metadata sits beside them. */}
           <div class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well">
-            {current.data.screenshots.length > 0 ? (
+            {imageOf(current) ? (
               <img
-                src={withBase(current.data.screenshots[0]!)}
+                src={withBase(imageOf(current)!)}
                 alt={current.data.title}
                 class="h-full w-full object-cover"
                 decoding="async"
@@ -108,7 +126,11 @@ const facets = [
 
             <div class="flex flex-col gap-1">
               <p class="type-micro text-signal">REVIEW EXCERPT</p>
-              <p class="type-fine">{current.data.review}</p>
+              {current.data.review ? (
+                <p class="type-fine">{current.data.review}</p>
+              ) : (
+                <p class="type-fine">No write-up yet.</p>
+              )}
             </div>
           </div>
         </div>
@@ -153,13 +175,13 @@ const facets = [
               title={game.data.title}
               subtitle={game.data.platform}
               summary={game.data.review}
-              meta={`RATING ${ratingOf(game.data.rating)} · ${game.data.progress}%`}
+              meta={metaOf(game)}
               status={game.data.status}
               href={withBase(`/games/${game.id}`)}
               action="REVIEW →"
               mediaLabel="SCREENSHOTS"
-              image={game.data.screenshots[0]}
-              imageAlt={game.data.screenshots[0] ? game.data.title : ''}
+              image={imageOf(game)}
+              imageAlt={imageOf(game) ? game.data.title : ''}
             />
           </div>
         ))

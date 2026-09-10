@@ -1,0 +1,14 @@
+{
+  "title": "ELDEN RING",
+  "platform": "PLAYSTATION",
+  "year": 2025,
+  "progress": 100,
+  "rating": 9.5,
+  "playStatus": "finished",
+  "current": false,
+  "review": "Still the benchmark for rewarding curiosity instead of punishing it.",
+  "screenshots": [
+    "/images/games/elden-ring-01.jpg"
+  ],
+  "status": "archive"
+}

@@ -1,0 +1,23 @@
+{
+  "$comment": [
+    "Hand-maintained corrections layered over the PSN import, keyed by slug.",
+    "Any field of the games schema may appear here; it wins over the imported value.",
+    "",
+    "This file carries more weight than the builds and books equivalents, because",
+    "PSN supplies facts and none of the opinion. Three fields are override-only",
+    "and always arrive empty:",
+    "",
+    "  rating       out of 10",
+    "  review       the sentence that makes the entry worth reading",
+    "  screenshots  your own captures, under /images/games/ — not Sony's",
+    "               promotional art, which imports separately as `art`",
+    "",
+    "One imported field is a guess worth checking:",
+    "",
+    "  playStatus   a game with no trophy in 60 days is called \"abandoned\".",
+    "               That is often unfair to something long, or replayed in",
+    "               bursts. Set \"in-progress\" or \"backlog\" where it is wrong.",
+    "",
+    "`npm run games:check` writes nothing and lists what would change."
+  ]
+}

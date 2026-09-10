@@ -1,0 +1,14 @@
+{
+  "title": "ARMORED CORE VI",
+  "platform": "PLAYSTATION",
+  "year": 2025,
+  "progress": 100,
+  "rating": 9,
+  "playStatus": "finished",
+  "current": false,
+  "review": "Assembly screen as the real gameplay loop. Obvious in hindsight why this one landed with me.",
+  "screenshots": [
+    "/images/games/armored-core-vi-01.jpg"
+  ],
+  "status": "archive"
+}

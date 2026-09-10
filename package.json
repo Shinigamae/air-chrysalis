@@ -15,7 +15,9 @@
     "blog:sync": "node --use-system-ca scripts/blog-sync.mjs",
     "books:check": "node --use-system-ca scripts/goodreads-sync.mjs --check",
     "books:sync": "node --use-system-ca scripts/goodreads-sync.mjs",
-    "content:sync": "npm run blog:sync && npm run books:sync"
+    "games:check": "node --use-system-ca scripts/psn-sync.mjs --check",
+    "games:sync": "node --use-system-ca scripts/psn-sync.mjs",
+    "content:sync": "npm run blog:sync && npm run books:sync && npm run games:sync"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",
@@ -25,6 +27,7 @@
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.2",
+    "psn-api": "^2.18.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3"

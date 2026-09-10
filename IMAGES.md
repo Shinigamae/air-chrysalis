@@ -66,23 +66,23 @@ the post: the next sync picks it up.
 
 ---
 
-## 3. Games — 6 images
+## 3. Games — screenshots only, and optional
 
-Screenshots are **16 : 9**. The **first** screenshot in each array does triple
-duty: the index card, the "CURRENTLY PLAYING" feature plate, and the detail
-hero. Screenshots after the first appear only in the detail page grid.
+The GAMING LOG is generated from PlayStation Network by `npm run games:sync`.
+Cover art comes with it, hotlinked: the trophy-set `icon`, plus store `art`
+where a played-games record matched.
 
-| File | Size | Where it appears |
-| --- | --- | --- |
-| `games/where-winds-meet-01.jpg` | 1920 × 1080 | Card + currently-playing feature + detail hero |
-| `games/where-winds-meet-02.jpg` | 1920 × 1080 | Detail screenshot grid |
-| `games/where-winds-meet-03.jpg` | 1920 × 1080 | Detail screenshot grid |
-| `games/elden-ring-01.jpg` | 1920 × 1080 | Card + detail hero |
-| `games/armored-core-vi-01.jpg` | 1920 × 1080 | Card + detail hero |
-| `games/silksong-01.jpg` | 1920 × 1080 | Card + detail hero |
+What does **not** come from PSN is your own captures. Those still go in
+`public/images/games/` at **16 : 9** and are attached per game in
+`src/content/games-overrides.json`:
 
-`where-winds-meet` is the entry with `current: true`, which is why it gets the
-feature slot. Moving that flag to another game moves the feature with it.
+```json
+"elden-ring": { "screenshots": ["/images/games/elden-ring-01.jpg"] }
+```
+
+The **first** screenshot wins the card, the "CURRENTLY PLAYING" plate and the
+detail hero, outranking PSN's art. With none set, the art is used instead, so
+a game always has an image.
 
 ---
 

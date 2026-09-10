@@ -23,6 +23,20 @@ export const getStaticPaths = (async () => {
 const { game } = Astro.props;
 const g = game.data;
 const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating} / 10`;
+
+// PSN supplies the art; personal captures, when there are any, outrank it.
+const heroImage = g.screenshots[0] ?? g.art ?? g.icon;
+const playtime = g.playtimeHours ? `${Math.round(g.playtimeHours)} H` : '';
+const earned = g.trophies.earned ?? {};
+const defined = g.trophies.defined ?? {};
+const totalOf = (t: Record<string, number>) =>
+  Object.values(t).reduce((sum, n) => sum + n, 0);
+const trophyLine =
+  totalOf(defined) > 0 ? `${totalOf(earned)} / ${totalOf(defined)}` : '';
+
+/** Numbered so the sections stay in order as optional ones drop out. */
+let section = 0;
+const next = () => String(++section).padStart(2, '0');
 ---
 
 <AppShell title={g.title} topBarMeta={`${g.platform} / ${g.year}`}>
@@ -46,9 +60,9 @@ const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating
       class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
     >
       {
-        g.screenshots.length > 0 ? (
+        heroImage ? (
           <img
-            src={withBase(g.screenshots[0]!)}
+            src={withBase(heroImage)}
             alt={g.title}
             class="h-full w-full object-cover"
             decoding="async"
@@ -60,16 +74,20 @@ const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating
     </div>
 
     <div class="flex flex-col gap-3">
-      <SectionHeader index="01" title="REVIEW" />
-      <p class="type-body">{g.review}</p>
+      <SectionHeader index={next()} title={g.review ? 'REVIEW' : 'RECORD'} />
+      {g.review && <p class="type-body">{g.review}</p>}
       <SpecList
         items={[
           { label: 'PLATFORM', value: g.platform },
           { label: 'YEAR', value: String(g.year) },
           { label: 'PROGRESS', value: `${g.progress}%` },
+          { label: 'TROPHIES', value: trophyLine },
+          { label: 'PLATINUM', value: g.platinum ? 'YES' : '' },
+          { label: 'PLAYTIME', value: playtime },
+          { label: 'LAST PLAYED', value: g.lastPlayedOn ?? '' },
           { label: 'RATING', value: rating },
           { label: 'STATUS', value: g.playStatus.replace('-', ' ').toUpperCase() },
-        ]}
+        ].filter((item): item is { label: string; value: string } => Boolean(item.value))}
         columns={2}
       />
     </div>
@@ -78,7 +96,7 @@ const rating = g.rating === null || g.rating === undefined ? '—' : `${g.rating
   {
     g.screenshots.length > 1 && (
       <div class="mt-8 flex flex-col gap-3">
-        <SectionHeader index="02" title="SCREENSHOTS" />
+        <SectionHeader index={next()} title="SCREENSHOTS" />
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {g.screenshots.slice(1).map((src, i) => (
             <img

@@ -4,6 +4,7 @@ name: Sync content
 #
 #   builds  <- shinigamae.blogspot.com  (scripts/blog-sync.mjs)
 #   books   <- goodreads.com RSS        (scripts/goodreads-sync.mjs)
+#   games   <- PlayStation Network      (scripts/psn-sync.mjs)
 #
 # Both live in one workflow on purpose. As two workflows on the same schedule
 # they would each check out main, each commit, and the second push would fail
@@ -58,6 +59,15 @@ jobs:
         continue-on-error: true
         run: npm run books:sync
 
+      # Same treatment: the npsso credential expires roughly every two months,
+      # and that must not take the other two sources down with it.
+      - name: Sync gaming log from PSN
+        id: games
+        continue-on-error: true
+        env:
+          PSN_NPSSO: ${{ secrets.PSN_NPSSO }}
+        run: npm run games:sync
+
       # Guards the commit: an entry that defeats a parser should fail here
       # rather than land broken on main.
       - name: Check
@@ -82,13 +92,18 @@ jobs:
           echo "changed=true" >> "$GITHUB_OUTPUT"
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      # Surfaces a failed books sync after the builds changes are safely
-      # committed, so the run is still marked red and you go and look.
-      - name: Report Goodreads failure
-        if: steps.books.outcome == 'failure'
+      # Surfaces a failed sync after the other sources are safely committed,
+      # so the run is still marked red and you go and look.
+      - name: Report source failures
+        if: steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
         run: |
-          echo "::error::Goodreads sync failed — see the step above. The build" \
-               "archive still synced and deployed."
+          if [ "${{ steps.books.outcome }}" = "failure" ]; then
+            echo "::error::Goodreads sync failed - is the shelf still public?"
+          fi
+          if [ "${{ steps.games.outcome }}" = "failure" ]; then
+            echo "::error::PSN sync failed - the npsso token expires about every two months. Refresh the PSN_NPSSO secret."
+          fi
+          echo "Whatever did sync has still been committed and deployed."
           exit 1
 
   # Publishing is deploy.yml's job, not a second copy of it here.
