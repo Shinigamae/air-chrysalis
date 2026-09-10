@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import GameGrid from '@/components/ui/GameGrid.astro';
+import { entryFor, withBase } from '@/config/site';
+import {
+  PAGE_SIZE,
+  PLAY_KEYS,
+  PLAY_LABELS,
+  byRecency,
+  facetsFor,
+  type Game,
+  type PlayStatus,
+} from '@/config/games';
+
+/**
+ * One paginated route per play status, so the facet rail on /games links to
+ * real pages instead of hiding cards in the browser. A client-side filter
+ * cannot tell the truth here: the grid is paginated, so "FINISHED / 100"
+ * would reveal only the handful that happen to sit on the current page.
+ *
+ * Nested under /status/ rather than /games/<facet> so a facet name can never
+ * be confused with a page number by the router.
+ */
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = (await getCollection('games')).sort(byRecency);
+  const current = all.find((game) => game.data.current);
+  const rest = all.filter((game) => game !== current);
+
+  return PLAY_KEYS.flatMap((facet) => {
+    const matching = rest.filter((game) => game.data.playStatus === facet);
+    // Astro would still generate an empty page; the rail hides these anyway.
+    if (matching.length === 0) return [];
+    return paginate(matching, {
+      pageSize: PAGE_SIZE,
+      params: { facet },
+      props: { facet, rest },
+    });
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Game>;
+  facet: PlayStatus;
+  rest: Game[];
+}
+
+const { page, facet, rest }: Props = Astro.props;
+const entry = entryFor('/games')!;
+const label = PLAY_LABELS[facet];
+---
+
+<AppShell
+  title={`${entry.label} — ${label}`}
+  topBarMeta={`${label} / ${String(page.total).padStart(3, '0')}`}
+>
+  <PageHeader
+    eyebrow={`${entry.index} / ${entry.context}`}
+    title={entry.label}
+    summary={entry.summary}
+  />
+
+  <GameGrid
+    page={page}
+    index="01"
+    title={
+      page.lastPage > 1
+        ? `${label} / PAGE ${page.currentPage} OF ${page.lastPage}`
+        : `${label} / ${String(page.total).padStart(2, '0')} ITEMS`
+    }
+    facets={facetsFor(rest, facet)}
+  />
+
+  <a
+    href={withBase('/games')}
+    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+  >
+    ← ALL GAMES
+  </a>
+</AppShell>

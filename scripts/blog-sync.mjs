@@ -217,7 +217,10 @@ function toEntry(post, ordinal) {
   const published = post.published.$t;
 
   return {
-    slug: slugify(name || rawTitle),
+    // The `post-` fallback is insurance: a title with no Latin characters
+    // slugifies to nothing, and an empty slug writes a hidden file with no
+    // reachable route rather than failing.
+    slug: slugify(name || rawTitle) || `post-${post.id?.$t?.split('.').pop() ?? Date.now()}`,
     data: {
       title: name.toUpperCase(),
       grade: grade ?? (tags.includes('metal build') ? 'METAL BUILD' : undefined),

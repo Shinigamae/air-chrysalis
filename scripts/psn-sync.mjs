@@ -94,8 +94,20 @@ function readNpsso() {
  * Shaping
  * ------------------------------------------------------------------ */
 
-/** Trademark furniture. PSN titles are full of it; the site is not. */
-const stripMarks = (text) => text.replace(/[™®©]/g, '').replace(/\s+/g, ' ').trim();
+/**
+ * Trademark furniture, and the name of the thing being described.
+ *
+ * A trophy set is not always named after the game: PSN carries "Catherine
+ * Trophy", "TITANFALL 2 Trophies", "EA SPORTS FC 26 Trophies". The suffix is
+ * an artefact of the endpoint, not part of the title, so it goes — but only
+ * as a suffix, so a game genuinely called "Trophy" something survives.
+ */
+const stripMarks = (text) =>
+  text
+    .replace(/[™®©]/g, '')
+    .replace(/\s+(?:trophy|trophies)(?:\s+set)?\s*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 
 function slugify(text) {
   return stripMarks(text)
@@ -294,7 +306,11 @@ async function main() {
     const platinum = (title.earnedTrophies?.platinum ?? 0) > 0;
     const isCurrent = title === mostRecent && daysSince(lastPlayed) <= ACTIVE_DAYS;
 
-    let slug = slugify(name);
+    // A title with no Latin characters at all — 明末：渊虚之羽, say — slugifies
+    // to nothing, which wrote a hidden `.json` file and left the game with no
+    // reachable detail route. Fall back to the trophy-set id: opaque in the
+    // URL, but unique, stable across syncs, and it exists.
+    let slug = slugify(name) || `game-${title.npCommunicationId.toLowerCase()}`;
     if (bySlug.has(slug)) slug = `${slug}-${slugify(title.trophyTitlePlatform)}`;
 
     bySlug.set(slug, {

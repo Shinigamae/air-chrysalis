@@ -8,6 +8,7 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusLabel from '@/components/ui/StatusLabel.astro';
 import ReadingTimeline from '@/components/ui/ReadingTimeline.astro';
+import Pager from '@/components/ui/Pager.astro';
 import { entryFor, withBase } from '@/config/site';
 
 /**
@@ -172,38 +173,5 @@ const timelineItems = dated
     </div>
   </section>
 
-  {
-    page.lastPage > 1 && (
-      <nav
-        class="mt-8 flex items-center justify-between gap-2"
-        aria-label="Reading log pages"
-      >
-        {page.url.prev ? (
-          <a
-            href={page.url.prev}
-            class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
-          >
-            ← NEWER
-          </a>
-        ) : (
-          <span class="type-micro opacity-40">← NEWER</span>
-        )}
-
-        <span class="type-meta">
-          {String(page.currentPage).padStart(2, '0')} / {String(page.lastPage).padStart(2, '0')}
-        </span>
-
-        {page.url.next ? (
-          <a
-            href={page.url.next}
-            class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
-          >
-            OLDER →
-          </a>
-        ) : (
-          <span class="type-micro opacity-40">OLDER →</span>
-        )}
-      </nav>
-    )
-  }
+  <Pager page={page} label="Reading log pages" />
 </AppShell>

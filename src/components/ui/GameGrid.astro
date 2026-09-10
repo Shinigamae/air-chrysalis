@@ -1,0 +1,70 @@
+---
+import type { Page } from 'astro';
+import EditorialCard from '@/components/ui/EditorialCard.astro';
+import FilterControl from '@/components/ui/FilterControl.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import Pager from '@/components/ui/Pager.astro';
+import { imageOf, metaOf, type Game } from '@/config/games';
+import { withBase } from '@/config/site';
+
+/**
+ * The paginated card grid shared by /games and /games/status/<key>, with the
+ * facet rail above it. Both routes render the same thing over a different
+ * slice, so it lives here rather than being written twice.
+ */
+interface Props {
+  page: Page<Game>;
+  index: string;
+  title: string;
+  facets: readonly {
+    key: string;
+    label: string;
+    href: string;
+    active: boolean;
+  }[];
+}
+
+const { page, index, title, facets }: Props = Astro.props;
+---
+
+<section class="mt-8 flex flex-col gap-3">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <SectionHeader index={index} title={title} />
+    {
+      facets.length > 1 && (
+        <nav
+          class="flex flex-wrap items-center gap-1"
+          aria-label="Filter games by play status"
+        >
+          {facets.map((facet) => (
+            <a href={facet.href} aria-current={facet.active ? 'page' : undefined}>
+              <FilterControl label={facet.label} active={facet.active} />
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      page.data.map((game) => (
+        <EditorialCard
+          kicker={`PLAY / ${game.data.year}`}
+          title={game.data.title}
+          subtitle={game.data.platform}
+          summary={game.data.review}
+          meta={metaOf(game)}
+          status={game.data.status}
+          href={withBase(`/games/${game.id}`)}
+          action="REVIEW →"
+          mediaLabel="SCREENSHOTS"
+          image={imageOf(game)}
+          imageAlt={imageOf(game) ? game.data.title : ''}
+        />
+      ))
+    }
+  </div>
+
+  <Pager page={page} label="Gaming log pages" />
+</section>

@@ -19,5 +19,26 @@
     "               bursts. Set \"in-progress\" or \"backlog\" where it is wrong.",
     "",
     "`npm run games:check` writes nothing and lists what would change."
-  ]
+  ],
+
+  "//seed": [
+    "These two carried hand-written copy before the import existed, and the",
+    "first sync overwrote it — generated files are disposable, which is the",
+    "whole reason this file exists. Moved here, they survive every sync.",
+    "They also stand as the worked example of what an override looks like."
+  ],
+  "elden-ring": {
+    "rating": 9.5,
+    "review": "Still the benchmark for rewarding curiosity instead of punishing it.",
+    "screenshots": ["/images/games/elden-ring-01.jpg"]
+  },
+  "where-winds-meet": {
+    "rating": 8.5,
+    "review": "The traversal is the best part — it makes a large map feel hand-placed rather than generated. Combat takes about ten hours to click, and then it does not let go.",
+    "screenshots": [
+      "/images/games/where-winds-meet-01.jpg",
+      "/images/games/where-winds-meet-02.jpg",
+      "/images/games/where-winds-meet-03.jpg"
+    ]
+  }
 }

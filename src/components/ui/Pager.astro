@@ -1,0 +1,49 @@
+---
+import type { Page } from 'astro';
+
+/**
+ * Previous/next pager for a paginated index. Renders nothing at one page.
+ *
+ * The ends are inert spans rather than absent, so the row does not reflow
+ * between pages, and the position readout stays where the eye expects it.
+ */
+interface Props {
+  page: Page<unknown>;
+  label: string;
+  /** Wording for the two directions — reading and playing both go backwards. */
+  newer?: string;
+  older?: string;
+}
+
+const { page, label, newer = '← NEWER', older = 'OLDER →' }: Props = Astro.props;
+
+const LINK =
+  'type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80';
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+{
+  page.lastPage > 1 && (
+    <nav class="mt-3 flex items-center justify-between gap-2" aria-label={label}>
+      {page.url.prev ? (
+        <a href={page.url.prev} class={LINK}>
+          {newer}
+        </a>
+      ) : (
+        <span class="type-micro opacity-40">{newer}</span>
+      )}
+
+      <span class="type-meta">
+        {pad(page.currentPage)} / {pad(page.lastPage)}
+      </span>
+
+      {page.url.next ? (
+        <a href={page.url.next} class={LINK}>
+          {older}
+        </a>
+      ) : (
+        <span class="type-micro opacity-40">{older}</span>
+      )}
+    </nav>
+  )
+}
