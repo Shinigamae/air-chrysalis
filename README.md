@@ -29,6 +29,9 @@ npm run preview  # serve dist/
 npm run check    # astro check (types + template diagnostics)
 npm run blog:check   # report what a build-archive sync would change
 npm run blog:sync    # import the build archive from Blogspot (see below)
+npm run books:check  # report what a reading-log sync would change
+npm run books:sync   # import the reading log from Goodreads (see below)
+npm run content:sync # both of the above
 npm run figma:check  # report Figma/code drift (see below)
 ```
 
@@ -49,23 +52,23 @@ Figma "03 — Content Systems":
 
 ```
 src/content/
-  builds/<slug>.json     one file per build (glob loader) — they grow indefinitely
+  builds/<slug>.json     one file per build  — generated, see below
+  books/<slug>.json      one file per book   — generated, see below
   games/games.json       single array (file loader)
-  books/books.json       single array
   projects/projects.json single array
 ```
 
 `astro check` validates every entry against its schema, so a malformed field
 fails the build rather than rendering blank.
 
-**`builds/` is generated — do not hand-edit it.** See below.
+**`builds/` and `books/` are generated — do not hand-edit them.** See below.
 
 These schemas are also the contract a future .NET API has to satisfy, which is
 why they are explicit rather than loose. Ordering is explicit too — `builds`
 sort by `index` and `projects` by `order`, because sorting by year alone left
 same-year entries in arbitrary alphabetical order.
 
-Entries in `games/`, `books/` and `projects/` are still **seed data** — real
+Entries in `games/` and `projects/` are still **seed data** — real
 examples where the design supplied them (Where Winds Meet) and plausible
 placeholders elsewhere. Replace them; nothing in the code depends on them.
 
@@ -117,6 +120,48 @@ imports, just with more to fill in by hand.
 Photos are **hotlinked** from Google's CDN rather than downloaded, so the repo
 stays small — at the cost of depending on those URLs surviving. If that becomes
 a problem, the fix is a download step in `blog-sync.mjs`, not a schema change.
+
+## The reading log comes from Goodreads
+
+`src/content/books/*.json` is generated from the Goodreads per-shelf RSS feed
+by `npm run books:sync`, and committed. Corrections go in
+`src/content/books-overrides.json`, keyed by slug, exactly as for builds.
+
+Goodreads **retired their API** — no keys since December 2020 — but the RSS
+feed survives and carries more than the old API's review call: cover art, page
+count, publication year, community rating, and the review text. Two shelves are
+read, `currently-reading` (which sets `current` and `status: live`) and `read`.
+
+### The shelf has to be public
+
+A private shelf answers every request with `401 Sorry, that person's shelf is
+private`, and the sync stops with that message rather than a stack trace.
+Make it public under **Settings → Privacy** on goodreads.com.
+
+### What the importer derives
+
+| Field | From |
+| --- | --- |
+| `title`, `author` | `title`, `author_name` |
+| `rating` | `user_rating`, with Goodreads' `0` read as unrated |
+| `thought`, `review` | `user_review`, lead paragraph and the rest |
+| `finishedOn`, `addedOn` | `user_read_at`, `user_date_added` |
+| `cover` | `book_large_image_url`, hotlinked |
+| `pages`, `published`, `averageRating`, `isbn` | the book record |
+| `goodreadsUrl`, `shelves` | review permalink, `user_shelves` |
+
+Two gaps are normal rather than errors. About **half** of a typical shelf is
+rated but never reviewed, so `thought` is often empty and nothing may assume
+it. And a large share carries no `user_read_at` at all — those sort by
+`addedOn` and stay off the reading timeline, which is what the sync's closing
+summary counts for you.
+
+The index is **paginated at 48 a page**. Unpaginated, a few hundred books
+rendered close to a megabyte of HTML on one route. The feature slot and the
+timeline stay on page one; `/books/2` onward is just the grid.
+
+`rss.xml` is capped at the 50 newest entries across all four collections, for
+the same reason.
 
 ## Following Figma over time
 

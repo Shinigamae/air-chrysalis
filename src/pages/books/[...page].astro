@@ -1,4 +1,6 @@
 ---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
@@ -15,20 +17,53 @@ import { entryFor, withBase } from '@/config/site';
  * The design is explicit that a short personal thought replaces a generic
  * review score, so the thought is the prominent text and the rating is
  * relegated to metadata.
+ *
+ * Paginated because the shelf is imported wholesale from Goodreads and runs
+ * to hundreds of entries: as one page it rendered close to a megabyte of HTML
+ * and several hundred cover images, and it only grows. The feature slot and
+ * the timeline belong to the reading year, so they stay on the first page.
  */
-const entry = entryFor(Astro.url.pathname)!;
 
-const books = (await getCollection('books')).sort((a, b) =>
-  (b.data.finishedOn ?? '').localeCompare(a.data.finishedOn ?? ''),
-);
-const current = books.find((book) => book.data.current);
-const rest = books.filter((book) => book !== current);
+export const getStaticPaths = (async ({ paginate }) => {
+  // Defined in here, not at module scope: Astro hoists getStaticPaths into a
+  // scope of its own, where anything declared alongside it is out of reach.
+  //
+  // Newest first. Roughly a third of a Goodreads shelf carries no finish
+  // date, so `addedOn` is the fallback key — without it those books would all
+  // collapse to the bottom in arbitrary order.
+  const sortKey = (book: CollectionEntry<'books'>) =>
+    book.data.finishedOn ?? book.data.addedOn ?? '';
+
+  const all = (await getCollection('books')).sort((a, b) =>
+    sortKey(b).localeCompare(sortKey(a)),
+  );
+  // Everything on the "currently reading" shelf is `current`; the feature
+  // slot takes the most recent and the others fall through to the grid.
+  const current = all.find((book) => book.data.current);
+  const rest = all.filter((book) => book !== current);
+
+  return paginate(rest, {
+    pageSize: 48,
+    props: { current, total: all.length, all },
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<CollectionEntry<'books'>>;
+  current?: CollectionEntry<'books'>;
+  total: number;
+  all: CollectionEntry<'books'>[];
+}
+
+const { page, current, total, all }: Props = Astro.props;
+const entry = entryFor(Astro.url.pathname)!;
+const first = page.currentPage === 1;
 
 const ratingOf = (rating: number | null | undefined) =>
   rating === null || rating === undefined ? '—' : `${rating} / 5`;
 
 /** The timeline shows the most recent year we have finish dates for. */
-const dated = books.filter((book) => Boolean(book.data.finishedOn));
+const dated = all.filter((book) => Boolean(book.data.finishedOn));
 const latestYear = dated.length
   ? Math.max(...dated.map((book) => new Date(book.data.finishedOn!).getUTCFullYear()))
   : new Date().getUTCFullYear();
@@ -37,7 +72,8 @@ const timelineItems = dated
   .map((book) => ({ title: book.data.title, finishedOn: book.data.finishedOn! }));
 ---
 
-<AppShell topBarMeta={`INDEX / ${String(books.length).padStart(3, '0')}`}>
+
+<AppShell topBarMeta={`INDEX / ${String(total).padStart(3, '0')}`}>
   <PageHeader
     eyebrow={`${entry.index} / ${entry.context}`}
     title={entry.label}
@@ -45,7 +81,7 @@ const timelineItems = dated
   />
 
   {
-    current && (
+    first && current && (
       <section class="mt-8 flex flex-col gap-3">
         <SectionHeader index="01" title="CURRENT BOOK" />
 
@@ -83,7 +119,11 @@ const timelineItems = dated
               {current.data.source} · RATING {ratingOf(current.data.rating)}
             </p>
 
-            <p class="type-body">{current.data.thought}</p>
+            {current.data.thought ? (
+              <p class="type-body">{current.data.thought}</p>
+            ) : (
+              <p class="type-fine">No thoughts written down yet.</p>
+            )}
           </div>
         </div>
       </section>
@@ -91,7 +131,7 @@ const timelineItems = dated
   }
 
   {
-    timelineItems.length > 0 && (
+    first && timelineItems.length > 0 && (
       <section class="mt-8 flex flex-col gap-3">
         <SectionHeader index={current ? '02' : '01'} title="READING TIMELINE" />
         <div class="rounded-standard border border-line bg-panel p-3">
@@ -103,12 +143,16 @@ const timelineItems = dated
 
   <section class="mt-8 flex flex-col gap-3">
     <SectionHeader
-      index={current ? '03' : '02'}
-      title={`RECENTLY READ / ${String(rest.length).padStart(2, '0')} ITEMS`}
+      index={first ? (current ? '03' : '02') : '01'}
+      title={
+        first
+          ? `RECENTLY READ / ${String(page.total).padStart(3, '0')} ITEMS`
+          : `READING LOG / PAGE ${page.currentPage} OF ${page.lastPage}`
+      }
     />
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {
-        rest.map((book) => (
+        page.data.map((book) => (
           <EditorialCard
             kicker={`READ / ${book.data.finishedOn?.slice(0, 4) ?? '—'}`}
             title={book.data.title}
@@ -127,4 +171,39 @@ const timelineItems = dated
       }
     </div>
   </section>
+
+  {
+    page.lastPage > 1 && (
+      <nav
+        class="mt-8 flex items-center justify-between gap-2"
+        aria-label="Reading log pages"
+      >
+        {page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+          >
+            ← NEWER
+          </a>
+        ) : (
+          <span class="type-micro opacity-40">← NEWER</span>
+        )}
+
+        <span class="type-meta">
+          {String(page.currentPage).padStart(2, '0')} / {String(page.lastPage).padStart(2, '0')}
+        </span>
+
+        {page.url.next ? (
+          <a
+            href={page.url.next}
+            class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+          >
+            OLDER →
+          </a>
+        ) : (
+          <span class="type-micro opacity-40">OLDER →</span>
+        )}
+      </nav>
+    )
+  }
 </AppShell>

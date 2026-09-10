@@ -14,6 +14,9 @@ import { site, withBase } from '@/config/site';
  * year. That keeps ordering sensible without inventing false precision.
  */
 
+/** How many of the newest entries the feed carries, across all collections. */
+const MAX_ITEMS = 50;
+
 /** '2026-08-14' | '2026-08' | 2026 -> a Date, or undefined if unusable. */
 function toDate(value: string | number | undefined | null): Date | undefined {
   if (value === undefined || value === null) return undefined;
@@ -57,7 +60,12 @@ export async function GET(context: APIContext) {
     })),
     ...books.map((entry) => ({
       title: `READ / ${entry.data.title}`,
-      description: entry.data.thought,
+      // Roughly half a Goodreads shelf is rated but not reviewed.
+      description:
+        entry.data.thought ||
+        [entry.data.author, entry.data.rating ? `${entry.data.rating}/5` : null]
+          .filter(Boolean)
+          .join(' · '),
       link: withBase(`/books/${entry.id}`),
       pubDate: toDate(entry.data.finishedOn),
       categories: ['books'],
@@ -71,7 +79,11 @@ export async function GET(context: APIContext) {
     })),
   ]
     // Undated entries sort last rather than being dropped.
-    .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0));
+    .sort((a, b) => (b.pubDate?.getTime() ?? 0) - (a.pubDate?.getTime() ?? 0))
+    // The reading log alone runs to hundreds of imported entries, which would
+    // make the feed megabytes of mostly-ancient history. A feed is a "what's
+    // new" surface; the site is the archive.
+    .slice(0, MAX_ITEMS);
 
   // `context.site` is the bare origin, so the base has to be folded in or the
   // channel link points at a 404 while the item links are correct.

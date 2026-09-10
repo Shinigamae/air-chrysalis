@@ -86,22 +86,13 @@ feature slot. Moving that flag to another game moves the feature with it.
 
 ---
 
-## 4. Books — 4 covers
+## 4. Books — no images to replace
 
-Covers are **2 : 3** portrait. The current book shows at 180px wide, the entry
-page at 220px, and the "recently read" cards use a 3:4 plate.
+The READING LOG is generated from Goodreads by `npm run books:sync`, and cover
+art comes with it — `book_large_image_url`, hotlinked from `i.gr-assets.com`.
 
-| File | Size | Book |
-| --- | --- | --- |
-| `books/the-pragmatic-programmer-cover.jpg` | 800 × 1200 | The Pragmatic Programmer (current) |
-| `books/a-philosophy-of-software-design-cover.jpg` | 800 × 1200 | A Philosophy of Software Design |
-| `books/the-left-hand-of-darkness-cover.jpg` | 800 × 1200 | The Left Hand of Darkness |
-| `books/shape-up-cover.jpg` | 800 × 1200 | Shape Up |
-
-Book cards use `EditorialCard`'s **portrait** plate (3:4) rather than the
-default wide one, so a cover reads as a cover instead of a cropped band. A 2:3
-cover still loses about 11% top and bottom to `object-cover`; keep the title
-and author clear of the extreme edges.
+Nothing lives in `public/images/books/`. To change a cover, change the edition
+on Goodreads: the next sync picks it up.
 
 ---
 

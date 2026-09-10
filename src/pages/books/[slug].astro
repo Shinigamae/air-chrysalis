@@ -25,11 +25,14 @@ const { book } = Astro.props;
 const b = book.data;
 const rating = b.rating === null || b.rating === undefined ? '—' : `${b.rating} / 5`;
 const finished = b.finishedOn ?? '—';
+// A book with no finish date still has a shelved date, and the eyebrow is
+// better with an approximate year than with a dash.
+const year = (b.finishedOn ?? b.addedOn ?? '').slice(0, 4) || '—';
 ---
 
 <AppShell title={b.title} topBarMeta={`READ / ${finished.slice(0, 7)}`}>
   <PageHeader
-    eyebrow={`READ / ${finished.slice(0, 4)}`}
+    eyebrow={`READ / ${year}`}
     title={b.title}
     summary={b.author}
   />
@@ -56,30 +59,55 @@ const finished = b.finishedOn ?? '—';
     </div>
 
     <div class="flex flex-col gap-5">
-      <div class="flex flex-col gap-3">
-        <SectionHeader index="01" title="THOUGHT" />
-        <p class="type-body">{b.thought}</p>
-      </div>
+      {
+        b.thought && (
+          <div class="flex flex-col gap-3">
+            <SectionHeader index="01" title="THOUGHT" />
+            <p class="type-body">{b.thought}</p>
+            {b.review.map((para) => (
+              <p class="type-fine">{para}</p>
+            ))}
+          </div>
+        )
+      }
 
       <div class="flex flex-col gap-3">
-        <SectionHeader index="02" title="RECORD" />
+        <SectionHeader index={b.thought ? '02' : '01'} title="RECORD" />
         <SpecList
           items={[
             { label: 'AUTHOR', value: b.author },
             { label: 'SOURCE', value: b.source },
             { label: 'RATING', value: rating },
+            { label: 'AVERAGE', value: b.averageRating ? `${b.averageRating} / 5` : '' },
+            { label: 'PAGES', value: b.pages ? String(b.pages) : '' },
+            { label: 'PUBLISHED', value: b.published ? String(b.published) : '' },
             { label: 'FINISHED', value: finished },
             { label: 'STATUS', value: b.status.toUpperCase() },
-          ]}
+          ].filter((item): item is { label: string; value: string } => Boolean(item.value))}
         />
       </div>
     </div>
   </div>
 
-  <a
-    href={withBase('/books')}
-    class="type-micro mt-8 inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
-  >
-    ← READING LOG
-  </a>
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-2">
+    <a
+      href={withBase('/books')}
+      class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+    >
+      ← READING LOG
+    </a>
+
+    {
+      b.goodreadsUrl && (
+        <a
+          href={b.goodreadsUrl}
+          rel="noopener external"
+          target="_blank"
+          class="type-micro inline-block text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+        >
+          ON GOODREADS ↗
+        </a>
+      )
+    }
+  </div>
 </AppShell>

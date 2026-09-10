@@ -1,0 +1,20 @@
+{
+  "$comment": [
+    "Hand-maintained corrections layered over the Goodreads import, keyed by slug.",
+    "Any field of the books schema may appear here; it wins over the imported value.",
+    "",
+    "The Goodreads feed is accurate about the book and vague about the reading.",
+    "Two things it commonly gets wrong or omits:",
+    "",
+    "  finishedOn  Absent on a large share of the shelf, usually for books added",
+    "              before you started recording dates. Those sort by addedOn and",
+    "              stay off the reading timeline. Set it for any worth placing.",
+    "",
+    "  thought     Empty wherever a book was rated but not reviewed. The pages",
+    "              handle that; write one here if a book deserves a line.",
+    "",
+    "`npm run books:check` writes nothing and lists what would change.",
+    "",
+    "Slugs are title-and-author, e.g. \"the-left-hand-of-darkness-ursula-k-le-guin\"."
+  ]
+}

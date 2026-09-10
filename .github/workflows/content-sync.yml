@@ -1,0 +1,109 @@
+name: Sync content
+
+# Pulls the external feeds once a day and commits whatever changed:
+#
+#   builds  <- shinigamae.blogspot.com  (scripts/blog-sync.mjs)
+#   books   <- goodreads.com RSS        (scripts/goodreads-sync.mjs)
+#
+# Both live in one workflow on purpose. As two workflows on the same schedule
+# they would each check out main, each commit, and the second push would fail
+# on a non-fast-forward — and on the runs where it did not, they would deploy
+# the site twice for one day's changes.
+#
+# Nothing here is destructive by design: each sync refuses to run if its feed
+# comes back empty, and the commit only happens after `astro check` validates
+# every entry against its schema.
+
+on:
+  schedule:
+    # 03:00 UTC — 10:00 in Ho Chi Minh City, so a morning post is live by the
+    # next working day without waiting on a manual run.
+    - cron: '0 3 * * *'
+  # Lets you pull a post in immediately instead of waiting for the schedule.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# One sync at a time. Two runs committing the same generated files would
+# conflict, and the later push would fail on a stale ref.
+concurrency:
+  group: content-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync build archive from Blogspot
+        run: npm run blog:sync
+
+      # Not `continue-on-error`: a shelf turning private should be loud. But
+      # it must not discard a successful builds sync, so it runs second and
+      # the commit step below is reached either way.
+      - name: Sync reading log from Goodreads
+        id: books
+        continue-on-error: true
+        run: npm run books:sync
+
+      # Guards the commit: an entry that defeats a parser should fail here
+      # rather than land broken on main.
+      - name: Check
+        run: npm run check
+
+      - name: Commit
+        id: commit
+        run: |
+          # Staged first: a new entry arrives as an untracked file, which a
+          # plain `git diff` would not report.
+          git add src/content
+          if git diff --cached --quiet -- src/content; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No change — the feeds match the site."
+            exit 0
+          fi
+
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Sync content from Blogspot and Goodreads'
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # Surfaces a failed books sync after the builds changes are safely
+      # committed, so the run is still marked red and you go and look.
+      - name: Report Goodreads failure
+        if: steps.books.outcome == 'failure'
+        run: |
+          echo "::error::Goodreads sync failed — see the step above. The build" \
+               "archive still synced and deployed."
+          exit 1
+
+  # Publishing is deploy.yml's job, not a second copy of it here.
+  deploy:
+    needs: sync
+    # `always()` so that a failed Goodreads sync still publishes whatever the
+    # builds sync committed. Without it a private shelf would quietly hold
+    # back every new blog post until someone noticed the red run.
+    if: always() && needs.sync.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
+    with:
+      # Without this the deploy checks out the SHA that started this run —
+      # the state before the sync commit above.
+      ref: ${{ needs.sync.outputs.sha }}
