@@ -25,6 +25,12 @@
   "thunderbolt-2-0-03m-mobulidae-devil-fish": { "scale": "NON-SCALE", "series": "Thunderbolt" },
   "horizons-thunderjaw": { "scale": "NON-SCALE" },
 
+  "//collab": [
+    "A collaboration title puts both names in the first segment. Animester is",
+    "the maker; the IP is already carried by `series`."
+  ],
+  "sun-shang-xiang-the-doom-mecha": { "manufacturer": "Animester" },
+
   "tc-03-star-fall": { "series": "Star Series" },
   "tc-02-star-eternal": { "series": "Star Series" },
 

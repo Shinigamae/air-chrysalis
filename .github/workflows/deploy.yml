@@ -13,6 +13,15 @@ on:
   # not trigger other workflows, so the daily sync would otherwise commit new
   # builds and never publish them.
   workflow_call:
+    inputs:
+      ref:
+        description: >-
+          Commit to build. A called workflow checks out the SHA that started
+          the run, which for blog-sync is the state *before* its own sync
+          commit — without this the deploy publishes one run behind.
+        type: string
+        required: false
+        default: ''
 
 # Pages needs these; the default token has neither.
 permissions:
@@ -31,6 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Empty means "the ref that triggered this run", which is what the
+          # push and workflow_dispatch triggers want.
+          ref: ${{ inputs.ref || github.sha }}
 
       - uses: actions/setup-node@v7
         with:

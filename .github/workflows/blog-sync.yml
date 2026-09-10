@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v7
 
@@ -65,6 +66,7 @@ jobs:
           git commit -m 'Sync build archive from Blogspot'
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   # Publishing is deploy.yml's job, not a second copy of it here.
   deploy:
@@ -75,3 +77,7 @@ jobs:
       pages: write
       id-token: write
     uses: ./.github/workflows/deploy.yml
+    with:
+      # Without this the deploy checks out the SHA that started this run —
+      # the state before the sync commit above.
+      ref: ${{ needs.sync.outputs.sha }}
