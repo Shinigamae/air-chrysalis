@@ -1,4 +1,4 @@
-import { navigation } from './site';
+import { navigation } from "./site";
 
 /*
  * Card art is imported, not referenced by path, so it goes through
@@ -6,10 +6,10 @@ import { navigation } from './site';
  * serves a srcset. The originals live in src/assets/home/ for that reason —
  * anything in public/ is copied out byte for byte. See IMAGES.md.
  */
-import buildArchiveImage from '@/assets/home/build-archive.jpg';
-import gamingLogImage from '@/assets/home/gaming-log.jpg';
-import readingLogImage from '@/assets/home/reading-log.jpg';
-import workshopImage from '@/assets/home/workshop.jpg';
+import buildArchiveImage from "@/assets/home/build-archive.jpg";
+import gamingLogImage from "@/assets/home/gaming-log.jpg";
+import readingLogImage from "@/assets/home/reading-log.jpg";
+import workshopImage from "@/assets/home/workshop.jpg";
 
 /**
  * Homepage content — Figma "02 — Homepage" (4:3).
@@ -29,13 +29,22 @@ function summaryFor(href: string): string {
   return entry.summary;
 }
 
+/**
+ * The hero's stacked lines are not written here.
+ *
+ * They were — `['CODE.', 'BUILD.', 'PLAY.', 'READ.']` — and they were the
+ * same four words as the kickers on the four cards below them, typed a
+ * second time. The page now builds them from `selectedWork.cards`, which
+ * makes the repetition the point: each word links to the section whose card
+ * carries it, and hovering either half lights up both. Two lists could
+ * disagree about what the four things are. One cannot.
+ */
 export const hero = {
-  eyebrow: '01 / HELLO',
-  /** Rendered as stacked lines, one per array entry (Figma 4:50-4:53). */
-  lines: ['CODE.', 'BUILD.', 'PLAY.', 'READ.'] as const,
-  lead: 'Engineer by trade. The rest is to recreate.',
+  eyebrow: "01 / HELLO",
+  lead: "Engineer by trade. The rest is to recreate.",
   /** Reads directly off the four words stacked beside it. */
-  intro: 'One of these pays the bills. The other three explain where the evenings went.',
+  intro:
+    "One of these pays the bills. The other three explain where the evenings went.",
 } as const;
 
 export interface StatusItem {
@@ -53,53 +62,59 @@ export interface StatusItem {
  * intentions, and no feed can tell you what you mean to do next.
  */
 export const currentStatus = {
-  label: 'CURRENT STATUS',
-  headline: 'WORKSHOP / ONLINE',
-  building: { label: 'BUILDING', value: 'Personal website' } satisfies StatusItem,
-  nextBuild: { label: 'NEXT BUILD', value: 'Qubeley Mk. II' } satisfies StatusItem,
+  label: "CURRENT STATUS",
+  headline: "WORKSHOP / ONLINE",
+  building: {
+    label: "BUILDING",
+    value: "Personal website",
+  } satisfies StatusItem,
+  nextBuild: {
+    label: "NEXT BUILD",
+    value: "Qubeley Mk. II",
+  } satisfies StatusItem,
   /** Shown when nothing on a shelf is marked current. */
-  idle: '—',
+  idle: "—",
 } as const;
 
 export const selectedWork = {
-  eyebrow: '02 / SELECTED WORK',
-  title: 'A FEW THINGS I MAKE',
-  summary: 'Not a résumé. A record of where the time goes.',
+  eyebrow: "02 / SELECTED WORK",
+  title: "A FEW THINGS I MAKE",
+  summary: "Not a résumé. A record of where the time goes.",
   cards: [
     {
-      kicker: 'CODE',
-      title: 'WORKSHOP',
-      subtitle: 'Software / Projects',
-      href: '/workshop',
-      summary: summaryFor('/workshop'),
+      kicker: "CODE",
+      title: "WORKSHOP",
+      subtitle: "Software / Projects",
+      href: "/workshop",
+      summary: summaryFor("/workshop"),
       image: workshopImage,
     },
     {
-      kicker: 'BUILD',
-      title: 'BUILD ARCHIVE',
-      subtitle: 'Gunpla / Models',
-      href: '/builds',
-      summary: summaryFor('/builds'),
+      kicker: "BUILD",
+      title: "BUILD ARCHIVE",
+      subtitle: "Gunpla / Models",
+      href: "/builds",
+      summary: summaryFor("/builds"),
       image: buildArchiveImage,
     },
     {
-      kicker: 'PLAY',
-      title: 'GAMING LOG',
-      subtitle: 'PlayStation / Games',
-      href: '/games',
-      summary: summaryFor('/games'),
+      kicker: "PLAY",
+      title: "GAMING LOG",
+      subtitle: "PlayStation / Games",
+      href: "/games",
+      summary: summaryFor("/games"),
       image: gamingLogImage,
     },
     {
-      kicker: 'READ',
-      title: 'READING LOG',
-      subtitle: 'Books / Goodreads',
-      href: '/books',
-      summary: summaryFor('/books'),
+      kicker: "READ",
+      title: "READING LOG",
+      subtitle: "Books / Goodreads",
+      href: "/books",
+      summary: summaryFor("/books"),
       image: readingLogImage,
     },
   ],
 } as const;
 
 /** The affordance text on every homepage card. */
-export const cardAction = 'VIEW →';
+export const cardAction = "VIEW →";

@@ -33,6 +33,68 @@ const reading = books
 
 // Order matters: the panel fills down each column before moving across, so
 // this is BUILDING / PLAYING, then READING / NEXT BUILD.
+/**
+ * The hero words and the cards are one list read twice.
+ *
+ * `key` is what ties a word to its card: it goes on both, and the CSS below
+ * matches them on it. Derived from the kicker rather than hand-assigned, so
+ * there is no third place to keep in step.
+ */
+const pairs = selectedWork.cards.map((card) => ({
+  key: card.kicker.toLowerCase(),
+  word: `${card.kicker}.`,
+  href: withBase(card.href),
+  label: card.title,
+}));
+
+/**
+ * The pairing rules, one set per word, written from the same list.
+ *
+ * Generated rather than hand-typed because there is a rule per key and a
+ * fifth section would otherwise ship with a word that lights nothing. The
+ * selectors reach into EditorialCard's root element, which is why the block
+ * is global — every rule is contained under `[data-pairing]`, which exists
+ * on this page and nowhere else.
+ *
+ * `:focus-within` rather than `:focus-visible` on the pair: the card's link
+ * is a child of the element carrying the key, so the card half only ever
+ * matches within. A keyboard tab through the hero lights the card, and a tab
+ * through the cards lights the word.
+ */
+const active = (key: string) =>
+  `[data-pairing]:has([data-pair='${key}']:is(:hover, :focus-within))`;
+
+/*
+ * Both halves of the effect live in this one sheet, and that is not
+ * incidental. The dim started life in a scoped `<style>`, where Astro added
+ * its own attribute to the selector - which outran the rule meant to light
+ * the active word, and left the word you were pointing at the only dim one
+ * on the page. Same sheet, same scoping, and specificity decides it the way
+ * it reads.
+ *
+ * The dim is opacity rather than a colour change, so the three words that
+ * step back stay the same ink and only recede. 0.45 keeps them legible: a
+ * reader who brushes one word by accident should not lose the other three.
+ */
+const pairingCss = [
+  `[data-pairing]:has([data-pair]:is(:hover, :focus-within)) [data-hero-word] {
+        opacity: 0.45;
+      }`,
+]
+  .concat(
+    pairs.map(
+      ({ key }) => `
+      ${active(key)} [data-hero-word][data-pair='${key}'] {
+        opacity: 1;
+        color: var(--color-signal);
+      }
+      ${active(key)} [data-pair='${key}'] article {
+        border-color: var(--color-signal);
+      }`,
+    ),
+  )
+  .join('\n');
+
 const statusItems: StatusItem[] = [
   currentStatus.building,
   { label: 'PLAYING', value: playing?.data.title ?? currentStatus.idle },
@@ -42,59 +104,83 @@ const statusItems: StatusItem[] = [
 ---
 
 <AppShell showTopBar={false}>
-  {/* --- Hero (4:48) ------------------------------------------------- */}
-  <section
-    class="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,570px)] lg:gap-8"
-  >
-    <div>
-      <p class="type-meta text-signal">{hero.eyebrow}</p>
-      <h1 class="type-hero mt-2">
+  {/*
+    The hero and the cards, in one region so `:has()` can see across them.
+    A plain wrapper: it sets no layout of its own, it only gives the pairing
+    rules something to be scoped by.
+  */}
+  <div data-pairing>
+    {/* --- Hero (4:48) ------------------------------------------------- */}
+    <section
+      class="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,570px)] lg:gap-8"
+    >
+      <div>
+        <p class="type-meta text-signal">{hero.eyebrow}</p>
+        {/*
+          Each word is the door to its own section. The accessible name says
+          which one — "CODE." alone tells a screen reader nothing about where
+          it goes, and the visible word is the wrong place to explain it.
+        */}
+        <h1 class="type-hero mt-2">
+          {
+            pairs.map(({ key, word, href, label }) => (
+              <a
+                href={href}
+                data-pair={key}
+                data-hero-word
+                aria-label={`${word} ${label}`}
+                class="block w-fit no-underline transition-[color,opacity] duration-[var(--duration-base)] ease-[var(--ease-technical)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
+              >
+                {word}
+              </a>
+            ))
+          }
+        </h1>
+      </div>
+
+      {/* Offset down to meet the first hero line, as in the frame (4:54 at y=196). */}
+      <div class="flex flex-col gap-2 lg:mt-8">
+        <p class="type-lead">{hero.lead}</p>
+        <p class="type-body">{hero.intro}</p>
+        <div class="mt-3">
+          <StatusPanel
+            label={currentStatus.label}
+            headline={currentStatus.headline}
+            items={statusItems}
+          />
+        </div>
+      </div>
+    </section>
+
+    {/* --- Selected work (4:68 - 4:102) -------------------------------- */}
+    <section class="mt-8">
+      <PageHeader
+        variant="section"
+        eyebrow={selectedWork.eyebrow}
+        title={selectedWork.title}
+        summary={selectedWork.summary}
+      />
+
+      <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {
-          hero.lines.map((line) => (
-            <span class="block">{line}</span>
+          selectedWork.cards.map((card, index) => (
+            <div data-pair={pairs[index].key} class="h-full">
+              <EditorialCard
+                kicker={card.kicker}
+                title={card.title}
+                subtitle={card.subtitle}
+                summary={card.summary}
+                href={withBase(card.href)}
+                action={cardAction}
+                image={card.image}
+                imageAlt=""
+              />
+            </div>
           ))
         }
-      </h1>
-    </div>
-
-    {/* Offset down to meet the first hero line, as in the frame (4:54 at y=196). */}
-    <div class="flex flex-col gap-2 lg:mt-8">
-      <p class="type-lead">{hero.lead}</p>
-      <p class="type-body">{hero.intro}</p>
-      <div class="mt-3">
-        <StatusPanel
-          label={currentStatus.label}
-          headline={currentStatus.headline}
-          items={statusItems}
-        />
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  {/* --- Selected work (4:68 - 4:102) -------------------------------- */}
-  <section class="mt-8">
-    <PageHeader
-      variant="section"
-      eyebrow={selectedWork.eyebrow}
-      title={selectedWork.title}
-      summary={selectedWork.summary}
-    />
-
-    <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        selectedWork.cards.map((card) => (
-          <EditorialCard
-            kicker={card.kicker}
-            title={card.title}
-            subtitle={card.subtitle}
-            summary={card.summary}
-            href={withBase(card.href)}
-            action={cardAction}
-            image={card.image}
-            imageAlt=""
-          />
-        ))
-      }
-    </div>
-  </section>
+  <style is:inline set:html={pairingCss} />
 </AppShell>
