@@ -47,8 +47,10 @@ npm run figma:check  # report Figma/code drift (see below)
 
 ## Content
 
-Images are labelled placeholders for now — see `IMAGES.md` for which file
-maps to which slot, and `npm run placeholders` to regenerate them.
+Photography is real apart from three client slots on `/workshop` — see
+`IMAGES.md` for which file maps to which slot, and `npm run placeholders` to
+regenerate the ones still standing in. Build, game, book and album art is
+never local: it arrives hotlinked with its feed.
 
 Content lives in `src/content/`, typed by `src/content.config.ts`. The layout
 follows the structure sketched in FIGMA.md, and the schemas are shaped from
@@ -75,8 +77,9 @@ why they are explicit rather than loose. Ordering is explicit too — `builds`
 sort by `index` and `projects` by `order`, because sorting by year alone left
 same-year entries in arbitrary alphabetical order.
 
-Entries in `projects/` are still **seed data**. Replace them; nothing in the
-code depends on them.
+Entries in `projects/` and `clients/` are real and hand-maintained — they are
+the only content here that no sync touches, so they are also the only content
+safe to edit by hand.
 
 ## The build archive comes from Blogspot
 

@@ -1,8 +1,8 @@
 # Image replacement guide
 
-The site has very little local imagery. Builds, games and books art all comes
-with its feed and is hotlinked, so what is actually committed here is four
-homepage cards and the brand mark.
+The site has very little local imagery. Builds, games, books and album art all
+comes with its feed and is hotlinked, so what is actually committed here is
+four homepage cards, the client art on `/workshop`, and the brand mark.
 
 **Local art lives in `src/assets/`, not `public/`.** That is the whole
 difference between the two directories: `public/` is copied to the build byte
@@ -22,9 +22,11 @@ npm run placeholders -- --force # overwrite, including real photos
 ```
 
 **It will not overwrite an existing file without `--force`.** It used to, and
-since every path it knows about now holds a real photo, one stray run painted
-labelled boxes over all four home cards. Without the flag it prints
-`exists, kept` and moves on.
+one stray run painted labelled boxes over all four home cards. Almost every
+path it knows about now holds a real photo, so `--force` is close to a
+destructive flag — it is for regenerating the three slots below that are still
+placeholders, and it cannot tell them apart from the rest. Without it the
+script prints `exists, kept` and moves on.
 
 It launches a headless browser to render them, so there is no image library in
 `package.json` for that. Set `CHROME_PATH` if it cannot find Chrome or Edge.
@@ -124,6 +126,26 @@ alpha channel; the build re-encodes to WebP either way.
 The placeholder logos are white wordmarks on transparency for exactly this
 reason: they stand in for the shape of a real reverse logo, not for a
 labelled box.
+
+**Three of the eight are still placeholders**, the rest are the clients' own
+artwork:
+
+| Slot | State |
+| --- | --- |
+| BestMed — shot, logo | real |
+| Menlo Security — shot, logo | real |
+| Zespri — logo | real |
+| Zespri — shot | placeholder |
+| Soctrip — shot, logo | placeholder |
+
+Soctrip has no `href` in `clients.json` — there is no public site to shoot —
+so that card may keep its placeholder for good. Dropping the two files and the
+entry's `logo` / `shot` keys is the other valid end state: the card degrades
+to the bare media well with the host line doing the work.
+
+The sizes above are maxima worth having, not minima to hit. The real shots
+came in at 951 x 595, above the 840w the plate emits, so nothing upscales —
+but there is no headroom if that grid ever widens.
 
 ---
 
