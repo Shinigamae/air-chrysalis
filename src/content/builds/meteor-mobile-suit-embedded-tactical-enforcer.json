@@ -2,7 +2,6 @@
   "title": "METEOR (MOBILE SUIT EMBEDDED TACTICAL ENFORCER)",
   "scale": "1:100",
   "kind": "EQUIPMENT",
-  "series": "SEED",
   "manufacturer": "MoYu Moving Force",
   "buildDate": "2025-07",
   "notes": [],
@@ -27,7 +26,7 @@
   "tags": [
     "equipment",
     "kira yamato",
-    "moyu",
-    "seed"
+    "mobile suit gundam seed",
+    "moyu"
   ]
 }

@@ -2,8 +2,8 @@
   "title": "ZGMF-1000/A1 GUNNER ZAKU WARRIOR VER GK",
   "grade": "MG",
   "scale": "1:100",
-  "kind": "MOBILE SUIT",
-  "series": "SEED Destiny",
+  "kind": "MECHA",
+  "series": "Cosmic Era",
   "manufacturer": "JIBA",
   "buildDate": "2025-09",
   "notes": [],
@@ -27,8 +27,8 @@
     "cosmic era",
     "gk",
     "jiba",
-    "seed",
-    "seed destiny",
+    "mobile suit gundam seed",
+    "mobile suit gundam seed destiny",
     "zaku"
   ]
 }

@@ -2,7 +2,7 @@
   "title": "ZGMF-X10A FREEDOM GUNDAM (VER. 2.0)",
   "grade": "MG",
   "scale": "1:100",
-  "kind": "MOBILE SUIT",
+  "kind": "MECHA",
   "series": "SEED Destiny",
   "manufacturer": "Bandai",
   "buildDate": "2022-10",
@@ -30,7 +30,7 @@
     "bandai",
     "cosmic era",
     "kira yamato",
-    "seed",
+    "mobile suit gundam seed",
     "seed destiny"
   ]
 }
