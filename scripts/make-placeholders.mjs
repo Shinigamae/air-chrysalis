@@ -45,11 +45,10 @@ const IMAGES = [
   // --- Client site shots — ClientCard media plate, 16:10 ------------------
   // 840 is the widest the plate is emitted at; these are 2x it, so there is
   // room if the grid ever widens.
-  ['clients/northwind-freight-shot.jpg', 1680, 1050, 'CLIENT SITE / NORTHWIND FREIGHT'],
-  ['clients/halcyon-health-shot.jpg', 1680, 1050, 'CLIENT SITE / HALCYON HEALTH'],
-  ['clients/orpheus-media-shot.jpg', 1680, 1050, 'CLIENT SITE / ORPHEUS MEDIA'],
-  ['clients/kestrel-pay-shot.jpg', 1680, 1050, 'CLIENT SITE / KESTREL PAY'],
-  ['clients/atlas-civic-shot.jpg', 1680, 1050, 'CLIENT SITE / ATLAS CIVIC'],
+  ['clients/aged-care-au-shot.jpg', 1680, 1050, 'CLIENT SITE / AGED CARE AU'],
+  ['clients/us-security-platform-shot.jpg', 1680, 1050, 'CLIENT SITE / US SECURITY PLATFORM'],
+  ['clients/social-network-ecosystem-shot.jpg', 1680, 1050, 'CLIENT SITE / SOCIAL NETWORK'],
+  ['clients/nz-kiwifruit-export-shot.jpg', 1680, 1050, 'CLIENT SITE / NZ KIWIFRUIT EXPORT'],
 ];
 
 /*
@@ -61,11 +60,10 @@ const IMAGES = [
  * on a transparent ground and written as PNG.
  */
 const LOGOS = [
-  ['clients/northwind-freight-logo.png', 'NORTHWIND'],
-  ['clients/halcyon-health-logo.png', 'HALCYON'],
-  ['clients/orpheus-media-logo.png', 'ORPHEUS'],
-  ['clients/kestrel-pay-logo.png', 'KESTREL'],
-  ['clients/atlas-civic-logo.png', 'ATLAS CIVIC'],
+  ['clients/aged-care-au-logo.png', 'AGED CARE'],
+  ['clients/us-security-platform-logo.png', 'SECURITY'],
+  ['clients/social-network-ecosystem-logo.png', 'SOCIAL'],
+  ['clients/nz-kiwifruit-export-logo.png', 'KIWIFRUIT'],
 ];
 
 /** Logo plate. Generous; object-contain trims it at render time. */
