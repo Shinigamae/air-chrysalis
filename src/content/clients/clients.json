@@ -29,6 +29,7 @@
   {
     "id": "social-network-ecosystem",
     "name": "Soctrip",
+    "href":  "https://www.soctrip.com",
     "industry": "Social · Commerce",
     "via": "TMA Solutions",
     "summary": "The Social module of an ecosystem that also carries e-commerce and booking, on Java microservices behind several Angular applications. As assistant architect I held the contracts between modules, the migration plan and the review standard while the team grew past two hundred. The product is no longer under active development.",
