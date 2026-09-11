@@ -1,21 +1,45 @@
 ---
 /**
  * Footer rule — Figma "02 — Homepage" footer row (DESIGNED AS A LIVING
- * ARCHIVE / V1 / HOMEPAGE CONCEPT). Two mono annotations, nothing else.
+ * ARCHIVE / V1 / HOMEPAGE CONCEPT), plus a quote above it.
+ *
+ * The mono row is the design's; the quote is the one thing on the page that
+ * is not about the site. It sits above the rule rather than inside it because
+ * a passage in the display face and a two-word annotation in mono are not the
+ * same kind of line, and putting them on one row made the quote read as a
+ * third label. See `@/config/quotes` for where the list comes from and why it
+ * is not synced from Goodreads.
  */
+import { pickQuote } from '@/config/quotes';
+
 interface Props {
   note?: string;
   version?: string;
 }
 
 const { note = 'DESIGNED AS A LIVING ARCHIVE', version = 'V1' } = Astro.props;
+
+/* Picked per render, so each page of a build closes on a different line. */
+const quote = pickQuote();
 ---
 
 <footer class="border-t border-line">
-  <div
-    class="layout-container flex flex-col gap-1 py-3 md:flex-row md:items-center md:justify-between"
-  >
-    <span class="type-meta">{note}</span>
-    <span class="type-meta">{version}</span>
+  <div class="layout-container flex flex-col gap-3 py-4">
+    {/*
+      `<cite>` carries the book, not the whole credit — the author's name is
+      not a title, and browsers italicise the element by default, which is
+      why the attribution line resets it.
+    */}
+    <blockquote class="flex flex-col gap-1">
+      <p class="type-caption max-w-[68ch] text-ink">&ldquo;{quote.text}&rdquo;</p>
+      <p class="type-meta">
+        &mdash; {quote.author}, <cite class="not-italic">{quote.source}</cite>
+      </p>
+    </blockquote>
+
+    <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+      <span class="type-meta">{note}</span>
+      <span class="type-meta">{version}</span>
+    </div>
   </div>
 </footer>
