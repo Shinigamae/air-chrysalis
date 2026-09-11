@@ -29,20 +29,13 @@ const lastActive = (client: Client) =>
 export const byRecency = (a: Client, b: Client) =>
   lastActive(b).localeCompare(lastActive(a));
 
-/** '2022' + '2024' -> '2022 — 2024'; an open role reads 'PRESENT'. */
-export const periodOf = (role: Role) => `${role.from} — ${role.to ?? 'PRESENT'}`;
-
-/** The whole engagement, oldest start to newest end. */
-export function spanOf(client: Client) {
-  const starts = client.data.roles.map((role) => role.from).sort();
-  const open = clientIsCurrent(client);
-  const ends = client.data.roles
-    .map((role) => role.to)
-    .filter((to): to is string => to !== undefined)
-    .sort();
-  const end = open ? 'PRESENT' : (ends.at(-1) ?? starts[0]);
-  return starts[0] === end ? starts[0] : `${starts[0]} — ${end}`;
-}
+/*
+ * There is no formatter for the dates, and that is deliberate. The cards
+ * print titles, not periods: the engagements overlapped, and two cards whose
+ * years can be laid side by side invite a reading of how the time was split
+ * that the page is not making. The dates stay in the data because the order
+ * below is built from them — they sort the list, they do not appear in it.
+ */
 
 /**
  * 'https://northwind-freight.example/work' -> 'northwind-freight.example'.

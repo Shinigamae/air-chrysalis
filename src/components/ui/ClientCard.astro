@@ -1,7 +1,7 @@
 ---
 import { Image, Picture } from 'astro:assets';
 import StatusLabel from './StatusLabel.astro';
-import { clientIsCurrent, hostOf, periodOf, spanOf, type Client } from '@/config/clients';
+import { clientIsCurrent, hostOf, type Client } from '@/config/clients';
 
 /**
  * A client on the Workshop page: their site as the plate, their mark on it,
@@ -105,29 +105,21 @@ const roles = [...c.roles].reverse();
         {[c.industry, c.via && `via ${c.via}`].filter(Boolean).join(' · ')}
       </p>
     </div>
-    <StatusLabel
-      status={current ? 'live' : 'archive'}
-      label={current ? 'CURRENT' : spanOf(client)}
-    />
+    <StatusLabel status={current ? 'live' : 'archive'} label={current ? 'CURRENT' : 'COMPLETED'} />
   </div>
 
   <p class="type-fine">{c.summary}</p>
 
   {/*
-    The titles, newest first. A definition list rather than a table: each row
-    is a title and when it ran, which is a pair, and it lets the period sit
-    in mono against the display-type title without a grid to align.
+    The titles, newest first — and only the titles. The dates each role ran
+    are in the data and still order the list, but they are not printed:
+    several of these engagements overlapped, and a reader comparing the
+    periods across two cards would be reading something the cards are not
+    there to say. What a title was is the useful half of the pair.
   */}
-  <dl class="m-0 mt-auto flex flex-col gap-0.5 border-t border-line pt-1">
-    {
-      roles.map((role) => (
-        <div class="flex flex-wrap items-baseline justify-between gap-x-2">
-          <dt class="type-fine">{role.title}</dt>
-          <dd class="type-meta m-0 shrink-0">{periodOf(role)}</dd>
-        </div>
-      ))
-    }
-  </dl>
+  <ul class="m-0 mt-auto flex list-none flex-col gap-0.5 border-t border-line p-0 pt-1">
+    {roles.map((role) => <li class="type-fine">{role.title}</li>)}
+  </ul>
 
   {c.stack.length > 0 && <p class="type-meta">{c.stack.join(' · ')}</p>}
 
