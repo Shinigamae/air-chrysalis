@@ -54,7 +54,8 @@ const roles = [...c.roles].reverse();
       )
     }
 
-    {/* A scrim, so a light screenshot cannot swallow the mark sitting on it. */}
+    {/* A scrim: it darkens the strip the plate sits on, so a bright
+        screenshot cannot run flush into a light plate's edge. */}
     {
       c.logo && c.shot && (
         <div
@@ -64,19 +65,28 @@ const roles = [...c.roles].reverse();
       )
     }
 
+    {/*
+      A light plate, not a panel-dark one. The chip was `bg-panel/95`, on the
+      reasoning that a chip in the card's own fill sits quietly on the shot —
+      but a brand mark is drawn for the brand's own page, and all four of
+      these are drawn for white. Menlo's wordmark is near-black and vanished
+      outright; Zespri's red-on-transparent went muddy. On ink the four read
+      as they were designed to, and the dark hairline keeps the plate off the
+      screenshot behind it.
+    */}
     {
       c.logo && (
-        <div class="absolute bottom-1 left-1 flex h-4 items-center rounded-compact border border-line bg-panel/95 px-1">
+        <div class="absolute bottom-1 left-1 flex h-4.5 items-center rounded-compact border border-line bg-ink/95 px-1 shadow-[0_1px_6px_-1px_var(--color-canvas)]">
           <Image
             src={c.logo}
             alt={`${c.name} logo`}
-            height={40}
+            height={48}
             densities={[1, 2]}
             format="webp"
             quality={90}
             loading="lazy"
             decoding="async"
-            class="h-2.5 w-auto max-w-[140px] object-contain"
+            class="h-3 w-auto max-w-[140px] object-contain"
           />
         </div>
       )

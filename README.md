@@ -382,9 +382,13 @@ src/
 
 - **Colour** comes only from `tokens.css`. Cyan (`--color-signal`) is a signal,
   not a decoration — active state, focus, metadata keys. The platform tints
-  (`--color-ps4`, `--color-ps5`, …) and the two achievement tints
-  (`--color-platinum`, `--color-gold`) are the only other hues, and each is
-  confined to one thing: a platform chip, a shining card edge, a star.
+  (`--color-ps4`, `--color-ps5`, …), the two achievement tints
+  (`--color-platinum`, `--color-gold`) and the hero word accents
+  (`--color-word-code`, …) are the only other hues, and each is confined to
+  one thing: a platform chip, a shining card edge, a star, a lit hero word.
+  The word accents sit outside `@theme`, in the `:root` block below it — a
+  theme key no utility class reaches is pruned from the build, and the only
+  thing reading those is a stylesheet the homepage generates.
 - **Spacing** is an 8px base: Tailwind's `--spacing` is set to `8px`, so
   `1 · 2 · 3 · 5 · 8` are the design's `8 · 16 · 24 · 40 · 64` steps.
 - **Type** has two voices: Space Grotesk for editorial, IBM Plex Mono for

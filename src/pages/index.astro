@@ -75,23 +75,47 @@ const active = (key: string) =>
  * The dim is opacity rather than a colour change, so the three words that
  * step back stay the same ink and only recede. 0.45 keeps them legible: a
  * reader who brushes one word by accident should not lose the other three.
+ *
+ * Each word lights in its own colour rather than all four in the signal
+ * cyan. One cyan told you that something was lit; it did not tell you which
+ * of the four you were on, and those four words are the only navigation the
+ * hero has. The pair is two stops from `tokens.css`, keyed by the word — so
+ * the gradient across the letterform and the edge on the card it opens are
+ * one reading, and a word with no pair defined still lights in the cyan.
+ *
+ * The fill is a clipped gradient, which means the text itself is painted
+ * transparent while it is lit; `color` therefore cannot be what carries the
+ * change, and the anchor transitions opacity and the glow instead. The
+ * colour lands at once — on 88px type that reads as the word catching
+ * light, where a fade would read as a lag.
  */
+const stops = (key: string) => ({
+  from: `var(--color-word-${key}, var(--color-signal))`,
+  to: `var(--color-word-${key}-end, var(--color-signal))`,
+});
+
 const pairingCss = [
   `[data-pairing]:has([data-pair]:is(:hover, :focus-within)) [data-hero-word] {
         opacity: 0.45;
       }`,
 ]
   .concat(
-    pairs.map(
-      ({ key }) => `
+    pairs.map(({ key }) => {
+      const { from, to } = stops(key);
+      return `
       ${active(key)} [data-hero-word][data-pair='${key}'] {
         opacity: 1;
-        color: var(--color-signal);
+        background-image: linear-gradient(100deg, ${from} 15%, ${to} 85%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 24px color-mix(in srgb, ${from} 30%, transparent));
       }
       ${active(key)} [data-pair='${key}'] article {
-        border-color: var(--color-signal);
-      }`,
-    ),
+        border-color: ${from};
+        box-shadow: 0 0 28px -12px color-mix(in srgb, ${from} 60%, transparent);
+      }`;
+    }),
   )
   .join('\n');
 
@@ -129,7 +153,7 @@ const statusItems: StatusItem[] = [
                 data-pair={key}
                 data-hero-word
                 aria-label={`${word} ${label}`}
-                class="block w-fit no-underline transition-[color,opacity] duration-[var(--duration-base)] ease-[var(--ease-technical)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
+                class="block w-fit no-underline transition-[opacity,filter] duration-[var(--duration-base)] ease-[var(--ease-technical)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
               >
                 {word}
               </a>

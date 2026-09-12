@@ -105,6 +105,40 @@
 }
 
 /*
+ * Hero word accents. A pair per word in the homepage hero stack, lit when
+ * the word or the card it opens is pointed at: the two stops are read as a
+ * gradient across the letterform, and the first is also what the paired
+ * card's edge takes.
+ *
+ * Keyed by the word itself — `--color-word-<kicker>`, lowercased — which is
+ * the key the homepage already ties a word to its card by, so a section is
+ * named in one place and not two. A word with no pair here falls back to
+ * the signal cyan rather than going unpainted.
+ *
+ * The hues are picked apart from each other rather than from the sections:
+ * four words stacked in one column want four readings, and the only job the
+ * colour has is to say which of the four you are on. CODE keeps the cyan,
+ * because that is the accent the rest of the site already answers to.
+ *
+ * Declared here and not in `@theme`, though they are colours and the rule
+ * above says otherwise. A theme key has to be reachable from a utility
+ * class or Tailwind drops it from the build, and the only thing that reads
+ * these is a generated stylesheet the scanner cannot see — so in `@theme`
+ * they survived the source and not the output, and every word lit cyan
+ * through the fallback.
+ */
+:root {
+  --color-word-code: #38bdf8; /* CODE  — signal cyan → indigo */
+  --color-word-code-end: #818cf8;
+  --color-word-build: #fbbf24; /* BUILD — amber → orange       */
+  --color-word-build-end: #f97316;
+  --color-word-play: #a78bfa; /* PLAY  — violet → fuchsia     */
+  --color-word-play-end: #f0abfc;
+  --color-word-read: #34d399; /* READ  — emerald → lime       */
+  --color-word-read-end: #a3e635;
+}
+
+/*
  * Layout constants. Not Tailwind theme keys — these are read directly by
  * the shell, which is the only place that should care about page geometry.
  * 12 columns · 24px gutters · 64px outer margin (32px below `md`).

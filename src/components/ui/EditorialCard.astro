@@ -82,7 +82,9 @@ const ACCENT = {
   platinum: {
     label: 'PLATINUM',
     ring: 'card-shine card-shine--platinum',
-    badge: 'border-platinum/40 bg-platinum/10 text-platinum',
+    // Carried above gold's, for the same reason the ring is: a neutral at
+    // gold's opacity reads as a plain rule, where a hue reads as a mark.
+    badge: 'border-platinum/55 bg-platinum/14 text-platinum',
   },
   gold: {
     label: '100%',
@@ -116,7 +118,11 @@ const hasMeta = Boolean(meta) || Astro.slots.has('meta');
 
 <article
   class:list={[
-    'group relative flex h-full flex-col rounded-standard border bg-panel transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+    // Border and shadow, not `transition-colors`: the card's edge is the only
+    // colour that moves, and the glow — the accent ring's, and the homepage
+    // pairing's — was snapping, because a utility outranks the `transition`
+    // the `.card-shine` component rule sets for itself.
+    'group relative flex h-full flex-col rounded-standard border bg-panel transition-[border-color,box-shadow] duration-[var(--duration-base)] ease-[var(--ease-technical)]',
     compact ? 'gap-1 p-1.5' : 'gap-1.5 p-2',
     // An accent card keeps its own edge on hover; the cyan would fight it.
     mark ? mark.ring : 'border-line hover:border-signal focus-within:border-signal',

@@ -114,12 +114,26 @@
     animation-delay: -4.8s;
   }
 
-  /* A platinum trophy. Cool, near-white, the brightest edge on the page. */
+  /*
+   * A platinum trophy. Cool, near-white, the brightest edge on the page.
+   *
+   * It was the *faintest*, and the arithmetic says why: the tone is a
+   * neutral, so at 32% over the canvas the edge lands on #4F5257 — a grey
+   * rule a couple of steps up from the #27272A every other card already
+   * wears, and the eye reads it as a border rather than a mark. Gold at the
+   * same opacity carries a hue the page has nowhere else, so it announced
+   * itself while the brighter colour did not.
+   *
+   * Two changes, no new mechanism: the tone takes a small cyan cast so the
+   * edge is metal rather than grey, and the stops are raised well past
+   * gold's, which is where a neutral has to sit to match a hue for weight.
+   */
   .card-shine--platinum {
-    --shine-edge: color-mix(in srgb, var(--color-platinum) 32%, transparent);
-    --shine-mid: color-mix(in srgb, var(--color-platinum) 55%, transparent);
+    --shine-tone: color-mix(in srgb, var(--color-platinum) 86%, var(--color-signal));
+    --shine-edge: color-mix(in srgb, var(--shine-tone) 55%, transparent);
+    --shine-mid: color-mix(in srgb, var(--shine-tone) 82%, transparent);
     --shine-peak: var(--color-platinum);
-    --shine-glow: color-mix(in srgb, var(--color-platinum) 42%, transparent);
+    --shine-glow: color-mix(in srgb, var(--shine-tone) 62%, transparent);
   }
 
   /* 100% with no platinum to show for it — every trophy the set defined. */

@@ -118,30 +118,24 @@ the client's name doing the work.
 `<id>` is the entry's `id` in `src/content/clients/clients.json`, and the two
 paths are written into that file as `logo` and `shot`.
 
-**Logos want a light-on-transparent export** — the "reverse" or "on dark"
-variant most brand kits ship. The chip behind the logo is the panel fill
-(`#18181B`), so a dark logo disappears into it. PNG or any format with an
-alpha channel; the build re-encodes to WebP either way.
+**Logos want the primary on-transparent export** — whatever the brand kit
+calls its default. The chip behind the logo used to be the panel fill
+(`#18181B`) and so wanted the "reverse" or "on dark" variant instead; it is
+now the ink (`#E4E4E7`), because the marks that actually turned up are drawn
+for a white page and half of them vanished on the dark one. PNG or any format
+with an alpha channel; the build re-encodes to WebP either way.
 
-The placeholder logos are white wordmarks on transparency for exactly this
-reason: they stand in for the shape of a real reverse logo, not for a
-labelled box.
+**Trim the transparent margin.** The chip sizes the logo by height, so padding
+baked into the export is padding you paid for — Zespri's mark sat in a frame
+half again its own size and rendered at half the height of the others.
 
-**Three of the eight are still placeholders**, the rest are the clients' own
-artwork:
+**All eight slots are now the clients' own artwork** — BestMed, Menlo
+Security, Zespri and Soctrip, shot and logo apiece. The last two placeholders
+to go were the Zespri and Soctrip shots.
 
-| Slot | State |
-| --- | --- |
-| BestMed — shot, logo | real |
-| Menlo Security — shot, logo | real |
-| Zespri — logo | real |
-| Zespri — shot | placeholder |
-| Soctrip — shot, logo | placeholder |
-
-Soctrip has no `href` in `clients.json` — there is no public site to shoot —
-so that card may keep its placeholder for good. Dropping the two files and the
-entry's `logo` / `shot` keys is the other valid end state: the card degrades
-to the bare media well with the host line doing the work.
+Dropping a pair of files and the entry's `logo` / `shot` keys stays a valid
+end state rather than a broken one: the card degrades to the bare media well
+with the host line doing the work.
 
 The sizes above are maxima worth having, not minima to hit. The real shots
 came in at 951 x 595, above the 840w the plate emits, so nothing upscales —
