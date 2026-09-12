@@ -34,6 +34,12 @@
    */
   --color-platinum: #e3e8f0; /* a platinum trophy    */
   --color-gold: #f5c451; /* 100% without one, and book stars */
+  /* The other two trophy grades, for the per-grade counts on a game card.
+   * Silver is pulled well below platinum — at PSN's own near-white the two
+   * marks sat side by side and read as one — and bronze is a warm copper
+   * rather than brown, so it clears AA on the panel fill like the rest. */
+  --color-silver: #a8b4c4; /* a silver trophy */
+  --color-bronze: #cf8f5c; /* a bronze trophy */
 
   /* ---- Spacing ------------------------------------------------------
    * 8px base unit. The Figma scale (8 · 16 · 24 · 40 · 64) maps to:

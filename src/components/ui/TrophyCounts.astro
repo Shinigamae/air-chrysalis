@@ -1,0 +1,67 @@
+---
+import platinumMark from '@/assets/platinum.svg';
+import type { Game } from '@/config/games';
+
+/**
+ * A game's earned trophies, by grade — "◆1 ◆7 ◆7 ◆20".
+ *
+ * PSN reports the four counts for every title in the log, so this is real
+ * imported data rather than a decoration: the grade mix says more about how
+ * a game was played than the single completion percentage does.
+ *
+ * One silhouette serves all four grades, tinted by the metal, which is how
+ * PlayStation itself draws them — the same cup in four finishes. Swapping a
+ * grade for its own artwork is one line in MARK below.
+ *
+ * Drawn as a CSS mask rather than inlined SVG: the platinum artwork is ~6KB
+ * of traced path, and a page of the grid carries 48 cards × up to 4 marks.
+ * As a mask the file is fetched once and cached; inlined it would have put
+ * more than a megabyte of duplicate path data into every page of HTML.
+ */
+interface Props {
+  trophies: Game['data']['trophies'];
+  /** `sm` is the card footer; `md` the detail page's header row. */
+  size?: 'sm' | 'md';
+}
+
+const { trophies, size = 'sm' }: Props = Astro.props;
+
+/** Rarest first, the order a trophy list is read in. */
+const GRADES = [
+  { key: 'platinum', tint: 'text-platinum', mark: platinumMark.src },
+  { key: 'gold', tint: 'text-gold', mark: platinumMark.src },
+  { key: 'silver', tint: 'text-silver', mark: platinumMark.src },
+  { key: 'bronze', tint: 'text-bronze', mark: platinumMark.src },
+] as const;
+
+const earned = trophies.earned ?? {};
+
+// Only what was actually won: a bronze-only game should not carry three
+// zeroes, and a game with no platinum should not advertise the slot.
+const won = GRADES.map((grade) => ({ ...grade, count: earned[grade.key] ?? 0 })).filter(
+  (grade) => grade.count > 0,
+);
+
+const text = size === 'md' ? 'type-meta-lg' : 'type-meta';
+const markSize = size === 'md' ? '14px' : '12px';
+---
+
+{
+  won.length > 0 && (
+    <span class:list={['flex flex-wrap items-center gap-1.5', text]}>
+      {won.map((grade) => (
+        <span class:list={['inline-flex items-center gap-0.5 tabular-nums', grade.tint]}>
+          <span
+            class="trophy-mark"
+            style={`--trophy-mark: url("${grade.mark}"); --trophy-size: ${markSize};`}
+            aria-hidden="true"
+          />
+          {grade.count}
+          {/* The mark carries the grade for everyone else; a screen reader
+              gets it as the word, so the row reads "1 platinum, 7 gold". */}
+          <span class="sr-only">&nbsp;{grade.key}</span>
+        </span>
+      ))}
+    </span>
+  )
+}

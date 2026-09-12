@@ -4,7 +4,9 @@ import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
+import Rotation from '@/components/ui/Rotation.astro';
 import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
+import { section as rotationSection } from '@/config/music';
 import { withBase } from '@/config/site';
 
 /**
@@ -19,10 +21,19 @@ import { withBase } from '@/config/site';
  * answer only rots — this panel named a game the gaming log had long since
  * stopped calling current.
  */
-const [games, books] = await Promise.all([
+const [games, books, music] = await Promise.all([
   getCollection('games'),
   getCollection('books'),
+  getCollection('music'),
 ]);
+
+/**
+ * One entry, or none before the first `npm run music:sync`. The section is
+ * omitted entirely rather than rendered empty — a heading over nothing reads
+ * as a bug, and this is the one homepage section whose content can legitimately
+ * not exist yet.
+ */
+const rotation = music.find((entry) => entry.data.tracks.length > 0);
 
 const playing = games.find((game) => game.data.current);
 // Several books can be on the shelf at once; the panel has room for one, so
@@ -205,6 +216,24 @@ const statusItems: StatusItem[] = [
       </div>
     </section>
   </div>
+
+  {/* --- On rotation ---------------------------------------------------
+      Outside `[data-pairing]` on purpose: the hero's four words pair with
+      the four cards above, and a fifth section inside that region would be
+      dimmed by a rule it has no word to answer. */}
+  {
+    rotation && (
+      <section class="mt-8">
+        <PageHeader
+          variant="section"
+          eyebrow={rotationSection.eyebrow}
+          title={rotationSection.title}
+          summary={rotationSection.summary}
+        />
+        <Rotation data={rotation.data} />
+      </section>
+    )
+  }
 
   <style is:inline set:html={pairingCss} />
 </AppShell>

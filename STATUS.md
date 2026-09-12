@@ -15,7 +15,10 @@ mobile navigation with overlay menu, page-context strip, footer, six routes,
 responsive foundation, accessibility baseline.
 
 **Step 2 — Home.** Complete. Hero, standfirst, current-status panel, and the
-four "selected work" cards, measured against the Figma nodes.
+four "selected work" cards, measured against the Figma nodes. Section 03, ON
+ROTATION, was added afterwards and has no Figma node behind it — it follows the
+Gaming Log's feature-plus-list pattern. It renders only once
+`npm run music:sync` has run; see README.
 
 **Step 3 — Content layer and section pages.** Complete. Typed collections plus
 Workshop, Builds, Games, Books and Journeys, with generated detail routes.
@@ -175,10 +178,12 @@ In the order that unblocks the most work.
 
 ### 3.3 Later
 
-8. **The .NET REST API.** `src/content.config.ts` is already the contract —
-   the schemas were written to be satisfied by it. `currentStatus` in
-   `src/config/home.ts` is the obvious first thing to fetch rather than
-   hard-code.
+8. **The .NET REST API — now planned in `PLAN.md`.** Backend, PostgreSQL,
+   Discord sign-in, guest comments, admin edit mode, and the move to Azure
+   Static Web Apps. Expected ~2026-09-22. `src/content.config.ts` is already
+   the contract — the schemas were written to be satisfied by it — and
+   `currentStatus` in `src/config/home.ts` is the first field to make live
+   rather than hard-coded.
 10. **Collapse the type scale** if the designer agrees.
 11. **Portrait media variant** on `EditorialCard` for book covers.
 

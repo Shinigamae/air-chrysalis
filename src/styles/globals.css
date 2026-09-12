@@ -47,6 +47,59 @@
 
 @layer components {
   /*
+   * One trophy, painted in whichever metal the grade calls for.
+   *
+   * The artwork is a single silhouette used as a mask, so `currentColor`
+   * paints it and the tint is an ordinary text colour on the wrapper —
+   * four grades, one asset, no recolouring at build time. `--trophy-mark`
+   * carries the URL because the import is hashed at build and only the
+   * component knows it; `--trophy-size` is set alongside it.
+   */
+  .trophy-mark {
+    display: inline-block;
+    flex: none;
+    width: var(--trophy-size, 12px);
+    height: var(--trophy-size, 12px);
+    background-color: currentColor;
+    -webkit-mask: var(--trophy-mark) center / contain no-repeat;
+    mask: var(--trophy-mark) center / contain no-repeat;
+  }
+
+  /*
+   * Three bars, marking the track loaded in the ON ROTATION player.
+   *
+   * It replaces the rank number rather than sitting beside it, so the column
+   * does not change width when the selection moves. `currentColor` again, so
+   * the row's own text colour carries it.
+   *
+   * The global prefers-reduced-motion rule below stops the animation, and
+   * `alternate` means it settles at full height — a static meter, not a
+   * collapsed one.
+   */
+  .eq {
+    align-items: flex-end;
+    gap: 1px;
+    height: 10px;
+  }
+
+  .eq > span {
+    width: 2px;
+    height: 100%;
+    background-color: currentColor;
+    transform-origin: bottom;
+    animation: eq 900ms var(--ease-technical) infinite alternate;
+  }
+
+  /* Negative delays: the three bars start mid-cycle rather than in step. */
+  .eq > span:nth-child(2) {
+    animation-delay: -300ms;
+  }
+
+  .eq > span:nth-child(3) {
+    animation-delay: -600ms;
+  }
+
+  /*
    * A card whose edge is a slowly travelling highlight — the Gaming Log's
    * platinum and 100% markers. The tone is set by a modifier class, so the
    * mechanism is written once.
@@ -142,6 +195,15 @@
     --shine-mid: color-mix(in srgb, var(--color-gold) 62%, transparent);
     --shine-peak: var(--color-gold);
     --shine-glow: color-mix(in srgb, var(--color-gold) 48%, transparent);
+  }
+}
+
+@keyframes eq {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
   }
 }
 

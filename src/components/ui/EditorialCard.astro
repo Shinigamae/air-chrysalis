@@ -17,9 +17,11 @@ import { withBase } from '@/config/site';
  *   summary   a sentence of description
  *   action    the "VIEW →" affordance, pinned to the bottom of the card
  *
- * Two slots take content the card cannot type:
+ * Three slots take content the card cannot type:
  *   tags      a row under the title — the Gaming Log's platform chips
  *   meta      leads the metadata line — the Reading Log's stars
+ *   footer    the bottom-right corner, opposite `action` — the Gaming
+ *             Log's per-grade trophy counts
  */
 interface Props {
   kicker: string;
@@ -114,6 +116,7 @@ const {
 const compact = density === 'compact';
 const mark = accent ? ACCENT[accent] : undefined;
 const hasMeta = Boolean(meta) || Astro.slots.has('meta');
+const hasFooter = Astro.slots.has('footer');
 ---
 
 <article
@@ -232,13 +235,22 @@ const hasMeta = Boolean(meta) || Astro.slots.has('meta');
   }
 
   {
-    action && (
-      <p
-        aria-hidden="true"
-        class="type-micro mt-auto pt-1 text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover:opacity-80"
-      >
-        {action}
-      </p>
+    (action || hasFooter) && (
+      /* The action and the footer share the last line, pushed apart: the
+         affordance reads left, the card's own summary of itself right. */
+      <div class="mt-auto flex flex-wrap items-center justify-between gap-x-1.5 gap-y-1 pt-1">
+        {action && (
+          <p
+            aria-hidden="true"
+            class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover:opacity-80"
+          >
+            {action}
+          </p>
+        )}
+        <div class="ml-auto">
+          <slot name="footer" />
+        </div>
+      </div>
     )
   }
 </article>

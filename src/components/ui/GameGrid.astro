@@ -5,6 +5,7 @@ import FilterControl from '@/components/ui/FilterControl.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import Pager from '@/components/ui/Pager.astro';
 import PlatformTags from '@/components/ui/PlatformTags.astro';
+import TrophyCounts from '@/components/ui/TrophyCounts.astro';
 import { accentOf, imageOf, metaOf, type Game } from '@/config/games';
 import { withBase } from '@/config/site';
 
@@ -66,6 +67,10 @@ const { page, index, title, facets }: Props = Astro.props;
           {/* The platform was the card's subtitle — one grey line reading
               "PS3 / PSVITA / PS4". As chips it is legible at a glance. */}
           <PlatformTags slot="tags" platform={game.data.platform} />
+          {/* Bottom-right corner: what the game actually yielded, by grade.
+              The accent edge says a platinum was won; this says at what
+              cost, and gives the 195 cards without one something to say. */}
+          <TrophyCounts slot="footer" trophies={game.data.trophies} />
         </EditorialCard>
       ))
     }

@@ -6,6 +6,7 @@ name: Sync content
 #   books   <- goodreads.com RSS        (scripts/goodreads-sync.mjs)
 #   games   <- PlayStation Network      (scripts/psn-sync.mjs)
 #   albums  <- Flickr API                (scripts/flickr-sync.mjs)
+#   music   <- Spotify Web API           (scripts/spotify-sync.mjs)
 #
 # Both live in one workflow on purpose. As two workflows on the same schedule
 # they would each check out main, each commit, and the second push would fail
@@ -76,6 +77,18 @@ jobs:
         continue-on-error: true
         run: npm run albums:sync
 
+      # Needs a user grant, not just an app credential: "most played" is not
+      # public data. The refresh token does not expire, but it is revoked by a
+      # password change or by removing the app's access — hence its own step.
+      - name: Sync on rotation from Spotify
+        id: music
+        continue-on-error: true
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+        run: npm run music:sync
+
       # Guards the commit: an entry that defeats a parser should fail here
       # rather than land broken on main.
       - name: Check
@@ -95,7 +108,7 @@ jobs:
 
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Sync content from Blogspot and Goodreads'
+          git commit -m 'Sync content from external feeds'
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
@@ -105,7 +118,7 @@ jobs:
       - name: Report source failures
         if: >-
           steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
-          || steps.albums.outcome == 'failure'
+          || steps.albums.outcome == 'failure' || steps.music.outcome == 'failure'
         run: |
           if [ "${{ steps.books.outcome }}" = "failure" ]; then
             echo "::error::Goodreads sync failed - is the shelf still public?"
@@ -115,6 +128,9 @@ jobs:
           fi
           if [ "${{ steps.albums.outcome }}" = "failure" ]; then
             echo "::error::Flickr sync failed - most likely a markup change or a bot challenge. See the header of scripts/flickr-sync.mjs."
+          fi
+          if [ "${{ steps.music.outcome }}" = "failure" ]; then
+            echo "::error::Spotify sync failed - if it says invalid_grant the token was revoked, and 'npm run music:auth' issues a new one."
           fi
           echo "Whatever did sync has still been committed and deployed."
           exit 1

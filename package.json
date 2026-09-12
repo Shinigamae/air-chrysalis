@@ -19,7 +19,10 @@
     "games:sync": "node --use-system-ca scripts/psn-sync.mjs",
     "albums:check": "node --use-system-ca scripts/flickr-sync.mjs --check",
     "albums:sync": "node --use-system-ca scripts/flickr-sync.mjs",
-    "content:sync": "npm run blog:sync && npm run books:sync && npm run games:sync && npm run albums:sync"
+    "music:auth": "node --use-system-ca scripts/spotify-auth.mjs",
+    "music:check": "node --use-system-ca scripts/spotify-sync.mjs --check",
+    "music:sync": "node --use-system-ca scripts/spotify-sync.mjs",
+    "content:sync": "npm run blog:sync && npm run books:sync && npm run games:sync && npm run albums:sync && npm run music:sync"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",
