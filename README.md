@@ -5,7 +5,8 @@ A personal digital workshop and archive — things made, played, read, and shipp
 Dark editorial × technical manual. The design language lives in Figma
 (`SHINIGAMAE.DEV` › `01 — Design Direction`) and is the source of truth;
 `FIGMA.md` holds the implementation brief, `DEPLOY.md` how it ships, and
-`PLAN.md` what comes next — the API, the database, and accounts.
+`PLAN.md` what comes next — the API, the database, and accounts — and
+`BACKEND.md` how that API is designed.
 
 ## Stack
 

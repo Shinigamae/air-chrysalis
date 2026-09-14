@@ -8,6 +8,11 @@ This file is the plan for the next step: a real .NET API, a PostgreSQL
 database, Discord sign-in, guest comments, and an admin edit mode — hosted on
 Azure Static Web Apps rather than GitHub Pages.
 
+**`BACKEND.md` is the technical design** — storage boundary, caching, schema,
+API, .NET and Azure specifics. This file stays the decision register and the
+phase order. Where they disagree `BACKEND.md` is newer and wins; its §1 lists
+what it overturns, so nothing here is reversed silently.
+
 Nothing here is built yet. It is written down now so the decisions are made
 once, in the open, rather than improvised against a deadline.
 
@@ -101,7 +106,7 @@ These gate the work. My recommendation is in bold; none are irreversible.
 | --- | --- | --- | --- |
 | D1 | Custom domain | Register `shinigamae.dev` now, or stay on `*.azurestaticapps.net` | **Register now.** See §5 — session cookies do not survive without it |
 | D2 | SWA plan | Free, or Standard (~$9/app/mo) | **Free.** Standard buys same-origin `/api` and custom auth providers; D1 solves the problem those would solve |
-| D3 | Where the API runs | Container Apps (scale to zero), App Service B1, Functions | **Container Apps**, min replicas 0. Accept a cold start on the first comment fetch |
+| D3 | Where the API runs | Container Apps (scale to zero), App Service B1, Functions | ~~**Container Apps**, min replicas 0~~ → **App Service B1**, decided 2026-09-14. No scale-to-zero, so no cold start; ~$13/mo instead of ~$0. See `BACKEND.md` §9 |
 | D4 | Postgres | Azure Database for PostgreSQL Flexible Server (Burstable B1ms), or Neon via Azure Marketplace | **Flexible Server** if it must sit in the resource group; **Neon** if monthly cost matters more than co-location |
 | D5 | Anonymous comments | Publish immediately, or hold for admin review | **Publish immediately**, with rate limits and one-click delete. Revisit the first time it is abused |
 | D6 | Identity storage | Store the Discord id, or display the name only | **Store the id.** You need a stable key to attribute a comment and to ban an account |

@@ -195,12 +195,19 @@ In the order that unblocks the most work.
 
 ### 3.3 Later
 
-8. **The .NET REST API — now planned in `PLAN.md`.** Backend, PostgreSQL,
-   Discord sign-in, guest comments, admin edit mode, and the move to Azure
-   Static Web Apps. Expected ~2026-09-22. `src/content.config.ts` is already
-   the contract — the schemas were written to be satisfied by it — and
-   `currentStatus` in `src/config/home.ts` is the first field to make live
-   rather than hard-coded.
+8. **The .NET REST API — planned in `PLAN.md`, designed in `BACKEND.md`.**
+   .NET 10 on Azure App Service, PostgreSQL, Discord *and* Google sign-in,
+   guest comments, admin edit mode, and the move to Azure Static Web Apps.
+   Expected ~2026-09-22. `src/content.config.ts` is already the contract — the
+   schemas were written to be satisfied by it — and `currentStatus` in
+   `src/config/home.ts` is the first field to make live rather than
+   hard-coded.
+
+   The storage split, in one line: **Postgres holds what changes between
+   builds — edits, status, comments — as deltas; JSON keeps everything a sync
+   owns.** So a book's author, cover and ISBN stay in `src/content/books/`,
+   and editing its rating writes a one-field patch to the database. The site
+   still builds with the database switched off.
 10. **Collapse the type scale** if the designer agrees.
 11. **Portrait media variant** on `EditorialCard` for book covers.
 
