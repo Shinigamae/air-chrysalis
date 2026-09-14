@@ -17,8 +17,21 @@
   ],
   "source": "top",
   "range": "short_term",
-  "syncedAt": "2026-09-14T10:21:31.146Z",
+  "syncedAt": "2026-09-14T16:37:50.982Z",
   "tracks": [
+    {
+      "id": "0hXdXYMmWxO1POnuCl2Dde",
+      "title": "Bông Đào Là Em",
+      "artists": [
+        "Minh Vy"
+      ],
+      "album": "Tết Là Tết",
+      "art": "https://i.scdn.co/image/ab67616d00001e02e624a9f80c8f14d03e5e1492",
+      "releaseYear": 2022,
+      "durationMs": 212800,
+      "url": "https://open.spotify.com/track/0hXdXYMmWxO1POnuCl2Dde",
+      "rank": 1
+    },
     {
       "id": "4HKeavYdOKweZufwBLlyvj",
       "title": "Mùa hè 26",
@@ -31,7 +44,7 @@
       "releaseYear": 2026,
       "durationMs": 297929,
       "url": "https://open.spotify.com/track/4HKeavYdOKweZufwBLlyvj",
-      "rank": 1
+      "rank": 2
     },
     {
       "id": "4Kx8oPkjWjMZZLxkUjEBbG",
@@ -49,33 +62,7 @@
       "releaseYear": 2026,
       "durationMs": 195130,
       "url": "https://open.spotify.com/track/4Kx8oPkjWjMZZLxkUjEBbG",
-      "rank": 2
-    },
-    {
-      "id": "0hXdXYMmWxO1POnuCl2Dde",
-      "title": "Bông Đào Là Em",
-      "artists": [
-        "Minh Vy"
-      ],
-      "album": "Tết Là Tết",
-      "art": "https://i.scdn.co/image/ab67616d00001e02e624a9f80c8f14d03e5e1492",
-      "releaseYear": 2022,
-      "durationMs": 212800,
-      "url": "https://open.spotify.com/track/0hXdXYMmWxO1POnuCl2Dde",
       "rank": 3
-    },
-    {
-      "id": "70JZcKtsXP87H6tgQDXdaX",
-      "title": "Anh Phi Công Ơi",
-      "artists": [
-        "Minh Vy"
-      ],
-      "album": "Việt Nam Những Chuyến Đi",
-      "art": "https://i.scdn.co/image/ab67616d00001e02d9246edbe37239190a255077",
-      "releaseYear": 2022,
-      "durationMs": 177557,
-      "url": "https://open.spotify.com/track/70JZcKtsXP87H6tgQDXdaX",
-      "rank": 4
     },
     {
       "id": "1r1fPuhj9H4VdXr7OK6FL5",
@@ -88,7 +75,34 @@
       "releaseYear": 2012,
       "durationMs": 205400,
       "url": "https://open.spotify.com/track/1r1fPuhj9H4VdXr7OK6FL5",
+      "rank": 4
+    },
+    {
+      "id": "70JZcKtsXP87H6tgQDXdaX",
+      "title": "Anh Phi Công Ơi",
+      "artists": [
+        "Minh Vy"
+      ],
+      "album": "Việt Nam Những Chuyến Đi",
+      "art": "https://i.scdn.co/image/ab67616d00001e02d9246edbe37239190a255077",
+      "releaseYear": 2022,
+      "durationMs": 177557,
+      "url": "https://open.spotify.com/track/70JZcKtsXP87H6tgQDXdaX",
       "rank": 5
+    },
+    {
+      "id": "25edeHHueINMguqu9emCyV",
+      "title": "Lối Nhỏ",
+      "artists": [
+        "Đen",
+        "Phương Anh Đào"
+      ],
+      "album": "Lối Nhỏ",
+      "art": "https://i.scdn.co/image/ab67616d00001e02539ffc79122ccceb066f5340",
+      "releaseYear": 2019,
+      "durationMs": 252953,
+      "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV",
+      "rank": 6
     },
     {
       "id": "2GoX9NYs06sRWN0Z0lUfBo",
@@ -106,34 +120,7 @@
       "releaseYear": 2026,
       "durationMs": 648089,
       "url": "https://open.spotify.com/track/2GoX9NYs06sRWN0Z0lUfBo",
-      "rank": 6
-    },
-    {
-      "id": "25edeHHueINMguqu9emCyV",
-      "title": "Lối Nhỏ",
-      "artists": [
-        "Đen",
-        "Phương Anh Đào"
-      ],
-      "album": "Lối Nhỏ",
-      "art": "https://i.scdn.co/image/ab67616d00001e02539ffc79122ccceb066f5340",
-      "releaseYear": 2019,
-      "durationMs": 252953,
-      "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV",
       "rank": 7
-    },
-    {
-      "id": "2M2M3zRfkF9j4olkR2pzPF",
-      "title": "Mỗi ngày nhớ đánh răng",
-      "artists": [
-        "Ngọc Giàu"
-      ],
-      "album": "100 Bài Hát Thiếu Nhi Hay Nhất",
-      "art": "https://i.scdn.co/image/ab67616d00001e02a984ecb9a7d2ec9a458fbee0",
-      "releaseYear": 2025,
-      "durationMs": 193960,
-      "url": "https://open.spotify.com/track/2M2M3zRfkF9j4olkR2pzPF",
-      "rank": 8
     },
     {
       "id": "2oNYsdCasRRlz1shXFAz7D",
@@ -146,7 +133,7 @@
       "releaseYear": 2012,
       "durationMs": 205120,
       "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D",
-      "rank": 9
+      "rank": 8
     },
     {
       "id": "35BXnfHKDFjaY02d00sStp",
@@ -159,20 +146,7 @@
       "releaseYear": 2019,
       "durationMs": 163733,
       "url": "https://open.spotify.com/track/35BXnfHKDFjaY02d00sStp",
-      "rank": 10
-    },
-    {
-      "id": "4hGiRqYgVsIo8pcVXcblky",
-      "title": "Chú Ếch Con",
-      "artists": [
-        "Nguyệt Hằng"
-      ],
-      "album": "Nhong Nhong Nhong",
-      "art": "https://i.scdn.co/image/ab67616d00001e028c49407381dcde9975d3156a",
-      "releaseYear": 2015,
-      "durationMs": 207137,
-      "url": "https://open.spotify.com/track/4hGiRqYgVsIo8pcVXcblky",
-      "rank": 11
+      "rank": 9
     },
     {
       "id": "6QYQJ6CXcoKUPkaY5ZTkfK",
@@ -185,6 +159,32 @@
       "releaseYear": 2020,
       "durationMs": 125158,
       "url": "https://open.spotify.com/track/6QYQJ6CXcoKUPkaY5ZTkfK",
+      "rank": 10
+    },
+    {
+      "id": "0ehr6CI3E8cCBdqbWCyWEV",
+      "title": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
+      "artists": [
+        "Đen"
+      ],
+      "album": "Show Của Đen",
+      "art": "https://i.scdn.co/image/ab67616d00001e024888abe8ee4d110278a67538",
+      "releaseYear": 2021,
+      "durationMs": 198400,
+      "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV",
+      "rank": 11
+    },
+    {
+      "id": "3m0HZdj4sDKWPeZxjIAEUg",
+      "title": "Lãng đãng",
+      "artists": [
+        "Đen"
+      ],
+      "album": "Lãng đãng",
+      "art": "https://i.scdn.co/image/ab67616d00001e02c7dbf5d7ffaa8b11197646e5",
+      "releaseYear": 2025,
+      "durationMs": 322872,
+      "url": "https://open.spotify.com/track/3m0HZdj4sDKWPeZxjIAEUg",
       "rank": 12
     }
   ]
