@@ -126,16 +126,46 @@ jobs:
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Sync content from external feeds'
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+          # A sync takes two or three minutes, and anyone pushing inside that
+          # window leaves this commit behind the remote: the push is rejected
+          # non-fast-forward and the run throws away content it already
+          # fetched. (Happened 2026-09-14, run 34804317454.) `concurrency`
+          # cannot help — it serialises this workflow against itself, not
+          # against a person.
+          #
+          # Rebase and retry. This commit only ever touches src/content, and
+          # a human push that also touched it would be editing generated
+          # files, so a conflict here means something is wrong that a retry
+          # should not paper over — hence --rebase, not a merge, and a hard
+          # stop if it does not apply cleanly.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push $attempt rejected — rebasing onto the new $GITHUB_REF_NAME."
+            git pull --rebase --quiet origin "$GITHUB_REF_NAME" || {
+              git rebase --abort 2>/dev/null || true
+              echo "::error::Sync commit conflicts with a push to $GITHUB_REF_NAME. Someone hand-edited a generated file under src/content."
+              exit 1
+            }
+          done
+
+          echo "::error::Could not push the sync commit after 3 attempts - $GITHUB_REF_NAME is being written to to faster than the sync can rebase."
+          exit 1
 
       # Surfaces a failed sync after the other sources are safely committed,
       # so the run is still marked red and you go and look.
+      # `always()` because a step that only runs when everything before it
+      # succeeded cannot report failures. Without it a failed Commit skips
+      # this one, and the run goes red saying nothing about which source
+      # broke — which is precisely what happened on 2026-09-14.
       - name: Report source failures
         if: >-
-          steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
-          || steps.albums.outcome == 'failure' || steps.music.outcome == 'failure'
+          always() && (steps.books.outcome == 'failure' || steps.games.outcome == 'failure'
+          || steps.albums.outcome == 'failure' || steps.music.outcome == 'failure')
         run: |
           if [ "${{ steps.books.outcome }}" = "failure" ]; then
             echo "::error::Goodreads sync failed - is the shelf still public?"
