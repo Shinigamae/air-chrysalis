@@ -19,9 +19,16 @@ name: Sync content
 
 on:
   schedule:
-    # 03:00 UTC — 10:00 in Ho Chi Minh City, so a morning post is live by the
-    # next working day without waiting on a manual run.
-    - cron: '0 3 * * *'
+    # 10:47 UTC — aiming at 18:00 in Ho Chi Minh City, so a day's listening,
+    # reading and playing is counted before the run rather than after it.
+    #
+    # The odd minute is deliberate. GitHub queues scheduled runs on a shared
+    # pool and the top of the hour is the most contended slot on it: at
+    # `0 3 * * *` this workflow never once started before 07:37 UTC — four and
+    # a half hours late, every day. A schedule here is a "no earlier than",
+    # never a promise, and `workflow_dispatch` is what you use when you want
+    # it now.
+    - cron: '47 10 * * *'
   # Lets you pull a post in immediately instead of waiting for the schedule.
   workflow_dispatch:
 
@@ -87,7 +94,17 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-        run: npm run music:sync
+        # Skipped rather than failed while the grant does not exist yet. The
+        # sync exits 1 on missing credentials, which is right when they were
+        # there yesterday — but "never set up" is not a broken sync, and a red
+        # run every evening is how a real failure gets ignored. Delete this
+        # guard once the secrets are in; then a missing token means something.
+        run: |
+          if [ -z "$SPOTIFY_REFRESH_TOKEN" ]; then
+            echo "::notice::Spotify is not configured yet - no SPOTIFY_REFRESH_TOKEN secret. Skipped. See STATUS.md 3.1."
+            exit 0
+          fi
+          npm run music:sync
 
       # Guards the commit: an entry that defeats a parser should fail here
       # rather than land broken on main.

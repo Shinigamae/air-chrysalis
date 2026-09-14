@@ -245,6 +245,17 @@ worth more here than statelessness.
    `rating` and `review`, book `thought`.
 4. Pages read their overrides live, so an edit is visible immediately without
    a deploy. The baked value stays as the fallback.
+5. **Hiding a row from ON ROTATION** belongs here, as an admin control on the
+   section rather than a file. Music played for someone else on the account —
+   a bedtime playlist, on repeat — is still listening, and Spotify counts it:
+   playlist privacy hides the playlist, not the plays, so `/me/top/tracks`
+   ranks a nightly repeat high in a four-week window. A denylist in
+   `spotify-sync.mjs` was built and reverted on 2026-09-14 (decided: the
+   affordance should be "hide this", clicked on the row you are looking at,
+   not a JSON file of IDs pasted in by hand). Until then the chart shows what
+   was played, which is at least what it claims to be. Note that the exclusion
+   has to apply *before* the chart is cut to `SPOTIFY_LIMIT`, or hiding a row
+   leaves an eleven-row section.
 
 ### Phase 4b — edit mode, baked *(optional)*
 

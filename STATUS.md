@@ -1,6 +1,6 @@
 # SHINIGAMAE.DEV — status, known issues, next steps
 
-Last updated: 2026-09-11
+Last updated: 2026-09-14
 
 Companion to `FIGMA.md` (the brief) and `README.md` (how to run it). This file
 tracks what is built, what is knowingly wrong or unfinished, and what comes
@@ -161,6 +161,23 @@ In the order that unblocks the most work.
    file of the same name; no code or content changes needed. `IMAGES.md` maps
    every file to where it appears and at what aspect.
 4. ~~Replace the seed content.~~ **Done 2026-09-11** — see §2.3.
+5. **Finish wiring Spotify.** The code has been complete and unrun since it
+   was written; `src/content/music/rotation.json` is still the committed empty
+   state, so ON ROTATION does not render. `SPOTIFY_CLIENT_ID` and
+   `SPOTIFY_CLIENT_SECRET` are in `.env` as of 2026-09-14. What is left is
+   `npm run music:auth`, one browser consent, which only the account holder
+   can give — and this network blocks Spotify's consent screen, so it needs a
+   moment when it does not.
+
+   Local syncs work the moment that token is in `.env`. The three repository
+   secrets are a *separate* and later thing: they only decide whether the
+   daily workflow can sync music unattended. Without them that step now skips
+   with a notice; add them and delete the guard, so that a missing token means
+   a revoked grant again.
+
+   No exclusion list. Music played for someone else on the account will appear
+   in the chart, and that is accepted for now — hiding a row is admin edit
+   mode's job, recorded in `PLAN.md` Phase 4a §5.
 
 ### 3.2 Then
 
