@@ -17,8 +17,8 @@ responsive foundation, accessibility baseline.
 **Step 2 — Home.** Complete. Hero, standfirst, current-status panel, and the
 four "selected work" cards, measured against the Figma nodes. Section 03, ON
 ROTATION, was added afterwards and has no Figma node behind it — it follows the
-Gaming Log's feature-plus-list pattern. It renders only once
-`npm run music:sync` has run; see README.
+Gaming Log's feature-plus-list pattern. Live as of 2026-09-14, 12 tracks from
+Spotify.
 
 **Step 3 — Content layer and section pages.** Complete. Typed collections plus
 Workshop, Builds, Games, Books and Journeys, with generated detail routes.
@@ -27,7 +27,7 @@ Workshop, Builds, Games, Books and Journeys, with generated detail routes.
 `npm run content:sync` — Blogspot, PlayStation Network, Goodreads and Flickr —
 and the Workshop's clients are the real four.
 
-483 pages build. `astro check` reports 0 errors, 0 warnings, 0 hints across 52
+479 pages build. `astro check` reports 0 errors, 0 warnings, 0 hints across 57
 files. No horizontal overflow at 390 / 768 / 1120 / 1440.
 
 | Route | State |
@@ -161,23 +161,20 @@ In the order that unblocks the most work.
    file of the same name; no code or content changes needed. `IMAGES.md` maps
    every file to where it appears and at what aspect.
 4. ~~Replace the seed content.~~ **Done 2026-09-11** — see §2.3.
-5. **Finish wiring Spotify.** The code has been complete and unrun since it
-   was written; `src/content/music/rotation.json` is still the committed empty
-   state, so ON ROTATION does not render. `SPOTIFY_CLIENT_ID` and
-   `SPOTIFY_CLIENT_SECRET` are in `.env` as of 2026-09-14. What is left is
-   `npm run music:auth`, one browser consent, which only the account holder
-   can give — and this network blocks Spotify's consent screen, so it needs a
-   moment when it does not.
+5. ~~Finish wiring Spotify.~~ **Done 2026-09-14.** The consent ran, the
+   refresh token is in `.env` and in the three repository secrets, and
+   `src/content/music/rotation.json` holds 12 tracks — most played,
+   `short_term`. The skip-if-unset guard has been deleted from the workflow's
+   music step, so from here a missing token is a revoked grant and goes red.
 
-   Local syncs work the moment that token is in `.env`. The three repository
-   secrets are a *separate* and later thing: they only decide whether the
-   daily workflow can sync music unattended. Without them that step now skips
-   with a notice; add them and delete the guard, so that a missing token means
-   a revoked grant again.
+   *Gotcha for whoever runs `music:auth` next:* it only **prints**
+   `SPOTIFY_REFRESH_TOKEN=…`. It does not write `.env`. An empty
+   `SPOTIFY_REFRESH_TOKEN=` line reads exactly like a missing one.
 
-   No exclusion list. Music played for someone else on the account will appear
-   in the chart, and that is accepted for now — hiding a row is admin edit
-   mode's job, recorded in `PLAN.md` Phase 4a §5.
+   No exclusion list, and the first sync shows why it will eventually want
+   one: four of the twelve rows are nursery rhymes played for someone else on
+   the account. Accepted for now — hiding a row is admin edit mode's job,
+   recorded in `PLAN.md` Phase 4a §5.
 
 ### 3.2 Then
 

@@ -94,17 +94,10 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-        # Skipped rather than failed while the grant does not exist yet. The
-        # sync exits 1 on missing credentials, which is right when they were
-        # there yesterday — but "never set up" is not a broken sync, and a red
-        # run every evening is how a real failure gets ignored. Delete this
-        # guard once the secrets are in; then a missing token means something.
-        run: |
-          if [ -z "$SPOTIFY_REFRESH_TOKEN" ]; then
-            echo "::notice::Spotify is not configured yet - no SPOTIFY_REFRESH_TOKEN secret. Skipped. See STATUS.md 3.1."
-            exit 0
-          fi
-          npm run music:sync
+        # The skip-if-unset guard that used to live here is gone (2026-09-14):
+        # the three secrets are set, so a missing token now means the grant was
+        # revoked, and that should go red rather than pass quietly.
+        run: npm run music:sync
 
       # Guards the commit: an entry that defeats a parser should fail here
       # rather than land broken on main.
