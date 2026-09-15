@@ -1,3 +1,15 @@
+# Azure Static Web Apps — the host that talks to the API.
+#
+# Unlike the GitHub Pages workflow beside this one, this build knows about the
+# backend: PUBLIC_API_URL is set, so the live layer and edit mode are compiled in.
+# Pages stays the read-only mirror with no API and no admin code in it at all.
+#
+# The scaffold this replaces never built anything. It handed Azure the repository
+# root with `output_location: ""` and let Oryx guess, which for an Astro project
+# means uploading source. We build here instead — `skip_app_build` — because the
+# build needs environment variables Oryx has no way to be told about, and because
+# `npm run check` should fail the deploy rather than ship a broken schema.
+
 name: Azure Static Web Apps CI/CD
 
 on:
@@ -9,42 +21,78 @@ on:
     branches:
       - main
 
+env:
+  # The site is served from the root of its own hostname here, not from a project
+  # subpath. Left at the Pages default this would prefix every asset with
+  # /air-chrysalis and 404 the whole page.
+  SITE_BASE: ''
+  SITE_ORIGIN: 'https://polite-plant-0ab659c00.5.azurestaticapps.net'
+  PUBLIC_API_URL: 'https://shinigamae-g4h4ffdkg2fpfndq.eastasia-01.azurewebsites.net'
+  # Public by design — an OAuth client id travels in the authorize URL of every
+  # login and is visible to anyone who clicks sign in. The *secret* stays in the
+  # API's app settings and never reaches a browser.
+  PUBLIC_DISCORD_CLIENT_ID: '1549310758825894001'
+
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     permissions:
-       id-token: write
-       contents: read
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # Type and template diagnostics, same as the Pages workflow. The build alone
+      # would not catch a content entry that violates its schema in a way Astro
+      # tolerates.
+      - name: Check
+        run: npm run check
+
+      - name: Build
+        # Stamped here rather than inside the build so the value is the deploy's,
+        # and so it is visible in the log when a stale /api/live answer needs
+        # explaining.
+        run: |
+          export PUBLIC_BUILD_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "PUBLIC_BUILD_AT=$PUBLIC_BUILD_AT"
+          npm run build
+
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
+
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
         with:
-           script: |
-               const coredemo = require('@actions/core')
-               return await coredemo.getIDToken()
-           result-encoding: string
+          script: |
+            const coredemo = require('@actions/core')
+            return await coredemo.getIDToken()
+          result-encoding: string
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_PLANT_0AB659C00 }}
-          action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "" # Built app content directory - optional
+          action: 'upload'
+          app_location: 'dist'
+          api_location: ''
+          output_location: ''
+          skip_app_build: true
+          skip_api_build: true
           github_id_token: ${{ steps.idtoken.outputs.result }}
-          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -55,4 +103,4 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          action: "close"
+          action: 'close'

@@ -187,17 +187,95 @@ export async function getMe(): Promise<Me | null> {
 }
 
 /**
- * The local-only sign-in, until the OAuth redirect flow is wired.
+ * The local stand-in for a provider, offered on localhost only.
  *
- * `POST /api/auth/dev` is refused outright in Production and gated behind
- * `Auth:DevAuthEnabled` everywhere else, so this cannot become the real door by
- * accident. When Discord and Google are wired this is replaced by the exchange in
- * BACKEND.md §7 — the site sends the browser to the provider, gets a code back, and
- * posts it to `/api/auth/{provider}/exchange`. Everything downstream of the token is
- * already written and does not change.
+ * Discord is the real door — see `startDiscordLogin` below. This exists because a
+ * redirect flow needs a redirect URI registered against a hostname, and `localhost`
+ * changes port often enough that keeping one registered is a nuisance. It is not a
+ * second way in: `POST /api/auth/dev` is refused outright in Production and gated
+ * behind `Auth:DevAuthEnabled` everywhere else.
  */
 export async function signInDev(): Promise<Me> {
   const auth = await request<{ token: string; user: Me }>('POST', '/api/auth/dev');
+  writeToken(auth.token);
+  return auth.user;
+}
+
+/*
+ * Discord, the real door (BACKEND.md §7).
+ *
+ * The redirect URI is registered against the **site**, not the API: the browser
+ * comes back *here* with the code, and this posts it to the API, which does the
+ * exchange server-side so the client secret never reaches a browser.
+ *
+ * `state` is generated here and kept in sessionStorage. It is the whole CSRF story
+ * for the login: a code delivered with a state this tab did not generate is a code
+ * someone else asked for, and it is dropped.
+ */
+
+const STATE_KEY = 'shinigamae.oauth-state';
+
+/** The client id is public by design — it travels in the authorize URL. */
+const DISCORD_CLIENT_ID = import.meta.env.PUBLIC_DISCORD_CLIENT_ID ?? '';
+
+export const canSignIn = hasBackend && DISCORD_CLIENT_ID !== '';
+
+/** Where the provider sends the browser back. Must match what is registered. */
+function redirectUri(): string {
+  // Origin plus the site's base path, with no query or hash: Discord compares this
+  // string exactly, and a trailing ?code= from a previous attempt would break it.
+  return `${window.location.origin}${import.meta.env.BASE_URL}`.replace(/\/+$/, '/');
+}
+
+export function startDiscordLogin(): void {
+  const state = crypto.randomUUID();
+  try {
+    sessionStorage.setItem(STATE_KEY, state);
+  } catch {
+    /* Private mode. The exchange below will refuse, which is the safe direction. */
+  }
+
+  const url = new URL('https://discord.com/api/oauth2/authorize');
+  url.searchParams.set('client_id', DISCORD_CLIENT_ID);
+  url.searchParams.set('redirect_uri', redirectUri());
+  url.searchParams.set('response_type', 'code');
+  url.searchParams.set('scope', 'identify');
+  url.searchParams.set('state', state);
+  window.location.assign(url.toString());
+}
+
+/**
+ * Completes a login if this page load is the one the provider redirected to.
+ * Returns null when there is no code in the URL, which is every ordinary page view.
+ */
+export async function completeLoginFromUrl(): Promise<Me | null> {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  if (!code || !state) return null;
+
+  let expected: string | null = null;
+  try {
+    expected = sessionStorage.getItem(STATE_KEY);
+    sessionStorage.removeItem(STATE_KEY);
+  } catch {
+    /* ignored — the mismatch below is then the outcome */
+  }
+
+  // Strip the code from the address bar either way. Leaving it there means a
+  // refresh retries a code the provider has already spent, and it puts a
+  // single-use credential in the history and in any copied link.
+  const clean = window.location.pathname + window.location.hash;
+  window.history.replaceState(null, '', clean);
+
+  if (!expected || expected !== state) {
+    throw new ApiError(0, 'Login could not be verified.', 'Start again from this tab.');
+  }
+
+  const auth = await request<{ token: string; user: Me }>('POST', '/api/auth/discord/exchange', {
+    code,
+    redirectUri: redirectUri(),
+  });
   writeToken(auth.token);
   return auth.user;
 }

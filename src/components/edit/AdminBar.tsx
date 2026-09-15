@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { hasBackend, signInDev, ApiError } from '@/lib/api';
+import { canSignIn, hasBackend, signInDev, startDiscordLogin, ApiError } from '@/lib/api';
 import { setMe, signOut, startSession, setEditing, useEditState } from '@/lib/edit-mode';
 import { buttonTone } from '@/components/edit/controls';
 
@@ -30,22 +30,26 @@ export default function AdminBar() {
   if (!hasBackend) return null;
 
   /*
-   * Not signed in. This is where the OAuth flow lands when it is wired — the button
-   * sends the browser to Discord or Google, the provider returns to the site with a
-   * code, and the site posts it to /api/auth/{provider}/exchange (BACKEND.md §7).
-   * Until then the local dev endpoint stands in, and it cannot become the real door by
-   * accident: /api/auth/dev is refused outright in Production.
-   *
-   * Nothing is shown to a visitor who is not signed in. An anonymous reader has no
-   * reason to be offered a sign-in for an archive they can already read in full, and
-   * the one person who does need it can reach it by other means.
+   * Not signed in. The button sends the browser to Discord, which returns to this site
+   * with a code, which the site posts to /api/auth/discord/exchange — so the client
+   * secret never reaches a browser (BACKEND.md §7).
    */
   if (ready && !me) {
-    if (!isLocal()) return null;
+    // Discord where it is configured, the local stand-in where it is not. Nothing
+    // at all on a deployed site with neither, because an anonymous reader has no
+    // reason to be offered a sign-in for an archive they can already read in full.
+    if (!canSignIn && !isLocal()) return null;
 
     return (
       <Rail>
         <span className="type-micro text-muted">ADMIN</span>
+        {canSignIn && (
+          <button type="button" onClick={startDiscordLogin} className={buttonTone.signal}>
+            SIGN IN WITH DISCORD
+          </button>
+        )}
+
+        {isLocal() && (
         <button
           type="button"
           disabled={signingIn}
@@ -66,6 +70,7 @@ export default function AdminBar() {
         >
           {signingIn ? 'SIGNING IN…' : 'SIGN IN (DEV)'}
         </button>
+        )}
         {(signInError ?? error) && (
           <span className="type-micro text-danger">{signInError ?? error}</span>
         )}

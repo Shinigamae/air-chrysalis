@@ -44,6 +44,8 @@ const next = () => String(++section).padStart(2, '0');
 ---
 
 <AppShell title={g.title} topBarMeta={`${g.platform} / ${g.year}`}>
+  {/* The live layer patches the fields inside this by (type, slug). */}
+  <div data-live-entry={`games/${game.id}`}>
   <PageHeader
     eyebrow={`PLAY / ${g.year}`}
     title={g.title}
@@ -153,6 +155,8 @@ const next = () => String(++section).padStart(2, '0');
       </div>
     )
   }
+
+  </div>
 
   <a
     href={withBase('/games')}

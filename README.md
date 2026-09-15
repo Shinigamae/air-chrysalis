@@ -425,12 +425,14 @@ you are looking at agrees with what you just did. That is a courtesy, not the re
 
 ### What it costs a reader
 
-Nothing, in the current build.
+Nothing on GitHub Pages, which is built with no `PUBLIC_API_URL` at all: the islands are
+gated on it in the `.astro` files, so no `<astro-island>` is emitted and no page
+references any of the edit chunks. The only JavaScript any page loads there is Astro's
+client runtime and `MobileMenu`, exactly as before edit mode existed.
 
-`PUBLIC_API_URL` is unset in production, and the islands are gated on it in the `.astro`
-files — so no `<astro-island>` is emitted, and no page references any of the edit chunks.
-Measured on a full build: the only JavaScript any page loads is Astro's client runtime
-and `MobileMenu`, exactly as before edit mode existed.
+On Azure Static Web Apps, which does have the API, a reader carries the admin bar's shell
+and the live layer — a few KB — and nothing else. The editor forms sit behind a dynamic
+import requested when the switch goes on.
 
 With the backend wired, the cost is one small shell per editable region. The forms
 themselves — inputs, validation, save machinery, about 27 KB — sit behind a dynamic
@@ -450,13 +452,18 @@ npm run dev
 
 The rail then offers SIGN IN (DEV), which calls `POST /api/auth/dev`. That endpoint is
 blocked outright in Production and gated behind `Auth:DevAuthEnabled` everywhere else, so
-it cannot become the real door by accident. To be an admin, set `Admin:Identities:0` to
-`discord:000000000000000000` in the API.
+it cannot become the real door by accident. To be an admin locally, set
+`Admin:Identities:0` to `discord:000000000000000000` in the API.
 
-**The OAuth flow is not wired yet.** When it is, the button sends the browser to Discord
-or Google, the provider returns to the site with a code, and the site posts it to
-`/api/auth/{provider}/exchange` (BACKEND.md §7). Everything downstream of the token is
-already written and does not change.
+On a deployed site the door is **Discord**. The site generates a `state`, sends the
+browser to Discord, gets `?code=&state=` back, checks the state, and posts the code to
+`/api/auth/discord/exchange` — the exchange happens server-side, so the client secret
+never reaches a browser. The code is stripped from the address bar immediately: leaving
+it there means a refresh retries a credential the provider has already spent.
+
+**The redirect URI is registered against the site, not the API**, because the browser
+comes back here. In the Discord Developer Portal that is
+`https://polite-plant-0ab659c00.5.azurestaticapps.net/` for the deployed site.
 
 ### Layout
 

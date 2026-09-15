@@ -104,6 +104,32 @@ const documentTitle = title
     <SiteFooter />
 
     {/*
+      The live layer. One request after paint asking what changed since this HTML
+      was baked, and a pass over the document where the answer differs. It is a
+      script rather than an island because there is no state to keep — the same
+      call STATUS.md records for the collection filters.
+
+      Not gated on `hasBackend` like the edit islands are: a <script> is raw text
+      and cannot sit inside a JSX conditional without escaping every brace in it.
+      It does not need the gate anyway — syncLive() reads the same empty
+      PUBLIC_API_URL and returns before doing anything, and what survives the
+      bundler when that constant folds is a few bytes rather than a React island.
+    */}
+    <script>
+      import { syncLive } from '@/lib/live';
+
+      // requestIdleCallback where it exists: this must never compete with paint,
+      // and a cold App Service can take seconds to answer. Safari still has no
+      // rIC, hence the timeout fallback.
+      const run = () => {
+        void syncLive();
+      };
+
+      if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 3000 });
+      else setTimeout(run, 200);
+    </script>
+
+    {/*
       Edit mode's switch. `client:idle` rather than `client:load` because it is
       never the reason anyone opened the page — it waits for the browser to be
       done with the content first.

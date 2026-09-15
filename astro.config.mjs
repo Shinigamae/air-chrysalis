@@ -11,10 +11,24 @@ import tailwindcss from '@tailwindcss/vite';
  * changes — but redirect targets do have to be built from it by hand, see
  * below.
  */
-const base = '/air-chrysalis';
+/*
+ * Two hosts, two shapes.
+ *
+ * GitHub Pages serves this as a *project* site under /air-chrysalis/, so every
+ * internal href needs that prefix. Azure Static Web Apps serves it at the root of
+ * its own hostname, where the same prefix would 404 every asset on the page.
+ *
+ * So both come from the environment, defaulting to the Pages values — the shape
+ * this repository has always built. The SWA workflow sets them to the root, and
+ * when shinigamae.dev is registered it is the same two variables again.
+ * `withBase()` in src/config/site.ts degrades to identity when the base is empty,
+ * so nothing else in the project has to know which host it is on.
+ */
+const base = process.env.SITE_BASE ?? '/air-chrysalis';
+const site = process.env.SITE_ORIGIN ?? 'https://shinigamae.github.io';
 
 export default defineConfig({
-  site: 'https://shinigamae.github.io',
+  site,
   base,
   /*
    * /lab became /journeys once the section turned into photography. A static
@@ -37,6 +51,21 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    /*
+     * When this build was baked (BACKEND.md §10.3). It is sent as `since` on
+     * /api/live, so the API answers with only what changed *after* this HTML was
+     * generated — right after a deploy that is nothing at all.
+     *
+     * Defined here rather than read from .env because it has to exist in every
+     * build, including a local one, and a missing value would be read as the epoch:
+     * correct, but it would ask the API for every override ever made on every page
+     * view.
+     */
+    define: {
+      'import.meta.env.PUBLIC_BUILD_AT': JSON.stringify(
+        process.env.PUBLIC_BUILD_AT ?? new Date().toISOString(),
+      ),
+    },
     server: {
       watch: {
         // Visual Studio keeps a lock on .vs/**/FileContentIndex/*.vsidx, which

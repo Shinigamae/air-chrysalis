@@ -10,6 +10,10 @@
  */
 interface ImportMetaEnv {
   readonly PUBLIC_API_URL?: string;
+  /** When this build was baked; sent as `since` on /api/live. */
+  readonly PUBLIC_BUILD_AT?: string;
+  /** Public by design — it travels in Discord's authorize URL. */
+  readonly PUBLIC_DISCORD_CLIENT_ID?: string;
 }
 
 interface ImportMeta {

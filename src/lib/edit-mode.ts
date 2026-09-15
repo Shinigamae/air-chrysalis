@@ -1,5 +1,11 @@
 import { useSyncExternalStore } from 'react';
-import { getMe, hasBackend, signOut as clearToken, type Me } from '@/lib/api';
+import {
+  completeLoginFromUrl,
+  getMe,
+  hasBackend,
+  signOut as clearToken,
+  type Me,
+} from '@/lib/api';
 
 /**
  * Edit mode's state, shared by every island on the page.
@@ -87,7 +93,10 @@ export function startSession(): void {
   if (started || !hasBackend) return;
   started = true;
 
-  getMe()
+  // A redirect back from Discord is resolved before anything else, because on that
+  // one page load the token does not exist yet and getMe() would answer null.
+  completeLoginFromUrl()
+    .then((signedIn) => signedIn ?? getMe())
     .then((me) => {
       emit({
         ready: true,
