@@ -113,7 +113,7 @@ the edited ones are *stored*.
 | `books` (123) | `author`, `cover`, `pages`, `published`, `averageRating`, `isbn`, `goodreadsUrl`, `shelves`, `addedOn`, `finishedOn` | `title`, `rating`, `thought`, `review`, `status`, `current` |
 | `games` (293) | `platform`, `year`, `progress`, `trophies`, `platinum`, `playtimeHours`, `firstPlayedOn`, `lastPlayedOn`, `icon`, `art` | `rating`, `review`, `screenshots`, `playStatus`, `current`, `status` |
 | `albums` (12) | `flickrId`, `flickrUrl`, `photos`, `photoCount`, `index` | `title`, `description` |
-| `music` (1 snapshot) | the whole chart — it is replaced every sync | `hiddenTrackIds` (§2.5) |
+| `music` (1 snapshot) | **everything.** The shelf is replaced every sync | nothing (§2.5) |
 | `projects`, `clients` | **everything.** Hand-written, no sync, changes a few times a year | nothing |
 | home `currentStatus` | the baked fallback | `building`, `next_build` — the flagship live field |
 | comments | — | everything |
@@ -159,19 +159,27 @@ The important row is the second. Because overrides are baked at build time,
 live layer exists only to close the gap between "you edited it" and "the next
 deploy" — typically a handful of fields, often none.
 
-### 2.5 Hiding a row from ON ROTATION
+### 2.5 ON ROTATION needs no exclusion list
 
-Recorded here because it is the case that motivated the split. Music played
-for someone else on the account — a bedtime playlist on repeat — is still
-listening, and Spotify counts it; playlist privacy hides the playlist, not the
-plays. The exclusion is admin state, so it is Postgres:
-`content_overrides('music', 'rotation')` holding `{"hiddenTrackIds": [...]}`.
+Recorded here because this section used to describe one, and the reasoning is
+worth keeping.
 
-`spotify-sync.mjs` reads it at sync time via `GET /api/overrides/music/rotation`,
-over-fetches 50 from Spotify, filters, then cuts to `SPOTIFY_LIMIT` — **in
-that order**, or hiding a row leaves an eleven-row section. If the API is
-unreachable the sync proceeds unfiltered rather than failing: a chart with an
-extra row beats no chart.
+The chart was a play count — `/me/top/tracks` — and a play count cannot be
+curated. Music played for someone else on the account is still listening, and
+Spotify counts it; playlist privacy hides the playlist, not the plays. So a
+bedtime playlist on repeat ranked above everything, and the answer was a
+denylist of track ids in `content_overrides('music', 'rotation')`.
+
+The section is now a list of **playlists you own, most recently played first**,
+and the whole problem is gone with it. A playlist is curated by existing: the
+curation happens in Spotify, where you already are, and Spotify's own
+playlists are filtered out by the sync because they are recommendations rather
+than choices. There is nothing left for an override to say, so `music` is no
+longer an overridable type at all.
+
+What this cost is the claim. The section no longer says what was played most —
+it says what was last reached for, which is a smaller and more honest thing
+for it to say.
 
 ---
 

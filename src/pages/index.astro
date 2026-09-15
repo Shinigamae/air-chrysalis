@@ -6,7 +6,6 @@ import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
 import Rotation from '@/components/ui/Rotation.astro';
 import StatusEditor from '@/components/edit/StatusEditor';
-import TrackControls from '@/components/edit/TrackControls';
 import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
 import { section as rotationSection } from '@/config/music';
 import { withBase } from '@/config/site';
@@ -36,7 +35,7 @@ const [games, books, music] = await Promise.all([
  * as a bug, and this is the one homepage section whose content can legitimately
  * not exist yet.
  */
-const rotation = music.find((entry) => entry.data.tracks.length > 0);
+const rotation = music.find((entry) => entry.data.playlists.length > 0);
 
 const playing = games.find((game) => game.data.current);
 // Several books can be on the shelf at once; the panel has room for one, so
@@ -244,9 +243,6 @@ const statusItems: StatusItem[] = [
           summary={rotationSection.summary}
         />
         <Rotation data={rotation.data} />
-        {/* One island for the whole chart, not one per row — it portals a HIDE
-            button into each row's slot. See TrackControls.tsx. */}
-        {hasBackend && <TrackControls client:idle />}
       </section>
     )
   }

@@ -328,39 +328,6 @@ export async function getOverride(type: string, slug: string): Promise<Record<st
   return current.patch ?? {};
 }
 
-/* --- ON ROTATION ---------------------------------------------------------- */
-
-/** The ids hidden from the chart. `music`'s only overridable field (BACKEND.md §2.5). */
-export async function getHiddenTracks(): Promise<string[]> {
-  const patch = await getOverride('music', 'rotation');
-  const hidden = patch.hiddenTrackIds;
-  return Array.isArray(hidden) ? hidden.filter((id): id is string => typeof id === 'string') : [];
-}
-
-/**
- * Hide or unhide one track.
- *
- * The chart does not re-cut here, and cannot: `spotify-sync.mjs` over-fetches 50 from
- * Spotify, filters, *then* cuts to the limit, so the row that replaces a hidden one is
- * not on this page to promote. The next sync fills the gap. Until then the section is
- * one row shorter, which is the honest thing for it to be.
- */
-export async function setTrackHidden(id: string, hidden: boolean): Promise<number> {
-  const current = await getHiddenTracks();
-  const next = hidden
-    ? current.includes(id)
-      ? current
-      : [...current, id]
-    : current.filter((existing) => existing !== id);
-
-  // Unhiding the last track sends `null`, not `[]`. Both would render identically, but
-  // `{"hiddenTrackIds": []}` is a stored row that says nothing has been overridden —
-  // exactly the duplication a delta exists to avoid — and `/api/live` would carry it to
-  // every page view from then on. `null` removes the field, which empties the patch,
-  // which makes the API drop the row.
-  return patchOverride('music', 'rotation', { hiddenTrackIds: next.length > 0 ? next : null });
-}
-
 /* --- the live status ------------------------------------------------------ */
 
 export async function putStatus(status: SiteStatus): Promise<number> {

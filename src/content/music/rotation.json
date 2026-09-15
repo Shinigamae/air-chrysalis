@@ -15,177 +15,39 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "source": "top",
-  "range": "short_term",
-  "syncedAt": "2026-09-14T16:37:50.982Z",
-  "tracks": [
+  "syncedAt": "2026-09-15T14:10:15.343Z",
+  "playlists": [
     {
-      "id": "0hXdXYMmWxO1POnuCl2Dde",
-      "title": "Bông Đào Là Em",
-      "artists": [
-        "Minh Vy"
-      ],
-      "album": "Tết Là Tết",
-      "art": "https://i.scdn.co/image/ab67616d00001e02e624a9f80c8f14d03e5e1492",
-      "releaseYear": 2022,
-      "durationMs": 212800,
-      "url": "https://open.spotify.com/track/0hXdXYMmWxO1POnuCl2Dde",
-      "rank": 1
+      "id": "5S5ss02hXM2Yi0GK7ovJd7",
+      "name": "SHNUSUKS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "playedAt": "2026-09-15T02:08:57.256Z"
     },
     {
-      "id": "4HKeavYdOKweZufwBLlyvj",
-      "title": "Mùa hè 26",
-      "artists": [
-        "Đen",
-        "Pink Frog"
-      ],
-      "album": "Mùa hè 26",
-      "art": "https://i.scdn.co/image/ab67616d00001e02a71a24cfd6ea56de8d3e66ee",
-      "releaseYear": 2026,
-      "durationMs": 297929,
-      "url": "https://open.spotify.com/track/4HKeavYdOKweZufwBLlyvj",
-      "rank": 2
+      "id": "4LXS1oGBPXYhVGWgK7fBTh",
+      "name": "SHNLNKPK",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "playedAt": "2026-09-15T02:03:40.406Z"
     },
     {
-      "id": "4Kx8oPkjWjMZZLxkUjEBbG",
-      "title": "Bống Bống Bang Bang",
-      "artists": [
-        "Forest Studio",
-        "Tiến Luật",
-        "Diệu Nhi",
-        "Bùi Công Nam",
-        "Cầm",
-        "Wren Evans"
-      ],
-      "album": "Mùi Vị Những Chuyến Đi",
-      "art": "https://i.scdn.co/image/ab67616d00001e020d6e3cfa6fa0133766c49567",
-      "releaseYear": 2026,
-      "durationMs": 195130,
-      "url": "https://open.spotify.com/track/4Kx8oPkjWjMZZLxkUjEBbG",
-      "rank": 3
+      "id": "1uch56cjgRp6Uiy0DfLgUl",
+      "name": "SHNDDEN",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "playedAt": "2026-09-14T02:24:41.271Z"
     },
     {
-      "id": "1r1fPuhj9H4VdXr7OK6FL5",
-      "title": "CASTLE OF GLASS",
-      "artists": [
-        "Linkin Park"
-      ],
-      "album": "LIVING THINGS",
-      "art": "https://i.scdn.co/image/ab67616d00001e02987fb4c5ec8790e9f637a4a4",
-      "releaseYear": 2012,
-      "durationMs": 205400,
-      "url": "https://open.spotify.com/track/1r1fPuhj9H4VdXr7OK6FL5",
-      "rank": 4
-    },
-    {
-      "id": "70JZcKtsXP87H6tgQDXdaX",
-      "title": "Anh Phi Công Ơi",
-      "artists": [
-        "Minh Vy"
-      ],
-      "album": "Việt Nam Những Chuyến Đi",
-      "art": "https://i.scdn.co/image/ab67616d00001e02d9246edbe37239190a255077",
-      "releaseYear": 2022,
-      "durationMs": 177557,
-      "url": "https://open.spotify.com/track/70JZcKtsXP87H6tgQDXdaX",
-      "rank": 5
-    },
-    {
-      "id": "25edeHHueINMguqu9emCyV",
-      "title": "Lối Nhỏ",
-      "artists": [
-        "Đen",
-        "Phương Anh Đào"
-      ],
-      "album": "Lối Nhỏ",
-      "art": "https://i.scdn.co/image/ab67616d00001e02539ffc79122ccceb066f5340",
-      "releaseYear": 2019,
-      "durationMs": 252953,
-      "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV",
-      "rank": 6
-    },
-    {
-      "id": "2GoX9NYs06sRWN0Z0lUfBo",
-      "title": "rungoustic",
-      "artists": [
-        "Đen",
-        "Jack Trần",
-        "Ly Mí Cường",
-        "Biên",
-        "Phúc Minh",
-        "Hiền VK"
-      ],
-      "album": "rungoustic",
-      "art": "https://i.scdn.co/image/ab67616d00001e023ea782994d753f801d1a2e6b",
-      "releaseYear": 2026,
-      "durationMs": 648089,
-      "url": "https://open.spotify.com/track/2GoX9NYs06sRWN0Z0lUfBo",
-      "rank": 7
-    },
-    {
-      "id": "2oNYsdCasRRlz1shXFAz7D",
-      "title": "LOST IN THE ECHO",
-      "artists": [
-        "Linkin Park"
-      ],
-      "album": "LIVING THINGS",
-      "art": "https://i.scdn.co/image/ab67616d00001e02987fb4c5ec8790e9f637a4a4",
-      "releaseYear": 2012,
-      "durationMs": 205120,
-      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D",
-      "rank": 8
-    },
-    {
-      "id": "35BXnfHKDFjaY02d00sStp",
-      "title": "Tập Thể Dục Buổi Sáng",
-      "artists": [
-        "Nhiều Ca Sĩ"
-      ],
-      "album": "Xúc Xắc Xúc Xẻ",
-      "art": "https://i.scdn.co/image/ab67616d00001e024050f101a4563ff17cc865eb",
-      "releaseYear": 2019,
-      "durationMs": 163733,
-      "url": "https://open.spotify.com/track/35BXnfHKDFjaY02d00sStp",
-      "rank": 9
-    },
-    {
-      "id": "6QYQJ6CXcoKUPkaY5ZTkfK",
-      "title": "London Bridge Is Falling Down",
-      "artists": [
-        "CoComelon"
-      ],
-      "album": "CoComelon Kids Hits, Vol. 4",
-      "art": "https://i.scdn.co/image/ab67616d00001e02200258a047cc9407facfb606",
-      "releaseYear": 2020,
-      "durationMs": 125158,
-      "url": "https://open.spotify.com/track/6QYQJ6CXcoKUPkaY5ZTkfK",
-      "rank": 10
-    },
-    {
-      "id": "0ehr6CI3E8cCBdqbWCyWEV",
-      "title": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
-      "artists": [
-        "Đen"
-      ],
-      "album": "Show Của Đen",
-      "art": "https://i.scdn.co/image/ab67616d00001e024888abe8ee4d110278a67538",
-      "releaseYear": 2021,
-      "durationMs": 198400,
-      "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV",
-      "rank": 11
-    },
-    {
-      "id": "3m0HZdj4sDKWPeZxjIAEUg",
-      "title": "Lãng đãng",
-      "artists": [
-        "Đen"
-      ],
-      "album": "Lãng đãng",
-      "art": "https://i.scdn.co/image/ab67616d00001e02c7dbf5d7ffaa8b11197646e5",
-      "releaseYear": 2025,
-      "durationMs": 322872,
-      "url": "https://open.spotify.com/track/3m0HZdj4sDKWPeZxjIAEUg",
-      "rank": 12
+      "id": "04aii3iQ32D9Hc6OddC2DQ",
+      "name": "SHNKIDV",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/04aii3iQ32D9Hc6OddC2DQ",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da844ce4c4f9628418b8412eb7ff",
+      "playedAt": "2026-09-11T13:32:58.757Z"
     }
   ]
 }

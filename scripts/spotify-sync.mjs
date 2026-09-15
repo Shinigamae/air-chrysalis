@@ -5,9 +5,7 @@
  *   npm run music:sync            rewrite src/content/music/rotation.json
  *   npm run music:check           report what would change, write nothing
  *
- *   SPOTIFY_SOURCE=recent npm run music:sync    last played, not most played
- *   SPOTIFY_RANGE=long_term npm run music:sync  all time, not the last 4 weeks
- *   SPOTIFY_LIMIT=8 npm run music:sync          how many rows the chart holds
+ *   SPOTIFY_LIMIT=6 npm run music:sync     how many playlists the section holds
  *
  * Needs three values in .env (gitignored) or the environment:
  *
@@ -16,17 +14,43 @@
  *   SPOTIFY_REFRESH_TOKEN     ← from `npm run music:auth`, once
  *
  * ---------------------------------------------------------------------------
- * Two things this file deliberately does not do.
+ * What this is, and what it replaced.
  *
- * It does not read a public playlist. That was the easier build — app-only
- * credentials, no consent screen — but a playlist is a thing you curate, and
- * the section claims to be a play count. /me/top/tracks is the only source
- * that can back that claim.
+ * It was a play-count chart: /me/top/tracks, twelve rows, ranked. That claim —
+ * "this is what I actually listened to" — is what made it need an exclusion
+ * list, because music played for someone else on the account is still
+ * listening and Spotify counts it. A bedtime playlist on repeat ranked above
+ * everything, playlist privacy hides the playlist and not the plays, and the
+ * fix was a denylist of track ids maintained by hand.
  *
- * It does not carry a preview URL. Spotify stopped returning `preview_url` to
- * apps registered after November 2024, so there is no 30-second clip to hand
- * a custom player even if one were wanted. Playback on the site is their
- * iframe embed, addressed by track id — see src/components/ui/Rotation.astro.
+ * This is a list of *playlists you own, most recently played first*, and the
+ * exclusion list is gone with it: a playlist is curated by existing, so the
+ * curation happens in Spotify rather than in a JSON file or an admin screen.
+ * Spotify's own playlists — Discover Weekly, the daylists, anything under the
+ * `37i9dQZF1…` prefix — are filtered out, because they are not a thing you
+ * chose.
+ *
+ * Three things worth knowing about the API this rests on.
+ *
+ * `/me/player/recently-played` is the only endpoint that knows a playlist was
+ * *played*. Each item carries a `context`, and for a playlist that context is
+ * its URI. There is no "recently played playlists" endpoint; this derives it.
+ *
+ * It reaches about 50 plays per page and cannot go back further than a few
+ * days, so this walks a few pages to find enough distinct playlists. A
+ * playlist you have not played in a week will fall off, which is the point.
+ *
+ * There is no track count. The documented `tracks.total` is absent from this
+ * app's playlist response, and /playlists/{id}/tracks answers 403 — Spotify
+ * has tightened what a non-extended app may read, and a count that is
+ * sometimes right is worse than no count beside a playlist name. The embed
+ * lists the tracks anyway, which is where anyone would look for them.
+ *
+ * App-only credentials are not enough. They return playlist *metadata* and no
+ * track list, and they cannot see recently-played at all — that is user data.
+ * So the refresh token stays. The scopes it already has are sufficient:
+ * `user-read-recently-played` for the history, and nothing at all for reading
+ * a public playlist, which any user token may do.
  * ---------------------------------------------------------------------------
  */
 
@@ -39,235 +63,221 @@ const OUT_FILE = path.join(ROOT, 'src/content/music/rotation.json');
 
 const WRITE = !process.argv.includes('--check');
 
-/** `top` = most played. `recent` = last played, de-duplicated. */
-const SOURCE = process.env.SPOTIFY_SOURCE === 'recent' ? 'recent' : 'top';
+/**
+ * Six playlists: enough to show a habit, few enough that the section stays a
+ * shelf rather than a library.
+ */
+const LIMIT = Number(process.env.SPOTIFY_LIMIT ?? 6);
 
-/** Spotify's windows: short ≈ 4 weeks, medium ≈ 6 months, long ≈ years. */
-const RANGE = process.env.SPOTIFY_RANGE ?? 'short_term';
+/** How many pages of history to walk looking for distinct playlists. */
+const PAGES = 3;
 
 /**
- * Twelve rows: one featured beside eleven, which fills the column next to the
- * art-and-player block without the page growing a scrollbar of its own.
+ * Spotify's own playlists all sit under this prefix — Discover Weekly, Release
+ * Radar, the daylists, every editorial mix. They are recommendations, not
+ * choices, and this section is about what you chose.
  */
-const LIMIT = Number(process.env.SPOTIFY_LIMIT ?? 12);
-
-const VALID_RANGES = ['short_term', 'medium_term', 'long_term'];
+const SPOTIFY_OWNED_PREFIX = '37i9dQZF1';
 
 /* ------------------------------------------------------------------ *
  * Credentials
  * ------------------------------------------------------------------ */
 
 function credentials() {
-  if (!process.env.SPOTIFY_REFRESH_TOKEN) {
-    try {
-      process.loadEnvFile(path.join(ROOT, '.env'));
-    } catch {
-      /* no .env — fall through to the error below */
-    }
+  const clientId = process.env.SPOTIFY_CLIENT_ID;
+  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+
+  const missing = [
+    !clientId && 'SPOTIFY_CLIENT_ID',
+    !clientSecret && 'SPOTIFY_CLIENT_SECRET',
+    !refreshToken && 'SPOTIFY_REFRESH_TOKEN',
+  ].filter(Boolean);
+
+  if (missing.length > 0) {
+    // Loudly, not silently. A sync that writes an empty chart because a secret
+    // went missing looks exactly like a sync that ran and found nothing.
+    console.error(`spotify-sync: missing ${missing.join(', ')}.`);
+    console.error('See README.md — "On rotation comes from Spotify".');
+    process.exit(1);
   }
 
-  const id = process.env.SPOTIFY_CLIENT_ID;
-  const secret = process.env.SPOTIFY_CLIENT_SECRET;
-  const refresh = process.env.SPOTIFY_REFRESH_TOKEN;
-
-  if (!id || !secret || !refresh) {
-    const missing = [
-      !id && 'SPOTIFY_CLIENT_ID',
-      !secret && 'SPOTIFY_CLIENT_SECRET',
-      !refresh && 'SPOTIFY_REFRESH_TOKEN',
-    ].filter(Boolean);
-
-    throw new Error(
-      [
-        `Missing ${missing.join(', ')}.`,
-        '',
-        '  The first two come from https://developer.spotify.com/dashboard.',
-        '  The third comes from `npm run music:auth`, which you run once.',
-        '  See the header of scripts/spotify-auth.mjs.',
-      ].join('\n'),
-    );
-  }
-  return { id, secret, refresh };
+  return { clientId, clientSecret, refreshToken };
 }
 
-/**
- * Refresh tokens do not expire; access tokens last an hour. A sync is a
- * handful of seconds, so one exchange per run is all this needs.
- */
-async function accessToken({ id, secret, refresh }) {
+async function accessToken({ clientId, clientSecret, refreshToken }) {
+  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString('base64')}`,
+      Authorization: `Basic ${basic}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refresh }),
+    body: new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refreshToken }),
   });
 
-  const body = await response.json().catch(() => ({}));
+  const body = await response.json();
   if (!response.ok || !body.access_token) {
-    // 400 invalid_grant is the one worth naming: it means the grant was
-    // revoked (password change, or "remove access" in the Spotify account
-    // page), and the fix is to run music:auth again — not to retry.
-    const hint =
-      body.error === 'invalid_grant'
-        ? '\n  The refresh token has been revoked. Run `npm run music:auth` again.'
-        : '';
-    throw new Error(
-      `Could not refresh the Spotify token (${response.status}): ${body.error_description ?? body.error ?? 'unknown'}${hint}`,
-    );
+    console.error(`spotify-sync: token exchange failed (${response.status}).`);
+    if (body.error === 'invalid_grant') {
+      console.error('The refresh token was revoked. Run `npm run music:auth` for a new one.');
+    } else if (body.error_description) {
+      console.error(body.error_description);
+    }
+    process.exit(1);
   }
+
   return body.access_token;
 }
 
-async function api(endpoint, token) {
-  const response = await fetch(`https://api.spotify.com/v1/${endpoint}`, {
-    headers: { authorization: `Bearer ${token}` },
+/* ------------------------------------------------------------------ *
+ * Reading
+ * ------------------------------------------------------------------ */
+
+async function api(pathname, token) {
+  const response = await fetch(`https://api.spotify.com/v1${pathname}`, {
+    headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (response.status === 429) {
-    const after = response.headers.get('retry-after') ?? '?';
-    throw new Error(`Rate limited by Spotify — retry after ${after}s.`);
-  }
   if (!response.ok) {
-    const body = await response.json().catch(() => ({}));
-    throw new Error(
-      `GET /v1/${endpoint} failed (${response.status}): ${body.error?.message ?? 'unknown'}`,
-    );
+    console.error(`spotify-sync: GET ${pathname} -> ${response.status}`);
+    process.exit(1);
   }
+
   return response.json();
 }
 
-/* ------------------------------------------------------------------ *
- * Shaping
- * ------------------------------------------------------------------ */
+/** The signed-in user's own id, which is what "my playlist" is decided against. */
+async function me(token) {
+  const profile = await api('/me', token);
+  return profile.id;
+}
 
 /**
- * Album art comes in three sizes — 640, 300 and 64. The page paints the
- * feature plate at 340 CSS px and the row thumbnails at 32, so 300 is the one
- * that is neither upscaled on the plate nor a 640px file behind a 32px
- * square. Fall back to whatever is last (smallest) if the shape changes.
+ * Distinct playlist ids from the play history, most recently played first.
+ *
+ * Walks back through pages with the `before` cursor until it has enough, or
+ * runs out of history. Spotify keys that cursor on a millisecond timestamp,
+ * hence the `- 1`: passing the same timestamp back returns the same page for
+ * ever, which is a loop rather than an error.
  */
-function artOf(album) {
-  const images = album?.images ?? [];
-  if (images.length === 0) return undefined;
-  const medium = images.find((image) => image.width && image.width <= 400 && image.width >= 200);
-  return (medium ?? images[images.length - 1]).url;
+async function recentlyPlayedPlaylists(token) {
+  const seen = new Map();
+  let before = null;
+
+  for (let page = 0; page < PAGES; page++) {
+    const query = new URLSearchParams({ limit: '50' });
+    if (before) query.set('before', String(before));
+
+    const history = await api(`/me/player/recently-played?${query}`, token);
+    const items = history.items ?? [];
+    if (items.length === 0) break;
+
+    for (const item of items) {
+      const uri = item.context?.uri ?? '';
+      if (!uri.startsWith('spotify:playlist:')) continue;
+
+      const id = uri.slice('spotify:playlist:'.length);
+      if (id.startsWith(SPOTIFY_OWNED_PREFIX)) continue;
+      if (!seen.has(id)) seen.set(id, item.played_at);
+    }
+
+    const oldest = items[items.length - 1]?.played_at;
+    if (!oldest) break;
+    before = Date.parse(oldest) - 1;
+  }
+
+  return [...seen.entries()].map(([id, playedAt]) => ({ id, playedAt }));
 }
 
-/** "2019-03-15" | "2019-03" | "2019" — Spotify varies by release precision. */
-function yearOf(album) {
-  const year = Number(String(album?.release_date ?? '').slice(0, 4));
-  return Number.isInteger(year) && year > 1900 ? year : undefined;
-}
+/**
+ * One playlist, as the site renders it. Returns null for anything that is not
+ * yours, and for anything that has gone — a playlist deleted since it was
+ * played answers 404, which is ordinary rather than fatal.
+ */
+async function playlist(id, playedAt, token, owner) {
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 
-function shape(track, rank, playedAt) {
+  if (!response.ok) return null;
+  const data = await response.json();
+  if (data.owner?.id !== owner) return null;
+
   return {
-    id: track.id,
-    title: track.name,
-    artists: (track.artists ?? []).map((artist) => artist.name).filter(Boolean),
-    album: track.album?.name ?? '',
-    art: artOf(track.album),
-    releaseYear: yearOf(track.album),
-    durationMs: track.duration_ms,
-    url: track.external_urls?.spotify ?? `https://open.spotify.com/track/${track.id}`,
-    rank,
-    ...(playedAt ? { playedAt } : {}),
+    id: data.id,
+    name: data.name ?? '',
+    // Spotify fills this with its own boilerplate for generated playlists and
+    // leaves it empty for most hand-made ones, so it is optional everywhere.
+    description: stripTags(data.description ?? ''),
+    url: data.external_urls?.spotify ?? `https://open.spotify.com/playlist/${data.id}`,
+    // Largest first in Spotify's ordering; the section renders it at card size.
+    image: data.images?.[0]?.url,
+    playedAt,
   };
 }
 
-/** Drops undefined so the committed JSON has no null-shaped holes in it. */
-const compact = (value) =>
-  Array.isArray(value)
-    ? value.map(compact)
-    : value && typeof value === 'object'
-      ? Object.fromEntries(
-          Object.entries(value)
-            .filter(([, v]) => v !== undefined)
-            .map(([k, v]) => [k, compact(v)]),
-        )
-      : value;
+/** Playlist descriptions arrive as HTML. The site renders text, so this is text. */
+function stripTags(html) {
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .trim();
+}
 
 /* ------------------------------------------------------------------ *
- * Main
+ * Writing
  * ------------------------------------------------------------------ */
 
+/** The `$comment` block is the one thing in this file a human owns. */
+async function existingComment() {
+  try {
+    const current = JSON.parse(await fs.readFile(OUT_FILE, 'utf8'));
+    return current.$comment;
+  } catch {
+    return undefined;
+  }
+}
+
 async function main() {
-  if (!VALID_RANGES.includes(RANGE)) {
-    throw new Error(`SPOTIFY_RANGE must be one of ${VALID_RANGES.join(', ')} — got "${RANGE}".`);
-  }
-
   const token = await accessToken(credentials());
+  const owner = await me(token);
 
-  let tracks;
-  if (SOURCE === 'recent') {
-    // Spotify returns plays, not tracks: a song heard three times is three
-    // items. Ranked by most recent play, first occurrence wins.
-    const body = await api('me/player/recently-played?limit=50', token);
-    const seen = new Map();
-    for (const item of body.items ?? []) {
-      if (item.track?.id && !seen.has(item.track.id)) seen.set(item.track.id, item);
-    }
-    tracks = [...seen.values()]
-      .slice(0, LIMIT)
-      .map((item, i) => shape(item.track, i + 1, item.played_at));
-  } else {
-    const body = await api(`me/top/tracks?time_range=${RANGE}&limit=${LIMIT}`, token);
-    tracks = (body.items ?? []).filter((item) => item?.id).map((item, i) => shape(item, i + 1));
+  const recent = await recentlyPlayedPlaylists(token);
+  const resolved = [];
+
+  for (const { id, playedAt } of recent) {
+    if (resolved.length >= LIMIT) break;
+    const entry = await playlist(id, playedAt, token, owner);
+    if (entry) resolved.push(entry);
   }
 
-  // The same refusal every other sync makes: an empty answer is a failure,
-  // not a chart with nothing in it. Overwriting a good file with [] would
-  // silently delete the section from the homepage.
-  if (tracks.length === 0) {
-    throw new Error(
-      SOURCE === 'recent'
-        ? 'Spotify returned no recent plays. Nothing written.'
-        : 'Spotify returned no top tracks — a new account, or a window with no listening in it. Nothing written.',
-    );
-  }
-
-  const previous = JSON.parse(await fs.readFile(OUT_FILE, 'utf8').catch(() => '{}'));
-
-  const data = compact({
-    // Preserved rather than regenerated: it explains the file to whoever
-    // opens it next, and it is the one thing here a sync should not own.
-    $comment: previous.$comment,
-    source: SOURCE,
-    range: SOURCE === 'top' ? RANGE : undefined,
+  const $comment = await existingComment();
+  const next = {
+    ...($comment ? { $comment } : {}),
     syncedAt: new Date().toISOString(),
-    tracks,
-  });
+    playlists: resolved,
+  };
 
-  for (const track of tracks) {
-    console.log(
-      `${String(track.rank).padStart(2, '0')}  ${track.title} — ${track.artists.join(', ')}`,
-    );
+  if (!WRITE) {
+    console.log(`spotify-sync --check: ${resolved.length} playlist(s) of your own`);
+    for (const entry of resolved) {
+      console.log(
+        `  ${entry.playedAt.slice(0, 16).replace('T', ' ')}  ${entry.name}`,
+      );
+    }
+    if (resolved.length === 0) {
+      console.log('  Nothing. Play one of your own playlists and run this again.');
+    }
+    return;
   }
 
-  // Compared without the timestamp: it changes on every run, and a diff that
-  // is always dirty makes the daily workflow commit noise for no new content.
-  const same =
-    JSON.stringify({ ...previous, syncedAt: null }) === JSON.stringify({ ...data, syncedAt: null });
-
-  if (!same && WRITE) {
-    await fs.mkdir(path.dirname(OUT_FILE), { recursive: true });
-    await fs.writeFile(OUT_FILE, `${JSON.stringify(data, null, 2)}\n`);
-  }
-
-  console.log(
-    `\n${tracks.length} tracks — ${SOURCE === 'recent' ? 'recently played' : `most played, ${RANGE}`}.\n` +
-      (same
-        ? 'No change — the chart matches the site.'
-        : WRITE
-          ? `Written to ${path.relative(ROOT, OUT_FILE)}.`
-          : '--check: nothing written.'),
-  );
+  await fs.writeFile(OUT_FILE, `${JSON.stringify(next, null, 2)}\n`, 'utf8');
+  console.log(`spotify-sync: wrote ${resolved.length} playlist(s) to ${path.relative(ROOT, OUT_FILE)}`);
 }
 
-try {
-  await main();
-} catch (error) {
-  console.error(`\n${error.message}\n`);
-  process.exitCode = 1;
-}
+await main();

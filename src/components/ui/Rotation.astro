@@ -1,34 +1,39 @@
 ---
 import {
-  artistsOf,
-  byRank,
-  durationOf,
+  byRecency,
   embedUrl,
+  playedLabel,
   rankOf,
+  section,
   sourceLabel,
   syncedLabel,
   type Rotation,
 } from '@/config/music';
 
 /**
- * ON ROTATION — the play-count chart, with Spotify's embed as the player.
+ * ON ROTATION — the playlists I own, most recently played first, with
+ * Spotify's embed as the player.
  *
  * The shape follows the Gaming Log's "CURRENTLY PLAYING" block, which is the
  * pattern this site already uses for "one thing featured, the rest listed":
- * the loaded track is given the art and the player, and the whole chart is
- * ranked beside it.
+ * the loaded playlist is given the cover and the player, and the shelf is
+ * listed beside it.
  *
- * Playback is Spotify's iframe and nothing else. Their Web API stopped
- * handing out 30-second preview URLs to new apps in late 2024, so a custom
- * `<audio>` player has nothing to play — and full tracks outside their player
- * are not something they licence anyway. What the embed gives a signed-in
- * listener is the whole song; everyone else gets the preview. Their rule, and
- * it cannot be styled away.
+ * This replaced a ranked chart of most-played tracks. A chart claims to be a
+ * play count, and that claim is what made it need a hand-maintained exclusion
+ * list — music played for someone else on the account is still listening, and
+ * Spotify counts it. A playlist is curated by existing, so the curation moved
+ * to Spotify and the exclusion list went away entirely.
  *
- * Every row is a real link to the track on Spotify, so the section works with
- * no JavaScript: a chart that links out, which is the honest fallback. The
- * script below upgrades a plain click to "load it here instead" and leaves a
- * modified click — new tab, middle button — alone.
+ * Playback is Spotify's iframe and nothing else. Their Web API stopped handing
+ * out 30-second preview URLs to new apps in late 2024, so a custom player has
+ * nothing to play — and full tracks outside their player are not something
+ * they licence anyway.
+ *
+ * Every row is a real link to the playlist on Spotify, so the section works
+ * with no JavaScript: a shelf that links out, which is the honest fallback.
+ * The script below upgrades a plain click to "load it here instead" and leaves
+ * a modified click — new tab, middle button — alone.
  */
 interface Props {
   data: Rotation['data'];
@@ -36,22 +41,18 @@ interface Props {
 
 const { data }: Props = Astro.props;
 
-const tracks = [...data.tracks].sort(byRank);
-const [lead, ...rest] = tracks;
+const playlists = [...data.playlists].sort(byRecency);
+const [lead] = playlists;
 const synced = syncedLabel(data.syncedAt);
 
 /** Shared by the feature plate and the row thumbnails. */
 const PLATE = 'overflow-hidden border border-line bg-well';
 
 /**
- * `data-active` carries the styling and `aria-current` the meaning. One
- * attribute could do both, but every `aria-current` variant in Tailwind is an
- * arbitrary one, and this row has several rules keyed off the state.
- *
- * Every one of them is written out in full below rather than built from a
- * shared prefix: Tailwind scans the source as text, so an interpolated class
- * name is a class name that never reaches the stylesheet. `EditorialCard`
- * carries the same warning over its plate sizes.
+ * `data-active` carries the styling and `aria-current` the meaning. Every
+ * variant is written out in full rather than built from a shared prefix:
+ * Tailwind scans the source as text, so an interpolated class name is a class
+ * name that never reaches the stylesheet.
  */
 ---
 
@@ -59,23 +60,23 @@ const PLATE = 'overflow-hidden border border-line bg-well';
   lead && (
     <div class="mt-5" data-rotation>
       {/* PageHeader carries the section's title on the page; what belongs
-          here is the provenance — which chart this is, and as of when. */}
+          here is the provenance — which shelf this is, and as of when. */}
       <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <p class="type-micro text-signal">{sourceLabel(data)}</p>
+        <p class="type-micro text-signal">{sourceLabel}</p>
         {synced && <p class="type-meta">AS OF {synced}</p>}
       </div>
 
       <div class="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
-        {/* --- The loaded track, and the player ----------------------- */}
+        {/* --- The loaded playlist, and the player -------------------- */}
         <div class="flex flex-col gap-2">
           <div class:list={['relative aspect-square rounded-standard', PLATE]}>
             <span class="type-micro absolute inset-0 flex items-center justify-center">
-              ALBUM ART
+              COVER
             </span>
-            {lead.art && (
+            {lead.image && (
               <img
                 data-art
-                src={lead.art}
+                src={lead.image}
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -86,72 +87,59 @@ const PLATE = 'overflow-hidden border border-line bg-well';
 
           <div class="flex flex-col gap-0.5">
             <p class="type-title" data-lead-title>
-              {lead.title}
+              {lead.name}
             </p>
-            <p class="type-meta" data-lead-artist>
-              {artistsOf(lead)}
+            <p class="type-meta" data-lead-meta>
+              LAST PLAYED {playedLabel(lead.playedAt)}
             </p>
           </div>
 
           {/*
-            152 is Spotify's own standard track embed height. The rounding is
-            inline because the corner belongs to their iframe, not to a
-            wrapper we could style — a bordered box around it reads as a
-            double frame, so the player is left to be the plate itself.
+            352 is Spotify's standard playlist embed height — taller than the
+            track embed, because it lists what is inside. The rounding is
+            inline because the corner belongs to their iframe, not to a wrapper
+            we could style.
           */}
           <iframe
             data-player
             src={embedUrl(lead.id)}
             title="Spotify player"
             width="100%"
-            height="152"
+            height="352"
             loading="lazy"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             style="border: 0; border-radius: var(--radius-standard); display: block;"
           />
         </div>
 
-        {/* --- The chart ---------------------------------------------- */}
+        {/* --- The shelf ---------------------------------------------- */}
         <div class="flex flex-col gap-1.5">
           <ol class="flex flex-col">
-            {tracks.map((track, i) => (
-              /*
-                The row is a link plus a slot. The slot is empty in every build and
-                stays empty for every visitor — edit mode portals a HIDE button into
-                it (TrackControls.tsx). It sits *beside* the anchor rather than
-                inside it because a button nested in a link is neither valid nor
-                clickable in the way anyone expects.
-              */
-              <li class="flex items-center gap-1">
+            {playlists.map((playlist, i) => (
+              <li>
                 <a
-                  href={track.url}
+                  href={playlist.url}
                   rel="noopener external"
                   target="_blank"
-                  data-track
-                  data-id={track.id}
-                  data-title={track.title}
-                  data-artist={artistsOf(track)}
-                  data-art={track.art ?? ''}
+                  data-playlist
+                  data-id={playlist.id}
+                  data-name={playlist.name}
+                  data-played={playedLabel(playlist.playedAt)}
+                  data-art={playlist.image ?? ''}
                   data-active={i === 0 ? 'true' : undefined}
                   aria-current={i === 0 ? 'true' : undefined}
                   class:list={[
-                    'group grid min-w-0 flex-1 grid-cols-[1.75rem_auto_minmax(0,1fr)_auto] items-center gap-2 rounded-compact border border-transparent px-1 py-1',
-                    // Hidden is a preview of the next sync, not a deletion: the row is
-                    // still a real link to the track and still says what was played.
-                    'data-[hidden=true]:opacity-40 data-[hidden=true]:line-through',
-                    // The album takes the slack at wide sizes. Without it the
-                    // duration sits half a metre from the title it belongs to.
-                    'lg:grid-cols-[1.75rem_auto_minmax(0,1.4fr)_minmax(0,1fr)_auto]',
+                    'group grid grid-cols-[1.75rem_auto_minmax(0,1fr)_auto] items-center gap-2 rounded-compact border border-transparent px-1 py-1',
                     'transition-[background-color,border-color] duration-[var(--duration-base)] ease-[var(--ease-technical)]',
                     'hover:border-line hover:bg-panel focus-visible:border-signal focus-visible:outline-none',
                     'data-[active=true]:border-line data-[active=true]:bg-panel',
                   ]}
                 >
-                  {/* The rank becomes a meter on the loaded track. Both are
+                  {/* The ordinal becomes a meter on the loaded row. Both are
                       rendered and CSS picks between them: swapping nodes in
                       script would leave the no-JS page showing the wrong one. */}
                   <span class="type-meta tabular-nums text-muted group-data-[active=true]:hidden">
-                    {rankOf(track)}
+                    {rankOf(i)}
                   </span>
                   <span
                     class="eq hidden text-signal group-data-[active=true]:inline-flex"
@@ -159,9 +147,9 @@ const PLATE = 'overflow-hidden border border-line bg-well';
                   ><span /><span /><span /></span>
 
                   <span class:list={['h-4 w-4 shrink-0 rounded-compact', PLATE]}>
-                    {track.art && (
+                    {playlist.image && (
                       <img
-                        src={track.art}
+                        src={playlist.image}
                         alt=""
                         loading="lazy"
                         decoding="async"
@@ -172,26 +160,21 @@ const PLATE = 'overflow-hidden border border-line bg-well';
 
                   <span class="min-w-0">
                     <span class="type-fine block truncate group-data-[active=true]:text-signal">
-                      {track.title}
+                      {playlist.name}
                     </span>
-                    <span class="type-meta block truncate">{artistsOf(track)}</span>
+                    {playlist.description && (
+                      <span class="type-meta block truncate">{playlist.description}</span>
+                    )}
                   </span>
 
-                  <span class="type-meta hidden min-w-0 truncate lg:block">
-                    {track.album}
-                    {track.releaseYear && ` · ${track.releaseYear}`}
-                  </span>
-
-                  <span class="type-meta tabular-nums">{durationOf(track.durationMs)}</span>
+                  <span class="type-meta tabular-nums">{playedLabel(playlist.playedAt)}</span>
                 </a>
-
-                <span data-edit-slot data-id={track.id} class="shrink-0 empty:hidden" />
               </li>
             ))}
           </ol>
 
           <p class="type-micro">
-            {rest.length > 0 && 'CLICK A TRACK TO LOAD IT · '}CTRL-CLICK OPENS SPOTIFY
+            {playlists.length > 1 && 'CLICK A PLAYLIST TO LOAD IT · '}CTRL-CLICK OPENS SPOTIFY
           </p>
         </div>
       </div>
@@ -208,7 +191,7 @@ const PLATE = 'overflow-hidden border border-line bg-well';
   Swapping `src` reloads the embed rather than driving it through Spotify's
   IFrame API. That API would allow one-click play, but it means pulling their
   script into the page; this way the only third-party code here is the iframe
-  the section exists for. The cost is one press of Spotify's own play button.
+  the section exists for.
 */}
 <script is:inline>
   (() => {
@@ -218,8 +201,8 @@ const PLATE = 'overflow-hidden border border-line bg-well';
     const player = root.querySelector('[data-player]');
     const art = root.querySelector('[data-art]');
     const title = root.querySelector('[data-lead-title]');
-    const artist = root.querySelector('[data-lead-artist]');
-    const rows = root.querySelectorAll('[data-track]');
+    const meta = root.querySelector('[data-lead-meta]');
+    const rows = root.querySelectorAll('[data-playlist]');
 
     const swapArt = (src) => {
       if (!art || !src || art.src === src) return;
@@ -235,7 +218,7 @@ const PLATE = 'overflow-hidden border border-line bg-well';
     rows.forEach((row) => {
       row.addEventListener('click', (event) => {
         // A modified click is someone asking for a new tab. Let it through to
-        // the href, which is the track on Spotify.
+        // the href, which is the playlist on Spotify.
         if (
           event.button !== 0 ||
           event.metaKey ||
@@ -253,9 +236,10 @@ const PLATE = 'overflow-hidden border border-line bg-well';
         row.setAttribute('data-active', 'true');
         row.setAttribute('aria-current', 'true');
 
-        if (player) player.src = `https://open.spotify.com/embed/track/${row.dataset.id}?theme=0`;
-        if (title) title.textContent = row.dataset.title;
-        if (artist) artist.textContent = row.dataset.artist;
+        if (player)
+          player.src = `https://open.spotify.com/embed/playlist/${row.dataset.id}?theme=0`;
+        if (title) title.textContent = row.dataset.name;
+        if (meta) meta.textContent = `LAST PLAYED ${row.dataset.played}`;
         swapArt(row.dataset.art);
       });
     });
