@@ -5,9 +5,12 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
 import Rotation from '@/components/ui/Rotation.astro';
+import StatusEditor from '@/components/edit/StatusEditor';
+import TrackControls from '@/components/edit/TrackControls';
 import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
 import { section as rotationSection } from '@/config/music';
 import { withBase } from '@/config/site';
+import { hasBackend } from '@/lib/api';
 
 /**
  * Home — Figma "02 — Homepage" (4:3).
@@ -183,6 +186,16 @@ const statusItems: StatusItem[] = [
             headline={currentStatus.headline}
             items={statusItems}
           />
+
+          {/* PLAYING and READING are not editable: the collections already know
+              the answer, and a hand-typed one goes stale silently. */}
+          {hasBackend && (
+            <StatusEditor
+              client:idle
+              building={currentStatus.building.value}
+              nextBuild={currentStatus.nextBuild.value}
+            />
+          )}
         </div>
       </div>
     </section>
@@ -231,6 +244,9 @@ const statusItems: StatusItem[] = [
           summary={rotationSection.summary}
         />
         <Rotation data={rotation.data} />
+        {/* One island for the whole chart, not one per row — it portals a HIDE
+            button into each row's slot. See TrackControls.tsx. */}
+        {hasBackend && <TrackControls client:idle />}
       </section>
     )
   }

@@ -226,3 +226,9 @@ Recorded so they are not silently reversed.
 | Explicit `index` / `order` fields for sorting | Sorting by year alone left same-year entries in arbitrary alphabetical order |
 | Active nav item gets a cyan underline as well as cyan text | State must not be carried by colour alone |
 | Repo stays `air-chrysalis`; site is a project site at a base path | User's call, 2026-09-09 — the *1Q84* reference is deliberate. `withBase`/`stripBase` make the later domain migration a one-line change |
+| Edit mode is gated on `PUBLIC_API_URL` in the `.astro` files, not inside the components | "No backend" has to mean the code is *absent*. An island Astro emits is one every reader downloads and hydrates, even if it renders null — measured at 27 KB before the gate, and 0 after |
+| Editor forms load behind a dynamic import | A reader should not carry the form machinery for a feature one person uses; the island shell is a boolean read, the form arrives when the switch goes on |
+| Each editor loads its own state from the API rather than pre-filling from the page | The site is still baked, so the page is as old as the last deploy — pre-filling from it would show a stale value and saving it would overwrite a newer edit with an older one |
+| The admin switch is a UI state, never a permission | Every write endpoint re-reads the admin allowlist on the request; the client flag only decides whether showing a control is worth the clutter |
+| ON ROTATION's HIDE is on the row, not a list of ids | User's call, carried over from the denylist built and reverted on 2026-09-14 — the affordance is "hide this", clicked on the row you are looking at |
+| Projects and clients became server-owned | User's call, 2026-09-15. It reverses BACKEND.md §2.3, which kept them in JSON so an engagement history was reviewed in a diff. The audit log stands in for that review |

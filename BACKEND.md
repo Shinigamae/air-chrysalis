@@ -123,6 +123,24 @@ of the rule rather than an oversight. They are hand-authored, but they change
 on the order of *months*, and a client's engagement history is exactly the
 kind of thing that should be reviewed in a diff before it goes live.
 
+> **Amended again, 2026-09-15.** `projects` and `clients` are no longer JSON-only.
+> They are editable from the site, through `PUT /api/content/{type}/{slug}`, and the
+> database is now where they are written.
+>
+> The paragraph above is the argument that was overruled, and it was not a bad one:
+> what is lost is exactly the diff. A client's engagement history now changes without
+> anyone reviewing it beforehand. What stands in its place is `audit_log`, which
+> records who, when, and the whole document before and after — a review after the
+> fact rather than before it.
+>
+> Two fences came with the change. Only a collection whose source is `hand` can be
+> written this way, so a PUT on `games` is refused rather than silently overwritten by
+> the next import. And `id`, `logo` and `shot` are carried across an edit by the server
+> rather than accepted from the body: the first is the identity, and the other two are
+> build-time asset paths that `astro:assets` resizes at build time, which a string in a
+> form cannot be.
+
+
 The per-type **allowlist** in the right-hand column is not documentation — it
 is the validation table the server enforces on `PUT /api/overrides` (§7.3).
 Anything outside it is rejected, which is what stops a JSONB column from

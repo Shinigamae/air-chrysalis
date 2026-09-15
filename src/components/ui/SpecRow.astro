@@ -8,12 +8,18 @@
 interface Props {
   label: string;
   value: string;
+  /**
+   * Optional hook for edit mode, which updates a row in place after a save
+   * rather than leaving it showing the value the page was built with. Absent on
+   * every row nothing can edit, which is most of them.
+   */
+  field?: string;
 }
 
-const { label, value } = Astro.props;
+const { label, value, field } = Astro.props;
 ---
 
 <div class="flex h-5 items-center gap-4 px-1.5">
   <dt class="type-meta text-signal">{label}</dt>
-  <dd class="type-meta-lg m-0 text-ink">{value}</dd>
+  <dd class="type-meta-lg m-0 text-ink" data-edit-field={field}>{value}</dd>
 </div>

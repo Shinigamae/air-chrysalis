@@ -18,6 +18,15 @@ interface Props {
   items: readonly StatusItem[];
 }
 
+/**
+ * BUILDING and NEXT BUILD are the two live fields on the site, and edit mode
+ * updates them in place after a save rather than leaving the panel showing the
+ * value it was built with. This is the hook it finds them by — the DOM patching
+ * BACKEND.md §10.4 describes, keyed on the label so the markup stays generic.
+ */
+const fieldFor = (label: string) =>
+  label === 'BUILDING' ? 'building' : label === 'NEXT BUILD' ? 'next-build' : undefined;
+
 const { label, headline, items }: Props = Astro.props;
 ---
 
@@ -38,7 +47,10 @@ const { label, headline, items }: Props = Astro.props;
         <div class="flex items-baseline gap-2">
           <dt class="type-micro w-11 shrink-0">{item.label}</dt>
           {/* 14/18 is the same step as the mobile brand lockup. */}
-          <dd class="font-display text-brand-sm m-0 font-normal text-ink">
+          <dd
+            class="font-display text-brand-sm m-0 font-normal text-ink"
+            data-status-field={fieldFor(item.label)}
+          >
             {item.value}
           </dd>
         </div>

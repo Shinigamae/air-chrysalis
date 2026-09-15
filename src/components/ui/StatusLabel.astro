@@ -10,9 +10,16 @@ interface Props {
   status: Status;
   /** Overrides the default label text ("LIVE", "ARCHIVE", "DRAFT"). */
   label?: string;
+  /**
+   * Optional hook for edit mode, which rewrites the label in place after a save.
+   * Only the tone lags behind — the colour is a build-time class, so a status
+   * changed here reads correctly and is still tinted as what it was until the
+   * next deploy.
+   */
+  field?: string;
 }
 
-const { status, label } = Astro.props;
+const { status, label, field } = Astro.props;
 ---
 
 <span
@@ -20,6 +27,7 @@ const { status, label } = Astro.props;
     'type-meta inline-flex h-3 items-center justify-center rounded-compact border border-line px-1',
     statusTone[status],
   ]}
+  data-edit-field={field}
 >
   {label ?? status.toUpperCase()}
 </span>

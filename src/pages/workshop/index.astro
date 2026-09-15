@@ -8,6 +8,8 @@ import StatusLabel from '@/components/ui/StatusLabel.astro';
 import ClientCard from '@/components/ui/ClientCard.astro';
 import { byRecency } from '@/config/clients';
 import { entryFor } from '@/config/site';
+import WorkshopEditor from '@/components/edit/WorkshopEditor';
+import { hasBackend } from '@/lib/api';
 
 /**
  * Workshop — Figma "03 — Content Systems" panel D (11:109):
@@ -47,6 +49,13 @@ const pad = (n: number) => String(n).padStart(2, '0');
   <section class="mt-8 flex flex-col gap-3">
     <SectionHeader index="01" title="PROJECTS" />
   </section>
+
+  {/*
+    Unlike every other editor on the site this one writes whole records, not
+    patches: nothing syncs these, so there is no imported base to correct.
+    See src/components/edit/WorkshopEditor.tsx for what that costs §2.3.
+  */}
+  {hasBackend && <WorkshopEditor client:idle kind="projects" />}
 
   <div class="mt-3 flex flex-col gap-8">
     {
@@ -126,6 +135,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <SectionHeader index="02" title="CLIENTS" />
       <p class="type-meta">WHO THE WORK WAS FOR</p>
     </div>
+
+    {hasBackend && <WorkshopEditor client:idle kind="clients" />}
 
     <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
       {clients.map((client) => <ClientCard client={client} />)}

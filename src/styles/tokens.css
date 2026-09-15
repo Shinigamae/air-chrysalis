@@ -16,6 +16,15 @@
   --color-muted: #a1a1aa; /* MUTED        — metadata, secondary type */
   --color-signal: #38bdf8; /* SIGNAL CYAN  — accent, used sparingly   */
 
+  /*
+   * Not in the Figma foundations, because the design has nothing destructive in
+   * it — the whole site is read-only to everyone who is not signed in. Edit mode
+   * is the first thing here that can delete a record, and "are you sure" is not a
+   * colour. Rose rather than red: the canvas is near-black and a saturated red on
+   * it vibrates, which reads as an error state rather than as a control.
+   */
+  --color-danger: #fb7185; /* DANGER       — delete, and only delete  */
+
   /* ---- Platform tints -----------------------------------------------
    * One per PlayStation machine, so the platform chips on a game card are
    * told apart at a glance. Each is a *readable* reading of the hardware's

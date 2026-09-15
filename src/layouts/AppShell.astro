@@ -5,6 +5,8 @@ import SiteHeader from '@/components/layout/SiteHeader.astro';
 import MobileNavigation from '@/components/layout/MobileNavigation.astro';
 import TopBar from '@/components/layout/TopBar.astro';
 import SiteFooter from '@/components/layout/SiteFooter.astro';
+import AdminBar from '@/components/edit/AdminBar';
+import { hasBackend } from '@/lib/api';
 
 /**
  * The application shell. Every route renders through here.
@@ -100,5 +102,22 @@ const documentTitle = title
     </main>
 
     <SiteFooter />
+
+    {/*
+      Edit mode's switch. `client:idle` rather than `client:load` because it is
+      never the reason anyone opened the page — it waits for the browser to be
+      done with the content first.
+
+      It renders null for every visitor: with PUBLIC_API_URL unset it returns
+      immediately, and with it set it asks /api/me once and returns null for
+      anyone who is not the admin. See src/components/edit/AdminBar.tsx.
+    */}
+    {/*
+      An empty PUBLIC_API_URL means "no backend" (BACKEND.md §10.2), and it has to
+      mean the code is *absent* rather than that it renders null — an island Astro
+      emits is an island every reader downloads and hydrates. Gated here, a build
+      with no API ships not one byte of edit mode.
+    */}
+    {hasBackend && <AdminBar client:idle />}
   </body>
 </html>

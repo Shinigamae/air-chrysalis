@@ -370,6 +370,113 @@ moves the meter. Every row is also a real link to the track, so with
 JavaScript off the section is a chart that links out — which is the honest
 fallback rather than a dead panel.
 
+## Edit mode
+
+One person can edit this site from the site itself. Everyone else gets a build with none
+of it in — not a disabled version, an absent one.
+
+### The switch
+
+A rail at the bottom of the viewport, mounted once in `AppShell`. It appears only when
+all three of these hold:
+
+1. `PUBLIC_API_URL` is set in the build,
+2. `GET /api/me` answers with a user, and
+3. that user is the admin.
+
+It is a rail rather than a control in the header because the header is a designed object
+with three breakpoint behaviours and a mobile variant that replaces it outright; adding
+something only one person sees to all four was not worth it.
+
+**The switch is not a permission.** Every write endpoint re-reads the admin allowlist
+from configuration on the request itself, so flipping the flag in devtools produces a
+page full of controls and a 403 from each one. What `isAdmin` decides on the client is
+whether a control is worth *showing*, which is a question about clutter.
+
+### What is editable
+
+| Where | Fields | Goes to |
+| --- | --- | --- |
+| Home · CURRENT STATUS | `building`, `nextBuild` | `PUT /api/status` |
+| Home · ON ROTATION | hide a track | `PUT /api/overrides/music/rotation` |
+| Game detail | `rating`, `review`, `playStatus`, `current`, `status` | `PUT /api/overrides/games/{slug}` |
+| Workshop | projects and clients — add, edit, delete | `PUT /api/content/{type}/{slug}` |
+
+PLAYING and READING on the status panel are deliberately not editable: the collections
+already know the answer, and a hand-typed one goes stale silently — that panel once
+claimed a game the gaming log had not shown as current for months.
+
+A client's `logo` and `shot` are not editable either. They are paths into `src/assets`
+that `astro:assets` resizes and re-encodes at build time to emit a srcset, and a string
+typed into a form cannot do that. The server carries them across an edit untouched.
+
+### The thing to understand about what you see
+
+**The site is still a static build.** It reads its JSON at build time and has not been
+switched over to the API. So a value saved in edit mode is live on the server and will
+not appear in the HTML until the next deploy bakes it in.
+
+That is why every editor loads its *own* current state from the API when it opens rather
+than pre-filling from the page around it. Pre-filling from the baked page would show a
+stale value, and saving it would quietly overwrite a newer edit with an older one.
+
+Where it is cheap, an editor also patches the page in place after a save, so the panel
+you are looking at agrees with what you just did. That is a courtesy, not the record.
+
+### What it costs a reader
+
+Nothing, in the current build.
+
+`PUBLIC_API_URL` is unset in production, and the islands are gated on it in the `.astro`
+files — so no `<astro-island>` is emitted, and no page references any of the edit chunks.
+Measured on a full build: the only JavaScript any page loads is Astro's client runtime
+and `MobileMenu`, exactly as before edit mode existed.
+
+With the backend wired, the cost is one small shell per editable region. The forms
+themselves — inputs, validation, save machinery, about 27 KB — sit behind a dynamic
+import that is requested when the switch goes on and never before. See
+`src/components/edit/lazyEditIsland.tsx`.
+
+### Running it locally
+
+```sh
+# in shinigamae-api
+dotnet run --project src/Shinigamae.Api          # http://localhost:5181
+
+# here
+echo 'PUBLIC_API_URL=http://localhost:5181' >> .env
+npm run dev
+```
+
+The rail then offers SIGN IN (DEV), which calls `POST /api/auth/dev`. That endpoint is
+blocked outright in Production and gated behind `Auth:DevAuthEnabled` everywhere else, so
+it cannot become the real door by accident. To be an admin, set `Admin:Identities:0` to
+`discord:000000000000000000` in the API.
+
+**The OAuth flow is not wired yet.** When it is, the button sends the browser to Discord
+or Google, the provider returns to the site with a code, and the site posts it to
+`/api/auth/{provider}/exchange` (BACKEND.md §7). Everything downstream of the token is
+already written and does not change.
+
+### Layout
+
+```
+src/lib/api.ts              the only thing in the project that calls fetch
+src/lib/edit-mode.ts        session + switch state, shared across islands
+src/components/edit/
+  AdminBar.tsx              the rail and the switch
+  lazyEditIsland.tsx        the shell that defers an editor's code
+  EditRegion.tsx            loads a region's current server state
+  controls.tsx              the form vocabulary
+  *Editor.tsx               island shells
+  *EditorForm.tsx           the forms themselves, loaded on demand
+```
+
+State is shared through a plain store with `useSyncExternalStore` in front of it rather
+than a context provider, because Astro hydrates each island as its own React root — the
+rail in the shell and the rating control on a game page are separate trees that happen to
+be on the same page.
+
 ## Following Figma over time
 
 The Figma file is the source of truth, so there is a report that tells you when
