@@ -15,14 +15,14 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-15T14:22:26.988Z",
+  "syncedAt": "2026-09-15T15:18:04.766Z",
   "playlists": [
     {
       "id": "5S5ss02hXM2Yi0GK7ovJd7",
       "name": "SHNUSUKS",
       "description": "",
       "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
       "playedAt": "2026-09-15T02:08:57.256Z"
     },
     {
@@ -30,7 +30,7 @@
       "name": "SHNLNKPK",
       "description": "",
       "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
       "playedAt": "2026-09-15T02:03:40.406Z"
     },
     {
@@ -38,7 +38,7 @@
       "name": "SHNDDEN",
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
       "playedAt": "2026-09-14T02:24:41.271Z"
     }
   ]
