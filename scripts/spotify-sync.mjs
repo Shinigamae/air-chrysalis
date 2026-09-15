@@ -23,12 +23,14 @@
  * everything, playlist privacy hides the playlist and not the plays, and the
  * fix was a denylist of track ids maintained by hand.
  *
- * This is a list of *playlists you own, most recently played first*, and the
+ * This is a list of *public playlists you own, most recently played first*, and the
  * exclusion list is gone with it: a playlist is curated by existing, so the
  * curation happens in Spotify rather than in a JSON file or an admin screen.
  * Spotify's own playlists — Discover Weekly, the daylists, anything under the
  * `37i9dQZF1…` prefix — are filtered out, because they are not a thing you
- * chose.
+ * chose. Private ones are filtered out too, and not on the flag alone: listing
+ * a playlist promises a reader the link works for them, so that is asked
+ * literally, with credentials that know nothing about you.
  *
  * Three things worth knowing about the API this rests on.
  *
@@ -105,7 +107,7 @@ function credentials() {
   return { clientId, clientSecret, refreshToken };
 }
 
-async function accessToken({ clientId, clientSecret, refreshToken }) {
+async function token({ clientId, clientSecret }, grant) {
   const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
@@ -113,7 +115,7 @@ async function accessToken({ clientId, clientSecret, refreshToken }) {
       Authorization: `Basic ${basic}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refreshToken }),
+    body: new URLSearchParams(grant),
   });
 
   const body = await response.json();
@@ -129,6 +131,16 @@ async function accessToken({ clientId, clientSecret, refreshToken }) {
 
   return body.access_token;
 }
+
+/** The user token: the play history, and playlists as their owner sees them. */
+const userToken = (creds) =>
+  token(creds, { grant_type: 'refresh_token', refresh_token: creds.refreshToken });
+
+/**
+ * An app-only token, used for exactly one thing: asking whether a stranger can
+ * open a playlist. See `isPubliclyVisible`.
+ */
+const anonToken = (creds) => token(creds, { grant_type: 'client_credentials' });
 
 /* ------------------------------------------------------------------ *
  * Reading
@@ -191,18 +203,48 @@ async function recentlyPlayedPlaylists(token) {
 }
 
 /**
+ * Whether a visitor who is not signed in as you can actually open this.
+ *
+ * `public: false` is the flag to trust and this checks it first, but it is not
+ * what is being claimed. The claim the site makes by listing a playlist is that
+ * the link works for the person reading it — so this asks that question
+ * literally, with credentials that know nothing about you, and believes the
+ * answer over the flag.
+ *
+ * Spotify's "private" does not mean unreachable, and its `public` field can come
+ * back null when the status is not known; both are reasons a flag alone is the
+ * wrong thing to publish someone's listening on. A failure here is read as "not
+ * visible", so the safe direction is the default one.
+ */
+async function isPubliclyVisible(id, anon) {
+  try {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${id}?fields=id`, {
+      headers: { Authorization: `Bearer ${anon}` },
+    });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * One playlist, as the site renders it. Returns null for anything that is not
  * yours, and for anything that has gone — a playlist deleted since it was
  * played answers 404, which is ordinary rather than fatal.
  */
-async function playlist(id, playedAt, token, owner) {
+async function playlist(id, playedAt, user, anon, owner) {
   const response = await fetch(`https://api.spotify.com/v1/playlists/${id}`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${user}` },
   });
 
   if (!response.ok) return null;
   const data = await response.json();
   if (data.owner?.id !== owner) return null;
+
+  // Both, not either. The flag is cheap and catches the ordinary case; the
+  // anonymous fetch is what the site is actually promising a reader.
+  if (data.public !== true) return null;
+  if (!(await isPubliclyVisible(id, anon))) return null;
 
   return {
     id: data.id,
@@ -244,15 +286,17 @@ async function existingComment() {
 }
 
 async function main() {
-  const token = await accessToken(credentials());
-  const owner = await me(token);
+  const creds = credentials();
+  const user = await userToken(creds);
+  const anon = await anonToken(creds);
+  const owner = await me(user);
 
-  const recent = await recentlyPlayedPlaylists(token);
+  const recent = await recentlyPlayedPlaylists(user);
   const resolved = [];
 
   for (const { id, playedAt } of recent) {
     if (resolved.length >= LIMIT) break;
-    const entry = await playlist(id, playedAt, token, owner);
+    const entry = await playlist(id, playedAt, user, anon, owner);
     if (entry) resolved.push(entry);
   }
 
@@ -264,14 +308,14 @@ async function main() {
   };
 
   if (!WRITE) {
-    console.log(`spotify-sync --check: ${resolved.length} playlist(s) of your own`);
+    console.log(`spotify-sync --check: ${resolved.length} public playlist(s) of your own`);
     for (const entry of resolved) {
       console.log(
         `  ${entry.playedAt.slice(0, 16).replace('T', ' ')}  ${entry.name}`,
       );
     }
     if (resolved.length === 0) {
-      console.log('  Nothing. Play one of your own playlists and run this again.');
+      console.log('  Nothing. Play one of your own *public* playlists and run this again.');
     }
     return;
   }

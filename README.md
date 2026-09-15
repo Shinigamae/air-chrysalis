@@ -332,6 +332,14 @@ playlists — Discover Weekly, Release Radar, the daylists, anything under the
 `37i9dQZF1…` prefix — are filtered out, because they are recommendations rather
 than choices.
 
+**Private playlists are filtered out too, and not on the flag alone.** Listing a
+playlist promises a reader that the link works for them, so the sync asks that
+question literally: it re-fetches each candidate with app-only credentials, which
+know nothing about you, and believes that answer over `public`. Spotify's
+"private" does not mean unreachable and its `public` field can come back null, so
+a flag is the wrong thing to publish someone's listening on. A failed check reads
+as "not visible", which is the safe direction to be wrong in.
+
 What it cost is the claim. The section no longer says what was played most; it
 says what was last reached for, which is smaller and more honest.
 

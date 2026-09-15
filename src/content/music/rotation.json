@@ -15,7 +15,7 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-15T14:10:15.343Z",
+  "syncedAt": "2026-09-15T14:22:26.988Z",
   "playlists": [
     {
       "id": "5S5ss02hXM2Yi0GK7ovJd7",
@@ -30,7 +30,7 @@
       "name": "SHNLNKPK",
       "description": "",
       "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
       "playedAt": "2026-09-15T02:03:40.406Z"
     },
     {
@@ -40,14 +40,6 @@
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
       "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
       "playedAt": "2026-09-14T02:24:41.271Z"
-    },
-    {
-      "id": "04aii3iQ32D9Hc6OddC2DQ",
-      "name": "SHNKIDV",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/04aii3iQ32D9Hc6OddC2DQ",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da844ce4c4f9628418b8412eb7ff",
-      "playedAt": "2026-09-11T13:32:58.757Z"
     }
   ]
 }
