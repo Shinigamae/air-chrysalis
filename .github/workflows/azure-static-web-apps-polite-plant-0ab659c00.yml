@@ -16,6 +16,11 @@ on:
   push:
     branches:
       - main
+  # So the first run after re-enabling this workflow does not need a dummy
+  # commit to trigger it. Enabling a disabled workflow does not replay the
+  # pushes it missed, and on a repository that is already up to date there is
+  # nothing left to push.
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
