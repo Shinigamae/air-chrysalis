@@ -76,6 +76,31 @@ already exists in every sync script:
 Object.assign(entry.data, overrides[slug] ?? {});
 ```
 
+> **Amended, 2026-09-15.** The reasoning above still governs the *build*: the site
+> reads JSON, an override is a delta, and the site builds with the database switched
+> off. Nothing here has changed and `content_overrides` is untouched.
+>
+> What it did not anticipate is the cost of the property it was defending. Baking
+> every record produces **6.5 MB of prerendered HTML across 400-odd pages** — one per
+> game, one per book — and the only way to stop paying for that is for the site to
+> fetch its content instead of baking it. That needs the corpus on the server first.
+>
+> So there is now a second table, `content_entries`, holding a mirror of all 494
+> records, and `GET /api/content/{type}` reads it with each entry's overrides already
+> merged in. It is a **mirror, not a move**: the syncs still own the JSON, the mirror
+> drifts until the import is re-run, and which half owns a record after the site stops
+> baking is deliberately still open.
+>
+> The four objections in this section were answered rather than overruled. The second
+> writer problem is why mirror and delta are separate tables — an import overwrites its
+> rows wholesale and cannot touch an edit. The 94%-duplication argument was about
+> storing 469 rows *to express 30 edits*, which is not what the mirror is for. And the
+> schema-churn objection is why `data` is `jsonb` rather than columns: a new field in
+> `content.config.ts` is still no migration at all.
+>
+> See `shinigamae-api/README.md`, "Content — the mirror, and why it is not the delta".
+
+
 This is what you asked for — "the names of them, review, rating, status may go
 into Postgres" — with the duplication removed. Every field is *editable*; only
 the edited ones are *stored*.
