@@ -388,14 +388,33 @@ after November 2024, so playback is their iframe embed and nothing else.
 One person can edit this site from the site itself. Everyone else gets a build with none
 of it in — not a disabled version, an absent one.
 
+### Signing in, which is not an admin feature
+
+**One `SIGN IN` in the header, for everybody.** It sits in the header's third slot —
+where the `↗` to GitHub used to be, which moved to the footer — and it is
+`layout/SessionControl`. Anyone may sign in; that is the point, because the account
+system is for comments and whatever follows them, not for editing.
+
+It used to be `ADMIN · SIGN IN WITH DISCORD` in the rail at the bottom of the page,
+offered to every reader who scrolled. That told anyone looking that the site had an
+administrator and then handed them the administrator's door — more than a reader needs
+to know, and the wrong invitation now that signing in is for everyone.
+
+So **nothing in the interface names the role.** A signed-in admin's header is the same
+header as anyone else's: their name and `SIGN OUT`. `SessionControl` never reads
+`isAdmin` at all.
+
 ### The switch
 
-A rail at the bottom of the viewport, mounted once in `AppShell`. It appears only when
-all three of these hold:
+A rail at the bottom of the viewport, mounted once in `AppShell`. It holds the edit
+toggle and nothing else, and it appears only when all three of these hold:
 
 1. `PUBLIC_API_URL` is set in the build,
 2. `GET /api/me` answers with a user, and
 3. that user is the admin.
+
+For everyone else the rail is absent — not empty, absent — so the only difference an
+admin can see is a switch that is there.
 
 It is a rail rather than a control in the header because the header is a designed object
 with three breakpoint behaviours and a mobile variant that replaces it outright; adding

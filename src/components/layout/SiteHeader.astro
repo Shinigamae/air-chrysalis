@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import { site, headerNavigation, isActive, withBase } from '@/config/site';
 import NavLink from './NavLink.astro';
+import SessionControl from './SessionControl';
+import { hasBackend } from '@/lib/api';
 import mark from '@/assets/logo-trans.png';
 
 /**
@@ -65,14 +67,19 @@ const { pathname } = Astro.props;
       }
     </nav>
 
-    <a
-      href={site.external.href}
-      rel="me noopener"
-      target="_blank"
-      aria-label={`${site.external.label} (opens in a new tab)`}
-      class="font-display text-signal text-[22px] leading-none transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-70"
-    >
-      <span aria-hidden="true">↗</span>
-    </a>
+    {/*
+      The third slot used to be the ↗ out to GitHub; that link moved to the
+      footer, which is where a site's own credits sit, and this is the door in.
+
+      The width is reserved rather than fitted. The row is `justify-between`, so
+      a slot that changes size drags the navigation across with it — and this
+      one has four states (nothing, SIGN IN, a name, a name being resolved) that
+      land at different page loads. Reserving it means the destinations do not
+      move when a session resolves, and do not sit in a different place on the
+      Pages mirror, which has no backend and renders this empty.
+    */}
+    <div class="flex min-w-[5rem] items-center justify-end">
+      {hasBackend && <SessionControl client:idle />}
+    </div>
   </div>
 </header>

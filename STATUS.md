@@ -148,6 +148,7 @@ These cost real time to diagnose. Do not re-litigate them.
 | Figma requests fail intermittently with `ECONNRESET` | Same proxy. `figmaGet()` retries; roughly one request in three fails. |
 | Figma returns 429 for a long time | Read-heavy sessions exhaust the quota and `Retry-After` is 60s, sustained. The report is read-only, so nothing is left half-applied. Wait and re-run. |
 | A newly added file's Tailwind classes do not apply in dev | Tailwind can serve stale CSS for files created while the dev server is running. Restart `astro dev`. The production build is always correct. |
+| A build's video shows "Video player configuration error — Error 153" | YouTube refusing a player that arrived with **no `Referer`**. Not a bad video id and not `youtube-nocookie`: all 41 ids resolve and the same embed plays with a referrer. The build iframe carries `referrerpolicy="origin"`, which overrides a document-level `no-referrer` — do not remove it, and do not add a `Referrer-Policy: no-referrer` header on the host without checking these 41 pages. A browser or extension that strips referrers outright still wins, which is what the WATCH ON YOUTUBE link under the plate is for. |
 
 ---
 

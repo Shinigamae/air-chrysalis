@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { canSignIn, hasBackend, signInDev, startDiscordLogin, ApiError } from '@/lib/api';
-import { setMe, signOut, startSession, setEditing, useEditState } from '@/lib/edit-mode';
+import { useEffect } from 'react';
+import { hasBackend } from '@/lib/api';
+import { setEditing, startSession, useEditState } from '@/lib/edit-mode';
 import { buttonTone } from '@/components/edit/controls';
 
 /**
- * The switch, and the only thing on the page that is always mounted.
+ * The edit switch, and the only thing on the page that is always mounted.
  *
  * It sits in a fixed rail at the bottom of the viewport rather than in the header. The
  * header is a designed object with three breakpoint behaviours and a mobile variant
@@ -16,11 +16,17 @@ import { buttonTone } from '@/components/edit/controls';
  * **It renders nothing at all** unless `PUBLIC_API_URL` is set (BACKEND.md §10.2) and
  * the API says this visitor is an admin. For everyone else — which is everyone — the
  * component mounts, asks once, gets "no", and returns null for the life of the page.
+ *
+ * Signing *in* is not here and is not admin's business: the header carries one
+ * `SIGN IN` for everybody (`layout/SessionControl`), because the account system is
+ * about to be for comments and whatever follows them. This rail used to offer
+ * `ADMIN · SIGN IN WITH DISCORD` to anyone who scrolled, which told every reader that
+ * the site had an administrator and then handed them their door. Nothing here names
+ * the role now either — there is one admin, the API decides that from its own
+ * configuration on every request, and what the one admin sees for it is a switch.
  */
 export default function AdminBar() {
-  const { ready, me, editing, error } = useEditState();
-  const [signingIn, setSigningIn] = useState(false);
-  const [signInError, setSignInError] = useState<string | null>(null);
+  const { me, editing } = useEditState();
 
   useEffect(() => {
     startSession();
@@ -29,66 +35,12 @@ export default function AdminBar() {
   // No backend in this build: there is nothing to sign in to and nothing to save to.
   if (!hasBackend) return null;
 
-  /*
-   * Not signed in. The button sends the browser to Discord, which returns to this site
-   * with a code, which the site posts to /api/auth/discord/exchange — so the client
-   * secret never reaches a browser (BACKEND.md §7).
-   */
-  if (ready && !me) {
-    // Discord where it is configured, the local stand-in where it is not. Nothing
-    // at all on a deployed site with neither, because an anonymous reader has no
-    // reason to be offered a sign-in for an archive they can already read in full.
-    if (!canSignIn && !isLocal()) return null;
-
-    return (
-      <Rail>
-        <span className="type-micro text-muted">ADMIN</span>
-        {canSignIn && (
-          <button type="button" onClick={startDiscordLogin} className={buttonTone.signal}>
-            SIGN IN WITH DISCORD
-          </button>
-        )}
-
-        {isLocal() && (
-        <button
-          type="button"
-          disabled={signingIn}
-          onClick={async () => {
-            setSigningIn(true);
-            setSignInError(null);
-            try {
-              setMe(await signInDev());
-            } catch (cause) {
-              setSignInError(
-                cause instanceof ApiError ? cause.message : 'Could not sign in.',
-              );
-            } finally {
-              setSigningIn(false);
-            }
-          }}
-          className={buttonTone.plain}
-        >
-          {signingIn ? 'SIGNING IN…' : 'SIGN IN (DEV)'}
-        </button>
-        )}
-        {(signInError ?? error) && (
-          <span className="type-micro text-danger">{signInError ?? error}</span>
-        )}
-      </Rail>
-    );
-  }
-
   // Signed in, but not the admin. There is exactly one admin and it is not this person,
   // so there is nothing to offer them.
   if (!me?.isAdmin) return null;
 
   return (
     <Rail>
-      <span className="type-micro text-muted">
-        {me.name.toUpperCase()}
-        <span className="text-signal"> · ADMIN</span>
-      </span>
-
       <button
         type="button"
         role="switch"
@@ -101,10 +53,6 @@ export default function AdminBar() {
           className={`inline-block h-1 w-1 rounded-full ${editing ? 'bg-signal' : 'bg-muted'}`}
         />
         EDIT MODE {editing ? 'ON' : 'OFF'}
-      </button>
-
-      <button type="button" onClick={signOut} className={buttonTone.plain}>
-        SIGN OUT
       </button>
 
       {editing && (
@@ -126,16 +74,4 @@ function Rail({ children }: { children: React.ReactNode }) {
       <div className="layout-container flex flex-wrap items-center gap-1 py-1">{children}</div>
     </div>
   );
-}
-
-/**
- * Whether the dev sign-in is worth offering.
- *
- * The endpoint behind it is blocked in Production by the API regardless, so this is not
- * the fence — it only keeps a button that cannot work off a page where it cannot work.
- */
-function isLocal(): boolean {
-  if (typeof window === 'undefined') return false;
-  const { hostname } = window.location;
-  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]';
 }

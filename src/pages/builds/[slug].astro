@@ -50,10 +50,29 @@ const next = () => String(++section).padStart(2, '0');
       takes the hero slot and the still becomes its poster. `youtube-nocookie`
       keeps the archive from setting tracking cookies on a page nobody agreed
       to be tracked on.
+
+      `referrerpolicy` is not optional here, and it is the fix for a real bug:
+      every one of these embeds rendered "Video player configuration error —
+      Error 153" for some readers. 153 is YouTube refusing a player that
+      arrived with no `Referer` at all, and the site does not have to be the
+      one that stripped it — a document-level `no-referrer`, a privacy mode, or
+      a header added later on the host all do it, and the page had nothing to
+      say otherwise. An element-level policy overrides the document's, so this
+      one iframe asks for the origin and nothing more: the least referrer
+      YouTube will still accept, which is the same trade `youtube-nocookie`
+      already makes. Verified against no-referrer: without this, Error 153;
+      with it, the player.
+
+      What it cannot override is a browser or extension that strips referrers
+      outright — hence the link below the plate, which never depends on the
+      embed working at all.
     */}
-    <div
-      class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
-    >
+    {/* Plate and link are one grid cell, not two: the row's second column is
+        the specification, and a third child would be placed into it. */}
+    <div class="flex flex-col gap-1.5">
+      <div
+        class="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-standard border border-line bg-well"
+      >
       {
         b.video ? (
           <iframe
@@ -61,6 +80,7 @@ const next = () => String(++section).padStart(2, '0');
             title={`${b.title} — build video`}
             class="h-full w-full border-0"
             loading="lazy"
+            referrerpolicy="origin"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           />
@@ -75,6 +95,23 @@ const next = () => String(++section).padStart(2, '0');
           <span class="type-micro">PHOTO / HERO</span>
         )
       }
+      </div>
+
+      {/* The way out when the plate above is showing an error instead of a
+          player. A reader whose browser strips referrers outright cannot be
+          rescued by an attribute, and YouTube's own error screen is the wrong
+          thing to make them read to find the video. */}
+      {b.video && (
+        <p class="type-micro">
+          <a
+            href={`https://www.youtube.com/watch?v=${b.video}`}
+            rel="noopener external"
+            target="_blank"
+          >
+            WATCH ON YOUTUBE ↗
+          </a>
+        </p>
+      )}
     </div>
 
     <div class="flex flex-col gap-3">

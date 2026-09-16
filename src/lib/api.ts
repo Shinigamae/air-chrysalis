@@ -220,6 +220,21 @@ const DISCORD_CLIENT_ID = import.meta.env.PUBLIC_DISCORD_CLIENT_ID ?? '';
 
 export const canSignIn = hasBackend && DISCORD_CLIENT_ID !== '';
 
+/**
+ * Whether the local stand-in above is worth offering.
+ *
+ * A function rather than a constant: it reads the hostname, and every module in
+ * this file is evaluated during the static build too, where there is no window.
+ *
+ * The endpoint behind it is refused outright in Production by the API, so this is
+ * not the fence — it only keeps a door off a page where it does not open.
+ */
+export function canUseDevSignIn(): boolean {
+  if (!hasBackend || typeof window === 'undefined') return false;
+  const { hostname } = window.location;
+  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]';
+}
+
 /** Where the provider sends the browser back. Must match what is registered. */
 function redirectUri(): string {
   // Origin plus the site's base path, with no query or hash: Discord compares this

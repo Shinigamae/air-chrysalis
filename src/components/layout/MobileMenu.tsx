@@ -1,5 +1,7 @@
 import { type CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 import { site, withBase, type NavEntry } from '@/config/site';
+import { hasBackend } from '@/lib/api';
+import SessionControl from './SessionControl';
 
 interface MobileMenuProps {
   entries: readonly NavEntry[];
@@ -119,6 +121,17 @@ export default function MobileMenu({ entries, pathname }: MobileMenuProps) {
             );
           })}
         </nav>
+
+        {/*
+          The same door as the desktop header's third slot. The mobile header is
+          three items wide already — brand, section, MENU — so it goes in here,
+          under the destinations, which is where a phone puts an account anyway.
+        */}
+        {hasBackend && (
+          <div className="flex items-center px-2 py-3">
+            <SessionControl />
+          </div>
+        )}
       </div>
     </>
   );

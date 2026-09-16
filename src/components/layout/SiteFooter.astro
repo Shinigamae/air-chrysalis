@@ -11,6 +11,7 @@
  * is not synced from Goodreads.
  */
 import { pickQuote } from '@/config/quotes';
+import { site } from '@/config/site';
 
 interface Props {
   note?: string;
@@ -39,7 +40,23 @@ const quote = pickQuote();
 
     <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
       <span class="type-meta">{note}</span>
-      <span class="type-meta">{version}</span>
+      {/*
+        GitHub, which used to be the ↗ in the header. The header's third slot is
+        the sign-in now, and a link to the source is a credit rather than a
+        destination — it belongs on the line that already says who made this and
+        which version it is.
+      */}
+      <span class="type-meta flex items-center gap-3">
+        <a
+          href={site.external.href}
+          rel="me noopener"
+          target="_blank"
+          class="transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:text-ink"
+        >
+          {site.external.label.toUpperCase()} ↗
+        </a>
+        <span>{version}</span>
+      </span>
     </div>
   </div>
 </footer>
