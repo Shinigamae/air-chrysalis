@@ -1,4 +1,4 @@
-# Deploying SHINIGAMAE.DEV to GitHub Pages
+# Deploying SHINIGAMAE to GitHub Pages
 
 Last updated: 2026-09-09
 
@@ -167,7 +167,11 @@ above.
 
 ---
 
-## Migrating to shinigamae.dev later
+## Migrating to a custom domain later
+
+`shinigamae.dev` is written out below as the example. **The TLD is not decided**
+— `.dev` or `.com`, open as of 2026-09-16 — so substitute whichever is
+registered; nothing in these steps depends on which it is.
 
 When the domain is registered:
 

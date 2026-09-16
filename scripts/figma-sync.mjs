@@ -1,5 +1,5 @@
 /**
- * Figma drift report for SHINIGAMAE.DEV.
+ * Figma drift report for SHINIGAMAE.
  *
  *   npm run figma:check    # report drift, exit 1 if any
  *   npm run figma:sync     # accept current Figma as the baseline
@@ -236,7 +236,7 @@ async function main() {
 
   let drift = false;
   console.log(
-    `\n${c.bold('FIGMA / SHINIGAMAE.DEV')}  ` +
+    `\n${c.bold('FIGMA / SHINIGAMAE')}  ` +
       c.dim(`v${live.version} - modified ${live.lastModified}`),
   );
 

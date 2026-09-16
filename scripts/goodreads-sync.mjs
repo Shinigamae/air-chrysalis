@@ -37,7 +37,7 @@ const FEED = (shelf, page) =>
 const PAGE_SIZE = 100;
 
 /** Goodreads 403s an unrecognised agent. */
-const UA = 'Mozilla/5.0 (compatible; shinigamae.dev content sync)';
+const UA = 'Mozilla/5.0 (compatible; shinigamae content sync)';
 
 const WRITE = !process.argv.includes('--check');
 

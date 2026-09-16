@@ -100,6 +100,41 @@
   }
 
   /*
+   * The ground under a sleeve on the ON ROTATION shelf.
+   *
+   * The same cover art, mirrored and faded. A square floating on a near-black
+   * canvas has nothing under it, and a drop shadow cannot help — a shadow on
+   * #09090B is the canvas again. The reflection is the only thing that makes
+   * the row read as objects standing on a surface.
+   *
+   * The mirroring is on the wrapper, so the mask reads upside down with it:
+   * a gradient that is opaque at the *local* bottom lands, once flipped,
+   * against the sleeve, which is where a reflection is strongest.
+   *
+   * The image is square and full width, pinned to the wrapper's bottom, so
+   * the 24px window shows the cover's bottom edge and nothing else. No height
+   * is hard-coded — the sleeve is sized by the row, and this follows it.
+   */
+  .shelf-reflection {
+    position: relative;
+    display: block;
+    height: 24px;
+    overflow: hidden;
+    transform: scaleY(-1);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 55%, rgb(0 0 0 / 0.5));
+    mask-image: linear-gradient(to bottom, transparent 55%, rgb(0 0 0 / 0.5));
+  }
+
+  .shelf-reflection > img {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  /*
    * A card whose edge is a slowly travelling highlight — the Gaming Log's
    * platinum and 100% markers. The tone is set by a modifier class, so the
    * mechanism is written once.

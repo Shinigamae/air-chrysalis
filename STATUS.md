@@ -16,9 +16,15 @@ responsive foundation, accessibility baseline.
 
 **Step 2 — Home.** Complete. Hero, standfirst, current-status panel, and the
 four "selected work" cards, measured against the Figma nodes. Section 03, ON
-ROTATION, was added afterwards and has no Figma node behind it — it follows the
-Gaming Log's feature-plus-list pattern. Live as of 2026-09-14, 12 tracks from
-Spotify.
+ROTATION, was added afterwards and has no Figma node behind it. It started on
+the Gaming Log's feature-plus-list pattern and is now a shelf: playlist covers
+stood in a row, the picked one lifted, its tracks set below in two columns.
+That pattern is for lists of *names* — these are covers, and a 16px thumbnail
+beside a name threw away the one thing that tells two playlists apart. Live as
+of 2026-09-16, five playlists from Spotify with their track lists.
+
+Section 04 is planned and not built: cards linking out to the social profiles —
+YouTube and the rest. See §3.1.6.
 
 **Step 3 — Content layer and section pages.** Complete. Typed collections plus
 Workshop, Builds, Games, Books and Journeys, with generated detail routes.
@@ -175,6 +181,28 @@ In the order that unblocks the most work.
    one: four of the twelve rows are nursery rhymes played for someone else on
    the account. Accepted for now — hiding a row is admin edit mode's job,
    recorded in `PLAN.md` Phase 4a §5.
+
+   **Superseded 2026-09-16.** The chart became a shelf of owned playlists, and
+   the exclusion list went with it — a playlist is curated by existing, so the
+   curation happens in Spotify. See README §"Why playlists, and not a play
+   count".
+
+6. **Section 04 on the homepage: the social profiles.** Planned, not started.
+   Cards linking out to the accounts that are not archives here — the YouTube
+   channel first, and whatever else earns a card.
+
+   It is a fifth homepage section, so two things it must not do by accident.
+   It goes **outside `[data-pairing]`** in `src/pages/index.astro`, like ON
+   ROTATION: the hero's four words pair with the four cards inside that
+   region, and anything else in there is dimmed by a rule it has no word to
+   answer. And these cards leave the site, so they are not `EditorialCard`
+   with a different href — an outbound card wants the destination's own mark
+   and an `↗`, not `VIEW →`, which everywhere else on this site means "a page
+   of mine".
+
+   No content shape is decided yet. If it stays four or five hand-written
+   links it belongs in `src/config/site.ts` beside `external`, not in a
+   collection.
 
 ### 3.2 Then
 

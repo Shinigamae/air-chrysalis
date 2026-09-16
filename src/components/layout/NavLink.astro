@@ -3,26 +3,58 @@
  * A single header destination.
  *
  * Figma: "Sidebar Item" (33:34) — Default / Active variants. In the header
- * the active state is the cyan label plus a 1px cyan rule beneath it, so the
+ * the active state is a coloured label plus a 1px rule beneath it, so the
  * state is not carried by colour alone.
+ *
+ * The colour is the section's own — the same pair the homepage hero lights
+ * that word in. Every tab used to go cyan, which told you that one of them
+ * was current but not which, and the hero had already answered that question
+ * for the same five destinations. So BUILDS is amber in the header because
+ * BUILD. is amber in the hero, and the site names a section the same way
+ * twice.
+ *
+ * The stops arrive as two custom properties rather than as class names.
+ * Tailwind scans the source as text, so `text-word-${accent}` is a class that
+ * never reaches the stylesheet — the same trap documented on the homepage's
+ * generated pairing rules. Written as variables, the utilities below are
+ * static text and the value is what varies.
+ *
+ * The label takes the first stop flat and the rule takes the gradient. The
+ * hero clips a gradient into 88px letterforms, where the sweep is legible
+ * across a word; at 12px it would be a muddle, and the rule under the label
+ * is 100px of unbroken colour that can carry it properly.
  */
 interface Props {
   href: string;
   label: string;
   active?: boolean;
+  /** Key half of `--color-word-<accent>` in tokens.css. */
+  accent?: string;
   class?: string;
 }
 
-const { href, label, active = false, class: className = '' } = Astro.props;
+const { href, label, active = false, accent, class: className = '' } = Astro.props;
+
+/**
+ * Both fall back to the signal cyan, so a section added without an accent
+ * still lights — in the colour the header wore before any of this.
+ */
+const stops = accent
+  ? `--nav-accent: var(--color-word-${accent}, var(--color-signal));` +
+    ` --nav-accent-end: var(--color-word-${accent}-end, var(--color-signal));`
+  : undefined;
 ---
 
 <a
   href={href}
   aria-current={active ? 'page' : undefined}
+  style={active ? stops : undefined}
   class:list={[
     'type-nav relative inline-flex items-center py-1',
     'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
-    active ? 'text-signal' : 'text-muted hover:text-ink',
+    active
+      ? 'text-[var(--nav-accent,var(--color-signal))]'
+      : 'text-muted hover:text-ink',
     className,
   ]}
 >
@@ -31,7 +63,8 @@ const { href, label, active = false, class: className = '' } = Astro.props;
     active && (
       <span
         aria-hidden="true"
-        class="absolute inset-x-0 -bottom-0.5 h-px bg-signal"
+        class="absolute inset-x-0 -bottom-0.5 h-px"
+        style="background-image: linear-gradient(100deg, var(--nav-accent, var(--color-signal)) 15%, var(--nav-accent-end, var(--color-signal)) 85%)"
       />
     )
   }

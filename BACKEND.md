@@ -1,4 +1,4 @@
-# SHINIGAMAE.DEV — backend design
+# SHINIGAMAE — backend design
 
 Last updated: 2026-09-14
 Status: **not started.** Design only; no code exists yet.

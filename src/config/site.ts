@@ -5,7 +5,13 @@
  */
 
 export const site = {
-  name: 'SHINIGAMAE.DEV',
+  /**
+   * The name, with no TLD on it. It read SHINIGAMAE.DEV for a while, which
+   * committed the site in its own header to a domain that is not registered
+   * yet — .dev and .com are both still open questions. A name survives that
+   * decision; a wordmark with a TLD baked in has to be re-cut afterwards.
+   */
+  name: 'SHINIGAMAE',
   tagline: 'CREATE, PLAY, SLAY, ELATE',
   description:
     'A personal digital workshop and archive — things made, played, read, and shipped.',
@@ -26,6 +32,17 @@ export interface NavEntry {
   context: string;
   /** One-line description, shown under the page title. */
   summary: string;
+  /**
+   * The section's colour, as the key half of `--color-word-<accent>` in
+   * tokens.css. It is the same key the homepage hero ties a word to its card
+   * by — CODE. opens /workshop, so /workshop's tab in the header lights in
+   * CODE's amber-or-cyan and not in the one accent every nav used to take.
+   *
+   * Four of the five are the hero's own words. JOURNEYS has no word in the
+   * stack — the hero is four lines — so it carries a fifth pair of its own
+   * rather than falling back to the cyan and reading as a second WORKSHOP.
+   */
+  accent: string;
 }
 
 export const navigation: readonly NavEntry[] = [
@@ -35,6 +52,7 @@ export const navigation: readonly NavEntry[] = [
     index: '01',
     context: 'HELLO',
     summary: 'Engineer by trade. The rest is to recreate.',
+    accent: 'code',
   },
   {
     label: 'WORKSHOP',
@@ -42,6 +60,7 @@ export const navigation: readonly NavEntry[] = [
     index: '02',
     context: 'SECTION',
     summary: 'Systems I build, break, refactor, and occasionally ship.',
+    accent: 'code',
   },
   {
     label: 'BUILDS',
@@ -50,6 +69,7 @@ export const navigation: readonly NavEntry[] = [
     context: 'SECTION',
     summary:
       'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.',
+    accent: 'build',
   },
   {
     label: 'GAMES',
@@ -57,6 +77,7 @@ export const navigation: readonly NavEntry[] = [
     index: '04',
     context: 'SECTION',
     summary: '293 games, 98 platinums, and over 600 days I am not getting back.',
+    accent: 'play',
   },
   {
     label: 'BOOKS',
@@ -64,6 +85,7 @@ export const navigation: readonly NavEntry[] = [
     index: '05',
     context: 'SECTION',
     summary: "135 books, 18 of them are Murakami's.",
+    accent: 'read',
   },
   {
     label: 'JOURNEYS',
@@ -71,6 +93,7 @@ export const navigation: readonly NavEntry[] = [
     index: '06',
     context: 'SECTION',
     summary: 'Journeys through the world.',
+    accent: 'journeys',
   },
 ] as const;
 

@@ -1,4 +1,4 @@
-# SHINIGAMAE.DEV — Phase 2: backend, accounts, comments, editing
+# SHINIGAMAE — Phase 2: backend, accounts, comments, editing
 
 Last updated: 2026-09-12
 Status: **not started.** Backend expected ~2026-09-22 to 2026-09-26.
@@ -104,7 +104,7 @@ These gate the work. My recommendation is in bold; none are irreversible.
 
 | # | Decision | Options | Recommendation |
 | --- | --- | --- | --- |
-| D1 | Custom domain | Register `shinigamae.dev` now, or stay on `*.azurestaticapps.net` | **Register now.** See §5 — session cookies do not survive without it |
+| D1 | Custom domain | Register a domain now, or stay on `*.azurestaticapps.net` | **Register now.** See §5 — session cookies do not survive without it. **The TLD is still open** — `.dev` or `.com`, undecided as of 2026-09-16, which is why the site itself says only SHINIGAMAE. Every `shinigamae.dev` below and in `BACKEND.md` is that placeholder, not a commitment |
 | D2 | SWA plan | Free, or Standard (~$9/app/mo) | **Free.** Standard buys same-origin `/api` and custom auth providers; D1 solves the problem those would solve |
 | D3 | Where the API runs | Container Apps (scale to zero), App Service B1, Functions | ~~**Container Apps**, min replicas 0~~ → **App Service B1**, decided 2026-09-14. No scale-to-zero, so no cold start; ~$13/mo instead of ~$0. See `BACKEND.md` §9 |
 | D4 | Postgres | Azure Database for PostgreSQL Flexible Server (Burstable B1ms), or Neon via Azure Marketplace | **Flexible Server** if it must sit in the resource group; **Neon** if monthly cost matters more than co-location |

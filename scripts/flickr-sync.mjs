@@ -54,7 +54,7 @@ const STRIP_LIMIT = 10;
 const THROTTLE_MS = 250;
 
 /** Honest about what this is, so it can be blocked deliberately if unwanted. */
-const UA = 'shinigamae.dev-content-sync/1.0 (+https://github.com/Shinigamae/air-chrysalis)';
+const UA = 'shinigamae-content-sync/1.0 (+https://github.com/Shinigamae/air-chrysalis)';
 
 const WRITE = !process.argv.includes('--check');
 

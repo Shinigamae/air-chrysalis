@@ -1,5 +1,5 @@
 /*
- * SHINIGAMAE.DEV — design tokens
+ * SHINIGAMAE — design tokens
  * Source of truth: Figma "01 — Design Direction" › Foundations — V1
  *
  * Every value here is lifted from the Figma file. Do not introduce colours,
@@ -120,15 +120,21 @@
 }
 
 /*
- * Hero word accents. A pair per word in the homepage hero stack, lit when
- * the word or the card it opens is pointed at: the two stops are read as a
- * gradient across the letterform, and the first is also what the paired
- * card's edge takes.
+ * Section accents. A pair per section: lit across the letterform when the
+ * homepage hero word or the card it opens is pointed at, and taken again by
+ * that section's tab in the header once you are inside it. The first stop is
+ * also what the paired card's edge takes.
+ *
+ * The header used to light every tab in the one signal cyan, which said that
+ * something was current without saying what — the same complaint that put
+ * four colours in the hero stack. A destination now looks the same wherever
+ * the site names it.
  *
  * Keyed by the word itself — `--color-word-<kicker>`, lowercased — which is
- * the key the homepage already ties a word to its card by, so a section is
- * named in one place and not two. A word with no pair here falls back to
- * the signal cyan rather than going unpainted.
+ * the key the homepage already ties a word to its card by, and the same key
+ * `navigation` carries as `accent`, so a section is named in one place and
+ * not three. A key with no pair here falls back to the signal cyan rather
+ * than going unpainted.
  *
  * The hues are picked apart from each other rather than from the sections:
  * four words stacked in one column want four readings, and the only job the
@@ -151,6 +157,16 @@
   --color-word-play-end: #f0abfc;
   --color-word-read: #34d399; /* READ  — emerald → lime       */
   --color-word-read-end: #a3e635;
+  /*
+   * JOURNEYS has no word in the hero — that stack is four lines, and the
+   * fifth section is photographs rather than something made. It needs a pair
+   * anyway, because the header lights it: on the fallback it would have come
+   * up in CODE's cyan and read as a second WORKSHOP. Rose is the one hue the
+   * other four leave open, and it is the warmest thing here, which suits a
+   * section that is entirely daylight.
+   */
+  --color-word-journeys: #f472b6; /* JOURNEYS — pink → rose   */
+  --color-word-journeys-end: #fb7185;
 }
 
 /*

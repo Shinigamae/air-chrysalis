@@ -45,7 +45,15 @@ const current = entryFor(pathname);
       <span class="type-brand-sm">{site.name}</span>
     </a>
 
-    {current && <span class="type-meta text-signal">{current.label}</span>}
+    {/* The section's own accent, as in the desktop header — see NavLink. */}
+    {current && (
+      <span
+        class="type-meta text-[var(--nav-accent,var(--color-signal))]"
+        style={`--nav-accent: var(--color-word-${current.accent}, var(--color-signal))`}
+      >
+        {current.label}
+      </span>
+    )}
 
     <MobileMenu client:load entries={navigation} pathname={pathname} />
   </div>

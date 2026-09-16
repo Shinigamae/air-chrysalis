@@ -335,9 +335,12 @@ const projects = defineCollection({
  * in Spotify, where it belongs. Spotify's own playlists are filtered out by the
  * sync; they are recommendations rather than choices.
  *
- * No tracks here, deliberately. Spotify's embed renders the playlist's contents
- * itself, and this app's credentials can no longer read a track list reliably
- * anyway — see the header of scripts/spotify-sync.mjs.
+ * Each playlist carries the head of its track list. That was held to be
+ * impossible for this app — `/playlists/{id}/tracks` answers 403 — until the
+ * relation turned out to have been renamed to `items`, which answers 200. See
+ * the header of scripts/spotify-sync.mjs. `tracks` empty is still a supported
+ * state: the section falls back to Spotify's embed for the contents, which is
+ * what it showed before.
  *
  * `syncedAt: null` with an empty `playlists` is the committed starting state,
  * and the homepage renders no section until a sync fills it.
@@ -363,6 +366,26 @@ const music = defineCollection({
           /** When it was last played — the sort key, and the only ordering
            *  this section claims. */
           playedAt: z.string(),
+          /** How many tracks the playlist holds in all. Absent when Spotify
+           *  declined to say, which is why the shelf never prints a bare
+           *  number — it prints "N OF M" or nothing. */
+          trackCount: z.number().int().nonnegative().optional(),
+          /** The head of the list, in the playlist's own order. Capped by the
+           *  sync: these run past a hundred tracks and the shelf shows a
+           *  spine's worth. */
+          tracks: z
+            .array(
+              z.object({
+                name: z.string(),
+                /** Every credited artist, joined only at render time. */
+                artists: z.array(z.string()).default([]),
+                album: z.string().default(''),
+                durationMs: z.number().int().nonnegative().default(0),
+                /** Absent for the occasional track with no public page. */
+                url: z.url().optional(),
+              }),
+            )
+            .default([]),
         }),
       )
       .default([]),

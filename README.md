@@ -1,6 +1,10 @@
-# SHINIGAMAE.DEV
+# SHINIGAMAE
 
 A personal digital workshop and archive — things made, played, read, and shipped.
+
+The name carries no TLD, here or in the site's own header: the domain is not
+registered and `.dev` and `.com` are both still open. Where planning documents
+write `shinigamae.dev` it is a placeholder — see `PLAN.md` §3, D1.
 
 Dark editorial × technical manual. The design language lives in Figma
 (`SHINIGAMAE.DEV` › `01 — Design Direction`) and is the source of truth;
@@ -357,10 +361,24 @@ and cannot see recently-played at all, since that is user data. So the refresh
 token stays. It needs no new scope: the existing `user-read-recently-played` covers
 the history, and reading a public playlist needs no scope at all.
 
-**There is no track count.** The documented `tracks.total` is absent from this
-app's playlist response and `/playlists/{id}/tracks` answers 403 — Spotify has
-tightened what a non-extended app may read. A count that is sometimes right is
-worse than no count beside a playlist name, and the embed lists the tracks anyway.
+**The track list is under `items`, not `tracks`.** This was written up here as
+"there is no track count" — `/playlists/{id}/tracks` answers 403 and the
+documented `tracks.total` is missing from the playlist response, which reads
+like an app that may not see track lists. It is not. Spotify renamed the
+relation: the collection is `/playlists/{id}/items`, each entry holds `item`
+where the docs say `track`, and both answer 200 with the same user token and no
+extra scope. So the shelf carries its own track list and the count beside a
+playlist name is real.
+
+That list is paged and long — the playlists here run past a hundred tracks — so
+the sync writes only the first `SPOTIFY_TRACKS` (default 20, ten rows in each of
+the section's two columns) and keeps the total beside it. The section prints
+"20 OF 103 TRACKS" and never a bare number, because the number it holds is not
+the number the playlist has.
+
+A 403 here is survivable rather than fatal: the playlist still goes on the shelf
+with an empty `tracks`, and its panel falls back to Spotify's tall embed, which
+lists the contents itself. That fallback was the whole section until this.
 
 There is also no `preview_url`: Spotify stopped returning it to apps registered
 after November 2024, so playback is their iframe embed and nothing else.
@@ -568,13 +586,20 @@ src/
   not a decoration — active state, focus, metadata keys. The platform tints
   (`--color-ps4`, `--color-ps5`, …), the four trophy tints
   (`--color-platinum`, `--color-gold`, `--color-silver`, `--color-bronze`)
-  and the hero word accents
+  and the section accents
   (`--color-word-code`, …) are the only other hues, and each is confined to
   one thing: a platform chip, a shining card edge, a trophy mark, a star, a
-  lit hero word.
-  The word accents sit outside `@theme`, in the `:root` block below it — a
-  theme key no utility class reaches is pruned from the build, and the only
-  thing reading those is a stylesheet the homepage generates.
+  section.
+  A section accent is a pair of stops keyed by the word the hero uses for it,
+  and it is that section's colour everywhere: the lit hero word, the edge of
+  the card it opens, and its tab in the header once you are inside. The header
+  used to light every tab in the one cyan, which said that something was
+  current without saying what. `navigation` carries the key as `accent`, so
+  the name lives in one place.
+  The accents sit outside `@theme`, in the `:root` block below it — a theme
+  key no utility class reaches is pruned from the build, and the two things
+  reading these are a stylesheet the homepage generates and a custom property
+  set inline by `NavLink`.
 - **Spacing** is an 8px base: Tailwind's `--spacing` is set to `8px`, so
   `1 · 2 · 3 · 5 · 8` are the design's `8 · 16 · 24 · 40 · 64` steps.
 - **Type** has two voices: Space Grotesk for editorial, IBM Plex Mono for

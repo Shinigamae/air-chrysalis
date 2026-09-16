@@ -58,6 +58,7 @@ const { pathname } = Astro.props;
           <NavLink
             href={withBase(entry.href)}
             label={entry.label}
+            accent={entry.accent}
             active={isActive(pathname, entry.href)}
           />
         ))

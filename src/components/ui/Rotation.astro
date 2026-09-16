@@ -1,23 +1,35 @@
 ---
 import {
+  artistLabel,
   byRecency,
+  durationLabel,
   embedUrl,
+  listedLabel,
   playedLabel,
-  rankOf,
-  section,
+  shelfHint,
   sourceLabel,
   syncedLabel,
   type Rotation,
 } from '@/config/music';
 
 /**
- * ON ROTATION — the playlists I own, most recently played first, with
- * Spotify's embed as the player.
+ * ON ROTATION — the playlists I own, as sleeves on a shelf.
  *
- * The shape follows the Gaming Log's "CURRENTLY PLAYING" block, which is the
- * pattern this site already uses for "one thing featured, the rest listed":
- * the loaded playlist is given the cover and the player, and the shelf is
- * listed beside it.
+ * The section used to be a list: one playlist featured beside a column of
+ * rows, which is the pattern the Gaming Log uses for "one thing featured, the
+ * rest listed". That pattern is right when the rest are *names*. These are
+ * covers — Spotify's mosaics are the only artwork this site does not have to
+ * make — and a 16px thumbnail beside a name throws away the one thing that
+ * tells two playlists apart at a glance.
+ *
+ * So: sleeves stood up in a row, the picked one lifted off the shelf, and its
+ * tracks set below in two columns. The shelf is the navigation and the track
+ * list is the content, which is the same division the rest of the site uses.
+ *
+ * The reflection under each sleeve is the same <img> mirrored and faded. It is
+ * doing real work rather than decoration — a square cover floating on a
+ * near-black canvas has no ground under it, and the reflection is what makes
+ * the row read as objects standing on a surface rather than as tiles.
  *
  * This replaced a ranked chart of most-played tracks. A chart claims to be a
  * play count, and that claim is what made it need a hand-maintained exclusion
@@ -25,14 +37,20 @@ import {
  * Spotify counts it. A playlist is curated by existing, so the curation moved
  * to Spotify and the exclusion list went away entirely.
  *
+ * The track lists come from the sync and are the playlist's own order, capped
+ * — see scripts/spotify-sync.mjs. A playlist whose tracks Spotify declined to
+ * hand over still shows: its panel falls back to the tall embed, which lists
+ * them itself. That fallback was the whole section not long ago.
+ *
  * Playback is Spotify's iframe and nothing else. Their Web API stopped handing
  * out 30-second preview URLs to new apps in late 2024, so a custom player has
  * nothing to play — and full tracks outside their player are not something
- * they licence anyway.
+ * they licence anyway. One iframe is shared across the shelf rather than one
+ * per playlist: five embeds would be five third-party loads on the homepage.
  *
- * Every row is a real link to the playlist on Spotify, so the section works
+ * Every sleeve is a real link to the playlist on Spotify, so the section works
  * with no JavaScript: a shelf that links out, which is the honest fallback.
- * The script below upgrades a plain click to "load it here instead" and leaves
+ * The script below upgrades a plain click to "open it here instead" and leaves
  * a modified click — new tab, middle button — alone.
  */
 interface Props {
@@ -45,15 +63,19 @@ const playlists = [...data.playlists].sort(byRecency);
 const [lead] = playlists;
 const synced = syncedLabel(data.syncedAt);
 
-/** Shared by the feature plate and the row thumbnails. */
-const PLATE = 'overflow-hidden border border-line bg-well';
-
 /**
- * `data-active` carries the styling and `aria-current` the meaning. Every
- * variant is written out in full rather than built from a shared prefix:
- * Tailwind scans the source as text, so an interpolated class name is a class
- * name that never reaches the stylesheet.
+ * The embed's height, which is not one number.
+ *
+ * 152 is Spotify's compact player: cover, title, transport. That is all a
+ * playlist whose tracks are set out below it needs — the tall embed would
+ * print the same list a second time, in someone else's typography. 352 is
+ * that tall embed, and it is what a playlist with no track list of its own
+ * falls back to, because then it is the only thing that knows the contents.
  */
+const playerHeight = (tracks: unknown[]) => (tracks.length > 0 ? 152 : 352);
+
+/** Shared by the sleeves and their reflections. */
+const SLEEVE = 'w-[136px] shrink-0 sm:w-[156px]';
 ---
 
 {
@@ -66,116 +88,213 @@ const PLATE = 'overflow-hidden border border-line bg-well';
         {synced && <p class="type-meta">AS OF {synced}</p>}
       </div>
 
-      <div class="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
-        {/* --- The loaded playlist, and the player -------------------- */}
+      {/* --- The shelf ------------------------------------------------
+          A row that scrolls rather than a grid that wraps. Six sleeves fit
+          the container on a desktop; below that the row keeps its shape and
+          the shelf runs off the edge, which is what a shelf does. */}
+      <div class="mt-4">
+        <ul
+          class="flex snap-x snap-mandatory gap-3 overflow-x-auto pt-2"
+          style="scrollbar-width: thin"
+        >
+          {playlists.map((playlist, i) => (
+            <li class:list={['snap-start', SLEEVE]}>
+              <a
+                href={playlist.url}
+                rel="noopener external"
+                target="_blank"
+                data-sleeve
+                data-index={i}
+                data-id={playlist.id}
+                data-tall={playlist.tracks.length === 0 ? 'true' : undefined}
+                data-active={i === 0 ? 'true' : undefined}
+                aria-current={i === 0 ? 'true' : undefined}
+                aria-label={`${playlist.name} — open the track list`}
+                class:list={[
+                  'group block no-underline',
+                  'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal',
+                ]}
+              >
+                {/*
+                  The sleeve itself, and the only part of a row that moves.
+                  The lift is on this rather than on the anchor because the
+                  shelf line below is drawn per sleeve and joins across the
+                  gaps — carry the anchor up and the line breaks wherever the
+                  pointer is. The reflection stays put too, which is what a
+                  reflection does when the thing above it is picked up.
+                */}
+                <span
+                  class:list={[
+                    'relative block aspect-square overflow-hidden rounded-compact border border-line bg-well',
+                    'transition-[border-color,box-shadow,transform] duration-[var(--duration-slow)] ease-[var(--ease-technical)]',
+                    'group-hover:-translate-y-0.5 group-hover:border-muted',
+                    'group-data-[active=true]:-translate-y-1 group-data-[active=true]:border-signal',
+                    'group-data-[active=true]:shadow-[0_0_30px_-10px_var(--color-signal)]',
+                  ]}
+                >
+                  <span class="type-micro absolute inset-0 flex items-center justify-center">
+                    COVER
+                  </span>
+                  {playlist.image && (
+                    <img
+                      src={playlist.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="relative h-full w-full object-cover"
+                    />
+                  )}
+
+                  {/* The meter, on the sleeve that is loaded. It sits in the
+                      corner rather than replacing anything, so nothing in the
+                      row changes size when the pick moves. */}
+                  <span
+                    class="eq absolute bottom-1 left-1 hidden text-signal drop-shadow-[0_0_6px_var(--color-canvas)] group-data-[active=true]:inline-flex"
+                    aria-hidden="true"
+                  >
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                </span>
+
+                {/* The reflection: the same cover, mirrored and faded out.
+                    Hidden from assistive technology — it is the shelf, not
+                    a second copy of the artwork. */}
+                <span class="shelf-reflection" aria-hidden="true">
+                  {playlist.image && (
+                    <img src={playlist.image} alt="" loading="lazy" decoding="async" />
+                  )}
+                </span>
+
+                {/*
+                  The shelf, drawn a sleeve at a time. It is wider than the
+                  sleeve by exactly the row's gap and pulled back by half of
+                  it, so each segment meets its neighbours and the row reads
+                  as one surface — and the two at the ends overhang, which is
+                  what says the shelf continues past them.
+
+                  Drawn here rather than as one rule under the whole row
+                  because the labels sit below it: a shelf has its titles on
+                  the front edge, not floating above the surface.
+                */}
+                <span
+                  aria-hidden="true"
+                  class="block h-px bg-line"
+                  style="width: calc(100% + var(--spacing) * 3); margin-inline-start: calc(var(--spacing) * -1.5)"
+                />
+
+                <span class="mt-1.5 block">
+                  <span class="type-fine block truncate group-data-[active=true]:text-signal">
+                    {playlist.name}
+                  </span>
+                  <span class="type-meta block truncate">{playedLabel(playlist.playedAt)}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p class="type-micro mt-2">
+          {playlists.length > 1 ? shelfHint : 'CTRL-CLICK OPENS SPOTIFY'}
+        </p>
+      </div>
+
+      {/* --- The picked playlist --------------------------------------
+          One player for the whole shelf, addressed by swapping `src`, rather
+          than driving Spotify's IFrame API — that would allow one-click play,
+          but it means pulling their script into the page, and this way the
+          only third-party code here is the iframe the section exists for. */}
+      <div class="mt-5 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
+        {/* The rail: the player, and whose record is on it. Both panels below
+            carry the same `data-panel`/`data-index`, so the one script line
+            that shows a panel shows the pair without knowing there are two. */}
         <div class="flex flex-col gap-2">
-          <div class:list={['relative aspect-square rounded-standard', PLATE]}>
-            <span class="type-micro absolute inset-0 flex items-center justify-center">
-              COVER
-            </span>
-            {lead.image && (
-              <img
-                data-art
-                src={lead.image}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                class="relative h-full w-full object-cover transition-opacity duration-[var(--duration-slow)] ease-[var(--ease-technical)]"
-              />
-            )}
-          </div>
-
-          <div class="flex flex-col gap-0.5">
-            <p class="type-title" data-lead-title>
-              {lead.name}
-            </p>
-            <p class="type-meta" data-lead-meta>
-              LAST PLAYED {playedLabel(lead.playedAt)}
-            </p>
-          </div>
-
-          {/*
-            352 is Spotify's standard playlist embed height — taller than the
-            track embed, because it lists what is inside. The rounding is
-            inline because the corner belongs to their iframe, not to a wrapper
-            we could style.
-          */}
           <iframe
             data-player
             src={embedUrl(lead.id)}
             title="Spotify player"
             width="100%"
-            height="352"
+            height={playerHeight(lead.tracks)}
             loading="lazy"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             style="border: 0; border-radius: var(--radius-standard); display: block;"
           />
+
+          {playlists.map((playlist, i) => (
+            <div data-panel data-index={i} hidden={i !== 0}>
+              <p class="type-title">{playlist.name}</p>
+              {playlist.description && (
+                <p class="type-meta mt-0.5">{playlist.description}</p>
+              )}
+              <p class="type-meta mt-0.5">
+                {[listedLabel(playlist), `LAST PLAYED ${playedLabel(playlist.playedAt)}`]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </p>
+              <p class="type-micro mt-1.5">
+                <a href={playlist.url} rel="noopener external" target="_blank">
+                  ALL OF IT ON SPOTIFY ↗
+                </a>
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* --- The shelf ---------------------------------------------- */}
-        <div class="flex flex-col gap-1.5">
-          <ol class="flex flex-col">
-            {playlists.map((playlist, i) => (
-              <li>
-                <a
-                  href={playlist.url}
-                  rel="noopener external"
-                  target="_blank"
-                  data-playlist
-                  data-id={playlist.id}
-                  data-name={playlist.name}
-                  data-played={playedLabel(playlist.playedAt)}
-                  data-art={playlist.image ?? ''}
-                  data-active={i === 0 ? 'true' : undefined}
-                  aria-current={i === 0 ? 'true' : undefined}
-                  class:list={[
-                    'group grid grid-cols-[1.75rem_auto_minmax(0,1fr)_auto] items-center gap-2 rounded-compact border border-transparent px-1 py-1',
-                    'transition-[background-color,border-color] duration-[var(--duration-base)] ease-[var(--ease-technical)]',
-                    'hover:border-line hover:bg-panel focus-visible:border-signal focus-visible:outline-none',
-                    'data-[active=true]:border-line data-[active=true]:bg-panel',
-                  ]}
-                >
-                  {/* The ordinal becomes a meter on the loaded row. Both are
-                      rendered and CSS picks between them: swapping nodes in
-                      script would leave the no-JS page showing the wrong one. */}
-                  <span class="type-meta tabular-nums text-muted group-data-[active=true]:hidden">
-                    {rankOf(i)}
-                  </span>
-                  <span
-                    class="eq hidden text-signal group-data-[active=true]:inline-flex"
-                    aria-hidden="true"
-                  ><span /><span /><span /></span>
-
-                  <span class:list={['h-4 w-4 shrink-0 rounded-compact', PLATE]}>
-                    {playlist.image && (
-                      <img
-                        src={playlist.image}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        class="h-full w-full object-cover"
-                      />
-                    )}
-                  </span>
-
-                  <span class="min-w-0">
-                    <span class="type-fine block truncate group-data-[active=true]:text-signal">
-                      {playlist.name}
-                    </span>
-                    {playlist.description && (
-                      <span class="type-meta block truncate">{playlist.description}</span>
-                    )}
-                  </span>
-
-                  <span class="type-meta tabular-nums">{playedLabel(playlist.playedAt)}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-
-          <p class="type-micro">
-            {playlists.length > 1 && 'CLICK A PLAYLIST TO LOAD IT · '}CTRL-CLICK OPENS SPOTIFY
-          </p>
+        <div>
+          {playlists.map((playlist, i) => (
+            <div data-panel data-index={i} hidden={i !== 0}>
+              {playlist.tracks.length > 0 ? (
+                <>
+                  {/*
+                    CSS columns, not a two-column grid. A grid lays out across
+                    and then down — 01 02 / 03 04 — and this is a numbered list
+                    someone reads top to bottom. Columns fill the first before
+                    the second, so the left column is 01–10 and the right is
+                    11–20, which is how a track list is printed on a sleeve.
+                  */}
+                  {/* Two columns from `md` and not from `sm`: between 480 and
+                      768 the page is still one gutter wide, and splitting it
+                      leaves two ~190px columns where every title truncates. */}
+                  <ol class="gap-x-5 [column-rule:1px_solid_var(--color-line)] md:columns-2">
+                    {playlist.tracks.map((track, index) => (
+                      <li class="break-inside-avoid">
+                        <a
+                          href={track.url}
+                          rel="noopener external"
+                          target="_blank"
+                          class:list={[
+                            'grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-baseline gap-2 rounded-compact px-1 py-0.5',
+                            'no-underline transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+                            'hover:bg-panel focus-visible:outline-none focus-visible:bg-panel',
+                          ]}
+                        >
+                          <span class="type-meta tabular-nums text-muted">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                          <span class="min-w-0">
+                            <span class="type-fine block truncate">{track.name}</span>
+                            <span class="type-meta block truncate">{artistLabel(track)}</span>
+                          </span>
+                          <span class="type-meta tabular-nums">
+                            {durationLabel(track.durationMs)}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </>
+              ) : (
+                /* No track list for this one. The tall embed in the rail is
+                   listing it instead, so this says so rather than leaving a
+                   column of nothing beside it. */
+                <p class="type-meta">
+                  Spotify would not hand over this one's track list. The player
+                  has it.
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -185,13 +304,8 @@ const PLATE = 'overflow-hidden border border-line bg-well';
 {/*
   Progressive enhancement, deliberately not a React island — the same call
   `STATUS.md` records for the collection filters. There is no state worth
-  putting in a component tree: one selected row, and an iframe that is told
-  what to load.
-
-  Swapping `src` reloads the embed rather than driving it through Spotify's
-  IFrame API. That API would allow one-click play, but it means pulling their
-  script into the page; this way the only third-party code here is the iframe
-  the section exists for.
+  putting in a component tree: one picked sleeve, a panel shown, and an iframe
+  that is told what to load.
 */}
 <script is:inline>
   (() => {
@@ -199,24 +313,11 @@ const PLATE = 'overflow-hidden border border-line bg-well';
     if (!root) return;
 
     const player = root.querySelector('[data-player]');
-    const art = root.querySelector('[data-art]');
-    const title = root.querySelector('[data-lead-title]');
-    const meta = root.querySelector('[data-lead-meta]');
-    const rows = root.querySelectorAll('[data-playlist]');
+    const sleeves = root.querySelectorAll('[data-sleeve]');
+    const panels = root.querySelectorAll('[data-panel]');
 
-    const swapArt = (src) => {
-      if (!art || !src || art.src === src) return;
-      const show = () => {
-        art.style.opacity = '1';
-      };
-      art.style.opacity = '0';
-      art.src = src;
-      if (typeof art.decode === 'function') art.decode().then(show, show);
-      else art.addEventListener('load', show, { once: true });
-    };
-
-    rows.forEach((row) => {
-      row.addEventListener('click', (event) => {
+    sleeves.forEach((sleeve) => {
+      sleeve.addEventListener('click', (event) => {
         // A modified click is someone asking for a new tab. Let it through to
         // the href, which is the playlist on Spotify.
         if (
@@ -229,18 +330,23 @@ const PLATE = 'overflow-hidden border border-line bg-well';
           return;
         event.preventDefault();
 
-        rows.forEach((other) => {
+        sleeves.forEach((other) => {
           other.removeAttribute('data-active');
           other.removeAttribute('aria-current');
         });
-        row.setAttribute('data-active', 'true');
-        row.setAttribute('aria-current', 'true');
+        sleeve.setAttribute('data-active', 'true');
+        sleeve.setAttribute('aria-current', 'true');
 
-        if (player)
-          player.src = `https://open.spotify.com/embed/playlist/${row.dataset.id}?theme=0`;
-        if (title) title.textContent = row.dataset.name;
-        if (meta) meta.textContent = `LAST PLAYED ${row.dataset.played}`;
-        swapArt(row.dataset.art);
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.index !== sleeve.dataset.index;
+        });
+
+        if (player) {
+          // The tall embed only for a playlist that has no list of its own;
+          // otherwise the compact player, with the tracks set out beside it.
+          player.height = sleeve.dataset.tall === 'true' ? '352' : '152';
+          player.src = `https://open.spotify.com/embed/playlist/${sleeve.dataset.id}?theme=0`;
+        }
       });
     });
   })();

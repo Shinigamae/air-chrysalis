@@ -4,8 +4,10 @@
     "anything below this comment — a sync overwrites it. The comment itself is",
     "preserved across syncs, so it is the one thing here a human owns.",
     "",
-    "`tracks` empty is the off state: the homepage then renders no ON ROTATION",
+    "`playlists` empty is the off state: the homepage then renders no ON ROTATION",
     "section at all, rather than a placeholder that sits there looking broken.",
+    "A playlist with an empty `tracks` still shows on the shelf — Spotify's embed",
+    "lists its contents instead.",
     "",
     "Refresh any time with:  npm run music:sync",
     "If that reports invalid_grant the consent was revoked, and",
@@ -15,23 +17,813 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-15T15:18:04.766Z",
+  "syncedAt": "2026-09-16T11:22:20.690Z",
   "playlists": [
+    {
+      "id": "3CBrpef7w1Chy6ugeQiCgH",
+      "name": "SHNNGWSH",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
+      "playedAt": "2026-09-16T10:33:57.053Z",
+      "trackCount": 30,
+      "tracks": [
+        {
+          "name": "End Of All Hope",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 233800,
+          "url": "https://open.spotify.com/track/3RqTWAc3noEuDS5B0BimD7"
+        },
+        {
+          "name": "Ever Dream",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 282933,
+          "url": "https://open.spotify.com/track/5SNDGulFALe3DpSbuYarl7"
+        },
+        {
+          "name": "Forever Yours",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 230666,
+          "url": "https://open.spotify.com/track/16pngF7qRDnAkXt2FMuUdl"
+        },
+        {
+          "name": "Noise",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Noise",
+          "durationMs": 340281,
+          "url": "https://open.spotify.com/track/2a3sZJP4uTrNQbj0EdiUuV"
+        },
+        {
+          "name": "Nemo",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Highest Hopes-The Best Of Nightwish",
+          "durationMs": 273626,
+          "url": "https://open.spotify.com/track/6PkOmPMlH5nPFeoCPU0lo2"
+        },
+        {
+          "name": "Over The Hills And Far Away",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Over The Hills And Far Away",
+          "durationMs": 302266,
+          "url": "https://open.spotify.com/track/4004xnMLj5QGxWvu6JPcJ7"
+        },
+        {
+          "name": "Élan",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Endless Forms Most Beautiful (Deluxe Version)",
+          "durationMs": 287000,
+          "url": "https://open.spotify.com/track/5oAvb7LpUBwQfBtQ6hmS4Q"
+        },
+        {
+          "name": "Wish I Had An Angel",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Highest Hopes-The Best Of Nightwish",
+          "durationMs": 243213,
+          "url": "https://open.spotify.com/track/2VvmryAbIRod1FwZHtwqC5"
+        },
+        {
+          "name": "Amaranth",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Dark Passion Play",
+          "durationMs": 231444,
+          "url": "https://open.spotify.com/track/1sXdW94CrEIrYdbfON4Sxt"
+        },
+        {
+          "name": "Ghost River",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 324920,
+          "url": "https://open.spotify.com/track/1C1U6AXQ6AuxngZQZLvE6u"
+        },
+        {
+          "name": "Taikatalvi",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 155480,
+          "url": "https://open.spotify.com/track/1h23880XWMggVoX2wtH82N"
+        },
+        {
+          "name": "Storytime",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 322280,
+          "url": "https://open.spotify.com/track/74b5zpkbJuk0VjkNPfOROX"
+        },
+        {
+          "name": "I Want My Tears Back",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 307533,
+          "url": "https://open.spotify.com/track/1V6owHjrKNjJQPZWgBqZWQ"
+        },
+        {
+          "name": "Scaretale",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 452080,
+          "url": "https://open.spotify.com/track/4KBJNTu0z2EObi1zgqbRPm"
+        },
+        {
+          "name": "Turn Loose The Mermaids",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 259120,
+          "url": "https://open.spotify.com/track/42vL5mKekxSsidLMdSvZtv"
+        },
+        {
+          "name": "Rest Calm",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 419080,
+          "url": "https://open.spotify.com/track/3qQr4yvYy4ciSydvFJZRl9"
+        },
+        {
+          "name": "The Crow, The Owl And The Dove",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 250386,
+          "url": "https://open.spotify.com/track/4FxeJ4zsDQfzTrYxaQNduC"
+        },
+        {
+          "name": "Last Ride Of The Day",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 271120,
+          "url": "https://open.spotify.com/track/6c2aL1Jjdy8QCODK2Buqin"
+        },
+        {
+          "name": "Song Of Myself",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 809666,
+          "url": "https://open.spotify.com/track/2PLJedTkJ8UadomU9Th5Kl"
+        },
+        {
+          "name": "Bye Bye Beautiful",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Dark Passion Play",
+          "durationMs": 254615,
+          "url": "https://open.spotify.com/track/6uwjUM0Y0NfPmLBKVAbUXW"
+        }
+      ]
+    },
+    {
+      "id": "4xHvEBGh8kCxQVWT1OztLL",
+      "name": "SHNEDMMS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
+      "playedAt": "2026-09-16T02:09:32.865Z",
+      "trackCount": 40,
+      "tracks": [
+        {
+          "name": "Next To Me (feat. Tina Stachowiak)",
+          "artists": [
+            "Axel Johansson",
+            "Tina Stachowiak"
+          ],
+          "album": "Next To Me (feat. Tina Stachowiak)",
+          "durationMs": 179500,
+          "url": "https://open.spotify.com/track/0jvqmWRCyv7xnxqrtinbHJ"
+        },
+        {
+          "name": "Lonely Together - (feat. Rita Ora) Alan Walker Remix",
+          "artists": [
+            "Avicii",
+            "Rita Ora",
+            "Alan Walker"
+          ],
+          "album": "Lonely Together (Remixes)",
+          "durationMs": 179760,
+          "url": "https://open.spotify.com/track/4QwNKEWMM7dyLB7Ew9DHHg"
+        },
+        {
+          "name": "I Can Fly",
+          "artists": [
+            "TonyZ",
+            "Antrikc"
+          ],
+          "album": "I Can Fly",
+          "durationMs": 184806,
+          "url": "https://open.spotify.com/track/1k99aiuqQfWB26PCRr9jxd"
+        },
+        {
+          "name": "Forever Young",
+          "artists": [
+            "John De Sohn",
+            "LIAMOO"
+          ],
+          "album": "Made For You",
+          "durationMs": 167911,
+          "url": "https://open.spotify.com/track/0343bYQtSfznf6v90jRLRK"
+        },
+        {
+          "name": "Heading Home",
+          "artists": [
+            "Alan Walker",
+            "Ruben"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 187085,
+          "url": "https://open.spotify.com/track/6GZaY8DSHOgllwQ28ok7Rs"
+        },
+        {
+          "name": "Play",
+          "artists": [
+            "K-391",
+            "Alan Walker",
+            "Tungevaag",
+            "Mangoo"
+          ],
+          "album": "Play",
+          "durationMs": 167976,
+          "url": "https://open.spotify.com/track/4jp4Z02kzzg8gK0NmDGgml"
+        },
+        {
+          "name": "All Falls Down (feat. Juliander) - Mark Villa Remix",
+          "artists": [
+            "Alan Walker",
+            "Noah Cyrus",
+            "Digital Farm Animals",
+            "Juliander",
+            "Mark Villa"
+          ],
+          "album": "All Falls Down (feat. Juliander) [Remixes]",
+          "durationMs": 157373,
+          "url": "https://open.spotify.com/track/2NpLHVuBP1wvryEbnecfbD"
+        },
+        {
+          "name": "Hello World",
+          "artists": [
+            "Alan Walker",
+            "Torine"
+          ],
+          "album": "Walkerverse Pt. I & II",
+          "durationMs": 171585,
+          "url": "https://open.spotify.com/track/7dRlvfMWDLG11RidzmLrWe"
+        },
+        {
+          "name": "End of Time",
+          "artists": [
+            "K-391",
+            "Alan Walker",
+            "Ahrix"
+          ],
+          "album": "End of Time",
+          "durationMs": 187560,
+          "url": "https://open.spotify.com/track/67O8CWXxPsfz8orZVGMQwf"
+        },
+        {
+          "name": "On My Way - Da Tweekaz Remix",
+          "artists": [
+            "Alan Walker",
+            "Sabrina Carpenter",
+            "Farruko",
+            "Da Tweekaz"
+          ],
+          "album": "On My Way (Da Tweekaz Remix)",
+          "durationMs": 204198,
+          "url": "https://open.spotify.com/track/4Sp0jLZN8MgPnoGDufJS7N"
+        },
+        {
+          "name": "Alone, Pt. II",
+          "artists": [
+            "Alan Walker",
+            "Ava Max"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 179052,
+          "url": "https://open.spotify.com/track/28VbwtsYnj85UEODGpQRem"
+        },
+        {
+          "name": "I Don't Wanna Go",
+          "artists": [
+            "Alan Walker",
+            "Julie Bergan"
+          ],
+          "album": "Different World",
+          "durationMs": 161666,
+          "url": "https://open.spotify.com/track/7kVDkZkZc8qBUBsF6klUoY"
+        },
+        {
+          "name": "Ignite",
+          "artists": [
+            "Alan Walker",
+            "Julie Bergan",
+            "K-391",
+            "SEUNGRI"
+          ],
+          "album": "Ignite",
+          "durationMs": 210288,
+          "url": "https://open.spotify.com/track/1jLsirPDkUS2g4gnkYua58"
+        },
+        {
+          "name": "Lost Control",
+          "artists": [
+            "Alan Walker",
+            "Sorana"
+          ],
+          "album": "Different World",
+          "durationMs": 222320,
+          "url": "https://open.spotify.com/track/0lG6QM1jjbbX5UUn3DPmrZ"
+        },
+        {
+          "name": "Darkside",
+          "artists": [
+            "Alan Walker",
+            "Au/Ra",
+            "Tomine Harket"
+          ],
+          "album": "Different World",
+          "durationMs": 211680,
+          "url": "https://open.spotify.com/track/6SRWhUJcD2YKahCwHavz3X"
+        },
+        {
+          "name": "Lily",
+          "artists": [
+            "Alan Walker",
+            "K-391",
+            "Emelie Hollow"
+          ],
+          "album": "Different World",
+          "durationMs": 195840,
+          "url": "https://open.spotify.com/track/0lks2Kt9veMOFEAPN0fsqN"
+        },
+        {
+          "name": "Paradise",
+          "artists": [
+            "Alan Walker",
+            "K-391",
+            "Boy In Space"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 183344,
+          "url": "https://open.spotify.com/track/2sVcG5mresyV79qpYr3M1C"
+        },
+        {
+          "name": "Unity",
+          "artists": [
+            "The Walkers",
+            "Alan Walker"
+          ],
+          "album": "Unity",
+          "durationMs": 204533,
+          "url": "https://open.spotify.com/track/66TdgLCf9Bic8nBsNv0YuD"
+        },
+        {
+          "name": "Man On The Moon",
+          "artists": [
+            "Alan Walker",
+            "Benjamin Ingrosso"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 178625,
+          "url": "https://open.spotify.com/track/0zqBZqm5czQ3A4EoSdKFHj"
+        },
+        {
+          "name": "Shut Up",
+          "artists": [
+            "Alan Walker",
+            "UPSAHL"
+          ],
+          "album": "Walkerverse Pt. I & II",
+          "durationMs": 132954,
+          "url": "https://open.spotify.com/track/1hf9Wu2l0XIgAcTZLSAUJe"
+        }
+      ]
+    },
     {
       "id": "5S5ss02hXM2Yi0GK7ovJd7",
       "name": "SHNUSUKS",
       "description": "",
       "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
-      "playedAt": "2026-09-15T02:08:57.256Z"
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "playedAt": "2026-09-15T02:08:57.256Z",
+      "trackCount": 103,
+      "tracks": [
+        {
+          "name": "My Songs Know What You Did In The Dark (Light Em Up)",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "Save Rock And Roll",
+          "durationMs": 186826,
+          "url": "https://open.spotify.com/track/2E43WFS4rRc09za2r2GmZl"
+        },
+        {
+          "name": "Centuries",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 228360,
+          "url": "https://open.spotify.com/track/04aAxqtGp5pv12UXAg4pkq"
+        },
+        {
+          "name": "Immortals",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 189386,
+          "url": "https://open.spotify.com/track/3Te8uLyit6X3ncNW8Fp3K2"
+        },
+        {
+          "name": "Irresistible",
+          "artists": [
+            "Fall Out Boy",
+            "Demi Lovato"
+          ],
+          "album": "Irresistible",
+          "durationMs": 205851,
+          "url": "https://open.spotify.com/track/3Y3gChJoEUTqrtuqJCIPQk"
+        },
+        {
+          "name": "Boulevard of Broken Dreams (feat. John Gallagher Jr., Rebecca Naomi Jones, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 262386,
+          "url": "https://open.spotify.com/track/41pFyxOpS119Pb8JEzhx0w"
+        },
+        {
+          "name": "Wake Me up When September Ends (feat. John Gallagher Jr., Michael Esper, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 286680,
+          "url": "https://open.spotify.com/track/6fitJO7zDNWwmiaP5PHG14"
+        },
+        {
+          "name": "21 Guns (feat. Rebecca Naomi Jones, Christina Sajous, Mary Faber, Stark Sands, John Gallagher Jr., Michael Esper, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 285040,
+          "url": "https://open.spotify.com/track/2dvPnPjTjGYyRqRd7KO7jx"
+        },
+        {
+          "name": "Counting Stars",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 257386,
+          "url": "https://open.spotify.com/track/1QzFhzIOW7CyRJLpmq5CM0"
+        },
+        {
+          "name": "Something I Need",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 240080,
+          "url": "https://open.spotify.com/track/6t1F0FTlVHAw6kEe164SsL"
+        },
+        {
+          "name": "Girlfriend (feat. Lil Mama) - Dr. Luke Mix",
+          "artists": [
+            "Avril Lavigne",
+            "Lil Mama",
+            "Dr. Luke"
+          ],
+          "album": "The Best Damn Thing (Expanded Edition)",
+          "durationMs": 204866,
+          "url": "https://open.spotify.com/track/1wwt0TvrGY3lnvTAVIx8mO"
+        },
+        {
+          "name": "How You Remind Me",
+          "artists": [
+            "Avril Lavigne"
+          ],
+          "album": "Avril Lavigne (Expanded Edition)",
+          "durationMs": 245733,
+          "url": "https://open.spotify.com/track/4H560RqZEEhrgOquGqTCvs"
+        },
+        {
+          "name": "When I'm Gone",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 229653,
+          "url": "https://open.spotify.com/track/518x7yFVDLkbOWNH0SOe9p"
+        },
+        {
+          "name": "Your Love Is a Lie",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 222426,
+          "url": "https://open.spotify.com/track/0Hv2IWtvPPca1F4zhC4UFs"
+        },
+        {
+          "name": "Ignorance",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Brand New Eyes",
+          "durationMs": 218626,
+          "url": "https://open.spotify.com/track/47No93LxERvV6MtOAmQzHS"
+        },
+        {
+          "name": "Still into You",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Paramore",
+          "durationMs": 216013,
+          "url": "https://open.spotify.com/track/1yjY7rpaAQvKwpdUliHx0d"
+        },
+        {
+          "name": "The Last Goodbye",
+          "artists": [
+            "Billy Boyd"
+          ],
+          "album": "The Last Goodbye",
+          "durationMs": 247360,
+          "url": "https://open.spotify.com/track/6GJmb404LiyqoDyyE3jDad"
+        },
+        {
+          "name": "SexyBack (feat. Timbaland)",
+          "artists": [
+            "Justin Timberlake",
+            "Timbaland"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 242733,
+          "url": "https://open.spotify.com/track/0O45fw2L5vsWpdsOdXwNAR"
+        },
+        {
+          "name": "The Time (Dirty Bit)",
+          "artists": [
+            "Black Eyed Peas"
+          ],
+          "album": "The Beginning (Deluxe)",
+          "durationMs": 307640,
+          "url": "https://open.spotify.com/track/7vWFaMq63AwkFDhS2OAg5u"
+        },
+        {
+          "name": "What Goes Around.../...Comes Around (Interlude)",
+          "artists": [
+            "Justin Timberlake"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 448573,
+          "url": "https://open.spotify.com/track/3pD0f7hSJg2XdQ6udw5Tey"
+        },
+        {
+          "name": "My Love (feat. T.I.)",
+          "artists": [
+            "Justin Timberlake",
+            "T.I."
+          ],
+          "album": "FutureSex/LoveSounds Deluxe Edition",
+          "durationMs": 276160,
+          "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
+        }
+      ]
     },
     {
       "id": "4LXS1oGBPXYhVGWgK7fBTh",
       "name": "SHNLNKPK",
       "description": "",
       "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
-      "playedAt": "2026-09-15T02:03:40.406Z"
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "playedAt": "2026-09-15T02:03:40.406Z",
+      "trackCount": 38,
+      "tracks": [
+        {
+          "name": "In the End",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 216880,
+          "url": "https://open.spotify.com/track/60a0Rd6pjrkxjPbaKzXjfq"
+        },
+        {
+          "name": "Numb",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora",
+          "durationMs": 187520,
+          "url": "https://open.spotify.com/track/2nLtzopw4rPReszdYBJU6h"
+        },
+        {
+          "name": "New Divide",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Iridescent",
+          "durationMs": 268613,
+          "url": "https://open.spotify.com/track/7EbpUdQ4nQ5VnnFlZjvqYl"
+        },
+        {
+          "name": "One Step Closer",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 157333,
+          "url": "https://open.spotify.com/track/3K4HG9evC7dg3N0R9cYqk4"
+        },
+        {
+          "name": "Papercut",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 184866,
+          "url": "https://open.spotify.com/track/1Vej0qeQ3ioKwpI6FUbRv1"
+        },
+        {
+          "name": "Pushing Me Away",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 191440,
+          "url": "https://open.spotify.com/track/1gAaRSN57UYVRI4eWRyAvP"
+        },
+        {
+          "name": "BURN IT DOWN",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 230253,
+          "url": "https://open.spotify.com/track/7oVEtyuv9NBmnytsCIsY5I"
+        },
+        {
+          "name": "Bleed It Out",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Minutes to Midnight",
+          "durationMs": 164426,
+          "url": "https://open.spotify.com/track/0UFDKFqW2oGspYeYqo9wjA"
+        },
+        {
+          "name": "Somewhere I Belong",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora (Bonus Edition)",
+          "durationMs": 213933,
+          "url": "https://open.spotify.com/track/3fjmSxt0PskST13CSdBUFx"
+        },
+        {
+          "name": "Breaking the Habit",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora",
+          "durationMs": 196133,
+          "url": "https://open.spotify.com/track/6n8TMVyFKoUmDc4apxceRD"
+        },
+        {
+          "name": "CASTLE OF GLASS",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 205400,
+          "url": "https://open.spotify.com/track/1r1fPuhj9H4VdXr7OK6FL5"
+        },
+        {
+          "name": "LOST IN THE ECHO",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 205120,
+          "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
+        },
+        {
+          "name": "Lying from You",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora (Bonus Edition)",
+          "durationMs": 175053,
+          "url": "https://open.spotify.com/track/4qVR3CF8FuFvHN4L6vXlB1"
+        },
+        {
+          "name": "Talking to Myself",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 231306,
+          "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
+        },
+        {
+          "name": "Battle Symphony",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 216281,
+          "url": "https://open.spotify.com/track/3FQCJI2t5LTbsRPfYVBSVB"
+        },
+        {
+          "name": "Heavy (feat. Kiiara)",
+          "artists": [
+            "Linkin Park",
+            "Kiiara"
+          ],
+          "album": "One More Light",
+          "durationMs": 169800,
+          "url": "https://open.spotify.com/track/104buTcnP2AsxqB7U1FIZ4"
+        },
+        {
+          "name": "Good Goodbye (feat. Pusha T and Stormzy)",
+          "artists": [
+            "Linkin Park",
+            "Pusha T",
+            "Stormzy"
+          ],
+          "album": "One More Light",
+          "durationMs": 211413,
+          "url": "https://open.spotify.com/track/650OeHTLxZAQmb4aEbGmaA"
+        },
+        {
+          "name": "IN MY REMAINS",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 200693,
+          "url": "https://open.spotify.com/track/00KfIFi2TpAaQGPbRbFbKJ"
+        },
+        {
+          "name": "Invisible",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 214346,
+          "url": "https://open.spotify.com/track/6OocN63GLU7NF0wHdewhID"
+        },
+        {
+          "name": "Nobody Can Save Me",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 225546,
+          "url": "https://open.spotify.com/track/3dJj6o9o1fRgrojWjailuz"
+        }
+      ]
     },
     {
       "id": "1uch56cjgRp6Uiy0DfLgUl",
@@ -39,7 +831,203 @@
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
       "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
-      "playedAt": "2026-09-14T02:24:41.271Z"
+      "playedAt": "2026-09-14T02:24:41.271Z",
+      "trackCount": 22,
+      "tracks": [
+        {
+          "name": "Ta Cứ Đi Cùng Nhau - Live At Show Của Đen",
+          "artists": [
+            "Đen",
+            "Linh Cáo"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 346627,
+          "url": "https://open.spotify.com/track/2mqEoZUVNajcSnNJPEBBfu"
+        },
+        {
+          "name": "Đố em biết anh đang nghĩ gì - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 275498,
+          "url": "https://open.spotify.com/track/1oDaI6OOKaVqEn6H8bgaRo"
+        },
+        {
+          "name": "Mơ - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 233429,
+          "url": "https://open.spotify.com/track/7HYT9fyOhJBpuev4OdicNK"
+        },
+        {
+          "name": "hai triệu năm - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 298197,
+          "url": "https://open.spotify.com/track/0ROEej67C7sB3bk6SnBiEE"
+        },
+        {
+          "name": "Bài Này Chill Phết - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 294768,
+          "url": "https://open.spotify.com/track/6ztkb5MiGLM6TqodbVDGTE"
+        },
+        {
+          "name": "Đi Theo Bóng Mặt Trời - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 236096,
+          "url": "https://open.spotify.com/track/3vrtrHN8QFUdGheMzPs8j3"
+        },
+        {
+          "name": "Anh Đếch Cần Gì Nhiều Ngoài Em - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 246250,
+          "url": "https://open.spotify.com/track/6S7unWwOypztbchdoKA5gP"
+        },
+        {
+          "name": "Cho Toi Lang Thang - Live At Show Của Đen",
+          "artists": [
+            "Đen",
+            "Ngọt"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 272133,
+          "url": "https://open.spotify.com/track/2ncglJOFf6z2LVAV0KAvge"
+        },
+        {
+          "name": "Nhiều Năm Nữa - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 199552,
+          "url": "https://open.spotify.com/track/14Pfh8Z2JpjwjavMYGZw9M"
+        },
+        {
+          "name": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 198400,
+          "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV"
+        },
+        {
+          "name": "Triệu điều nhỏ xíu xiêu lòng",
+          "artists": [
+            "Đen",
+            "Kim Long"
+          ],
+          "album": "Triệu điều nhỏ xíu xiêu lòng",
+          "durationMs": 292932,
+          "url": "https://open.spotify.com/track/1KpPymup1tlWrIBJR2BKAH"
+        },
+        {
+          "name": "FRIENDSHIP",
+          "artists": [
+            "Đen",
+            "Friends"
+          ],
+          "album": "FRIENDSHIP",
+          "durationMs": 294997,
+          "url": "https://open.spotify.com/track/1ZSwYD21wiQCx3VYrnQHMm"
+        },
+        {
+          "name": "Mang Tiền Về Cho Mẹ",
+          "artists": [
+            "Đen",
+            "Nguyên Thảo"
+          ],
+          "album": "Mang Tiền Về Cho Mẹ",
+          "durationMs": 405360,
+          "url": "https://open.spotify.com/track/57lYw21pS9FprSeJimskIC"
+        },
+        {
+          "name": "Lối Nhỏ",
+          "artists": [
+            "Đen",
+            "Phương Anh Đào"
+          ],
+          "album": "Lối Nhỏ",
+          "durationMs": 252953,
+          "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV"
+        },
+        {
+          "name": "Hát cho đời và hát cho em",
+          "artists": [
+            "JGKiD (Da LAB)",
+            "Rabbit Run",
+            "Đen",
+            "Emcee L (Da LAB)"
+          ],
+          "album": "Hát cho đời và hát cho em",
+          "durationMs": 208744,
+          "url": "https://open.spotify.com/track/5RIYXxF2O7aMg2XjbCTWEz"
+        },
+        {
+          "name": "Ai muốn nghe không",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Ai muốn nghe không",
+          "durationMs": 307500,
+          "url": "https://open.spotify.com/track/1WCAkmmTM06in2ojuQ9CK5"
+        },
+        {
+          "name": "Lãng đãng",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Lãng đãng",
+          "durationMs": 322872,
+          "url": "https://open.spotify.com/track/3m0HZdj4sDKWPeZxjIAEUg"
+        },
+        {
+          "name": "MỘT NGÀY NÀO ĐÓ",
+          "artists": [
+            "Hoàng Dũng",
+            "Đen",
+            "Bạn Nhạc."
+          ],
+          "album": "MỘT NGÀY NÀO ĐÓ",
+          "durationMs": 259362,
+          "url": "https://open.spotify.com/track/0y9syFsnSuYnf0RUqxE1Ah"
+        },
+        {
+          "name": "Trốn Tìm",
+          "artists": [
+            "Đen",
+            "MTV Band"
+          ],
+          "album": "Trốn Tìm",
+          "durationMs": 248870,
+          "url": "https://open.spotify.com/track/34uOIsoy6ETS2sxOTWBRDF"
+        },
+        {
+          "name": "Việc lớn",
+          "artists": [
+            "Đen",
+            "Dòng Thời Gian"
+          ],
+          "album": "Việc lớn",
+          "durationMs": 381657,
+          "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
+        }
+      ]
     }
   ]
 }

@@ -6,6 +6,7 @@
  *   npm run music:check           report what would change, write nothing
  *
  *   SPOTIFY_LIMIT=6 npm run music:sync     how many playlists the section holds
+ *   SPOTIFY_TRACKS=20 npm run music:sync   how many tracks each one lists
  *
  * Needs three values in .env (gitignored) or the environment:
  *
@@ -42,11 +43,17 @@
  * days, so this walks a few pages to find enough distinct playlists. A
  * playlist you have not played in a week will fall off, which is the point.
  *
- * There is no track count. The documented `tracks.total` is absent from this
- * app's playlist response, and /playlists/{id}/tracks answers 403 — Spotify
- * has tightened what a non-extended app may read, and a count that is
- * sometimes right is worse than no count beside a playlist name. The embed
- * lists the tracks anyway, which is where anyone would look for them.
+ * The track list is under `items`, not `tracks`. `/playlists/{id}/tracks`
+ * answers 403 and the documented `tracks.total` is missing from the playlist
+ * response, which read for a while as "this app may not see track lists" —
+ * it is not. Spotify renamed the relation: the collection is
+ * `/playlists/{id}/items`, each entry holds `item` where the docs say
+ * `track`, and both answer 200 with the same user token. So the shelf carries
+ * its own track list and the count beside a playlist name is real.
+ *
+ * That list is *paged and long* — a playlist here runs past a hundred — so
+ * only the first SPOTIFY_TRACKS of it are written. The count is the whole
+ * thing, and the section says which of the two it is showing.
  *
  * App-only credentials are not enough. They return playlist *metadata* and no
  * track list, and they cannot see recently-played at all — that is user data.
@@ -71,6 +78,16 @@ const WRITE = !process.argv.includes('--check');
  */
 const LIMIT = Number(process.env.SPOTIFY_LIMIT ?? 6);
 
+/**
+ * How many tracks of each playlist are written out.
+ *
+ * Twenty is ten rows in each of the section's two columns. The playlists here
+ * run to a hundred tracks and more, and the whole of one would be a page of
+ * its own — this is a shelf, so it shows a spine's worth and says how much
+ * more there is.
+ */
+const TRACK_LIMIT = Number(process.env.SPOTIFY_TRACKS ?? 20);
+
 /** How many pages of history to walk looking for distinct playlists. */
 const PAGES = 3;
 
@@ -86,6 +103,17 @@ const SPOTIFY_OWNED_PREFIX = '37i9dQZF1';
  * ------------------------------------------------------------------ */
 
 function credentials() {
+  // Same as psn-sync and spotify-auth: the environment wins, and .env is the
+  // fallback for a local run. In Actions there is no .env and the secrets are
+  // already in the environment, so this throws and is ignored.
+  if (!process.env.SPOTIFY_REFRESH_TOKEN) {
+    try {
+      process.loadEnvFile(path.join(ROOT, '.env'));
+    } catch {
+      /* no .env — fall through to the missing-credentials report below */
+    }
+  }
+
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
@@ -228,6 +256,54 @@ async function isPubliclyVisible(id, anon) {
 }
 
 /**
+ * The projection asked of `/playlists/{id}/items`.
+ *
+ * Spelled out rather than taking the whole object: the unfiltered entry is
+ * about 2KB of available-markets arrays and href fields per track, and this
+ * file is committed. `item` is where the docs say `track` — see the header.
+ */
+const TRACK_FIELDS =
+  'total,items(is_local,item(name,type,duration_ms,external_urls(spotify),artists(name),album(name)))';
+
+/**
+ * The first TRACK_LIMIT tracks of a playlist, and how many there are in all.
+ *
+ * A failure here is not fatal. The playlist is still worth listing with its
+ * cover and its link — the section falls back to Spotify's own embed for the
+ * contents — so this answers with an empty list and a null count rather than
+ * taking the whole sync down with it.
+ *
+ * Local files and podcast episodes are dropped: a local file is a path on one
+ * machine and cannot be linked, and an episode in a music shelf is noise.
+ */
+async function tracksOf(id, token) {
+  const query = new URLSearchParams({ limit: String(TRACK_LIMIT), fields: TRACK_FIELDS });
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${id}/items?${query}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!response.ok) {
+    console.warn(`spotify-sync: no track list for ${id} (${response.status}) — listing it anyway`);
+    return { tracks: [], trackCount: null };
+  }
+
+  const data = await response.json();
+  const tracks = (data.items ?? [])
+    .filter((entry) => !entry.is_local && entry.item?.type === 'track' && entry.item.name)
+    .map((entry) => ({
+      name: entry.item.name,
+      // Spotify lists every credited artist; the shelf shows them joined, and
+      // joining here would throw away the ability to change that later.
+      artists: (entry.item.artists ?? []).map((artist) => artist.name).filter(Boolean),
+      album: entry.item.album?.name ?? '',
+      durationMs: entry.item.duration_ms ?? 0,
+      url: entry.item.external_urls?.spotify,
+    }));
+
+  return { tracks, trackCount: typeof data.total === 'number' ? data.total : null };
+}
+
+/**
  * One playlist, as the site renders it. Returns null for anything that is not
  * yours, and for anything that has gone — a playlist deleted since it was
  * played answers 404, which is ordinary rather than fatal.
@@ -246,6 +322,8 @@ async function playlist(id, playedAt, user, anon, owner) {
   if (data.public !== true) return null;
   if (!(await isPubliclyVisible(id, anon))) return null;
 
+  const { tracks, trackCount } = await tracksOf(id, user);
+
   return {
     id: data.id,
     name: data.name ?? '',
@@ -256,6 +334,9 @@ async function playlist(id, playedAt, user, anon, owner) {
     // Largest first in Spotify's ordering; the section renders it at card size.
     image: data.images?.[0]?.url,
     playedAt,
+    /** How many tracks in all — not how many are listed below. */
+    ...(trackCount === null ? {} : { trackCount }),
+    tracks,
   };
 }
 
@@ -310,8 +391,11 @@ async function main() {
   if (!WRITE) {
     console.log(`spotify-sync --check: ${resolved.length} public playlist(s) of your own`);
     for (const entry of resolved) {
+      const listed = entry.tracks.length;
+      const total = entry.trackCount ?? '?';
       console.log(
-        `  ${entry.playedAt.slice(0, 16).replace('T', ' ')}  ${entry.name}`,
+        `  ${entry.playedAt.slice(0, 16).replace('T', ' ')}  ${entry.name}` +
+          `  (${listed} of ${total} track(s))`,
       );
     }
     if (resolved.length === 0) {
