@@ -17,15 +17,15 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-17T15:20:24.734Z",
+  "syncedAt": "2026-09-18T14:40:16.885Z",
   "playlists": [
     {
       "id": "1uch56cjgRp6Uiy0DfLgUl",
       "name": "SHNDDEN",
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
-      "playedAt": "2026-09-17T11:36:30.196Z",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "playedAt": "2026-09-17T17:03:43.852Z",
       "trackCount": 22,
       "tracks": [
         {
@@ -421,7 +421,7 @@
       "name": "SHNNGWSH",
       "description": "",
       "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
       "playedAt": "2026-09-16T10:33:57.053Z",
       "trackCount": 30,
       "tracks": [
@@ -612,7 +612,7 @@
       "name": "SHNEDMMS",
       "description": "",
       "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
       "playedAt": "2026-09-16T02:09:32.865Z",
       "trackCount": 40,
       "tracks": [
