@@ -5,9 +5,11 @@ import PageHeader from '@/components/ui/PageHeader.astro';
 import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
 import Rotation from '@/components/ui/Rotation.astro';
+import SocialCard from '@/components/ui/SocialCard.astro';
 import StatusEditor from '@/components/edit/StatusEditor';
 import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
 import { section as rotationSection } from '@/config/music';
+import { section as socialSection, listedProfiles } from '@/config/social';
 import { withBase } from '@/config/site';
 import { hasBackend } from '@/lib/api';
 
@@ -36,6 +38,14 @@ const [games, books, music] = await Promise.all([
  * not exist yet.
  */
 const rotation = music.find((entry) => entry.data.playlists.length > 0);
+
+/**
+ * The accounts worth naming. Same shape as `rotation` above: no profiles at
+ * all is not a section. What gates a card is the handle rather than a URL —
+ * Discord has no username address to link to, so that card shows the name
+ * you would type into its search and goes nowhere. See `@/config/social`.
+ */
+const socials = listedProfiles();
 
 const playing = games.find((game) => game.data.current);
 // Several books can be on the shelf at once; the panel has room for one, so
@@ -243,6 +253,38 @@ const statusItems: StatusItem[] = [
           summary={rotationSection.summary}
         />
         <Rotation data={rotation.data} />
+      </section>
+    )
+  }
+
+  {/* --- Elsewhere -----------------------------------------------------
+      Outside `[data-pairing]` for the same reason ON ROTATION is: the hero's
+      four words pair with the four cards above, and a section inside that
+      region with no word to answer would be dimmed whenever one is hovered.
+
+      These cards leave the site, so they are `SocialCard` and not
+      `EditorialCard` — `VIEW →` means "a page of mine" everywhere else here,
+      and it would be a lie on a card that opens YouTube. */}
+  {
+    socials.length > 0 && (
+      <section class="mt-8">
+        <PageHeader
+          variant="section"
+          eyebrow={socialSection.eyebrow}
+          title={socialSection.title}
+          summary={socialSection.summary}
+        />
+
+        {/* The same four-across row as Selected Work, so the two sections of
+            cards on this page are laid out by one rule rather than two. A
+            plain grid of articles, as every other card grid here is — each
+            card already carries its own heading, which is the structure a
+            list would have been standing in for. */}
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {socials.map((profile) => (
+            <SocialCard profile={profile} />
+          ))}
+        </div>
       </section>
     )
   }

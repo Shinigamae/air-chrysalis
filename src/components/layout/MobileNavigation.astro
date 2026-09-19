@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { site, navigation, entryFor, withBase } from '@/config/site';
 import MobileMenu from './MobileMenu';
+import ThemeToggle from './ThemeToggle.astro';
 import mark from '@/assets/logo-trans.png';
 
 /**
@@ -40,7 +41,7 @@ const current = entryFor(pathname);
         format="webp"
         quality={90}
         loading="eager"
-        class="h-3.5 w-3.5 shrink-0 object-contain"
+        class="brand-mark h-3.5 w-3.5 shrink-0 object-contain"
       />
       <span class="type-brand-sm">{site.name}</span>
     </a>
@@ -55,6 +56,15 @@ const current = entryFor(pathname);
       </span>
     )}
 
-    <MobileMenu client:load entries={navigation} pathname={pathname} />
+    {/*
+      The switch travels with MENU rather than going inside the overlay. The
+      desktop header keeps it one tap from anywhere, and a setting that
+      changes the whole page should not need the page covered up first — the
+      door does, because signing in is a journey, and this is one tap.
+    */}
+    <div class="flex items-center gap-1">
+      <ThemeToggle />
+      <MobileMenu client:load entries={navigation} pathname={pathname} />
+    </div>
   </div>
 </header>

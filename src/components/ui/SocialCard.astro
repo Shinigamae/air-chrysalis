@@ -1,0 +1,131 @@
+---
+import type { Profile } from '@/config/social';
+
+/**
+ * A door out — one account on someone else's service.
+ *
+ * Built rather than borrowed from `EditorialCard`, on the note left in
+ * STATUS.md §3.1.6: every other card on this site opens a page of mine and
+ * says `VIEW →` to mean it. This one leaves, and reusing that card with a
+ * different `href` would have taught the reader that `VIEW →` sometimes
+ * means "you are about to be somewhere else". So the vocabulary differs
+ * exactly where the behaviour does — the destination's own mark instead of a
+ * media plate, and `↗` instead of `VIEW →`, which is the idiom `ClientCard`
+ * already uses for the same promise.
+ *
+ * Everything the card shares with the rest of the site it shares exactly:
+ * panel fill, 1px rule, 8px radius, and the same 180ms edge transition.
+ *
+ * The edge does not lift to the signal cyan like `ClientCard`'s. It takes
+ * the platform's own colour, because that is already what the homepage says
+ * one row above — a Selected Work card's edge lights in the accent of the
+ * section it opens. A card's edge naming its destination is the page's
+ * existing sentence, and a YouTube card is the same sentence with a
+ * different destination.
+ */
+interface Props {
+  profile: Profile;
+}
+
+const { profile }: Props = Astro.props;
+
+/*
+ * One custom property, read by three things: the mark's fill, the edge on
+ * hover, and the arrow. Set here rather than as a class because the value is
+ * a token name built from the profile's key at runtime — `bg-social-youtube`
+ * would have to exist as a utility for all four, and a fifth account would
+ * then need a stylesheet edit as well as a config one.
+ *
+ * The fallback is the signal cyan, so an account added without a matching
+ * token still gets a card that works rather than an uncoloured one.
+ */
+const accent = `--social-accent: var(--color-social-${profile.key}, var(--color-signal))`;
+
+/**
+ * Not every account is reachable by link — see `Profile.href`. Discord is
+ * found by username and has no address form that accepts one, so that card
+ * is a plain tile: no anchor, no arrow, and no edge that lights on hover,
+ * because nothing here responds to a pointer and an edge that answers one
+ * would promise that something does.
+ */
+const linked = Boolean(profile.href);
+---
+
+<article
+  class:list={[
+    'group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2',
+    linked &&
+      'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-[var(--social-accent)] focus-within:border-[var(--social-accent)]',
+  ]}
+  style={accent}
+>
+  {/*
+    The mark, at 24px on the 24-unit grid it was drawn on. `fill` is the
+    accent directly rather than `currentColor`: the card's text is ink and
+    the mark is the brand, and those are two different colours on purpose.
+
+    `aria-hidden`, with no title inside the SVG — the platform is named in
+    type immediately below it, and a screen reader that announced "YouTube"
+    twice would be reading the decoration as content.
+  */}
+  <svg
+    viewBox="0 0 24 24"
+    class="h-3 w-3 shrink-0 fill-[var(--social-accent)]"
+    aria-hidden="true"
+  >
+    <path d={profile.mark}></path>
+  </svg>
+
+  <div class="flex flex-col gap-0.5">
+    <h3 class="type-title">
+      {/*
+        The anchor covers the card through `after:inset-0`, which is the
+        pattern `EditorialCard` and `ClientCard` both use — the whole tile is
+        the hit area, and the accessible name is still just the link text.
+
+        `rel="me"` alongside `noopener`: these are identity links, and `me`
+        is what says "the same person owns both ends" to anything that reads
+        for it. `target="_blank"` because the reader is going somewhere else
+        and the archive should still be behind them when they come back.
+      */}
+      {
+        linked ? (
+          <a
+            href={profile.href}
+            target="_blank"
+            rel="me noopener"
+            class="after:absolute after:inset-0 after:content-[''] focus:outline-none"
+          >
+            {profile.name}
+          </a>
+        ) : (
+          profile.name
+        )
+      }
+    </h3>
+    {profile.blurb && <p class="type-fine">{profile.blurb}</p>}
+  </div>
+
+  {/*
+    The handle. Pinned to the bottom so a row of cards agrees on one baseline
+    however long the blurbs above are — `mt-auto` is what `EditorialCard`
+    does with its action line.
+
+    The arrow, and whether a screen reader hears any of this, both turn on
+    the same thing. On a linked card the handle is decoration: the link is
+    already named, the arrow is punctuation for the eye, and reading the
+    line out would only repeat the card. On an unlinked one the handle *is*
+    the card — it is the only way anyone reaches that account — so it is
+    ordinary content and the arrow, which would point nowhere, is dropped.
+  */}
+  <p
+    aria-hidden={linked ? 'true' : undefined}
+    class:list={[
+      'type-micro mt-auto text-[var(--social-accent)]',
+      linked &&
+        'transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover:opacity-80',
+    ]}
+  >
+    {linked ? `${profile.handle.toUpperCase()} ↗` : profile.handle.toUpperCase()}
+  </p>
+</article>

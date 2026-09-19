@@ -1,0 +1,88 @@
+---
+/**
+ * The switch between the two grounds — dark by default, light on request.
+ *
+ * It has no Figma node: the file draws one ground and the header's third slot
+ * holds one control. This follows the vocabulary that slot already speaks —
+ * the same muted ink lifting to full on hover, the same 180ms, no fill and no
+ * border, so it reads as one more quiet thing in the row rather than as a
+ * widget parked next to the door.
+ *
+ * A mark rather than a word, and the exception is deliberate: everything else
+ * in the header is mono uppercase, but the label would have to be `LIGHT` or
+ * `DARK` and neither says whether it names the state or the destination. A sun
+ * and a moon do not have that problem. The mark shown is the theme you are
+ * about to get, swapped by CSS off `<html data-theme>` — see `theme-light.css`
+ * — so the button is correct at first paint without waiting for its script.
+ *
+ * `aria-pressed` carries the state instead: "Light theme, toggle button,
+ * pressed" is the whole of it, and it does not need the mark to be described.
+ *
+ * Both marks ship in the HTML and one is hidden, rather than one being drawn
+ * by script. They are 24 bytes of path each, and the alternative flashes.
+ */
+interface Props {
+  /** Extra classes for the slot this sits in. */
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  aria-pressed="false"
+  title="Switch to the light theme"
+  class:list={[
+    'cursor-pointer rounded-compact border-0 bg-transparent p-0.5 text-muted',
+    'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]',
+    'hover:text-ink',
+    className,
+  ]}
+>
+  {/*
+    Two 16px marks on a 24 grid, 1.5px stroke — the weight of the 1px rules
+    at this size, once the scale is applied. `currentColor`, so the hover
+    above paints them and no second colour is introduced.
+  */}
+  <svg
+    class="theme-mark--to-light block h-2 w-2"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4.25"></circle>
+    <path d="M12 2.5v2.25M12 19.25v2.25M2.5 12h2.25M19.25 12h2.25"></path>
+    <path d="M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"></path>
+  </svg>
+
+  {/*
+    The crescent is one closed path, not a disc with a disc cut out of it:
+    the cut-out version needs a mask or an even-odd fill to survive being
+    drawn on a coloured ground, and this sits on four different ones.
+  */}
+  <svg
+    class="theme-mark--to-dark h-2 w-2"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M20.5 14.3A8.75 8.75 0 0 1 9.7 3.5a8.75 8.75 0 1 0 10.8 10.8z"></path>
+  </svg>
+
+  <span class="sr-only">Light theme</span>
+</button>
+
+<script>
+  import { initThemeToggle } from '@/scripts/theme';
+
+  initThemeToggle();
+</script>

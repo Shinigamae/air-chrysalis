@@ -23,8 +23,9 @@ That pattern is for lists of *names* — these are covers, and a 16px thumbnail
 beside a name threw away the one thing that tells two playlists apart. Live as
 of 2026-09-16, five playlists from Spotify with their track lists.
 
-Section 04 is planned and not built: cards linking out to the social profiles —
-YouTube and the rest. See §3.1.6.
+Section 04, ELSEWHERE, is built and live as of 2026-09-19: outbound cards for
+YouTube, Facebook, X and Discord. Three carry a link; Discord carries a
+username, because Discord has no username URL to carry. See §3.1.6.
 
 **Step 3 — Content layer and section pages.** Complete. Typed collections plus
 Workshop, Builds, Games, Books and Journeys, with generated detail routes.
@@ -188,22 +189,39 @@ In the order that unblocks the most work.
    curation happens in Spotify. See README §"Why playlists, and not a play
    count".
 
-6. **Section 04 on the homepage: the social profiles.** Planned, not started.
-   Cards linking out to the accounts that are not archives here — the YouTube
-   channel first, and whatever else earns a card.
+6. ~~**Section 04 on the homepage: the social profiles.**~~ **Built
+   2026-09-19** as ELSEWHERE — "WHERE ELSE I AM" — with outbound cards for
+   YouTube, Facebook, X and Discord.
 
-   It is a fifth homepage section, so two things it must not do by accident.
-   It goes **outside `[data-pairing]`** in `src/pages/index.astro`, like ON
-   ROTATION: the hero's four words pair with the four cards inside that
-   region, and anything else in there is dimmed by a rule it has no word to
-   answer. And these cards leave the site, so they are not `EditorialCard`
-   with a different href — an outbound card wants the destination's own mark
-   and an `↗`, not `VIEW →`, which everywhere else on this site means "a page
-   of mine".
+   Both cautions in the original note were honoured. The section sits
+   **outside `[data-pairing]`** in `src/pages/index.astro`, like ON ROTATION:
+   the hero's four words pair with the four cards inside that region, and
+   anything else in there is dimmed by a rule it has no word to answer. And
+   the cards are `SocialCard`, not `EditorialCard` with a different href — an
+   outbound card wants the destination's own mark and an `↗`, not `VIEW →`,
+   which everywhere else on this site means "a page of mine".
 
-   No content shape is decided yet. If it stays four or five hand-written
-   links it belongs in `src/config/site.ts` beside `external`, not in a
-   collection.
+   Content shape: `src/config/social.ts`, not `site.ts` and not a collection.
+   The note predates ON ROTATION having a config module of its own, and its
+   intent — no collection for four hand-written links — is met either way;
+   `site.ts` is the one place that knows the brand lockup and the navigation,
+   and four inlined brand glyphs would have buried it.
+
+   **Three of the four are links; Discord is not, and that is finished
+   rather than outstanding.** `href` is optional on a `Profile`, because
+   Discord has no username address — `discord.com/users/…` takes a numeric
+   snowflake id and nothing resolves `shinigamae`. So that card shows the
+   username, which is what someone actually needs, and `SocialCard` drops
+   the anchor and the `↗` rather than pointing an arrow at nowhere. Adding
+   the numeric id to `href` turns it into a link with no other change.
+
+   What gates a card is therefore the handle, not the URL — `listedProfiles()`
+   — and no profiles at all is still not a section.
+
+   The marks are Simple Icons paths (CC0), inlined rather than depended on.
+   Their accents are `--color-social-<key>` in `tokens.css`, lifted off the
+   brand hexes for the dark ground for the same reason the PlayStation tints
+   are, and mostly the untouched brand hexes on the light one.
 
 ### 3.2 Then
 

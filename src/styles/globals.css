@@ -5,6 +5,8 @@
 @import '@fontsource/ibm-plex-mono/500.css';
 
 @import './tokens.css';
+/* Last of the three, so its overrides land on top of the foundations. */
+@import './theme-light.css';
 @import './typography.css';
 
 @layer base {

@@ -55,12 +55,15 @@ const roles = [...c.roles].reverse();
     }
 
     {/* A scrim: it darkens the strip the plate sits on, so a bright
-        screenshot cannot run flush into a light plate's edge. */}
+        screenshot cannot run flush into a light plate's edge. `scrim` and
+        not `canvas` because the plate stays light in both themes, so the
+        wash under it has to stay dark in both — on paper the canvas is the
+        one thing it cannot be. */}
     {
       c.logo && c.shot && (
         <div
           aria-hidden="true"
-          class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-canvas/85 to-transparent"
+          class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-scrim/85 to-transparent"
         />
       )
     }
@@ -70,13 +73,18 @@ const roles = [...c.roles].reverse();
       reasoning that a chip in the card's own fill sits quietly on the shot —
       but a brand mark is drawn for the brand's own page, and all four of
       these are drawn for white. Menlo's wordmark is near-black and vanished
-      outright; Zespri's red-on-transparent went muddy. On ink the four read
-      as they were designed to, and the dark hairline keeps the plate off the
+      outright; Zespri's red-on-transparent went muddy. On a light plate the
+      four read as they were designed to, and the hairline keeps it off the
       screenshot behind it.
+
+      It was `bg-ink/95`, which was the right colour and the wrong name — ink
+      turns over with the theme and this must not, or the light theme hands
+      Menlo the near-black ground the plate exists to spare it. `--color-plate`
+      is that colour under a name that means it.
     */}
     {
       c.logo && (
-        <div class="absolute bottom-1 left-1 flex h-4.5 items-center rounded-compact border border-line bg-ink/95 px-1 shadow-[0_1px_6px_-1px_var(--color-canvas)]">
+        <div class="absolute bottom-1 left-1 flex h-4.5 items-center rounded-compact border border-line bg-plate/95 px-1 shadow-[0_1px_6px_-1px_var(--color-shadow)]">
           <Image
             src={c.logo}
             alt={`${c.name} logo`}

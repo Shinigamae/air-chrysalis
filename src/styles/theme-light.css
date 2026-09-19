@@ -1,0 +1,184 @@
+/*
+ * SHINIGAMAE — the light ground
+ *
+ * The same design restated for paper. Every value here is an override of a
+ * token declared in `tokens.css`; nothing new is invented, and no component
+ * knows this file exists. Flip `data-theme` on <html> and the whole site
+ * turns over, because colour in this codebase only ever comes from a token.
+ *
+ * Why a separate file and not a second block in `tokens.css`: that file is
+ * compared against the Figma Foundations frame by `npm run figma:check`,
+ * which parses `--color-*: #hex` out of it with a flat regex and lets a
+ * later declaration win. A light palette sitting underneath the dark one
+ * would read as the code's palette and report drift on every token. So
+ * `tokens.css` stays the one Figma answers for, and the restatement lives
+ * here.
+ *
+ * The dark theme is the design; this is its counterpart, and the pairing is
+ * deliberate rather than mechanical — an inverted hex is almost never the
+ * right hex. Two rules did the work:
+ *
+ *   1. Match the *relationship*, not the value. Ink sits ~16:1 on the
+ *      canvas in the dark theme, muted ~8:1; both hold here. Panels lift
+ *      off the ground and wells sink into it in both, which on paper means
+ *      the panel goes white and the ground goes grey — the opposite of the
+ *      dark theme's direction, because lifting is towards the light.
+ *   2. Keep the hue, move the lightness. Every accent is the same colour
+ *      family several steps down: the signal is still sky, BUILD is still
+ *      amber, a platinum trophy is still cool. A 400-weight hue that reads
+ *      on near-black is ~2:1 on paper, so each one drops to roughly its
+ *      700 to land back at AA.
+ */
+
+:root[data-theme='light'] {
+  /*
+   * Tells the browser to draw its own furniture — scrollbars, form
+   * controls, the spell-check underline — in light. Without it the UA still
+   * thinks the page is dark and a scrollbar arrives near-black on paper.
+   */
+  color-scheme: light;
+
+  /* ---- Colour ------------------------------------------------------- */
+  --color-canvas: #f4f4f5; /* GRAPHITE → paper. Grey, not white, so the  */
+  --color-panel: #ffffff; /*   panels below have something to lift off.  */
+  --color-well: #e4e4e7; /* media well — sunk below the panel, as before */
+  --color-line: #d4d4d8; /* the 1px rule, at the same weight on paper    */
+  --color-ink: #18181b; /* 15.9:1 on the canvas (dark theme: 16.4:1)     */
+  --color-muted: #52525b; /* 7.6:1 (dark theme: 8.3:1)                   */
+  --color-signal: #0369a1; /* SIGNAL CYAN, four steps down — 5.4:1.      */
+  --color-danger: #be123c; /* rose, likewise: #FB7185 is 2.7:1 on paper  */
+
+  /*
+   * The plate goes pure white here. It is #E4E4E7 on the dark ground only
+   * because white glares against near-black; on paper there is nothing to
+   * glare against and the marks standing on it were drawn for white.
+   *
+   * `--color-scrim` is deliberately absent: its job is to be darker than
+   * that plate, which does not change with the ground it is on.
+   */
+  --color-plate: #ffffff;
+
+  /* A shadow on paper is the absence of light, not a fill — so alpha,
+   * where the dark theme could get away with the canvas colour itself. */
+  --color-shadow: rgb(9 9 11 / 0.35);
+
+  /* ---- Platform tints -----------------------------------------------
+   * The same reading of each machine, re-lit. PS4 is the interesting one:
+   * PlayStation blue (#0070D1) is in `tokens.css` described as far too dark
+   * to sit on the panel fill — on white it is exactly right, so the light
+   * theme gets to use the brand hex where the dark theme could not.
+   *
+   * The three neutrals (PS5's white console, the PS3's chrome, and PSPC's
+   * absence of a colour) keep their order: PS5 darkest, PSPC lightest.
+   */
+  --color-ps5: #2f3a4a; /* PS5    — the white console, as a deep slate */
+  --color-ps4: #0070d1; /* PS4    — PlayStation blue, unretouched      */
+  --color-ps3: #5b6472; /* PS3    — chrome / silver                    */
+  --color-psvita: #6d28d9; /* PSVITA — the handheld's violet           */
+  --color-pspc: #6b7280; /* PSPC   — no colour of its own              */
+
+  /* ---- Achievement tints --------------------------------------------
+   * On near-black the four grades are told apart by brightness, and the
+   * order is platinum → gold → silver → bronze, brightest first. On paper
+   * that ladder has nowhere to run: everything legible sits in a narrow
+   * dark band, and four hues crammed into it read as one. So hue carries
+   * the distinction here and lightness only assists — cool steel, yellow,
+   * cool grey, copper — which is how the metals differ in the first place.
+   */
+  --color-platinum: #334155; /* cool, dark, the most precious    */
+  --color-gold: #a16207; /* and book stars                       */
+  --color-silver: #64748b; /* cooler and lighter than the gold   */
+  --color-bronze: #9a3412; /* copper, well clear of gold's yellow */
+
+  /* ---- Section accents ------------------------------------------------
+   * Each pair is the same two hues as in `tokens.css`, dropped to the
+   * weight that clears AA on paper. The hero stacks these at 88px and the
+   * header sets them at 11px, so they have to work at both ends; the 700s
+   * do, and the 400s the dark theme uses are around 2:1 here.
+   *
+   * CODE's first stop is the signal cyan in both themes, as it must be —
+   * the same identity, told the same way.
+   */
+  --color-word-code: #0369a1; /* CODE  — sky → indigo      */
+  --color-word-code-end: #4338ca;
+  --color-word-build: #b45309; /* BUILD — amber → orange   */
+  --color-word-build-end: #c2410c;
+  --color-word-play: #6d28d9; /* PLAY  — violet → fuchsia  */
+  --color-word-play-end: #a21caf;
+  --color-word-read: #047857; /* READ  — emerald → lime    */
+  --color-word-read-end: #4d7c0f;
+  --color-word-journeys: #be185d; /* JOURNEYS — pink → rose */
+  --color-word-journeys-end: #be123c;
+
+  /* ---- Brand accents (ELSEWHERE) --------------------------------------
+   * The happy case, and the mirror of the PS4 note above: these hues were
+   * *drawn* for a white page, so on paper three of the four are the brand's
+   * real hex, unretouched, where the dark theme had to lift all three.
+   * Facebook's blue clears 4.8:1 on the panel here and Discord's blurple
+   * 4.6:1 — both were under 4:1 on near-black.
+   *
+   * YouTube's red is the one that still needs a hand: #FF0000 is 4.0:1 on
+   * white, so it takes one step down to #CC0000, which is the red YouTube
+   * itself uses on light chrome.
+   *
+   * X inverts with the ink, because that is the whole of X's mark.
+   */
+  --color-social-youtube: #cc0000;
+  --color-social-facebook: #0866ff; /* the brand hex   */
+  --color-social-x: #09090b; /* the ink, again        */
+  --color-social-discord: #5865f2; /* the brand hex    */
+}
+
+/*
+ * The brand mark is a white silhouette on transparency — one asset, drawn
+ * for the dark ground, and on paper it disappears entirely. It is a pure
+ * monochrome, so inverting it is exact: white becomes the near-black the
+ * wordmark beside it is already set in. Cheaper and more honest than
+ * shipping a second PNG that would then have to be kept in step with this
+ * one.
+ */
+:root[data-theme='light'] .brand-mark {
+  filter: invert(1);
+}
+
+/*
+ * The shining card edge in the Gaming Log. The mechanism in `globals.css`
+ * is untouched — it reads `--shine-*`, and those are mixed from the metal
+ * tokens above, so the ring inverts to a dark sweep on a white card and
+ * still says platinum or 100%.
+ *
+ * The glow underneath does need help. `0 0 24px -10px` of a colour at half
+ * alpha is a halo on near-black and nothing at all on paper, where a
+ * shadow has to be darker than its ground rather than brighter. Pulled in
+ * tight and dropped below the card, it reads as the card being lifted,
+ * which is the same thing the dark theme's glow says.
+ */
+:root[data-theme='light'] .card-shine {
+  box-shadow: 0 2px 10px -6px var(--shine-glow);
+}
+
+:root[data-theme='light'] .card-shine:hover,
+:root[data-theme='light'] .card-shine:focus-within {
+  box-shadow: 0 4px 14px -6px var(--shine-glow);
+}
+
+/*
+ * The theme switch's two marks, and which one is showing.
+ *
+ * The button always offers the *other* ground, so the mark is the theme you
+ * are about to get rather than the one you are in: a sun while the site is
+ * dark, a moon while it is light. Declared here rather than as a utility
+ * because the condition is an attribute on <html> that no component can see
+ * from its own class list, and it belongs beside the palette it switches.
+ */
+.theme-mark--to-dark {
+  display: none;
+}
+
+:root[data-theme='light'] .theme-mark--to-light {
+  display: none;
+}
+
+:root[data-theme='light'] .theme-mark--to-dark {
+  display: block;
+}

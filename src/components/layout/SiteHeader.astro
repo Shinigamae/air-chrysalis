@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { site, headerNavigation, isActive, withBase } from '@/config/site';
 import NavLink from './NavLink.astro';
 import SessionControl from './SessionControl';
+import ThemeToggle from './ThemeToggle.astro';
 import { hasBackend } from '@/lib/api';
 import mark from '@/assets/logo-trans.png';
 
@@ -46,7 +47,7 @@ const { pathname } = Astro.props;
         format="webp"
         quality={90}
         loading="eager"
-        class="h-4 w-4 shrink-0 object-contain"
+        class="brand-mark h-4 w-4 shrink-0 object-contain"
       />
       <span class="flex flex-col gap-px">
         <span class="type-brand">{site.name}</span>
@@ -71,14 +72,23 @@ const { pathname } = Astro.props;
       The third slot used to be the ↗ out to GitHub; that link moved to the
       footer, which is where a site's own credits sit, and this is the door in.
 
-      The width is reserved rather than fitted. The row is `justify-between`, so
-      a slot that changes size drags the navigation across with it — and this
-      one has four states (nothing, SIGN IN, a name, a name being resolved) that
-      land at different page loads. Reserving it means the destinations do not
-      move when a session resolves, and do not sit in a different place on the
-      Pages mirror, which has no backend and renders this empty.
+      The switch between the two grounds shares the slot, ahead of the door —
+      the ground is a setting and the session is not, so the reader passes the
+      first on the way to the second rather than finding it behind them.
+
+      The width is reserved rather than fitted. The row is `justify-between`,
+      so a slot that changes size drags the navigation across with it — and
+      the door has four states (nothing, SIGN IN, a name, a name being
+      resolved) that land at different page loads. 7rem is the reserve the
+      door already had plus the switch and the gap, and it is now on the pair
+      rather than on the door alone: the destinations do not move when a
+      session resolves, and do not sit in a different place on the Pages
+      mirror, which has no backend and renders the door empty. The switch is
+      right-aligned inside it, so on that mirror it lands flush against the
+      margin instead of floating clear of it.
     */}
-    <div class="flex min-w-[5rem] items-center justify-end">
+    <div class="flex min-w-[7rem] items-center justify-end gap-2">
+      <ThemeToggle />
       {hasBackend && <SessionControl client:idle />}
     </div>
   </div>

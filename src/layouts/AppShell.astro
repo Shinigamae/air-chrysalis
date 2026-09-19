@@ -42,7 +42,12 @@ const documentTitle = title
     : site.name;
 ---
 
-<html lang="en">
+{/*
+  Dark is what the HTML is baked with, and what a reader with no JavaScript
+  keeps. The inline script below swaps it before paint for anyone who has
+  asked for the other ground. See src/scripts/theme.ts.
+*/}
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,6 +55,33 @@ const documentTitle = title
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#09090B" />
+    {/*
+      The reader's ground, mounted before anything is drawn.
+
+      This is `applyTheme` from src/scripts/theme.ts written out again, and
+      the duplication is the point: an Astro <script> is emitted as a deferred
+      module, which runs after the document has been laid out, so a reader on
+      the light theme would watch the site load near-black and then turn over.
+      Inline and in <head> is the only place a theme can be settled without
+      that flash. It stays small enough to read in one go, and the two copies
+      name each other.
+
+      A storage read throws in a profile with site data blocked, which is not
+      a reason to fail the page — the catch leaves the baked-in dark theme up.
+    */}
+    <script is:inline>
+      (() => {
+        let choice = null;
+        try {
+          choice = localStorage.getItem('shinigamae:theme');
+        } catch {}
+        if (choice !== 'light') return;
+
+        document.documentElement.dataset.theme = 'light';
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = '#F4F4F5';
+      })();
+    </script>
     {/*
       Keep the archive out of search results for now.
 

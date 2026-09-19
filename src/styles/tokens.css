@@ -25,6 +25,26 @@
    */
   --color-danger: #fb7185; /* DANGER       — delete, and only delete  */
 
+  /* ---- Ink that does not turn over ------------------------------------
+   * Two surfaces that are what they are because of what sits *on* them,
+   * not because of the ground the page is using. They therefore do not
+   * invert with the theme the way canvas and ink do.
+   *
+   *   PLATE — the chip a client's brand mark stands on. All four marks are
+   *           drawn for white, so the plate is light in both themes; it is
+   *           #E4E4E7 rather than #FFF on the dark ground, where pure white
+   *           glares, and pure white on the light one, where it does not.
+   *   SCRIM — the wash that darkens the foot of a screenshot so a bright
+   *           shot cannot run flush into that plate's edge. Its whole job
+   *           is to be darker than the plate, so it is near-black always.
+   *
+   * Both are here rather than in the `:root` block below because a utility
+   * class reaches them (`bg-plate`, `from-scrim`), which is what keeps a
+   * `@theme` key in the build.
+   */
+  --color-plate: #e4e4e7;
+  --color-scrim: #09090b;
+
   /* ---- Platform tints -----------------------------------------------
    * One per PlayStation machine, so the platform chips on a game card are
    * told apart at a glance. Each is a *readable* reading of the hardware's
@@ -167,6 +187,46 @@
    */
   --color-word-journeys: #f472b6; /* JOURNEYS — pink → rose   */
   --color-word-journeys-end: #fb7185;
+
+  /*
+   * Brand accents for ELSEWHERE, the homepage's fourth section — one per
+   * outbound card, keyed `--color-social-<key>` by the same slug the card's
+   * glyph comes from, so a platform is named in one place and not three.
+   *
+   * These are *readable readings* of each brand's hex rather than the hex
+   * itself, for exactly the reason the PlayStation tints above are: a colour
+   * picked for a white page is not a colour that works on #18181B. Pure
+   * #FF0000 is 4.5:1 on the panel fill and vibrates against it the way the
+   * danger note at the top of this file describes; #0866FF and #5865F2 both
+   * land under 4:1 and go muddy. Each is lifted until it clears the panel
+   * cleanly and no further, so the mark still reads as that brand's red,
+   * that brand's blue, that brand's blurple.
+   *
+   * X is the exception and is not lifted, because its mark has no hue to
+   * lift: the brand is #000000 on white and white on black, so here it is
+   * simply the page's own ink — which is the treatment X publishes.
+   *
+   * Outside `@theme`, like the section accents below: nothing reaches these
+   * through a utility class. `SocialCard` sets one as a custom property on
+   * the card and the mark and the edge both read it.
+   */
+  --color-social-youtube: #ff4d4d; /* #FF0000 lifted   */
+  --color-social-facebook: #4c93ff; /* #0866FF lifted  */
+  --color-social-x: #e4e4e7; /* the ink, as X intends  */
+  --color-social-discord: #7c88f5; /* #5865F2 lifted   */
+
+  /*
+   * The colour a cast shadow is drawn in — the lift under the brand plate on
+   * a client card, the halo behind the meter on a sleeve. On the dark ground
+   * that is simply the canvas, which is why it used to be written as
+   * `var(--color-canvas)`; on the light one a shadow cannot be the canvas or
+   * there is no shadow, so it becomes a translucent near-black instead.
+   *
+   * Outside `@theme` for the same reason the accents above are: nothing
+   * reaches it through a utility class — it is read by `var()` inside two
+   * arbitrary `shadow-[…]` values — so a theme key would be pruned.
+   */
+  --color-shadow: #09090b;
 }
 
 /*

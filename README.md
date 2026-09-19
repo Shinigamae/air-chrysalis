@@ -579,10 +579,13 @@ delete-and-redraw.
 ```
 src/
   config/site.ts          Brand, navigation, active-route helpers — one source of truth
+  config/social.ts        ELSEWHERE — the four outbound profiles and their marks
   layouts/AppShell.astro  The shell every route renders through
   components/
-    layout/               SiteHeader · NavLink · TopBar · MobileNavigation · MobileMenu · SiteFooter
+    layout/               SiteHeader · NavLink · TopBar · MobileNavigation · MobileMenu
+                          ThemeToggle · SessionControl · SiteFooter
     ui/                   PageHeader · SectionHeader · EditorialCard · StatusLabel · FilterControl
+                          SocialCard (home, the outbound cards)
                           SpecRow · SpecList · StatusPanel · ReadingTimeline
                           PlatformTags · TrophyCounts (games) · StarRating (books)
                           ClientCard (workshop) · Rotation (home, music)
@@ -595,8 +598,11 @@ src/
   pages/                  One directory per section; [slug].astro generates detail routes
   styles/
     tokens.css            Colour, spacing, radius, type scale, motion, breakpoints
+    theme-light.css       The same palette restated for paper
     typography.css        .type-* primitives (the two voices)
     globals.css           Tailwind entry, base rules, layout container
+  scripts/
+    theme.ts              The switch between the two grounds
 ```
 
 ### Design rules worth knowing
@@ -609,6 +615,11 @@ src/
   (`--color-word-code`, …) are the only other hues, and each is confined to
   one thing: a platform chip, a shining card edge, a trophy mark, a star, a
   section.
+  The four brand accents (`--color-social-youtube`, …) join them, confined to
+  one outbound card each on the homepage — lifted off the published brand
+  hexes on the dark ground, exactly as the PlayStation tints are, and mostly
+  the untouched hexes on the light one, which is what those colours were
+  drawn for.
   A section accent is a pair of stops keyed by the word the hero uses for it,
   and it is that section's colour everywhere: the lit hero word, the edge of
   the card it opens, and its tab in the header once you are inside. The header
@@ -619,6 +630,28 @@ src/
   key no utility class reaches is pruned from the build, and the two things
   reading these are a stylesheet the homepage generates and a custom property
   set inline by `NavLink`.
+- **Theme** is one attribute, `data-theme` on `<html>`, and two stylesheets:
+  `tokens.css` is the dark ground and `theme-light.css` restates the same
+  tokens for paper. No component knows which is mounted — colour only ever
+  arrives through a token, so the whole site turns over on that attribute.
+  The light palette keeps each hue and moves its lightness, so the signal is
+  still sky and BUILD is still amber, and it matches the dark theme's
+  *contrast ratios* rather than inverting its hexes.
+  Dark is the default and stays the default on a first visit, `prefers-color-scheme`
+  deliberately unread: the near-black canvas is the design rather than a
+  preference served. `ThemeToggle` in the header is how a reader says
+  otherwise, and the choice is kept in `localStorage` under
+  `shinigamae:theme`. An inline script in `AppShell`'s `<head>` mounts it
+  before the first paint — the one place in the codebase that duplicates a
+  function on purpose, because an Astro `<script>` is deferred and would let
+  the dark theme flash first.
+  Three tokens deliberately do *not* turn over, because what sits on them
+  does not: `--color-plate` (client brand marks are all drawn for white),
+  `--color-scrim` (its job is to be darker than that plate), and
+  `--color-shadow` (a shadow cannot be the canvas on paper).
+  A light palette in `tokens.css` would be read as the code's palette by
+  `figma:check`, which parses that file flat, so the restatement lives in its
+  own file and Figma still answers for exactly six swatches.
 - **Spacing** is an 8px base: Tailwind's `--spacing` is set to `8px`, so
   `1 · 2 · 3 · 5 · 8` are the design's `8 · 16 · 24 · 40 · 64` steps.
 - **Type** has two voices: Space Grotesk for editorial, IBM Plex Mono for
