@@ -4,18 +4,20 @@
     "title": "SHINIGAMAE",
     "subtitle": "Personal digital workshop",
     "year": 2026,
-    "problem": "Everything I make lived in four different places, none of which I owned, and none of which talked to each other.",
-    "approach": "Design the language first in Figma, then build a static Astro shell against it, with a token layer strict enough that the design cannot drift silently.",
-    "result": "One archive with a coherent visual system, and a drift report that flags when code and design disagree.",
+    "problem": "Everything I make lived in five different places, none of which I owned, and none of which talked to each other.",
+    "approach": "Design the language first in Figma, then build a static Astro shell against it, with a token layer strict enough that the design cannot drift silently. Five sync scripts pull the sources in and commit what they find, so no page waits on someone else's API to render.",
+    "result": "shinigamae.com — 479 pages off five feeds, a dark ground and a light one, and a drift report that says when code and design have stopped agreeing.",
     "stack": [
       "Astro",
       "TypeScript",
       "Tailwind CSS",
-      "Figma REST API"
+      "Figma REST API",
+      "GitHub Actions"
     ],
     "lessons": [
       "Publishing styles in Figma matters more than any sync script",
-      "A token layer is only real if nothing can bypass it",
+      "A token layer is only real if nothing can bypass it — a second theme then costs one file",
+      "A feed you sync and commit beats an API you call at read time",
       "Deciding the shell before the pages saved a rewrite"
     ],
     "status": "live",

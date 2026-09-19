@@ -24,8 +24,7 @@ beside a name threw away the one thing that tells two playlists apart. Live as
 of 2026-09-16, five playlists from Spotify with their track lists.
 
 Section 04, ELSEWHERE, is built and live as of 2026-09-19: outbound cards for
-YouTube, Facebook, X and Discord. Three carry a link; Discord carries a
-username, because Discord has no username URL to carry. See §3.1.6.
+YouTube, Facebook, X and Discord, all four linked. See §3.1.6.
 
 **Step 3 — Content layer and section pages.** Complete. Typed collections plus
 Workshop, Builds, Games, Books and Journeys, with generated detail routes.
@@ -207,16 +206,17 @@ In the order that unblocks the most work.
    `site.ts` is the one place that knows the brand lockup and the navigation,
    and four inlined brand glyphs would have buried it.
 
-   **Three of the four are links; Discord is not, and that is finished
-   rather than outstanding.** `href` is optional on a `Profile`, because
-   Discord has no username address — `discord.com/users/…` takes a numeric
-   snowflake id and nothing resolves `shinigamae`. So that card shows the
-   username, which is what someone actually needs, and `SocialCard` drops
-   the anchor and the `↗` rather than pointing an arrow at nowhere. Adding
-   the numeric id to `href` turns it into a link with no other change.
+   All four are linked. Discord is the odd one: it has no username address —
+   `discord.com/users/…` takes a numeric snowflake id and nothing resolves
+   `shinigamae` — so the card shows the username, which is what a reader
+   would type into its search, and links to the id, which is what a browser
+   can follow.
 
-   What gates a card is therefore the handle, not the URL — `listedProfiles()`
-   — and no profiles at all is still not a section.
+   `href` stays optional on a `Profile` because of that discovery, and
+   `SocialCard` still renders the unlinked form — no anchor, no `↗`, no edge
+   that lights on hover — for any account reachable only by name. What gates
+   a card is therefore the handle rather than the URL
+   (`listedProfiles()`), and no profiles at all is still not a section.
 
    The marks are Simple Icons paths (CC0), inlined rather than depended on.
    Their accents are `--color-social-<key>` in `tokens.css`, lifted off the
