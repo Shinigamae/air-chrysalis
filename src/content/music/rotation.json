@@ -17,8 +17,204 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-20T14:22:49.600Z",
+  "syncedAt": "2026-09-21T16:38:03.848Z",
   "playlists": [
+    {
+      "id": "5S5ss02hXM2Yi0GK7ovJd7",
+      "name": "SHNUSUKS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "playedAt": "2026-09-21T02:07:21.811Z",
+      "trackCount": 102,
+      "tracks": [
+        {
+          "name": "My Songs Know What You Did In The Dark (Light Em Up)",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "Save Rock And Roll",
+          "durationMs": 186826,
+          "url": "https://open.spotify.com/track/2E43WFS4rRc09za2r2GmZl"
+        },
+        {
+          "name": "Centuries",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 228360,
+          "url": "https://open.spotify.com/track/04aAxqtGp5pv12UXAg4pkq"
+        },
+        {
+          "name": "Immortals",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 189386,
+          "url": "https://open.spotify.com/track/3Te8uLyit6X3ncNW8Fp3K2"
+        },
+        {
+          "name": "Irresistible",
+          "artists": [
+            "Fall Out Boy",
+            "Demi Lovato"
+          ],
+          "album": "Irresistible",
+          "durationMs": 205851,
+          "url": "https://open.spotify.com/track/3Y3gChJoEUTqrtuqJCIPQk"
+        },
+        {
+          "name": "Boulevard of Broken Dreams (feat. John Gallagher Jr., Rebecca Naomi Jones, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 262386,
+          "url": "https://open.spotify.com/track/41pFyxOpS119Pb8JEzhx0w"
+        },
+        {
+          "name": "Wake Me up When September Ends (feat. John Gallagher Jr., Michael Esper, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 286680,
+          "url": "https://open.spotify.com/track/6fitJO7zDNWwmiaP5PHG14"
+        },
+        {
+          "name": "21 Guns (feat. Rebecca Naomi Jones, Christina Sajous, Mary Faber, Stark Sands, John Gallagher Jr., Michael Esper, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 285040,
+          "url": "https://open.spotify.com/track/2dvPnPjTjGYyRqRd7KO7jx"
+        },
+        {
+          "name": "Counting Stars",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 257386,
+          "url": "https://open.spotify.com/track/1QzFhzIOW7CyRJLpmq5CM0"
+        },
+        {
+          "name": "Something I Need",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 240080,
+          "url": "https://open.spotify.com/track/6t1F0FTlVHAw6kEe164SsL"
+        },
+        {
+          "name": "Girlfriend (feat. Lil Mama) - Dr. Luke Mix",
+          "artists": [
+            "Avril Lavigne",
+            "Lil Mama",
+            "Dr. Luke"
+          ],
+          "album": "The Best Damn Thing (Expanded Edition)",
+          "durationMs": 204866,
+          "url": "https://open.spotify.com/track/1wwt0TvrGY3lnvTAVIx8mO"
+        },
+        {
+          "name": "How You Remind Me",
+          "artists": [
+            "Avril Lavigne"
+          ],
+          "album": "Avril Lavigne (Expanded Edition)",
+          "durationMs": 245733,
+          "url": "https://open.spotify.com/track/4H560RqZEEhrgOquGqTCvs"
+        },
+        {
+          "name": "When I'm Gone",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 229653,
+          "url": "https://open.spotify.com/track/518x7yFVDLkbOWNH0SOe9p"
+        },
+        {
+          "name": "Your Love Is a Lie",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 222426,
+          "url": "https://open.spotify.com/track/0Hv2IWtvPPca1F4zhC4UFs"
+        },
+        {
+          "name": "Ignorance",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Brand New Eyes",
+          "durationMs": 218626,
+          "url": "https://open.spotify.com/track/47No93LxERvV6MtOAmQzHS"
+        },
+        {
+          "name": "Still into You",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Paramore",
+          "durationMs": 216013,
+          "url": "https://open.spotify.com/track/1yjY7rpaAQvKwpdUliHx0d"
+        },
+        {
+          "name": "The Last Goodbye",
+          "artists": [
+            "Billy Boyd"
+          ],
+          "album": "The Last Goodbye",
+          "durationMs": 247360,
+          "url": "https://open.spotify.com/track/6GJmb404LiyqoDyyE3jDad"
+        },
+        {
+          "name": "SexyBack (feat. Timbaland)",
+          "artists": [
+            "Justin Timberlake",
+            "Timbaland"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 242733,
+          "url": "https://open.spotify.com/track/0O45fw2L5vsWpdsOdXwNAR"
+        },
+        {
+          "name": "The Time (Dirty Bit)",
+          "artists": [
+            "Black Eyed Peas"
+          ],
+          "album": "The Beginning (Deluxe)",
+          "durationMs": 307640,
+          "url": "https://open.spotify.com/track/7vWFaMq63AwkFDhS2OAg5u"
+        },
+        {
+          "name": "What Goes Around.../...Comes Around (Interlude)",
+          "artists": [
+            "Justin Timberlake"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 448573,
+          "url": "https://open.spotify.com/track/3pD0f7hSJg2XdQ6udw5Tey"
+        },
+        {
+          "name": "My Love (feat. T.I.)",
+          "artists": [
+            "Justin Timberlake",
+            "T.I."
+          ],
+          "album": "FutureSex/LoveSounds Deluxe Edition",
+          "durationMs": 276160,
+          "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
+        }
+      ]
+    },
     {
       "id": "1uch56cjgRp6Uiy0DfLgUl",
       "name": "SHNDDEN",
@@ -220,615 +416,6 @@
           "album": "Việc lớn",
           "durationMs": 381657,
           "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
-        }
-      ]
-    },
-    {
-      "id": "0L1Piaai5mRhmF9R03idMV",
-      "name": "SHNGUNDM",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/0L1Piaai5mRhmF9R03idMV",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84f9ef69edfe0b804f7fbcdc13",
-      "playedAt": "2026-09-17T02:20:32.823Z",
-      "trackCount": 21,
-      "tracks": [
-        {
-          "name": "INVOKE -インヴォーク-",
-          "artists": [
-            "Daisuke Asakura",
-            "T.M.Revolution"
-          ],
-          "album": "情熱の2000'sベストヒッツ35曲！〜Epic35〜",
-          "durationMs": 260359,
-          "url": "https://open.spotify.com/track/6Kkm4jgZ364R3Vr3eGkYa9"
-        },
-        {
-          "name": "Raise your flag",
-          "artists": [
-            "MAN WITH A MISSION"
-          ],
-          "album": "The World's on Fire",
-          "durationMs": 247493,
-          "url": "https://open.spotify.com/track/0cX7Fezqdc5fVCcRnyuM3a"
-        },
-        {
-          "name": "RAGE OF DUST",
-          "artists": [
-            "SPYAIR"
-          ],
-          "album": "Rage of Dust",
-          "durationMs": 200013,
-          "url": "https://open.spotify.com/track/25KUPF5gNRASy9jLpw7g8H"
-        },
-        {
-          "name": "Fighter",
-          "artists": [
-            "KANA-BOON"
-          ],
-          "album": "Fighter",
-          "durationMs": 226946,
-          "url": "https://open.spotify.com/track/5nvqqLZu75jMK31gDytANZ"
-        },
-        {
-          "name": "フリージア",
-          "artists": [
-            "Uru"
-          ],
-          "album": "Freesia",
-          "durationMs": 335400,
-          "url": "https://open.spotify.com/track/3gBL59nD75jhhFG8XhvnsO"
-        },
-        {
-          "name": "STEEL -鉄血の絆-",
-          "artists": [
-            "TRUE"
-          ],
-          "album": "Around the TRUE",
-          "durationMs": 321360,
-          "url": "https://open.spotify.com/track/20VdkamdRMOeJWJygL2bHh"
-        },
-        {
-          "name": "少年の果て",
-          "artists": [
-            "GRANRODEO"
-          ],
-          "album": "少年の果て",
-          "durationMs": 303040,
-          "url": "https://open.spotify.com/track/4mp8QXLV50D7AObrjKNUAs"
-        },
-        {
-          "name": "あんなに一緒だったのに",
-          "artists": [
-            "See-Saw"
-          ],
-          "album": "あんなに一緒だったのに",
-          "durationMs": 288266,
-          "url": "https://open.spotify.com/track/6JQl8e2SWQ6ba5rbSixPaV"
-        },
-        {
-          "name": "Ash Like Snow",
-          "artists": [
-            "the brilliant green"
-          ],
-          "album": "complete single collection '97-'08",
-          "durationMs": 272533,
-          "url": "https://open.spotify.com/track/0nMflPztzJg8C8w1xcHhIe"
-        },
-        {
-          "name": "WHITE REFLECTION （From \"新機動戦記ガンダムW Endless Waltz\" ED)",
-          "artists": [
-            "西田真由美"
-          ],
-          "album": "熱烈！アニソン魂 THE BEST カバー楽曲集 TVアニメシリーズ「ガンダムシリーズ」 vol.2",
-          "durationMs": 280731,
-          "url": "https://open.spotify.com/track/6iIQ38hVszPrNNDW2xrRTv"
-        },
-        {
-          "name": "JUST COMMUNICATION",
-          "artists": [
-            "TWO-MIX"
-          ],
-          "album": "JUST COMMUNICATION",
-          "durationMs": 259200,
-          "url": "https://open.spotify.com/track/2MJuRVxvB0Wq298yZAmpuT"
-        },
-        {
-          "name": "DAYBREAK'S BELL",
-          "artists": [
-            "L'Arc-en-Ciel"
-          ],
-          "album": "KISS",
-          "durationMs": 251653,
-          "url": "https://open.spotify.com/track/0zij3s5siX5jyS1Nbn2eil"
-        },
-        {
-          "name": "祝福",
-          "artists": [
-            "YOASOBI"
-          ],
-          "album": "祝福",
-          "durationMs": 196235,
-          "url": "https://open.spotify.com/track/7ajpbW6tBpqUI9foCtwlLw"
-        },
-        {
-          "name": "The Blessing",
-          "artists": [
-            "YOASOBI"
-          ],
-          "album": "The Blessing",
-          "durationMs": 192840,
-          "url": "https://open.spotify.com/track/0EYUzcvYcL50QKpzX66NJ1"
-        },
-        {
-          "name": "Meteor -ミーティア-",
-          "artists": [
-            "T.M.Revolution"
-          ],
-          "album": "coordinate",
-          "durationMs": 250853,
-          "url": "https://open.spotify.com/track/2WVLxptmqfKfGLve79U5s6"
-        },
-        {
-          "name": "オルフェンズの涙",
-          "artists": [
-            "MISIA"
-          ],
-          "album": "オルフェンズの涙",
-          "durationMs": 306213,
-          "url": "https://open.spotify.com/track/3vvdRYBwFbDjsb8IaK0Pgs"
-        },
-        {
-          "name": "Prototype",
-          "artists": [
-            "Chiaki Ishikawa"
-          ],
-          "album": "Prototype",
-          "durationMs": 344213,
-          "url": "https://open.spotify.com/track/6cyvDIi8JNadYK9RDeHK6O"
-        },
-        {
-          "name": "罠",
-          "artists": [
-            "THE BACK HORN"
-          ],
-          "album": "BEST THE BACK HORN",
-          "durationMs": 262600,
-          "url": "https://open.spotify.com/track/1flOkQIJUm6j8XluuFEJCy"
-        },
-        {
-          "name": "泪のムコウ",
-          "artists": [
-            "Stereopony"
-          ],
-          "album": "ハイド．ランジアが咲いている",
-          "durationMs": 210960,
-          "url": "https://open.spotify.com/track/11HNtVNr78MM7hCZzSxL5J"
-        },
-        {
-          "name": "FREEDOM",
-          "artists": [
-            "Takanori Nishikawa",
-            "Tetsuya Komuro"
-          ],
-          "album": "FREEDOM",
-          "durationMs": 318320,
-          "url": "https://open.spotify.com/track/3MBNF3aevdp5vmfepYahNu"
-        }
-      ]
-    },
-    {
-      "id": "3CBrpef7w1Chy6ugeQiCgH",
-      "name": "SHNNGWSH",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
-      "playedAt": "2026-09-16T10:33:57.053Z",
-      "trackCount": 30,
-      "tracks": [
-        {
-          "name": "End Of All Hope",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 233800,
-          "url": "https://open.spotify.com/track/3RqTWAc3noEuDS5B0BimD7"
-        },
-        {
-          "name": "Ever Dream",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 282933,
-          "url": "https://open.spotify.com/track/5SNDGulFALe3DpSbuYarl7"
-        },
-        {
-          "name": "Forever Yours",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 230666,
-          "url": "https://open.spotify.com/track/16pngF7qRDnAkXt2FMuUdl"
-        },
-        {
-          "name": "Noise",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Noise",
-          "durationMs": 340281,
-          "url": "https://open.spotify.com/track/2a3sZJP4uTrNQbj0EdiUuV"
-        },
-        {
-          "name": "Nemo",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Highest Hopes-The Best Of Nightwish",
-          "durationMs": 273626,
-          "url": "https://open.spotify.com/track/6PkOmPMlH5nPFeoCPU0lo2"
-        },
-        {
-          "name": "Over The Hills And Far Away",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Over The Hills And Far Away",
-          "durationMs": 302266,
-          "url": "https://open.spotify.com/track/4004xnMLj5QGxWvu6JPcJ7"
-        },
-        {
-          "name": "Élan",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Endless Forms Most Beautiful (Deluxe Version)",
-          "durationMs": 287000,
-          "url": "https://open.spotify.com/track/5oAvb7LpUBwQfBtQ6hmS4Q"
-        },
-        {
-          "name": "Wish I Had An Angel",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Highest Hopes-The Best Of Nightwish",
-          "durationMs": 243213,
-          "url": "https://open.spotify.com/track/2VvmryAbIRod1FwZHtwqC5"
-        },
-        {
-          "name": "Amaranth",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Dark Passion Play",
-          "durationMs": 231444,
-          "url": "https://open.spotify.com/track/1sXdW94CrEIrYdbfON4Sxt"
-        },
-        {
-          "name": "Ghost River",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 324920,
-          "url": "https://open.spotify.com/track/1C1U6AXQ6AuxngZQZLvE6u"
-        },
-        {
-          "name": "Taikatalvi",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 155480,
-          "url": "https://open.spotify.com/track/1h23880XWMggVoX2wtH82N"
-        },
-        {
-          "name": "Storytime",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 322280,
-          "url": "https://open.spotify.com/track/74b5zpkbJuk0VjkNPfOROX"
-        },
-        {
-          "name": "I Want My Tears Back",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 307533,
-          "url": "https://open.spotify.com/track/1V6owHjrKNjJQPZWgBqZWQ"
-        },
-        {
-          "name": "Scaretale",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 452080,
-          "url": "https://open.spotify.com/track/4KBJNTu0z2EObi1zgqbRPm"
-        },
-        {
-          "name": "Turn Loose The Mermaids",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 259120,
-          "url": "https://open.spotify.com/track/42vL5mKekxSsidLMdSvZtv"
-        },
-        {
-          "name": "Rest Calm",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 419080,
-          "url": "https://open.spotify.com/track/3qQr4yvYy4ciSydvFJZRl9"
-        },
-        {
-          "name": "The Crow, The Owl And The Dove",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 250386,
-          "url": "https://open.spotify.com/track/4FxeJ4zsDQfzTrYxaQNduC"
-        },
-        {
-          "name": "Last Ride Of The Day",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 271120,
-          "url": "https://open.spotify.com/track/6c2aL1Jjdy8QCODK2Buqin"
-        },
-        {
-          "name": "Song Of Myself",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 809666,
-          "url": "https://open.spotify.com/track/2PLJedTkJ8UadomU9Th5Kl"
-        },
-        {
-          "name": "Bye Bye Beautiful",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Dark Passion Play",
-          "durationMs": 254615,
-          "url": "https://open.spotify.com/track/6uwjUM0Y0NfPmLBKVAbUXW"
-        }
-      ]
-    },
-    {
-      "id": "4xHvEBGh8kCxQVWT1OztLL",
-      "name": "SHNEDMMS",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
-      "playedAt": "2026-09-16T02:09:32.865Z",
-      "trackCount": 40,
-      "tracks": [
-        {
-          "name": "Next To Me (feat. Tina Stachowiak)",
-          "artists": [
-            "Axel Johansson",
-            "Tina Stachowiak"
-          ],
-          "album": "Next To Me (feat. Tina Stachowiak)",
-          "durationMs": 179500,
-          "url": "https://open.spotify.com/track/0jvqmWRCyv7xnxqrtinbHJ"
-        },
-        {
-          "name": "Lonely Together - (feat. Rita Ora) Alan Walker Remix",
-          "artists": [
-            "Avicii",
-            "Rita Ora",
-            "Alan Walker"
-          ],
-          "album": "Lonely Together (Remixes)",
-          "durationMs": 179760,
-          "url": "https://open.spotify.com/track/4QwNKEWMM7dyLB7Ew9DHHg"
-        },
-        {
-          "name": "I Can Fly",
-          "artists": [
-            "TonyZ",
-            "Antrikc"
-          ],
-          "album": "I Can Fly",
-          "durationMs": 184806,
-          "url": "https://open.spotify.com/track/1k99aiuqQfWB26PCRr9jxd"
-        },
-        {
-          "name": "Forever Young",
-          "artists": [
-            "John De Sohn",
-            "LIAMOO"
-          ],
-          "album": "Made For You",
-          "durationMs": 167911,
-          "url": "https://open.spotify.com/track/0343bYQtSfznf6v90jRLRK"
-        },
-        {
-          "name": "Heading Home",
-          "artists": [
-            "Alan Walker",
-            "Ruben"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 187085,
-          "url": "https://open.spotify.com/track/6GZaY8DSHOgllwQ28ok7Rs"
-        },
-        {
-          "name": "Play",
-          "artists": [
-            "K-391",
-            "Alan Walker",
-            "Tungevaag",
-            "Mangoo"
-          ],
-          "album": "Play",
-          "durationMs": 167976,
-          "url": "https://open.spotify.com/track/4jp4Z02kzzg8gK0NmDGgml"
-        },
-        {
-          "name": "All Falls Down (feat. Juliander) - Mark Villa Remix",
-          "artists": [
-            "Alan Walker",
-            "Noah Cyrus",
-            "Digital Farm Animals",
-            "Juliander",
-            "Mark Villa"
-          ],
-          "album": "All Falls Down (feat. Juliander) [Remixes]",
-          "durationMs": 157373,
-          "url": "https://open.spotify.com/track/2NpLHVuBP1wvryEbnecfbD"
-        },
-        {
-          "name": "Hello World",
-          "artists": [
-            "Alan Walker",
-            "Torine"
-          ],
-          "album": "Walkerverse Pt. I & II",
-          "durationMs": 171585,
-          "url": "https://open.spotify.com/track/7dRlvfMWDLG11RidzmLrWe"
-        },
-        {
-          "name": "End of Time",
-          "artists": [
-            "K-391",
-            "Alan Walker",
-            "Ahrix"
-          ],
-          "album": "End of Time",
-          "durationMs": 187560,
-          "url": "https://open.spotify.com/track/67O8CWXxPsfz8orZVGMQwf"
-        },
-        {
-          "name": "On My Way - Da Tweekaz Remix",
-          "artists": [
-            "Alan Walker",
-            "Sabrina Carpenter",
-            "Farruko",
-            "Da Tweekaz"
-          ],
-          "album": "On My Way (Da Tweekaz Remix)",
-          "durationMs": 204198,
-          "url": "https://open.spotify.com/track/4Sp0jLZN8MgPnoGDufJS7N"
-        },
-        {
-          "name": "Alone, Pt. II",
-          "artists": [
-            "Alan Walker",
-            "Ava Max"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 179052,
-          "url": "https://open.spotify.com/track/28VbwtsYnj85UEODGpQRem"
-        },
-        {
-          "name": "I Don't Wanna Go",
-          "artists": [
-            "Alan Walker",
-            "Julie Bergan"
-          ],
-          "album": "Different World",
-          "durationMs": 161666,
-          "url": "https://open.spotify.com/track/7kVDkZkZc8qBUBsF6klUoY"
-        },
-        {
-          "name": "Ignite",
-          "artists": [
-            "Alan Walker",
-            "Julie Bergan",
-            "K-391",
-            "SEUNGRI"
-          ],
-          "album": "Ignite",
-          "durationMs": 210288,
-          "url": "https://open.spotify.com/track/1jLsirPDkUS2g4gnkYua58"
-        },
-        {
-          "name": "Lost Control",
-          "artists": [
-            "Alan Walker",
-            "Sorana"
-          ],
-          "album": "Different World",
-          "durationMs": 222320,
-          "url": "https://open.spotify.com/track/0lG6QM1jjbbX5UUn3DPmrZ"
-        },
-        {
-          "name": "Darkside",
-          "artists": [
-            "Alan Walker",
-            "Au/Ra",
-            "Tomine Harket"
-          ],
-          "album": "Different World",
-          "durationMs": 211680,
-          "url": "https://open.spotify.com/track/6SRWhUJcD2YKahCwHavz3X"
-        },
-        {
-          "name": "Lily",
-          "artists": [
-            "Alan Walker",
-            "K-391",
-            "Emelie Hollow"
-          ],
-          "album": "Different World",
-          "durationMs": 195840,
-          "url": "https://open.spotify.com/track/0lks2Kt9veMOFEAPN0fsqN"
-        },
-        {
-          "name": "Paradise",
-          "artists": [
-            "Alan Walker",
-            "K-391",
-            "Boy In Space"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 183344,
-          "url": "https://open.spotify.com/track/2sVcG5mresyV79qpYr3M1C"
-        },
-        {
-          "name": "Unity",
-          "artists": [
-            "The Walkers",
-            "Alan Walker"
-          ],
-          "album": "Unity",
-          "durationMs": 204533,
-          "url": "https://open.spotify.com/track/66TdgLCf9Bic8nBsNv0YuD"
-        },
-        {
-          "name": "Man On The Moon",
-          "artists": [
-            "Alan Walker",
-            "Benjamin Ingrosso"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 178625,
-          "url": "https://open.spotify.com/track/0zqBZqm5czQ3A4EoSdKFHj"
-        },
-        {
-          "name": "Shut Up",
-          "artists": [
-            "Alan Walker",
-            "UPSAHL"
-          ],
-          "album": "Walkerverse Pt. I & II",
-          "durationMs": 132954,
-          "url": "https://open.spotify.com/track/1hf9Wu2l0XIgAcTZLSAUJe"
         }
       ]
     }
