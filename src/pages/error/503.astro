@@ -1,0 +1,14 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * A deploy, a restart, or a platform that is briefly busy. The one error here
+ * that genuinely fixes itself.
+ *
+ * Everything this page says is the '503' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="503" />

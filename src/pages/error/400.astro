@@ -1,0 +1,13 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * Served by Static Web Apps when a request is malformed before it reaches a route.
+ *
+ * Everything this page says is the '400' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="400" />

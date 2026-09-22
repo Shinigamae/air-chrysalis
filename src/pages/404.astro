@@ -1,0 +1,18 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * The one error page that has to live here.
+ *
+ * Astro special-cases `src/pages/404.astro`: it becomes `dist/404.html` rather
+ * than `dist/404/index.html`, and it is what the dev server shows for an unknown
+ * route. Its seven siblings are ordinary routes under `src/pages/error/`, which
+ * is why they are spelled `/error/500/` and this one is not.
+ *
+ * `scripts/swa-config.mjs` points Static Web Apps' 404 override at the file this
+ * emits — without it, SWA answers an unknown path with index.html and a 200, and
+ * every typo becomes a second copy of the homepage at its own URL.
+ */
+---
+
+<ErrorPage code="404" />

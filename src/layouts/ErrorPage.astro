@@ -1,0 +1,276 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import { faults, type Fault, type FaultCode } from '@/config/errors';
+import { navigation, withBase } from '@/config/site';
+
+/**
+ * Every error page on the site.
+ *
+ * There is one of these and eight stubs, because eight variations of "we are
+ * sorry" maintained separately is eight chances for one of them to drift into a
+ * different typeface, a different set of links, or a tone the rest do not share.
+ * The pages under `src/pages/error/` pass a status and nothing else; everything
+ * that differs between them is a row of `src/config/errors.ts`.
+ *
+ * ---
+ *
+ * **The shape.** The status code is the largest object on the site — larger than
+ * the homepage hero — set in the tone's gradient over a field of the same 1px
+ * rules every card here is drawn with. Under it, in order: what happened, then a
+ * readout of the request that caused it, then somewhere to go.
+ *
+ * That order is deliberate. A reader who has just been stopped wants three
+ * things and wants them in that sequence: what went wrong, whether it was
+ * *their* request that was wrong, and how to leave. The diagnostic panel is the
+ * middle one — on a 404 it prints the path actually asked for, which is very
+ * often all somebody needs to see the typo.
+ *
+ * **What the page cannot know at build time.** This is a static build: the HTML
+ * for `/404.html` is written once and served for every wrong address, so the
+ * path and the referrer have to be filled in by the client. They are the only
+ * two, and the script at the bottom is the whole of it — `textContent` on a node
+ * that already exists, so there is no layout shift and nothing to fail
+ * gracefully if it does not run.
+ */
+interface Props {
+  /** Which row of the catalogue this page is. */
+  code: FaultCode;
+}
+
+const { code }: Props = Astro.props;
+
+/*
+ * Annotated rather than inferred. The catalogue is `as const`, so every row is
+ * its own literal type and a row that omits `retry` does not merely have it
+ * `undefined` — it does not have the property at all, and reading it is an
+ * error. Widening to `Fault` here is the whole fix, and it keeps the catalogue
+ * readable: eight `retry: false` lines would be noise on the seven-eighths of
+ * the table that is about something else.
+ */
+const fault: Fault = faults[code];
+
+/**
+ * The tone's two stops, handed to the CSS as custom properties rather than as
+ * class names — `fault-${tone}` would be a string Tailwind's scanner never sees
+ * in the source and never emits. The same trap NavLink documents, avoided the
+ * same way.
+ */
+const stops =
+  `--fault-from: var(--color-fault-${fault.tone});` +
+  ` --fault-to: var(--color-fault-${fault.tone}-end);`;
+
+/**
+ * When this HTML was built, in the site's own date idiom.
+ *
+ * The same stamp `/api/live` is asked `since` — which makes it the one value
+ * worth printing on a fault report, because "the page you are looking at was
+ * generated then" is the first question to ask about a page showing the wrong
+ * thing.
+ *
+ * Reshaped rather than formatted. The value is already an ISO string, and the
+ * site writes dates with dots — "2026.09" is the form typography.css names as
+ * the house style — so this is three string operations against pulling in a
+ * formatter and a locale to do the same work. The Z is kept: the stamp is UTC,
+ * and a time printed without its zone on a page about a timing problem is a
+ * value somebody will misread.
+ */
+const stamp = (import.meta.env.PUBLIC_BUILD_AT ?? '')
+  .slice(0, 16)
+  .replace('T', ' ')
+  .replaceAll('-', '.');
+const built = stamp ? `${stamp}Z` : '—';
+
+/**
+ * Where to go instead. The whole navigation, HOME included — this is not the
+ * header, where the brand lockup is already the way home, and somebody who has
+ * landed on a 404 from outside the site may never have seen that lockup.
+ */
+const destinations = navigation;
+---
+
+<AppShell title={`${fault.code} ${fault.name}`} showTopBar={false}>
+  {/*
+    `style` on the section, so everything under it — the numeral, the rule, the
+    eyebrow, the retry button's edge — reads one pair of properties and the tone
+    is set in exactly one place.
+  */}
+  <section style={stops} class="relative isolate">
+    {/*
+      The grid, behind everything, and hidden from assistive technology: it is
+      a texture, and there is nothing in it to describe. `-z-10` keeps it under
+      the numeral's glow; the inset lets it bleed past the content on both
+      sides without touching the page gutter.
+    */}
+    <div
+      aria-hidden="true"
+      class="fault-grid pointer-events-none absolute -inset-x-3 -top-3 -z-10 h-[clamp(200px,34vw,320px)] opacity-70"
+    >
+    </div>
+
+    <p class="type-micro text-[var(--fault-from)]">
+      FAULT / {fault.code}
+    </p>
+
+    {/*
+      Hidden from screen readers, and only from them. The number is already in
+      the eyebrow above and in the diagnostic below, both as text — read out a
+      third time it is noise, and read out *first* it is a digit with no
+      sentence attached to it.
+    */}
+    <p aria-hidden="true" class="type-fault fault-ink mt-1 select-none">
+      {fault.code}
+    </p>
+
+    <div aria-hidden="true" class="fault-rule mt-2 h-px w-full max-w-[420px]"></div>
+
+    <h1 class="type-display mt-3">{fault.title}</h1>
+    <p class="type-meta-lg mt-1 max-w-prose">{fault.line}</p>
+
+    <div class="mt-4 flex flex-wrap items-center gap-2">
+      <a
+        href={withBase('/')}
+        class="type-nav inline-flex items-center gap-1 rounded-compact border border-line bg-panel px-2 py-1 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-[var(--fault-from)] hover:text-[var(--fault-from)]"
+      >
+        <span aria-hidden="true">←</span> BACK TO HOME
+      </a>
+
+      {
+        /*
+         * Only where a retry is honest. On a 404 this button would reload the
+         * same wrong address and present the same page, which teaches a reader
+         * that the controls on this site do not do anything.
+         *
+         * A <button> rather than a link to the same URL: it is an action, it
+         * needs no href, and a link that points at the page it is on is a link
+         * screen readers announce as the current page.
+         */
+        fault.retry && (
+          <button
+            type="button"
+            data-fault-retry
+            class="type-nav inline-flex items-center gap-1 rounded-compact border border-[var(--fault-from)] bg-transparent px-2 py-1 text-[var(--fault-from)] transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-panel"
+          >
+            <span aria-hidden="true">↻</span> TRY AGAIN
+          </button>
+        )
+      }
+    </div>
+  </section>
+
+  <div class="mt-8 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    {/*
+      The readout. Deliberately the same treatment as a build's spec list —
+      cyan mono key, brighter mono value — because that is what this is: the
+      technical particulars of one object, which here happens to be a failed
+      request rather than a model kit.
+    */}
+    <section
+      aria-labelledby="fault-diagnostic"
+      class="rounded-standard border border-line bg-panel p-3"
+    >
+      <p id="fault-diagnostic" class="type-micro text-signal">DIAGNOSTIC</p>
+
+      <dl class="m-0 mt-2 flex flex-col">
+        <div class="flex h-5 items-center gap-4 border-b border-line px-1.5">
+          <dt class="type-meta w-14 shrink-0 text-signal">STATUS</dt>
+          <dd class="type-meta-lg m-0 text-ink">{fault.code} {fault.name}</dd>
+        </div>
+
+        {/*
+          Both of these are '—' in the HTML and stay '—' if the script below
+          never runs. That is the correct resting value, not a placeholder: a
+          page served from a cache to a reader with JavaScript off genuinely
+          does not know what was asked for.
+
+          `break-all` because a path can be one unbroken 90-character slug —
+          the books collection is full of them — and a panel that grows a
+          horizontal scrollbar to show a URL is worse than one that wraps.
+        */}
+        <div class="flex min-h-5 items-center gap-4 border-b border-line px-1.5 py-1">
+          <dt class="type-meta w-14 shrink-0 text-signal">PATH</dt>
+          <dd class="type-meta-lg m-0 break-all text-ink" data-fault-field="path">—</dd>
+        </div>
+
+        <div class="flex min-h-5 items-center gap-4 border-b border-line px-1.5 py-1">
+          <dt class="type-meta w-14 shrink-0 text-signal">FROM</dt>
+          <dd class="type-meta-lg m-0 break-all text-ink" data-fault-field="referrer">
+            —
+          </dd>
+        </div>
+
+        <div class="flex h-5 items-center gap-4 px-1.5">
+          <dt class="type-meta w-14 shrink-0 text-signal">BUILT</dt>
+          <dd class="type-meta-lg m-0 text-ink">{built}</dd>
+        </div>
+      </dl>
+    </section>
+
+    {/*
+      Six links, each in its own section's colour — the same pair the header
+      lights that tab in and the hero lights that word in. It costs nothing and
+      it means the way out of an error page looks like the site, rather than
+      like a list of blue underlines bolted to the bottom of one.
+    */}
+    <section
+      aria-labelledby="fault-destinations"
+      class="rounded-standard border border-line bg-panel p-3"
+    >
+      <p id="fault-destinations" class="type-micro text-signal">WHERE TO GO</p>
+
+      <nav class="mt-2 grid grid-cols-1 gap-1 sm:grid-cols-2">
+        {
+          destinations.map((entry) => (
+            <a
+              href={withBase(entry.href)}
+              style={`--nav-accent: var(--color-word-${entry.accent}, var(--color-signal));`}
+              class="group flex items-baseline gap-2 rounded-compact border border-line px-1.5 py-1.5 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-[var(--nav-accent)]"
+            >
+              <span class="type-meta shrink-0 text-muted group-hover:text-[var(--nav-accent)]">
+                {entry.index}
+              </span>
+              <span class="type-nav text-ink">{entry.label}</span>
+            </a>
+          ))
+        }
+      </nav>
+    </section>
+  </div>
+
+  {/*
+    The two values the build could not know, and the retry.
+
+    An ordinary Astro <script> rather than `is:inline`: it is identical on all
+    eight pages, so the bundler emits it once and every error page references
+    the same file. `scripts/swa-config.mjs` hashes whatever inline scripts
+    survive into the CSP, so either outcome is already covered — but one shared
+    file is one fewer hash and one fewer thing to be surprised by.
+  */}
+  <script>
+    /**
+     * Clipped, because both of these come from outside the page. There is no
+     * injection to worry about — `textContent` is inert by construction — but a
+     * 2 KB query string pasted into a definition list is a panel that is mostly
+     * one row, and a referrer can be arbitrarily long.
+     */
+    const clip = (text: string) => (text.length > 96 ? `${text.slice(0, 95)}…` : text);
+
+    const set = (field: string, value: string) => {
+      document.querySelectorAll(`[data-fault-field="${field}"]`).forEach((node) => {
+        node.textContent = value;
+      });
+    };
+
+    // The address actually asked for. On a 404 this is the whole diagnosis:
+    // Static Web Apps rewrites to /404.html without changing the URL, so what
+    // the reader typed is still in the address bar and still readable here.
+    set('path', clip(window.location.pathname + window.location.search) || '/');
+
+    // Empty for a direct hit, a fresh tab, or a referrer policy that withheld
+    // it — all ordinary, so the em dash stays rather than the word "unknown".
+    set('referrer', document.referrer ? clip(document.referrer) : '—');
+
+    document.querySelector('[data-fault-retry]')?.addEventListener('click', () => {
+      window.location.reload();
+    });
+  </script>
+</AppShell>

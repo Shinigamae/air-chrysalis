@@ -1,0 +1,12 @@
+# The archive is deliberately not discoverable yet — the same decision as the
+# `noindex, nofollow` meta tag in src/layouts/AppShell.astro, said again here.
+#
+# This file only does anything on a host that serves the site from the root of its
+# own hostname, which is Azure Static Web Apps. On GitHub Pages this site lives under
+# /air-chrysalis/, and a crawler only ever reads robots.txt from the origin root — so
+# there the meta tag is the whole story and this is inert.
+#
+# To make the site public: delete this file, drop the robots meta tag in AppShell, and
+# re-add the sitemap integration in astro.config.mjs.
+User-agent: *
+Disallow: /

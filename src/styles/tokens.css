@@ -93,6 +93,12 @@
    * Clamped so it stays inside the gutter down to small phones. */
   --text-hero: clamp(48px, 9vw, 88px);
   --text-hero--line-height: 0.93;
+  /* The status code on an error page — the one thing on this site set larger
+   * than the homepage hero, because it is the entire content of the page it is
+   * on. Three digits at 184px is about 320px wide, which fits the gutter at
+   * every width the clamp allows. */
+  --text-fault: clamp(88px, 20vw, 184px);
+  --text-fault--line-height: 0.84;
   --text-section: 30px;
   --text-section--line-height: 38px;
   --text-subhead: 25px;
@@ -214,6 +220,35 @@
   --color-social-facebook: #4c93ff; /* #0866FF lifted  */
   --color-social-x: #e4e4e7; /* the ink, as X intends  */
   --color-social-discord: #7c88f5; /* #5865F2 lifted   */
+
+  /*
+   * Fault tones — one pair per *kind* of error, not one per status code.
+   *
+   * There are eight error pages and four pairs, because the thing a reader
+   * needs off the page at a glance is not which number they hit but which of
+   * four situations they are in: the address is wrong, a door is shut, come
+   * back in a minute, or the machine is broken. A colour per status would be
+   * eight hues that all mean "error" and none that mean anything else.
+   *
+   * Drawn from the section accents above rather than invented beside them, so
+   * an error page reads as the same site: NOTICE is CODE's cyan, CLOSED is
+   * PLAY's violet, STRAIN is BUILD's amber. BROKEN is the one that is its own,
+   * and it is the danger rose — the only colour on this site that has ever
+   * meant something is wrong, which is exactly what it is being asked to say.
+   *
+   * Outside `@theme` for the reason the accents above are: the only thing that
+   * reads them is an inline custom property on the page, which the Tailwind
+   * scanner cannot see, so a theme key would survive the source and not the
+   * output.
+   */
+  --color-fault-notice: #38bdf8; /* the address is wrong   — cyan → indigo   */
+  --color-fault-notice-end: #818cf8;
+  --color-fault-closed: #a78bfa; /* a door, and it is shut — violet → fuchsia */
+  --color-fault-closed-end: #f0abfc;
+  --color-fault-strain: #fbbf24; /* come back in a minute  — amber → orange  */
+  --color-fault-strain-end: #f97316;
+  --color-fault-broken: #fb7185; /* the machine, not you   — rose → red      */
+  --color-fault-broken-end: #f43f5e;
 
   /*
    * The colour a cast shadow is drawn in — the lift under the brand plate on

@@ -1,0 +1,16 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * What the API answers past a rate limit — see Security/RateLimits.cs in the API
+ * repository. Static Web Apps cannot serve this itself, so this page is a
+ * destination rather than an override: somewhere to send a reader who has been
+ * turned away, and somewhere to look at the copy before that happens.
+ *
+ * Everything this page says is the '429' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="429" />

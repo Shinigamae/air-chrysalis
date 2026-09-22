@@ -1,0 +1,15 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * The cold start, mostly. App Service sleeps the API after twenty minutes idle
+ * and the first request after that pays for the process starting — which is why
+ * this page offers a retry and means it.
+ *
+ * Everything this page says is the '502' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="502" />

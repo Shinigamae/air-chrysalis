@@ -1,0 +1,14 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * Served by Static Web Apps when a route is role-protected and nobody is signed in.
+ * No route is, today — this exists so that the day one is, the page already does.
+ *
+ * Everything this page says is the '401' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="401" />

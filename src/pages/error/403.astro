@@ -1,0 +1,14 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * Served by Static Web Apps when a signed-in reader is not in the role a route
+ * wants. Also what the API answers a write from someone who may not make it.
+ *
+ * Everything this page says is the '403' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="403" />

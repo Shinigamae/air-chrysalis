@@ -110,6 +110,27 @@
   --color-word-journeys: #be185d; /* JOURNEYS — pink → rose */
   --color-word-journeys-end: #be123c;
 
+  /* ---- Fault tones ----------------------------------------------------
+   * The same four situations, re-lit for paper, and drawn from the section
+   * accents directly above exactly as the dark pair is. The status code is
+   * set at up to 184px, which is large text and needs 3:1 rather than 4.5 —
+   * but these are the 700s the words already use, so they clear the stricter
+   * bar anyway and the error page reads at the same weight as the hero.
+   *
+   * BROKEN is the one with no word to borrow from. On near-black it is the
+   * danger rose; on paper that rose is 2.3:1, so it takes the same step down
+   * the others do and lands beside JOURNEYS' end stop — which is the right
+   * neighbourhood, a rose that has gone properly red.
+   */
+  --color-fault-notice: #0369a1;
+  --color-fault-notice-end: #4338ca;
+  --color-fault-closed: #6d28d9;
+  --color-fault-closed-end: #a21caf;
+  --color-fault-strain: #b45309;
+  --color-fault-strain-end: #c2410c;
+  --color-fault-broken: #be123c;
+  --color-fault-broken-end: #b91c1c;
+
   /* ---- Brand accents (ELSEWHERE) --------------------------------------
    * The happy case, and the mirror of the PS4 note above: these hues were
    * *drawn* for a white page, so on paper three of the four are the brand's

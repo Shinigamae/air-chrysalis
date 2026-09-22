@@ -141,12 +141,18 @@ The site is deployed but deliberately not indexed. One tag does that, in
 <meta name="robots" content="noindex, nofollow" />
 ```
 
-**A `robots.txt` in this repository would not work,** which is why there
-isn't one. `robots.txt` is only read at the origin root — here that is
-`https://shinigamae.github.io/robots.txt`, which is served by the
-**`shinigamae.github.io` repository**, not this one. Anything committed to
+**A `robots.txt` does nothing on Pages,** which is why the meta tag is the
+one that carries this. `robots.txt` is only read at the origin root — on
+Pages that is `https://shinigamae.github.io/robots.txt`, served by the
+**`shinigamae.github.io` repository**, not this one, and anything in
 `public/` lands at `/air-chrysalis/robots.txt`, a path no crawler consults.
 The meta tag needs no such cooperation: it travels with the page.
+
+On Static Web Apps the site *is* the origin root, so `public/robots.txt` is
+served where a crawler will read it and says the same thing. The generated
+`staticwebapp.config.json` adds `X-Robots-Tag: noindex, nofollow` as a header
+besides, which covers `/rss.xml` and everything else that is not an HTML page
+and so has nowhere to put a meta tag.
 
 `@astrojs/sitemap` was removed for the same reason — a sitemap exists only to
 hand a crawler the list of all 483 URLs.
@@ -209,3 +215,121 @@ crawl policy is by then.
 | Deploy succeeds, site 404s | Pages Source is not set to "GitHub Actions", or the repo went private again. |
 | Workflow fails at `npm run check` | A content entry violates its schema. Run `npm run check` locally for the exact field. |
 | Workflow fails with a permissions error | The `permissions:` block in the workflow was altered; Pages needs `pages: write` and `id-token: write`. |
+
+---
+
+## Headers and caching on Static Web Apps
+
+Pages serves whatever headers GitHub decides to send and cannot be told
+otherwise. Static Web Apps reads `staticwebapp.config.json` from the root of
+the uploaded artifact, which is why the SWA deployment is the one that gets a
+security posture at all — and one more reason it is the host that stays.
+
+The file is **generated**, by `scripts/swa-config.mjs`, as the last step of
+`npm run build`. It is not committed, and it should not be: the
+Content-Security-Policy names the SHA-256 of every inline `<script>` in the
+build, and a hash maintained by hand is a hash that is right until someone
+edits a comment inside the theme bootstrap — after which the site loads with
+its theme switch silently dead and nothing failing anywhere a person would
+look. Reading the hashes out of `dist/` means the policy cannot drift from
+what it is a policy about. Today that is seven scripts across 481 pages: six
+site-wide, one on the homepage.
+
+What it sets:
+
+- **CSP.** `script-src` is `'self'` plus those hashes — no `'unsafe-inline'`,
+  which is the directive that matters and the reason the generation is worth
+  it. `style-src` does keep `'unsafe-inline'`, because several components set
+  a `style` attribute to hand CSS a custom property and a style *attribute*
+  cannot be hashed. `img-src` and `frame-src` name the hosts the synced
+  content actually points at rather than a blanket `https:`, so a field
+  somebody edits cannot become a request to somewhere new. `connect-src`
+  names the API, taken from `PUBLIC_API_URL` at build time — a build with no
+  API allows no cross-origin call at all.
+- **HSTS**, two years with subdomains. Not `preload`: that is a submission to
+  a list which is painful to leave, and the domain is not settled.
+- `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`,
+  `X-Frame-Options: DENY`, `Cross-Origin-Opener-Policy`, `X-Robots-Tag`.
+- **Caching.** `/_astro/*` is fingerprinted — the filename contains a hash of
+  the contents, so a changed file is a changed URL — which is the one case
+  `immutable` is honest about: a year, no revalidation. The fonts are in
+  there too. HTML is `max-age=0, must-revalidate`: kept and confirmed with a
+  304 rather than downloaded again. It cannot be cached for longer, because
+  every page carries the build stamp the live layer sends as `since`, and a
+  browser holding yesterday's HTML would ask the API what changed since
+  yesterday's build.
+- **Real error pages.** Without `responseOverrides`, Static Web Apps answers
+  an unknown path with `index.html` and a **200** — every typo becomes a
+  second copy of the homepage at its own URL. See below.
+
+### If the site breaks after a deploy and the console says CSP
+
+Something now loads from a host the policy does not name, or an inline script
+appeared that the generator did not see. Look at the console's report — it
+names the directive and the blocked URL — then add the host to `IMAGE_HOSTS`
+or `FRAME_HOSTS` in `scripts/swa-config.mjs`. A new inline script needs no
+edit at all; rebuilding picks up its hash.
+
+---
+
+## The error pages
+
+Eight of them, one per status that can actually happen here. They are one
+layout and eight four-line stubs:
+
+| | Route | Tone | Retry |
+| --- | --- | --- | --- |
+| `400` | `/error/400/` | notice | |
+| `401` | `/error/401/` | closed | |
+| `403` | `/error/403/` | closed | |
+| `404` | `/404.html` | notice | |
+| `429` | `/error/429/` | strain | ✓ |
+| `500` | `/error/500/` | broken | ✓ |
+| `502` | `/error/502/` | broken | ✓ |
+| `503` | `/error/503/` | strain | ✓ |
+
+- `src/config/errors.ts` is the catalogue — code, name, tone, headline, the
+  line under it, and whether a retry is honest. Everything that differs
+  between the eight is a row of it.
+- `src/layouts/ErrorPage.astro` is the page. Adding a status is a row there
+  and a stub under `src/pages/error/`.
+- `src/pages/404.astro` is the exception, and has to be: Astro special-cases
+  that filename and builds it flat as `dist/404.html`, which is also what the
+  dev server shows for an unknown route. Its siblings are ordinary routes, so
+  they are `/error/<code>/index.html`. That asymmetry is in the built output,
+  which is why it is in the `responseOverrides` paths too.
+
+**Four tones, not eight colours.** What a reader needs at a glance is not
+which number they hit but which of four situations they are in — the address
+is wrong (cyan), a door is shut (violet), come back in a minute (amber), the
+machine is broken (rose). Three of the four are borrowed from the section
+accents the hero and the header already use, so an error page reads as the
+same site; the fourth is the danger rose, the only colour here that has ever
+meant something is wrong. Both themes carry a pair, in `tokens.css` and
+`theme-light.css` beside the section accents.
+
+**The diagnostic panel** prints the path actually asked for, which on a 404 is
+very often the whole diagnosis. It has to be filled in by the client — this is
+a static build, so `/404.html` is written once and served for every wrong
+address — and the script that does it is four lines of `textContent`. Both
+fields rest at an em dash, which is the correct answer when the script has not
+run rather than a placeholder for one. `BUILT` is `PUBLIC_BUILD_AT`, the same
+stamp the live layer sends as `since`.
+
+### What Static Web Apps can and cannot serve
+
+`responseOverrides` covers **400, 401, 403 and 404 only** — there is no 5xx
+override, and for a static host there is nothing that would produce one
+anyway. So:
+
+- 400/401/403/404 are wired and will be served with the right status.
+- 429, 500, 502 and 503 are built and reachable at their routes, but nothing
+  on this host will ever return them by itself. They are destinations — for
+  the API to point at, for a future front door to use, and so the copy exists
+  and has been looked at before the day it is needed.
+- 401 and 403 will not fire today either: no route here is role-protected.
+  They are wired so that the day one is, the refusal already looks like the
+  site rather than like Azure's default page.
+
+Every one of them is browsable directly, which is how to check they still look
+right after a design change.

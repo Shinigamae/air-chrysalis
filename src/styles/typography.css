@@ -19,6 +19,22 @@
     color: var(--color-ink);
   }
 
+  /*
+   * The status code on an error page. Hero type, one step past the hero —
+   * tighter leading than anything else here, and a touch of negative tracking,
+   * because three digits set this large sit further apart than three words do.
+   *
+   * No colour: the page paints it with a clipped gradient, which needs the
+   * fill transparent, so a colour set here would only be overridden.
+   */
+  .type-fault {
+    font-family: var(--font-display);
+    font-size: var(--text-fault);
+    line-height: var(--text-fault--line-height);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
   /* Sub-section title, one step below the page title. */
   .type-section {
     font-family: var(--font-display);

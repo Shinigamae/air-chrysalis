@@ -1,0 +1,15 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+
+/**
+ * Not servable by Static Web Apps, which overrides 400/401/403/404 and nothing
+ * else. It exists for the API to point at, and for whatever eventually fronts
+ * this site to use.
+ *
+ * Everything this page says is the '500' row of `src/config/errors.ts`; the
+ * shape of it is `src/layouts/ErrorPage.astro`. There is nothing else here on
+ * purpose.
+ */
+---
+
+<ErrorPage code="500" />

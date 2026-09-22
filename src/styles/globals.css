@@ -233,6 +233,84 @@
     --shine-peak: var(--color-gold);
     --shine-glow: color-mix(in srgb, var(--color-gold) 48%, transparent);
   }
+
+  /* ---- Error pages ---------------------------------------------------
+   *
+   * Three classes, all reading one pair of custom properties — `--fault-from`
+   * and `--fault-to` — which `ErrorPage.astro` sets once on the section from
+   * the tone in `src/config/errors.ts`. The same arrangement NavLink uses for
+   * a section accent, and for the same reason: Tailwind scans the source as
+   * text, so a class name built from a variable never reaches the stylesheet.
+   */
+
+  /*
+   * The ground under the status code: a 24px hairline grid, faded out.
+   *
+   * The site's whole visual language is 1px technical rules — every card, every
+   * panel, every divider — so the one page with almost nothing on it gets those
+   * rules as a field rather than as an edge. It reads as the graph paper the
+   * rest of the site was drawn on, which is the point.
+   *
+   * Masked rather than faded with opacity, so the grid is at full strength
+   * behind the numeral and gone by the edges of the page. Two gradients rather
+   * than one image: nothing to load, and it redraws at any size.
+   *
+   * The rule colour is the page's own, with a quarter of the fault tone mixed
+   * into it — so a 500's graph paper is faintly rose and a 404's faintly cyan,
+   * and the tone is carried by the whole field rather than by the numeral alone.
+   * A quarter is the most it can take before it stops reading as a technical
+   * rule and starts reading as decoration.
+   *
+   * `--color-line` is the base, so this follows the theme it is on without a
+   * second declaration.
+   */
+  .fault-grid {
+    --fault-rule-tint: color-mix(in srgb, var(--fault-from) 25%, var(--color-line));
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        var(--fault-rule-tint) 0 1px,
+        transparent 1px calc(var(--spacing) * 3)
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--fault-rule-tint) 0 1px,
+        transparent 1px calc(var(--spacing) * 3)
+      );
+    -webkit-mask-image: radial-gradient(115% 90% at 14% 44%, #000 0%, transparent 68%);
+    mask-image: radial-gradient(115% 90% at 14% 44%, #000 0%, transparent 68%);
+  }
+
+  /*
+   * The numeral itself: the tone's gradient clipped into the letterforms.
+   *
+   * The same mechanism the homepage hero uses on its four words, which is why
+   * the fill is a background and the text colour is transparent. The glow is a
+   * drop-shadow rather than a box-shadow because a box-shadow would trace the
+   * element's rectangle, and there is no rectangle here — the filter follows
+   * the alpha of what was actually painted, so the light comes off the digits.
+   *
+   * Kept modest: 40px of spread at a quarter strength is a lift off the canvas,
+   * not a neon sign.
+   */
+  .fault-ink {
+    background-image: linear-gradient(100deg, var(--fault-from) 8%, var(--fault-to) 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 40px color-mix(in srgb, var(--fault-from) 24%, transparent));
+  }
+
+  /*
+   * The rule under it, carrying the same gradient across its length.
+   *
+   * This is NavLink's active underline at scale — a 1px gradient rule is how
+   * this site has always said "you are here", and on an error page it is the
+   * one thing tying a page about nothing back to the rest of it.
+   */
+  .fault-rule {
+    background-image: linear-gradient(100deg, var(--fault-from) 8%, var(--fault-to) 92%);
+  }
 }
 
 @keyframes eq {
