@@ -90,6 +90,12 @@ const destinations = navigation;
 
 <AppShell title={`${fault.code} ${fault.name}`} showTopBar={false}>
   {/*
+    `data-fault-body` is a handle for the one page that is not really an error:
+    /settings is served as this 404 to everyone, and its island hides this wrapper
+    and draws the page in its place only once the API says the reader may see it.
+  */}
+  <div data-fault-body>
+  {/*
     `style` on the section, so everything under it — the numeral, the rule, the
     eyebrow, the retry button's edge — reads one pair of properties and the tone
     is set in exactly one place.
@@ -235,6 +241,9 @@ const destinations = navigation;
       </nav>
     </section>
   </div>
+  </div>
+
+  <slot />
 
   {/*
     The two values the build could not know, and the retry.

@@ -65,6 +65,9 @@ export default defineConfig({
       'import.meta.env.PUBLIC_BUILD_AT': JSON.stringify(
         process.env.PUBLIC_BUILD_AT ?? new Date().toISOString(),
       ),
+      // Which commit this build is, for the settings page. Actions sets GITHUB_SHA;
+      // a local build has none and says so.
+      'import.meta.env.PUBLIC_BUILD_SHA': JSON.stringify(process.env.GITHUB_SHA ?? ''),
     },
     server: {
       watch: {

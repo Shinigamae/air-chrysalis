@@ -350,6 +350,110 @@ export async function putStatus(status: SiteStatus): Promise<number> {
   return result.version;
 }
 
+/* --- settings ------------------------------------------------------------- */
+
+/*
+ * The settings page. Nothing here ever carries a secret *back*: the API answers with
+ * whether a value is set and when, because GitHub itself will not say more than that.
+ * The only secret that travels is the one being written, once, in `putCredential`.
+ */
+
+export interface CredentialState {
+  secret: string;
+  label: string;
+  source: string;
+  howToGet: string;
+  verifiable: boolean;
+  present: boolean;
+  setAt?: string;
+  expiresAt?: string;
+  /** Whether this credential has an expiry at all. */
+  expires: boolean;
+  /** False when the secret was replaced outside the settings page, so the date is stale. */
+  expiryCurrent: boolean;
+}
+
+export interface SyncRun {
+  id: number;
+  status: string;
+  conclusion?: string;
+  event: string;
+  createdAt: string;
+  htmlUrl: string;
+}
+
+export interface SyncStep {
+  name: string;
+  status: string;
+  conclusion?: string;
+}
+
+export interface Settings {
+  api: {
+    environment: string;
+    runtime: string;
+    siteVersion: number;
+    origins: string[];
+    enforceOrigin: boolean;
+    keyVault?: string;
+    postgres: boolean;
+    appInsights: boolean;
+    discordSignIn: boolean;
+    googleSignIn: boolean;
+    serviceKey: boolean;
+    ipHashSalt: boolean;
+    devSignIn: boolean;
+  };
+  github: {
+    configured: boolean;
+    repository: string;
+    workflow: string;
+    ref?: string;
+    error?: string;
+    tokenExpiresAt?: string;
+    secrets?: { name: string; updatedAt: string }[];
+    variables?: { name: string; value: string; updatedAt: string }[];
+    runs?: SyncRun[];
+    latestSteps?: SyncStep[];
+  };
+  credentials: CredentialState[];
+}
+
+export interface SettingsAlert {
+  key: string;
+  label: string;
+  expiresAt?: string;
+  message: string;
+}
+
+export function getSettings(): Promise<Settings> {
+  return request<Settings>('GET', '/api/settings');
+}
+
+export async function getSettingsAlerts(): Promise<SettingsAlert[]> {
+  const result = await request<{ alerts: SettingsAlert[] }>('GET', '/api/settings/alerts');
+  return result.alerts;
+}
+
+/**
+ * Replace one Actions secret. A PSN token is checked with Sony first; a 424 means Sony
+ * could not be asked, and passing `skipCheck` stores it anyway.
+ */
+export function putCredential(
+  secret: string,
+  value: string,
+  skipCheck = false,
+): Promise<{ setAt: string; expiresAt?: string; checkedWithSource: boolean }> {
+  return request('PUT', `/api/settings/credentials/${encodeURIComponent(secret)}`, {
+    value,
+    skipCheck,
+  });
+}
+
+export async function dispatchSync(): Promise<void> {
+  await request<unknown>('POST', '/api/settings/sync');
+}
+
 /* --- hand-written records ------------------------------------------------- */
 
 /**

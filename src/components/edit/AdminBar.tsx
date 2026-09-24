@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { hasBackend } from '@/lib/api';
+import { useEffect, useState } from 'react';
+import { getSettingsAlerts, hasBackend, type SettingsAlert } from '@/lib/api';
+import { withBase } from '@/config/site';
 import { setEditing, startSession, useEditState } from '@/lib/edit-mode';
 import { buttonTone } from '@/components/edit/controls';
 
@@ -27,6 +28,7 @@ import { buttonTone } from '@/components/edit/controls';
  */
 export default function AdminBar() {
   const { me, editing } = useEditState();
+  const alerts = useAlerts(me?.isAdmin === true);
 
   useEffect(() => {
     startSession();
@@ -60,8 +62,75 @@ export default function AdminBar() {
           EDITS SAVE TO THE API AND GO LIVE — THE BAKED PAGE CATCHES UP ON THE NEXT DEPLOY
         </span>
       )}
+
+      {/*
+        The only way to /settings. The warning rides on the link rather than in a
+        banner of its own: an expiring token is a reason to open settings, so the
+        thing that says so is the thing you click.
+      */}
+      <a
+        href={withBase('/settings')}
+        title={alerts.map((alert) => alert.message).join('\n') || undefined}
+        className={`ml-auto ${alerts.length > 0 ? buttonTone.danger : buttonTone.plain}`}
+      >
+        {alerts.length > 0 && <span aria-hidden="true">●</span>}
+        SETTINGS
+        {alerts.length > 0 && (
+          <span>
+            {' '}
+            · {alerts.length === 1 ? alerts[0].message.toUpperCase() : `${alerts.length} NEED ATTENTION`}
+          </span>
+        )}
+      </a>
     </Rail>
   );
+}
+
+/*
+ * What needs attention, for the admin only, at most once every ten minutes per tab.
+ *
+ * The API caches the answer for ten minutes too — each one costs it four GitHub calls —
+ * but the site is a multi-page app and every click is a fresh document, so without the
+ * sessionStorage copy each page view would still be a request. A failure is silent:
+ * the rail is not the place to report that the API is down, and the link still works.
+ */
+const ALERTS_KEY = 'shinigamae.settings-alerts';
+const ALERTS_TTL = 10 * 60 * 1000;
+
+function useAlerts(admin: boolean): SettingsAlert[] {
+  const [alerts, setAlerts] = useState<SettingsAlert[]>([]);
+
+  useEffect(() => {
+    if (!admin) return;
+
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(ALERTS_KEY) ?? 'null');
+      if (cached && Date.now() - cached.at < ALERTS_TTL) {
+        setAlerts(cached.alerts);
+        return;
+      }
+    } catch {
+      /* Private mode or a malformed entry; ask the API. */
+    }
+
+    let live = true;
+    getSettingsAlerts()
+      .then((next) => {
+        if (!live) return;
+        setAlerts(next);
+        try {
+          sessionStorage.setItem(ALERTS_KEY, JSON.stringify({ at: Date.now(), alerts: next }));
+        } catch {
+          /* Private mode. It asks again next page, which is only slower. */
+        }
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [admin]);
+
+  return alerts;
 }
 
 function Rail({ children }: { children: React.ReactNode }) {

@@ -1,0 +1,27 @@
+---
+import ErrorPage from '@/layouts/ErrorPage.astro';
+import Gate from '@/components/settings/Gate';
+import { hasBackend } from '@/lib/api';
+
+/**
+ * /settings — credentials, sync health, and what the site and the API run with.
+ *
+ * **To everyone but the admin this reads as the 404 page**, because a settings page
+ * that announces itself tells every reader the site has someone who manages it. It
+ * is linked from nowhere but the admin's edit rail. The island below asks the API
+ * who is reading, and only on "admin" does it hide the error and load the panel —
+ * a separate chunk nobody else downloads.
+ *
+ * The island takes no props on purpose: props are serialised into this page's HTML
+ * for anyone to read, so everything the panel shows comes from its own chunk or from
+ * the API. The API re-checks admin on every call regardless; this is about not
+ * advertising a door, not about locking it.
+ *
+ * With no backend in the build there is no island at all, and the page is simply
+ * the 404 it looks like.
+ */
+---
+
+<ErrorPage code="404">
+  {hasBackend && <Gate client:idle />}
+</ErrorPage>

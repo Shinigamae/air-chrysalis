@@ -68,6 +68,25 @@ jobs:
         continue-on-error: true
         run: npm run books:sync
 
+      # The date the settings page recorded when the token was last replaced there
+      # (the PSN_NPSSO_EXPIRES_AT variable). A warning, never a failure: the date is
+      # an estimate, and the sync below is what actually finds out.
+      - name: Check credential dates
+        continue-on-error: true
+        env:
+          PSN_NPSSO_EXPIRES_AT: ${{ vars.PSN_NPSSO_EXPIRES_AT }}
+        run: |
+          if [ -z "$PSN_NPSSO_EXPIRES_AT" ]; then
+            echo "No expiry recorded for PSN_NPSSO — replace it from the site's settings page to record one."
+            exit 0
+          fi
+          left=$(( ( $(date -d "$PSN_NPSSO_EXPIRES_AT" +%s) - $(date +%s) ) / 86400 ))
+          if [ "$left" -lt 14 ]; then
+            echo "::warning::PSN_NPSSO expires in about $left days ($PSN_NPSSO_EXPIRES_AT). Replace it from the site's settings page."
+          else
+            echo "PSN_NPSSO is good for about $left more days."
+          fi
+
       # Same treatment: the npsso credential expires roughly every two months,
       # and that must not take the other two sources down with it.
       - name: Sync gaming log from PSN
@@ -164,7 +183,7 @@ jobs:
             echo "::error::Goodreads sync failed - is the shelf still public?"
           fi
           if [ "${{ steps.games.outcome }}" = "failure" ]; then
-            echo "::error::PSN sync failed - the npsso token expires about every two months. Refresh the PSN_NPSSO secret."
+            echo "::error::PSN sync failed - the npsso token expires about every two months. Replace it from the site's settings page (/settings)."
           fi
           if [ "${{ steps.albums.outcome }}" = "failure" ]; then
             echo "::error::Flickr sync failed - most likely a markup change or a bot challenge. See the header of scripts/flickr-sync.mjs."
