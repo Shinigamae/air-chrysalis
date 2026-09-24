@@ -78,14 +78,15 @@ function pages(dir) {
  * The CSP hash of every inline script in the build.
  *
  * A <script> with a `src` is covered by 'self' and is deliberately not hashed — the
- * negative lookahead is what tells the two apart. The hash is over the element's exact
+ * negative lookahead is what tells the two apart. So is a JSON-LD block: it is data, a
+ * browser never executes it, and CSP does not apply to it. The hash is over the element's exact
  * text content, which is what a browser hashes too, so nothing may be normalised here.
  */
 function inlineScriptHashes(files) {
   const hashes = new Set();
   for (const file of files) {
     const html = readFileSync(file, 'utf8');
-    for (const [, body] of html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
+    for (const [, body] of html.matchAll(/<script(?![^>]*\ssrc=)(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) {
       hashes.add(`'sha256-${createHash('sha256').update(body).digest('base64')}'`);
     }
   }
@@ -160,6 +161,9 @@ const config = {
     // Not fingerprinted — the name is fixed and referenced from every page — so this one
     // revalidates weekly instead.
     { route: `${BASE}/favicon.svg`, headers: { 'Cache-Control': 'public, max-age=604800' } },
+    ...['favicon-32.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og.png', 'site.webmanifest'].map(
+      (file) => ({ route: `${BASE}/${file}`, headers: { 'Cache-Control': 'public, max-age=604800' } }),
+    ),
 
     // The feed is generated per build and read by aggregators on their own schedule.
     { route: `${BASE}/rss.xml`, headers: { 'Cache-Control': 'public, max-age=3600' } },
@@ -203,7 +207,7 @@ const config = {
 
   navigationFallback: {
     rewrite: `${BASE}/404.html`,
-    exclude: ['/_astro/*', '/*.svg', '/*.xml', '/*.txt', '/*.json', '/*.png', '/*.jpg', '/*.webp'],
+    exclude: ['/_astro/*', '/*.svg', '/*.xml', '/*.txt', '/*.json', '/*.webmanifest', '/*.png', '/*.jpg', '/*.webp'],
   },
 
   mimeTypes: {

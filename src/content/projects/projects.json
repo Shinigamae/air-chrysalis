@@ -6,7 +6,7 @@
     "year": 2026,
     "problem": "Everything I make lived in five different places, none of which I owned, and none of which talked to each other.",
     "approach": "Design the language first in Figma, then build a static Astro shell against it, with a token layer strict enough that the design cannot drift silently. Five sync scripts pull the sources in and commit what they find, so no page waits on someone else's API to render.",
-    "result": "shinigamae.com — 479 pages off five feeds, a dark ground and a light one, and a drift report that says when code and design have stopped agreeing.",
+    "result": "This site — 479 pages off five feeds, a dark ground and a light one, and a drift report that says when code and design have stopped agreeing.",
     "stack": [
       "Astro",
       "TypeScript",

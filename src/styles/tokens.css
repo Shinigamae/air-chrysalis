@@ -220,6 +220,8 @@
   --color-social-facebook: #4c93ff; /* #0866FF lifted  */
   --color-social-x: #e4e4e7; /* the ink, as X intends  */
   --color-social-discord: #7c88f5; /* #5865F2 lifted   */
+  --color-social-linkedin: #4d9be6; /* #0A66C2 lifted */
+  --color-social-reddit: #ff6333; /* #FF4500 lifted   */
 
   /*
    * Fault tones — one pair per *kind* of error, not one per status code.

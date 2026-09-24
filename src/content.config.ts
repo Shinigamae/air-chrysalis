@@ -244,14 +244,11 @@ const albums = defineCollection({
  *
  * Two things are deliberately *not* fields here:
  *
- * `current` / `status` — a client is current when a role has no `to`, and
- * deriving it means a stale "LIVE" label cannot outlive the end date sitting
- * two lines below it. `clientIsCurrent()` in src/config/clients.ts is the
- * only place that decides.
+ * `current` / `status` — the site does not say which engagement is still
+ * running. See the note in src/config/clients.ts.
  *
- * `order` — projects carry one because a tie on year there is arbitrary.
- * Here the dates are the real ordering: most recent first, current first of
- * all. A curated order would only be a way to disagree with the CV.
+ * `order` — the list is alphabetical, because any order built from the dates
+ * would put the current client first and say the same thing a label would.
  */
 const clients = defineCollection({
   loader: file('./src/content/clients/clients.json'),

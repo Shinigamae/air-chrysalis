@@ -10,7 +10,7 @@ import StatusEditor from '@/components/edit/StatusEditor';
 import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
 import { section as rotationSection } from '@/config/music';
 import { section as socialSection, listedProfiles } from '@/config/social';
-import { withBase } from '@/config/site';
+import { site, withBase } from '@/config/site';
 import { hasBackend } from '@/lib/api';
 
 /**
@@ -148,9 +148,33 @@ const statusItems: StatusItem[] = [
   { label: 'READING', value: reading?.data.title ?? currentStatus.idle },
   currentStatus.nextBuild,
 ];
+
+/**
+ * Who this site belongs to, for search engines — schema.org's `Person`, with
+ * every linked profile in `sameAs`. It is how a search for the name can show
+ * the site and the LinkedIn, GitHub and YouTube accounts as one person rather
+ * than five unrelated results. Nothing reads it while the site is `noindex`;
+ * it is here so going public is only a matter of dropping that tag.
+ *
+ * No job title and no employer, on purpose: either would say which engagement
+ * is current, which the Workshop's client list is careful not to.
+ */
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  // The brand is uppercase by house style; a name is not.
+  name: 'Shinigamae',
+  url: new URL(withBase('/'), Astro.site).href,
+  image: new URL(withBase('/icon-512.png'), Astro.site).href,
+  sameAs: [
+    ...socials.flatMap((profile) => (profile.href ? [profile.href] : [])),
+    site.external.href,
+  ],
+};
 ---
 
 <AppShell showTopBar={false}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
   {/*
     The hero and the cards, in one region so `:has()` can see across them.
     A plain wrapper: it sets no layout of its own, it only gives the pairing
@@ -275,12 +299,12 @@ const statusItems: StatusItem[] = [
           summary={socialSection.summary}
         />
 
-        {/* The same four-across row as Selected Work, so the two sections of
-            cards on this page are laid out by one rule rather than two. A
+        {/* Three across rather than Selected Work's four: six accounts in a
+            four-column row leave a ragged second line of two. A
             plain grid of articles, as every other card grid here is — each
             card already carries its own heading, which is the structure a
             list would have been standing in for. */}
-        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {socials.map((profile) => (
             <SocialCard profile={profile} />
           ))}

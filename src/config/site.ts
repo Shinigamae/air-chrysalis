@@ -20,6 +20,16 @@ export const site = {
     label: 'GitHub',
     href: 'https://github.com/shinigamae',
   },
+  /**
+   * Where to reach me about work — the Workshop's closing section and the
+   * footer both point here. LinkedIn rather than an email address: it is
+   * where work conversations already happen, and it keeps an address off a
+   * page that anything can scrape.
+   */
+  contact: {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/ntkhanh/',
+  },
 } as const;
 
 export interface NavEntry {
@@ -59,7 +69,7 @@ export const navigation: readonly NavEntry[] = [
     href: '/workshop',
     index: '02',
     context: 'SECTION',
-    summary: 'Systems I build, break, refactor, and occasionally ship.',
+    summary: 'Systems I design, build, and ship — and what each one taught me.',
     accent: 'code',
   },
   {

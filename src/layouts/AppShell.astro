@@ -23,6 +23,11 @@ interface Props {
   topBarMeta?: string;
   /** Home opts out so the hero sits directly on the canvas. */
   showTopBar?: boolean;
+  /**
+   * The link-preview image, as a root-relative path or an absolute URL.
+   * Defaults to the site card rendered by `npm run icons`.
+   */
+  image?: string;
 }
 
 const {
@@ -30,6 +35,7 @@ const {
   description = site.description,
   topBarMeta,
   showTopBar = true,
+  image = '/og.png',
 } = Astro.props;
 
 const pathname = stripBase(Astro.url.pathname);
@@ -40,6 +46,14 @@ const documentTitle = title
   : entry
     ? `${entry.label} — ${site.name}`
     : site.name;
+
+/*
+ * Link previews need absolute URLs — a crawler reading og:image has no page to
+ * resolve a relative one against. `Astro.site` is SITE_ORIGIN (see
+ * astro.config.mjs), so these follow whichever host the build is for.
+ */
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = new URL(withBase(image), Astro.site).href;
 ---
 
 {/*
@@ -52,9 +66,29 @@ const documentTitle = title
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#09090B" />
+    {/*
+      Link previews — what LinkedIn, Slack, Discord and the rest show when a
+      page is pasted. Independent of the robots tag below: `noindex` keeps a
+      page out of search, and a preview crawler is not a search engine. (It
+      does read robots.txt, which is why public/robots.txt lets them in.)
+    */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name} — ${site.tagline}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
     {/*
       The reader's ground, mounted before anything is drawn.
 

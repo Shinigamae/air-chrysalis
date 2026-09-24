@@ -48,6 +48,14 @@ const quote = pickQuote();
       */}
       <span class="type-meta flex items-center gap-3">
         <a
+          href={site.contact.href}
+          rel="me noopener"
+          target="_blank"
+          class="transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:text-ink"
+        >
+          {site.contact.label.toUpperCase()} ↗
+        </a>
+        <a
           href={site.external.href}
           rel="me noopener"
           target="_blank"

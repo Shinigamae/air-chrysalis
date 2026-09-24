@@ -8,5 +8,20 @@
 #
 # To make the site public: delete this file, drop the robots meta tag in AppShell, and
 # re-add the sitemap integration in astro.config.mjs.
+#
+# Link-preview crawlers are let through, and only them: they fetch a page when
+# someone pastes its link, read the og: tags, and build the card. LinkedInBot in
+# particular obeys this file, so without these lines a link shared on LinkedIn
+# shows up as a bare URL. None of them is a search engine, and the noindex
+# header and meta tag still apply to anything that is.
+User-agent: LinkedInBot
+User-agent: facebookexternalhit
+User-agent: Twitterbot
+User-agent: Slackbot-LinkExpanding
+User-agent: Discordbot
+User-agent: TelegramBot
+User-agent: WhatsApp
+Allow: /
+
 User-agent: *
 Disallow: /

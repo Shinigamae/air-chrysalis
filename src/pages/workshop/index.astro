@@ -4,10 +4,9 @@ import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SpecList from '@/components/ui/SpecList.astro';
-import StatusLabel from '@/components/ui/StatusLabel.astro';
 import ClientCard from '@/components/ui/ClientCard.astro';
-import { byRecency } from '@/config/clients';
-import { entryFor } from '@/config/site';
+import { byName } from '@/config/clients';
+import { entryFor, site } from '@/config/site';
 import WorkshopEditor from '@/components/edit/WorkshopEditor';
 import { hasBackend } from '@/lib/api';
 
@@ -33,7 +32,7 @@ const entry = entryFor(Astro.url.pathname)!;
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order,
 );
-const clients = (await getCollection('clients')).sort(byRecency);
+const clients = (await getCollection('clients')).sort(byName);
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
@@ -66,10 +65,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
               <span class="type-meta text-signal">{pad(i + 1)}</span>
               <h3 class="type-subhead">{project.data.title}</h3>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="type-meta">{project.data.year}</span>
-              <StatusLabel status={project.data.status} />
-            </div>
+            <span class="type-meta">{project.data.year}</span>
           </div>
 
           <p class="type-caption">{project.data.subtitle}</p>
@@ -140,6 +136,31 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
     <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
       {clients.map((client) => <ClientCard client={client} />)}
+    </div>
+  </section>
+
+  {/*
+    The page's last word is a way to reply. Everything above is the argument;
+    a reader it convinced should not have to go looking for how to say so.
+    One door, and deliberately not a form — see `site.contact`.
+  */}
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="03" title="GET IN TOUCH" />
+    <div
+      class="flex flex-col gap-2 rounded-standard border border-line bg-panel p-3 md:flex-row md:items-center md:justify-between"
+    >
+      <p class="type-caption max-w-[60ch]">
+        For a project, a team, or a second opinion on an architecture —{' '}
+        {site.contact.label} is where I answer.
+      </p>
+      <a
+        href={site.contact.href}
+        rel="me noopener"
+        target="_blank"
+        class="type-nav inline-flex h-5 shrink-0 items-center justify-center rounded-compact border border-signal px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/10"
+      >
+        MESSAGE ON {site.contact.label.toUpperCase()} ↗
+      </a>
     </div>
   </section>
 </AppShell>
