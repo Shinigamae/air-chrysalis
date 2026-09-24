@@ -134,14 +134,14 @@ function Attention({ settings }: { settings: Settings }) {
   if (tokenExpiry && daysUntil(tokenExpiry) <= WARN_DAYS) {
     items.push({
       tone: expiryTone(tokenExpiry),
-      text: `The API's GitHub token expires on ${formatDate(tokenExpiry)} — issue a new one and update GitHub--Token in Key Vault.`,
+      text: `The API's GitHub token expires on ${formatDate(tokenExpiry)} — issue a new one and replace the GitHub__Token app setting on the App Service.`,
     });
   }
 
   if (!settings.github.configured) {
     items.push({
       tone: 'warn',
-      text: 'GitHub is not configured on the API, so credentials cannot be replaced from here. Add GitHub--Token to Key Vault.',
+      text: 'GitHub is not configured on the API, so credentials cannot be replaced from here. Add a GitHub__Token app setting to the App Service.',
     });
   } else if (settings.github.error) {
     items.push({ tone: 'bad', text: settings.github.error });
@@ -530,7 +530,9 @@ function ConfigurationSection({ settings }: { settings: Settings }) {
           <Row label="ORIGINS" value={api.origins.join(' · ')} />
           <Row label="ORIGIN GATE" value={yesNo(api.enforceOrigin)} />
           <Row label="POSTGRES" value={api.postgres ? <span className="text-signal">REACHABLE</span> : <span className="text-danger">UNREACHABLE</span>} />
-          <Row label="KEY VAULT" value={api.keyVault ?? <span className="text-[var(--color-fault-strain)]">NOT CONFIGURED</span>} />
+          {/* Not a fault when absent: this deployment keeps its secrets in app settings on
+              purpose (see the API's README), so "none" is the expected answer. */}
+          <Row label="KEY VAULT" value={api.keyVault ?? 'Not used — secrets are App Service app settings'} />
           <Row label="TELEMETRY" value={api.appInsights ? 'Application Insights' : 'Off'} />
           <Row label="DISCORD" value={yesNo(api.discordSignIn)} />
           <Row label="GOOGLE" value={yesNo(api.googleSignIn)} />
