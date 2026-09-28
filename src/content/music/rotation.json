@@ -17,14 +17,218 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-27T15:20:40.098Z",
+  "syncedAt": "2026-09-28T18:17:18.955Z",
   "playlists": [
+    {
+      "id": "1uch56cjgRp6Uiy0DfLgUl",
+      "name": "SHNDDEN",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "playedAt": "2026-09-28T09:33:54.918Z",
+      "trackCount": 22,
+      "tracks": [
+        {
+          "name": "Ta Cứ Đi Cùng Nhau - Live At Show Của Đen",
+          "artists": [
+            "Đen",
+            "Linh Cáo"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 346627,
+          "url": "https://open.spotify.com/track/2mqEoZUVNajcSnNJPEBBfu"
+        },
+        {
+          "name": "Đố em biết anh đang nghĩ gì - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 275498,
+          "url": "https://open.spotify.com/track/1oDaI6OOKaVqEn6H8bgaRo"
+        },
+        {
+          "name": "Mơ - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 233429,
+          "url": "https://open.spotify.com/track/7HYT9fyOhJBpuev4OdicNK"
+        },
+        {
+          "name": "hai triệu năm - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 298197,
+          "url": "https://open.spotify.com/track/0ROEej67C7sB3bk6SnBiEE"
+        },
+        {
+          "name": "Bài Này Chill Phết - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 294768,
+          "url": "https://open.spotify.com/track/6ztkb5MiGLM6TqodbVDGTE"
+        },
+        {
+          "name": "Đi Theo Bóng Mặt Trời - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 236096,
+          "url": "https://open.spotify.com/track/3vrtrHN8QFUdGheMzPs8j3"
+        },
+        {
+          "name": "Anh Đếch Cần Gì Nhiều Ngoài Em - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 246250,
+          "url": "https://open.spotify.com/track/6S7unWwOypztbchdoKA5gP"
+        },
+        {
+          "name": "Cho Toi Lang Thang - Live At Show Của Đen",
+          "artists": [
+            "Đen",
+            "Ngọt"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 272133,
+          "url": "https://open.spotify.com/track/2ncglJOFf6z2LVAV0KAvge"
+        },
+        {
+          "name": "Nhiều Năm Nữa - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 199552,
+          "url": "https://open.spotify.com/track/14Pfh8Z2JpjwjavMYGZw9M"
+        },
+        {
+          "name": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Show Của Đen",
+          "durationMs": 198400,
+          "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV"
+        },
+        {
+          "name": "Triệu điều nhỏ xíu xiêu lòng",
+          "artists": [
+            "Đen",
+            "Kim Long"
+          ],
+          "album": "Triệu điều nhỏ xíu xiêu lòng",
+          "durationMs": 292932,
+          "url": "https://open.spotify.com/track/1KpPymup1tlWrIBJR2BKAH"
+        },
+        {
+          "name": "FRIENDSHIP",
+          "artists": [
+            "Đen",
+            "Friends"
+          ],
+          "album": "FRIENDSHIP",
+          "durationMs": 294997,
+          "url": "https://open.spotify.com/track/1ZSwYD21wiQCx3VYrnQHMm"
+        },
+        {
+          "name": "Mang Tiền Về Cho Mẹ",
+          "artists": [
+            "Đen",
+            "Nguyên Thảo"
+          ],
+          "album": "Mang Tiền Về Cho Mẹ",
+          "durationMs": 405360,
+          "url": "https://open.spotify.com/track/57lYw21pS9FprSeJimskIC"
+        },
+        {
+          "name": "Lối Nhỏ",
+          "artists": [
+            "Đen",
+            "Phương Anh Đào"
+          ],
+          "album": "Lối Nhỏ",
+          "durationMs": 252953,
+          "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV"
+        },
+        {
+          "name": "Hát cho đời và hát cho em",
+          "artists": [
+            "JGKiD (Da LAB)",
+            "Rabbit Run",
+            "Đen",
+            "Emcee L (Da LAB)"
+          ],
+          "album": "Hát cho đời và hát cho em",
+          "durationMs": 208744,
+          "url": "https://open.spotify.com/track/5RIYXxF2O7aMg2XjbCTWEz"
+        },
+        {
+          "name": "Ai muốn nghe không",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Ai muốn nghe không",
+          "durationMs": 307500,
+          "url": "https://open.spotify.com/track/1WCAkmmTM06in2ojuQ9CK5"
+        },
+        {
+          "name": "Lãng đãng",
+          "artists": [
+            "Đen"
+          ],
+          "album": "Lãng đãng",
+          "durationMs": 322872,
+          "url": "https://open.spotify.com/track/3m0HZdj4sDKWPeZxjIAEUg"
+        },
+        {
+          "name": "MỘT NGÀY NÀO ĐÓ",
+          "artists": [
+            "Hoàng Dũng",
+            "Đen",
+            "Bạn Nhạc."
+          ],
+          "album": "MỘT NGÀY NÀO ĐÓ",
+          "durationMs": 259362,
+          "url": "https://open.spotify.com/track/0y9syFsnSuYnf0RUqxE1Ah"
+        },
+        {
+          "name": "Trốn Tìm",
+          "artists": [
+            "Đen",
+            "MTV Band"
+          ],
+          "album": "Trốn Tìm",
+          "durationMs": 248870,
+          "url": "https://open.spotify.com/track/34uOIsoy6ETS2sxOTWBRDF"
+        },
+        {
+          "name": "Việc lớn",
+          "artists": [
+            "Đen",
+            "Dòng Thời Gian"
+          ],
+          "album": "Việc lớn",
+          "durationMs": 381657,
+          "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
+        }
+      ]
+    },
     {
       "id": "6YeexGXN1ooWARw4W8NhvJ",
       "name": "SHNCLASS",
       "description": "",
       "url": "https://open.spotify.com/playlist/6YeexGXN1ooWARw4W8NhvJ",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
       "playedAt": "2026-09-22T02:11:41Z",
       "trackCount": 50,
       "tracks": [
@@ -217,7 +421,7 @@
       "name": "SHNUSUKS",
       "description": "",
       "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
       "playedAt": "2026-09-22T01:15:59.531Z",
       "trackCount": 102,
       "tracks": [
