@@ -17,14 +17,210 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-09-28T18:17:18.955Z",
+  "syncedAt": "2026-09-29T16:39:55.400Z",
   "playlists": [
+    {
+      "id": "5S5ss02hXM2Yi0GK7ovJd7",
+      "name": "SHNUSUKS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "playedAt": "2026-09-29T02:07:17.408Z",
+      "trackCount": 102,
+      "tracks": [
+        {
+          "name": "My Songs Know What You Did In The Dark (Light Em Up)",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "Save Rock And Roll",
+          "durationMs": 186826,
+          "url": "https://open.spotify.com/track/2E43WFS4rRc09za2r2GmZl"
+        },
+        {
+          "name": "Centuries",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 228360,
+          "url": "https://open.spotify.com/track/04aAxqtGp5pv12UXAg4pkq"
+        },
+        {
+          "name": "Immortals",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 189386,
+          "url": "https://open.spotify.com/track/3Te8uLyit6X3ncNW8Fp3K2"
+        },
+        {
+          "name": "Irresistible",
+          "artists": [
+            "Fall Out Boy",
+            "Demi Lovato"
+          ],
+          "album": "Irresistible",
+          "durationMs": 205851,
+          "url": "https://open.spotify.com/track/3Y3gChJoEUTqrtuqJCIPQk"
+        },
+        {
+          "name": "Boulevard of Broken Dreams (feat. John Gallagher Jr., Rebecca Naomi Jones, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 262386,
+          "url": "https://open.spotify.com/track/41pFyxOpS119Pb8JEzhx0w"
+        },
+        {
+          "name": "Wake Me up When September Ends (feat. John Gallagher Jr., Michael Esper, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 286680,
+          "url": "https://open.spotify.com/track/6fitJO7zDNWwmiaP5PHG14"
+        },
+        {
+          "name": "21 Guns (feat. Rebecca Naomi Jones, Christina Sajous, Mary Faber, Stark Sands, John Gallagher Jr., Michael Esper, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 285040,
+          "url": "https://open.spotify.com/track/2dvPnPjTjGYyRqRd7KO7jx"
+        },
+        {
+          "name": "Counting Stars",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 257386,
+          "url": "https://open.spotify.com/track/1QzFhzIOW7CyRJLpmq5CM0"
+        },
+        {
+          "name": "Something I Need",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 240080,
+          "url": "https://open.spotify.com/track/6t1F0FTlVHAw6kEe164SsL"
+        },
+        {
+          "name": "Girlfriend (feat. Lil Mama) - Dr. Luke Mix",
+          "artists": [
+            "Avril Lavigne",
+            "Lil Mama",
+            "Dr. Luke"
+          ],
+          "album": "The Best Damn Thing (Expanded Edition)",
+          "durationMs": 204866,
+          "url": "https://open.spotify.com/track/1wwt0TvrGY3lnvTAVIx8mO"
+        },
+        {
+          "name": "How You Remind Me",
+          "artists": [
+            "Avril Lavigne"
+          ],
+          "album": "Avril Lavigne (Expanded Edition)",
+          "durationMs": 245733,
+          "url": "https://open.spotify.com/track/4H560RqZEEhrgOquGqTCvs"
+        },
+        {
+          "name": "When I'm Gone",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 229653,
+          "url": "https://open.spotify.com/track/518x7yFVDLkbOWNH0SOe9p"
+        },
+        {
+          "name": "Your Love Is a Lie",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 222426,
+          "url": "https://open.spotify.com/track/0Hv2IWtvPPca1F4zhC4UFs"
+        },
+        {
+          "name": "Ignorance",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Brand New Eyes",
+          "durationMs": 218626,
+          "url": "https://open.spotify.com/track/47No93LxERvV6MtOAmQzHS"
+        },
+        {
+          "name": "Still into You",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Paramore",
+          "durationMs": 216013,
+          "url": "https://open.spotify.com/track/1yjY7rpaAQvKwpdUliHx0d"
+        },
+        {
+          "name": "The Last Goodbye",
+          "artists": [
+            "Billy Boyd"
+          ],
+          "album": "The Last Goodbye",
+          "durationMs": 247360,
+          "url": "https://open.spotify.com/track/6GJmb404LiyqoDyyE3jDad"
+        },
+        {
+          "name": "SexyBack (feat. Timbaland)",
+          "artists": [
+            "Justin Timberlake",
+            "Timbaland"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 242733,
+          "url": "https://open.spotify.com/track/0O45fw2L5vsWpdsOdXwNAR"
+        },
+        {
+          "name": "The Time (Dirty Bit)",
+          "artists": [
+            "Black Eyed Peas"
+          ],
+          "album": "The Beginning (Deluxe)",
+          "durationMs": 307640,
+          "url": "https://open.spotify.com/track/7vWFaMq63AwkFDhS2OAg5u"
+        },
+        {
+          "name": "What Goes Around.../...Comes Around (Interlude)",
+          "artists": [
+            "Justin Timberlake"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 448573,
+          "url": "https://open.spotify.com/track/3pD0f7hSJg2XdQ6udw5Tey"
+        },
+        {
+          "name": "My Love (feat. T.I.)",
+          "artists": [
+            "Justin Timberlake",
+            "T.I."
+          ],
+          "album": "FutureSex/LoveSounds Deluxe Edition",
+          "durationMs": 276160,
+          "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
+        }
+      ]
+    },
     {
       "id": "1uch56cjgRp6Uiy0DfLgUl",
       "name": "SHNDDEN",
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
       "playedAt": "2026-09-28T09:33:54.918Z",
       "trackCount": 22,
       "tracks": [
@@ -220,395 +416,6 @@
           "album": "Việc lớn",
           "durationMs": 381657,
           "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
-        }
-      ]
-    },
-    {
-      "id": "6YeexGXN1ooWARw4W8NhvJ",
-      "name": "SHNCLASS",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/6YeexGXN1ooWARw4W8NhvJ",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
-      "playedAt": "2026-09-22T02:11:41Z",
-      "trackCount": 50,
-      "tracks": [
-        {
-          "name": "Stairway to Heaven - Remaster",
-          "artists": [
-            "Led Zeppelin"
-          ],
-          "album": "Led Zeppelin IV (Deluxe Edition)",
-          "durationMs": 482830,
-          "url": "https://open.spotify.com/track/5CQ30WqJwcep0pYcV4AMNc"
-        },
-        {
-          "name": "Behind Blue Eyes",
-          "artists": [
-            "The Who"
-          ],
-          "album": "Who's Next (Deluxe Edition)",
-          "durationMs": 221426,
-          "url": "https://open.spotify.com/track/0cKk8BKEi7zXbdrYdyqBP5"
-        },
-        {
-          "name": "Immigrant Song - Remaster",
-          "artists": [
-            "Led Zeppelin"
-          ],
-          "album": "Led Zeppelin III (Remaster)",
-          "durationMs": 146250,
-          "url": "https://open.spotify.com/track/78lgmZwycJ3nzsdgmPPGNx"
-        },
-        {
-          "name": "Paint It, Black",
-          "artists": [
-            "The Rolling Stones"
-          ],
-          "album": "Aftermath",
-          "durationMs": 202266,
-          "url": "https://open.spotify.com/track/63T7DJ1AFDD6Bn8VzG6JE8"
-        },
-        {
-          "name": "Scarborough Fair / Canticle",
-          "artists": [
-            "Simon & Garfunkel"
-          ],
-          "album": "Parsley, Sage, Rosemary And Thyme",
-          "durationMs": 194044,
-          "url": "https://open.spotify.com/track/3g2fYZW5v2od8KIF7VktT0"
-        },
-        {
-          "name": "April Come She Will",
-          "artists": [
-            "Simon & Garfunkel"
-          ],
-          "album": "The Graduate",
-          "durationMs": 112240,
-          "url": "https://open.spotify.com/track/3T9BSF5aI9NsxMwoyG5e9x"
-        },
-        {
-          "name": "The Sound of Silence - Reprise",
-          "artists": [
-            "Simon & Garfunkel"
-          ],
-          "album": "The Graduate",
-          "durationMs": 186786,
-          "url": "https://open.spotify.com/track/6rWcj4WPPODZIRtJenwce3"
-        },
-        {
-          "name": "Still Crazy After All These Years",
-          "artists": [
-            "Paul Simon"
-          ],
-          "album": "Still Crazy After All These Years",
-          "durationMs": 206041,
-          "url": "https://open.spotify.com/track/3gIBSlXYIN1mru35l4LWPB"
-        },
-        {
-          "name": "Sweet Dreams (Are Made of This) - 2005 Remaster",
-          "artists": [
-            "Eurythmics",
-            "Annie Lennox",
-            "Dave Stewart"
-          ],
-          "album": "Sweet Dreams (Are Made Of This)",
-          "durationMs": 216933,
-          "url": "https://open.spotify.com/track/1TfqLAPs4K3s2rJMoCokcS"
-        },
-        {
-          "name": "Holding Out for a Hero - From \"Footloose\" Soundtrack",
-          "artists": [
-            "Bonnie Tyler"
-          ],
-          "album": "Secret Dreams And Forbidden Fire",
-          "durationMs": 348333,
-          "url": "https://open.spotify.com/track/7L2eFj0KFJDmHTPMUL4ZxR"
-        },
-        {
-          "name": "Rasputin",
-          "artists": [
-            "Boney M."
-          ],
-          "album": "Nightflight to Venus",
-          "durationMs": 351573,
-          "url": "https://open.spotify.com/track/5jkFvD4UJrmdoezzT1FRoP"
-        },
-        {
-          "name": "Beat It",
-          "artists": [
-            "Michael Jackson"
-          ],
-          "album": "Thriller 25 Super Deluxe Edition",
-          "durationMs": 258040,
-          "url": "https://open.spotify.com/track/1OOtq8tRnDM8kG2gqUPjAj"
-        },
-        {
-          "name": "Bohemian Rhapsody - Remastered 2011",
-          "artists": [
-            "Queen"
-          ],
-          "album": "A Night At The Opera (2011 Remaster)",
-          "durationMs": 354320,
-          "url": "https://open.spotify.com/track/1AhDOtG9vPSOmsWgNW0BEY"
-        },
-        {
-          "name": "We Will Rock You - Remastered 2011",
-          "artists": [
-            "Queen"
-          ],
-          "album": "News Of The World (2011 Remaster)",
-          "durationMs": 122066,
-          "url": "https://open.spotify.com/track/4pbJqGIASGPr0ZpGpnWkDn"
-        },
-        {
-          "name": "I Hate Myself for Loving You",
-          "artists": [
-            "Joan Jett & the Blackhearts"
-          ],
-          "album": "Up Your Alley",
-          "durationMs": 246800,
-          "url": "https://open.spotify.com/track/2HXixVqzzm9rEUIMAWzshl"
-        },
-        {
-          "name": "Hotel California - 2013 Remaster",
-          "artists": [
-            "Eagles"
-          ],
-          "album": "Hotel California (2013 Remaster)",
-          "durationMs": 391376,
-          "url": "https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv"
-        },
-        {
-          "name": "Hey Jude - Remastered 2009",
-          "artists": [
-            "The Beatles"
-          ],
-          "album": "The Beatles 1967 - 1970 (Remastered)",
-          "durationMs": 431333,
-          "url": "https://open.spotify.com/track/3m7V717IKZqZLW5qUIOxdD"
-        },
-        {
-          "name": "Norwegian Wood (This Bird Has Flown) - Remastered",
-          "artists": [
-            "The Beatles"
-          ],
-          "album": "Rubber Soul (Remastered)",
-          "durationMs": 124693,
-          "url": "https://open.spotify.com/track/4DE42oDol0KHxympBsaiYu"
-        },
-        {
-          "name": "Black or White",
-          "artists": [
-            "Michael Jackson"
-          ],
-          "album": "Dangerous",
-          "durationMs": 256017,
-          "url": "https://open.spotify.com/track/7EsjkelQuoUlJXEw7SeVV4"
-        },
-        {
-          "name": "Heal the World",
-          "artists": [
-            "Michael Jackson"
-          ],
-          "album": "Dangerous",
-          "durationMs": 384460,
-          "url": "https://open.spotify.com/track/7woW97CfcWaKtuC6W5BP2K"
-        }
-      ]
-    },
-    {
-      "id": "5S5ss02hXM2Yi0GK7ovJd7",
-      "name": "SHNUSUKS",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
-      "playedAt": "2026-09-22T01:15:59.531Z",
-      "trackCount": 102,
-      "tracks": [
-        {
-          "name": "My Songs Know What You Did In The Dark (Light Em Up)",
-          "artists": [
-            "Fall Out Boy"
-          ],
-          "album": "Save Rock And Roll",
-          "durationMs": 186826,
-          "url": "https://open.spotify.com/track/2E43WFS4rRc09za2r2GmZl"
-        },
-        {
-          "name": "Centuries",
-          "artists": [
-            "Fall Out Boy"
-          ],
-          "album": "American Beauty/American Psycho",
-          "durationMs": 228360,
-          "url": "https://open.spotify.com/track/04aAxqtGp5pv12UXAg4pkq"
-        },
-        {
-          "name": "Immortals",
-          "artists": [
-            "Fall Out Boy"
-          ],
-          "album": "American Beauty/American Psycho",
-          "durationMs": 189386,
-          "url": "https://open.spotify.com/track/3Te8uLyit6X3ncNW8Fp3K2"
-        },
-        {
-          "name": "Irresistible",
-          "artists": [
-            "Fall Out Boy",
-            "Demi Lovato"
-          ],
-          "album": "Irresistible",
-          "durationMs": 205851,
-          "url": "https://open.spotify.com/track/3Y3gChJoEUTqrtuqJCIPQk"
-        },
-        {
-          "name": "Boulevard of Broken Dreams (feat. John Gallagher Jr., Rebecca Naomi Jones, Stark Sands, The American Idiot Broadway Company)",
-          "artists": [
-            "Green Day"
-          ],
-          "album": "American Idiot - The Original Broadway Cast Recording",
-          "durationMs": 262386,
-          "url": "https://open.spotify.com/track/41pFyxOpS119Pb8JEzhx0w"
-        },
-        {
-          "name": "Wake Me up When September Ends (feat. John Gallagher Jr., Michael Esper, Stark Sands, The American Idiot Broadway Company)",
-          "artists": [
-            "Green Day"
-          ],
-          "album": "American Idiot - The Original Broadway Cast Recording",
-          "durationMs": 286680,
-          "url": "https://open.spotify.com/track/6fitJO7zDNWwmiaP5PHG14"
-        },
-        {
-          "name": "21 Guns (feat. Rebecca Naomi Jones, Christina Sajous, Mary Faber, Stark Sands, John Gallagher Jr., Michael Esper, The American Idiot Broadway Company)",
-          "artists": [
-            "Green Day"
-          ],
-          "album": "American Idiot - The Original Broadway Cast Recording",
-          "durationMs": 285040,
-          "url": "https://open.spotify.com/track/2dvPnPjTjGYyRqRd7KO7jx"
-        },
-        {
-          "name": "Counting Stars",
-          "artists": [
-            "OneRepublic"
-          ],
-          "album": "Native",
-          "durationMs": 257386,
-          "url": "https://open.spotify.com/track/1QzFhzIOW7CyRJLpmq5CM0"
-        },
-        {
-          "name": "Something I Need",
-          "artists": [
-            "OneRepublic"
-          ],
-          "album": "Native",
-          "durationMs": 240080,
-          "url": "https://open.spotify.com/track/6t1F0FTlVHAw6kEe164SsL"
-        },
-        {
-          "name": "Girlfriend (feat. Lil Mama) - Dr. Luke Mix",
-          "artists": [
-            "Avril Lavigne",
-            "Lil Mama",
-            "Dr. Luke"
-          ],
-          "album": "The Best Damn Thing (Expanded Edition)",
-          "durationMs": 204866,
-          "url": "https://open.spotify.com/track/1wwt0TvrGY3lnvTAVIx8mO"
-        },
-        {
-          "name": "How You Remind Me",
-          "artists": [
-            "Avril Lavigne"
-          ],
-          "album": "Avril Lavigne (Expanded Edition)",
-          "durationMs": 245733,
-          "url": "https://open.spotify.com/track/4H560RqZEEhrgOquGqTCvs"
-        },
-        {
-          "name": "When I'm Gone",
-          "artists": [
-            "Simple Plan"
-          ],
-          "album": "Simple Plan",
-          "durationMs": 229653,
-          "url": "https://open.spotify.com/track/518x7yFVDLkbOWNH0SOe9p"
-        },
-        {
-          "name": "Your Love Is a Lie",
-          "artists": [
-            "Simple Plan"
-          ],
-          "album": "Simple Plan",
-          "durationMs": 222426,
-          "url": "https://open.spotify.com/track/0Hv2IWtvPPca1F4zhC4UFs"
-        },
-        {
-          "name": "Ignorance",
-          "artists": [
-            "Paramore"
-          ],
-          "album": "Brand New Eyes",
-          "durationMs": 218626,
-          "url": "https://open.spotify.com/track/47No93LxERvV6MtOAmQzHS"
-        },
-        {
-          "name": "Still into You",
-          "artists": [
-            "Paramore"
-          ],
-          "album": "Paramore",
-          "durationMs": 216013,
-          "url": "https://open.spotify.com/track/1yjY7rpaAQvKwpdUliHx0d"
-        },
-        {
-          "name": "The Last Goodbye",
-          "artists": [
-            "Billy Boyd"
-          ],
-          "album": "The Last Goodbye",
-          "durationMs": 247360,
-          "url": "https://open.spotify.com/track/6GJmb404LiyqoDyyE3jDad"
-        },
-        {
-          "name": "SexyBack (feat. Timbaland)",
-          "artists": [
-            "Justin Timberlake",
-            "Timbaland"
-          ],
-          "album": "FutureSex/LoveSounds",
-          "durationMs": 242733,
-          "url": "https://open.spotify.com/track/0O45fw2L5vsWpdsOdXwNAR"
-        },
-        {
-          "name": "The Time (Dirty Bit)",
-          "artists": [
-            "Black Eyed Peas"
-          ],
-          "album": "The Beginning (Deluxe)",
-          "durationMs": 307640,
-          "url": "https://open.spotify.com/track/7vWFaMq63AwkFDhS2OAg5u"
-        },
-        {
-          "name": "What Goes Around.../...Comes Around (Interlude)",
-          "artists": [
-            "Justin Timberlake"
-          ],
-          "album": "FutureSex/LoveSounds",
-          "durationMs": 448573,
-          "url": "https://open.spotify.com/track/3pD0f7hSJg2XdQ6udw5Tey"
-        },
-        {
-          "name": "My Love (feat. T.I.)",
-          "artists": [
-            "Justin Timberlake",
-            "T.I."
-          ],
-          "album": "FutureSex/LoveSounds Deluxe Edition",
-          "durationMs": 276160,
-          "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
         }
       ]
     }
