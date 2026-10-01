@@ -78,7 +78,7 @@ export default function WorkshopEditorForm({ kind }: WorkshopEditorProps) {
   return (
     <EditRegion
       label={kind === 'projects' ? 'PROJECTS' : 'CLIENTS'}
-      note="SAVED RECORDS ARE LIVE ON THE API · THIS PAGE RENDERS THEM AFTER THE NEXT DEPLOY"
+      note="SAVING REBUILDS THE SITE · THIS PAGE SHOWS THE CHANGE IN A FEW MINUTES"
       load={async () => {
         // pageSize covers both collections whole — there are three projects and four
         // clients, and paging a list this size would be ceremony.

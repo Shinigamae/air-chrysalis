@@ -33,6 +33,9 @@ env:
   SITE_BASE: ''
   SITE_ORIGIN: 'https://polite-plant-0ab659c00.5.azurestaticapps.net'
   PUBLIC_API_URL: 'https://shinigamae-g4h4ffdkg2fpfndq.eastasia-01.azurewebsites.net'
+  # Projects and clients are read from the API at build time (src/content.config.ts),
+  # so a save in the Workshop editor dispatches this workflow to rebuild the page.
+  CONTENT_API_URL: 'https://shinigamae-g4h4ffdkg2fpfndq.eastasia-01.azurewebsites.net'
   # Public by design — an OAuth client id travels in the authorize URL of every
   # login and is visible to anyone who clicks sign in. The *secret* stays in the
   # API's app settings and never reaches a browser.
@@ -40,7 +43,7 @@ env:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     permissions:

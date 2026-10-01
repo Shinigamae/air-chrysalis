@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { file, glob } from 'astro/loaders';
+import { file, glob, type Loader } from 'astro/loaders';
 
 /**
  * Content collections — shaped from Figma "03 — Content Systems" (11:74).
@@ -13,6 +13,54 @@ import { file, glob } from 'astro/loaders';
  * These schemas are also the contract the .NET API will need to satisfy
  * later, so they are deliberately explicit rather than loose.
  */
+
+/**
+ * Projects and clients live in the API's database — the Workshop editor writes
+ * them there, and this reads them back at build time. One copy, so an edit in
+ * the editor and the page can never disagree for longer than a build.
+ *
+ * `CONTENT_API_URL` is set by the Static Web Apps workflow only. Without it —
+ * the GitHub Pages mirror, a local build — the JSON file is read instead. That
+ * file is a frozen snapshot for the mirror, nothing writes it any more, and it
+ * goes when the mirror is retired. A separate variable from PUBLIC_API_URL on
+ * purpose: `.env` points that at a local API for edit mode, and a local build
+ * should not fail because that API is not running.
+ *
+ * A failed fetch fails the build rather than falling back to the snapshot. A
+ * failed deploy leaves the last good site up; a silent fallback would ship
+ * months-old records and say nothing.
+ *
+ * The request carries the site's own Origin, because the API answers the site
+ * and nothing else (OriginGate) and a build has no browser to send one.
+ */
+function fromApi(type: 'projects' | 'clients', snapshot: string): Loader {
+  const api = (process.env.CONTENT_API_URL ?? '').replace(/\/+$/, '');
+  if (!api) return file(snapshot);
+
+  return {
+    name: `api-${type}`,
+    load: async ({ store, parseData, generateDigest, logger }) => {
+      const url = `${api}/api/content/${type}?pageSize=200`;
+      const response = await fetch(url, {
+        headers: { Origin: process.env.SITE_ORIGIN ?? '', Accept: 'application/json' },
+      });
+      if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+
+      const { entries } = (await response.json()) as {
+        entries: ({ id: string; slug?: string } & Record<string, unknown>)[];
+      };
+
+      store.clear();
+      for (const { id, slug: _slug, ...rest } of entries) {
+        // `filePath` is the snapshot's, so a client's `logo: '../../assets/…'`
+        // resolves against the same directory it always has.
+        const data = await parseData({ id, data: rest, filePath: snapshot });
+        store.set({ id, data, digest: generateDigest(rest), filePath: snapshot });
+      }
+      logger.info(`${entries.length} ${type} from ${api}`);
+    },
+  };
+}
 
 /** Figma "Status Label" (33:41) variants. */
 const status = z.enum(['live', 'archive', 'draft']);
@@ -251,7 +299,7 @@ const albums = defineCollection({
  * would put the current client first and say the same thing a label would.
  */
 const clients = defineCollection({
-  loader: file('./src/content/clients/clients.json'),
+  loader: fromApi('clients', 'src/content/clients/clients.json'),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -301,7 +349,7 @@ const clients = defineCollection({
  * problem → approach → result → stack → lessons learned.
  */
 const projects = defineCollection({
-  loader: file('./src/content/projects/projects.json'),
+  loader: fromApi('projects', 'src/content/projects/projects.json'),
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
