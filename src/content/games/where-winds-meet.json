@@ -2,13 +2,13 @@
   "title": "WHERE WINDS MEET",
   "platform": "PS5",
   "year": 2026,
-  "progress": 81,
+  "progress": 82,
   "playStatus": "finished",
   "current": true,
   "status": "live",
   "trophies": {
     "earned": {
-      "bronze": 30,
+      "bronze": 31,
       "silver": 14,
       "gold": 5,
       "platinum": 1
@@ -21,6 +21,6 @@
     }
   },
   "platinum": true,
-  "lastPlayedOn": "2026-09-18",
+  "lastPlayedOn": "2026-10-01",
   "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR50887_00/153b7dff-c525-48af-89d2-cccfb93d3e0d.png"
 }
