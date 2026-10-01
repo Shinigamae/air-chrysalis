@@ -1,0 +1,324 @@
+---
+import { existsSync } from 'node:fs';
+import AppShell from '@/layouts/AppShell.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import MetricStrip from '@/components/ui/MetricStrip.astro';
+import TagPanel from '@/components/ui/TagPanel.astro';
+import { resume } from '@/config/resume';
+import { site, withBase } from '@/config/site';
+
+/**
+ * /resume — the CV as a page, with the PDF it was transcribed from one press
+ * away.
+ *
+ * The page and not just the file, because a PDF is the worst way to read a
+ * resume on a phone and the one a recruiter is most likely to be holding.
+ * The PDF stays the document of record: it is what gets attached and
+ * forwarded, so the download is the first thing on the page and the last.
+ *
+ * Not in the navigation. The header is the archive's six sections, and a
+ * resume is a door out of the archive rather than a room in it — so it is
+ * linked from where a reader looking for it already is: the Workshop's
+ * GET IN TOUCH, and the footer.
+ *
+ * Printing is designed for rather than tolerated: see the print block below.
+ * A reader who prints the page gets the light ground and none of the site's
+ * chrome, which is as close to the PDF as a browser can come.
+ */
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+const month = (date: string) => {
+  const [y, m] = date.split('-');
+  return m ? `${MONTHS[Number(m) - 1]} ${y}` : y;
+};
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const pdf = withBase(resume.pdf.href);
+/*
+ * The download only shows when the file is actually in public/. The PDF is
+ * kept out of the repo until a redacted copy exists — the original carries a
+ * phone number and a home address — and a button to a 404 is worse than none.
+ */
+const hasPdf = existsSync(`public${resume.pdf.href}`);
+---
+
+<AppShell
+  title="RESUME"
+  description={`${resume.name} — ${resume.headline}, ${resume.location}. Fourteen years of delivery teams, offshore centres and systems shipped.`}
+  image="/og/resume.png"
+>
+  {/*
+    The masthead. Hero type for the name, which is the one thing on the page
+    that has to be read from across a room, and a facts panel beside it for
+    the reader who wants the answer before the story. The headline carries
+    the CODE accent — the same pair the Workshop's tab lights in, since this
+    is the Workshop's page in all but navigation.
+  */}
+  <header class="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_22rem] lg:items-end">
+    <div class="flex flex-col gap-2">
+      <p class="type-meta text-signal">CV / {month(resume.updated)}</p>
+      <h1 class="type-hero">{resume.name.toUpperCase()}</h1>
+      <p class="type-lead">
+        <span class="bg-linear-to-r from-(--color-word-code) to-(--color-word-code-end) bg-clip-text text-transparent">
+          {resume.headline}
+        </span>
+        <span class="text-muted"> · .NET engineer underneath</span>
+      </p>
+    </div>
+
+    <dl class="m-0 grid grid-cols-1 divide-y divide-line overflow-hidden rounded-standard border border-line bg-panel">
+      {
+        [
+          ['BASED IN', resume.location],
+          ['IN DELIVERY', `Since ${month(resume.experience.at(-1)!.from)}`],
+          ['FOCUS', 'Delivery · Offshore teams · .NET'],
+          ['UPDATED', month(resume.updated)],
+        ].map(([label, value]) => (
+          <div class="flex min-h-5 items-center gap-2 px-1.5">
+            <dt class="type-meta w-11 shrink-0 text-signal">{label}</dt>
+            <dd class="type-fine m-0 text-ink">{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </header>
+
+  <div class="mt-4 flex flex-wrap items-center gap-1" data-print-hide>
+    {
+      hasPdf && (
+        <>
+          <a
+            href={pdf}
+            download={resume.pdf.filename}
+            class="type-nav inline-flex h-5 items-center justify-center gap-1 rounded-compact border border-signal bg-signal/10 px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/20"
+          >
+            DOWNLOAD PDF ↓
+          </a>
+          <a
+            href={pdf}
+            target="_blank"
+            rel="noopener"
+            class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-line px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+          >
+            OPEN PDF ↗
+          </a>
+        </>
+      )
+    }
+    <button
+      type="button"
+      data-print
+      class="type-nav inline-flex h-5 cursor-pointer items-center justify-center rounded-compact border border-line bg-transparent px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+    >
+      PRINT
+    </button>
+    <a
+      href={site.contact.href}
+      rel="me noopener"
+      target="_blank"
+      class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-line px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+    >
+      {site.contact.label.toUpperCase()} ↗
+    </a>
+    {
+      hasPdf && (
+        <span class="type-micro ml-1 text-muted">
+          PDF · {resume.pdf.size} · {resume.pdf.pages} PAGES
+        </span>
+      )
+    }
+  </div>
+
+  <MetricStrip metrics={resume.metrics} class="mt-5" />
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="01" title="PROFILE" />
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
+      {
+        resume.summary.map((paragraph, i) => (
+          <div class="flex flex-col gap-1">
+            <p class="type-micro text-signal">
+              {['LEADERSHIP', 'ENGINEERING', 'DELIVERY'][i]}
+            </p>
+            <p class="type-fine">{paragraph}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="02" title="ACCOMPLISHMENTS" />
+    <ol class="m-0 grid list-none grid-cols-1 gap-3 p-0 lg:grid-cols-3">
+      {
+        resume.accomplishments.map((item, i) => (
+          <li class="flex flex-col gap-1 rounded-standard border border-line bg-panel p-2">
+            <span class="type-meta text-signal">{pad(i + 1)}</span>
+            <p class="type-fine">
+              <strong class="font-semibold text-ink">{item.lead}</strong> {item.rest}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/*
+    A timeline: the period in the gutter, a rail with a node per role, and the
+    role beside it. The rail is what says "one career, in order" — three
+    stacked blocks would read as three unrelated jobs.
+  */}
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="03" title="EXPERIENCE" />
+    <ol class="m-0 flex list-none flex-col p-0">
+      {
+        resume.experience.map((role, i) => (
+          <li class="grid grid-cols-[1rem_1fr] gap-x-2 md:grid-cols-[9rem_1rem_1fr]">
+            <p class="type-meta col-start-2 pb-0.5 md:col-start-1 md:pt-0.5 md:pb-0 md:text-right">
+              {month(role.from)} — {role.to ? month(role.to) : 'PRESENT'}
+            </p>
+            <div
+              aria-hidden="true"
+              class="relative col-start-1 row-span-2 row-start-1 flex justify-center md:col-start-2"
+            >
+              <span
+                class:list={[
+                  'absolute inset-y-0 w-px bg-line',
+                  i === 0 && 'top-1',
+                  i === resume.experience.length - 1 && 'bottom-auto h-1',
+                ]}
+              />
+              <span
+                class:list={[
+                  'relative mt-1 size-1 rounded-full border',
+                  role.to ? 'border-line bg-panel' : 'border-signal bg-signal',
+                ]}
+              />
+            </div>
+            <div class="col-start-2 flex flex-col gap-1 pb-5 md:col-start-3 md:row-start-1">
+              <div class="flex flex-col">
+                <h3 class="type-title">{role.title}</h3>
+                <p class="type-caption">
+                  {role.company} · {role.location}
+                </p>
+              </div>
+              <ul class="m-0 flex list-none flex-col gap-0.5 p-0">
+                {role.points.map((point) => (
+                  <li class="type-fine flex gap-1">
+                    <span aria-hidden="true" class="text-muted">—</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* No dates, and in name order — see the note at the top of src/config/resume.ts. */}
+  <section class="mt-3 flex flex-col gap-3">
+    <SectionHeader index="04" title="KEY PROJECTS" />
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {
+        resume.projects.map((project) => (
+          <article class="flex flex-col gap-1.5 rounded-standard border border-line bg-panel p-2">
+            <div class="flex flex-col gap-0.5">
+              <p class="type-micro text-signal">{project.domain.toUpperCase()}</p>
+              <h3 class="type-title">{project.name}</h3>
+              <p class="type-meta">{project.role}</p>
+            </div>
+            {project.summary.map((paragraph) => (
+              <p class="type-fine">{paragraph}</p>
+            ))}
+            <ul class="m-0 mt-auto flex list-none flex-wrap gap-0.5 border-t border-line p-0 pt-1.5">
+              {project.keywords.map((keyword) => (
+                <li class="inline-flex h-2.5 items-center rounded-compact border border-line px-1 font-mono text-micro font-medium tracking-wide text-ink">
+                  {keyword}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="05" title="SKILLS" />
+    <TagPanel groups={resume.skills} keyWidth="sm:w-12" />
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3" data-print-hide>
+    <div
+      class="flex flex-col gap-2 rounded-standard border border-line bg-panel p-3 md:flex-row md:items-center md:justify-between"
+    >
+      <p class="type-caption max-w-[60ch]">
+        {
+          hasPdf
+            ? `The PDF is the same resume — the version to attach or forward. For anything else, ${site.contact.label} is where I answer.`
+            : `For a copy to attach or forward, or anything else, ${site.contact.label} is where I answer.`
+        }
+      </p>
+      <div class="flex shrink-0 flex-wrap gap-1">
+        {
+          hasPdf && (
+            <a
+              href={pdf}
+              download={resume.pdf.filename}
+              class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-signal px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/10"
+            >
+              DOWNLOAD PDF ↓
+            </a>
+          )
+        }
+        <a
+          href={withBase('/workshop')}
+          class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-line px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+        >
+          SEE THE WORKSHOP →
+        </a>
+      </div>
+    </div>
+  </section>
+</AppShell>
+
+{/*
+  Print. The site's chrome goes, the buttons go, and the page is put on the
+  light ground for the length of the print — the dark one would either waste
+  a cartridge or, with backgrounds off, print near-white type on white paper.
+  The ground is switched through `data-theme` rather than restated here, so
+  print reads the same tokens the light theme does and cannot drift from it.
+*/}
+<style is:global>
+  @media print {
+    body > header,
+    body > footer,
+    body > a,
+    [data-print-hide] {
+      display: none !important;
+    }
+    main {
+      padding-block: 0 !important;
+    }
+    article,
+    li {
+      break-inside: avoid;
+    }
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  let previous: string | null = null;
+
+  window.addEventListener('beforeprint', () => {
+    previous = root.dataset.theme ?? null;
+    root.dataset.theme = 'light';
+  });
+  window.addEventListener('afterprint', () => {
+    if (previous) root.dataset.theme = previous;
+  });
+
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+</script>

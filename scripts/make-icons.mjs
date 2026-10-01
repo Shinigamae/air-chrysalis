@@ -12,6 +12,8 @@
  *   icon-512.png          512  web manifest, and install splash screens
  *   favicon-32.png         32  the fallback for browsers that ignore the SVG
  *   og.png          1200x630  the image LinkedIn, Slack, Discord et al. show
+ *   og/<section>.png 1200x630 the same, per section — what AppShell picks for
+ *                             any page under that section, detail pages too
  *
  * sharp comes in with Astro, which uses it for `astro:assets`, so this adds
  * no dependency of its own. If Astro ever stops shipping it, `npm i -D sharp`.
@@ -95,8 +97,87 @@ async function og() {
   console.log(`${OUT}/og.png`);
 }
 
+/*
+ * One card per section, so a pasted /workshop link says WORKSHOP rather than
+ * previewing as the home page. Written out here rather than imported from
+ * src/config/site.ts, which is TypeScript that reads `import.meta.env` and
+ * will not load under plain node. The summaries are that file's; the colour
+ * is the section's accent from tokens.css. Change one there, change it here.
+ */
+const SECTIONS = [
+  ['workshop', '02 / SECTION', 'WORKSHOP', 'Systems I design, build, and ship — and what each one taught me.', '#38bdf8'],
+  ['builds', '03 / SECTION', 'BUILDS', 'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.', '#fbbf24'],
+  ['games', '04 / SECTION', 'GAMES', '293 games, 98 platinums, and over 600 days I am not getting back.', '#a78bfa'],
+  ['books', '05 / SECTION', 'BOOKS', "135 books, 18 of them are Murakami's.", '#34d399'],
+  ['journeys', '06 / SECTION', 'JOURNEYS', 'Journeys through the world.', '#f472b6'],
+  ['resume', 'KHANH NGUYEN TUAN', 'RESUME', 'Technical project manager and .NET engineer — fourteen years of teams, offshore centres and systems shipped.', '#38bdf8'],
+];
+
+const xml = (text) =>
+  text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&apos;');
+
+/** Greedy wrap to `width` characters — mono, so characters are the measure. */
+function wrap(text, width) {
+  const lines = [];
+  let line = '';
+  for (const word of text.split(' ')) {
+    if (line && (line + ' ' + word).length > width) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = line ? `${line} ${word}` : word;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+/**
+ * A section's card: the lockup small in the corner, the section's name set
+ * large, its summary in mono under a rule in the section's own accent.
+ * Generic font stacks for the reason `og()` gives.
+ */
+async function sectionCard([slug, eyebrow, name, summary, accent]) {
+  const W = 1200;
+  const H = 630;
+  const X = 80;
+  const lockup = await sharp(LOCKUP)
+    .trim({ background: BLACK, threshold: 40 })
+    .resize({ width: 280 })
+    .toBuffer();
+
+  const lines = wrap(summary, 52).slice(0, 3);
+  const summaryTop = 430;
+  const overlay = Buffer.from(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+      <rect x="0" y="0" width="${W}" height="6" fill="${accent}"/>
+      <text x="${X}" y="250" font-family="Consolas, 'DejaVu Sans Mono', monospace"
+            font-size="26" letter-spacing="4" fill="${accent}">${xml(eyebrow)}</text>
+      <text x="${X - 6}" y="370" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+            font-size="124" font-weight="700" letter-spacing="-2" fill="#e4e4e7">${xml(name)}</text>
+      <rect x="${X}" y="395" width="120" height="4" fill="${accent}"/>
+      ${lines
+        .map(
+          (line, i) =>
+            `<text x="${X}" y="${summaryTop + 40 + i * 40}" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="28" fill="${MUTED}">${xml(line)}</text>`,
+        )
+        .join('')}
+    </svg>`);
+
+  mkdirSync(`${OUT}/og`, { recursive: true });
+  await sharp({ create: { width: W, height: H, channels: 4, background: BLACK } })
+    .composite([
+      { input: lockup, top: 70, left: X },
+      { input: overlay, top: 0, left: 0 },
+    ])
+    .png({ compressionLevel: 9 })
+    .toFile(`${OUT}/og/${slug}.png`);
+  console.log(`${OUT}/og/${slug}.png`);
+}
+
 await icon(180, 'apple-touch-icon.png');
 await icon(192, 'icon-192.png');
 await icon(512, 'icon-512.png');
 await icon(32, 'favicon-32.png', 0.9);
 await og();
+for (const section of SECTIONS) await sectionCard(section);

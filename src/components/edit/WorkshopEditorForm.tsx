@@ -46,6 +46,17 @@ interface Role {
   to?: string;
 }
 
+interface Metric {
+  value: string;
+  label: string;
+}
+
+interface Layer {
+  label: string;
+  nodes: string[];
+  link?: string;
+}
+
 interface Record_ {
   id: string;
   [key: string]: unknown;
@@ -289,6 +300,35 @@ function ProjectFields({ draft, set, str, arr }: FieldProps) {
         </Field>
       </div>
 
+      <Field label="ROLE" hint="WHO DID WHAT — “SOLO: DESIGN, BUILD AND OPERATE”, OR A TEAM SIZE AND A TITLE.">
+        {(id) => (
+          <TextInput id={id} value={str('role')} onChange={(v) => set('role', v || undefined)} />
+        )}
+      </Field>
+
+      <div className="grid grid-cols-2 gap-2">
+        <Field label="FROM" hint="YYYY OR YYYY-MM">
+          {(id) => (
+            <TextInput
+              id={id}
+              value={str('from')}
+              placeholder="YYYY-MM"
+              onChange={(v) => set('from', v || undefined)}
+            />
+          )}
+        </Field>
+        <Field label="TO" hint="EMPTY WHILE IT IS STILL BEING WORKED ON">
+          {(id) => (
+            <TextInput
+              id={id}
+              value={str('to')}
+              placeholder="now"
+              onChange={(v) => set('to', v || undefined)}
+            />
+          )}
+        </Field>
+      </div>
+
       {/* The case-study pattern, in the order the page renders it. */}
       <Field label="PROBLEM">
         {(id) => (
@@ -306,12 +346,33 @@ function ProjectFields({ draft, set, str, arr }: FieldProps) {
         )}
       </Field>
 
+      <MetricFields draft={draft} set={set} />
+      <LayerFields draft={draft} set={set} />
+
       <Field label="STACK">
         {() => (
           <StringList
             values={arr('stack')}
             onChange={(v) => set('stack', v)}
             placeholder="Add a technology…"
+          />
+        )}
+      </Field>
+      <Field label="DESIGN">
+        {() => (
+          <StringList
+            values={arr('design')}
+            onChange={(v) => set('design', v)}
+            placeholder="Add a pattern or design decision…"
+          />
+        )}
+      </Field>
+      <Field label="KEYWORDS">
+        {() => (
+          <StringList
+            values={arr('keywords')}
+            onChange={(v) => set('keywords', v)}
+            placeholder="Add a keyword…"
           />
         )}
       </Field>
@@ -325,6 +386,136 @@ function ProjectFields({ draft, set, str, arr }: FieldProps) {
         )}
       </Field>
     </>
+  );
+}
+
+const smallInput =
+  'type-fine w-full rounded-compact border border-line bg-well px-1 py-1 text-ink focus:border-signal focus:outline-none';
+
+function MetricFields({ draft, set }: Pick<FieldProps, 'draft' | 'set'>) {
+  const metrics: Metric[] = Array.isArray(draft.metrics) ? (draft.metrics as Metric[]) : [];
+  const setMetrics = (next: Metric[]) => set('metrics', next);
+  const patch = (index: number, change: Partial<Metric>) =>
+    setMetrics(metrics.map((m, i) => (i === index ? { ...m, ...change } : m)));
+
+  return (
+    <Field label="METRICS" hint="THREE OR FOUR NUMBERS THAT GIVE THE SCALE. “~500” AND “$0” ARE FINE.">
+      {() => (
+        <div className="flex flex-col gap-1">
+          {metrics.map((metric, index) => (
+            <div key={index} className="grid grid-cols-[6rem_1fr_auto] items-center gap-1">
+              <input
+                type="text"
+                value={metric.value}
+                placeholder="41"
+                aria-label="Metric value"
+                onChange={(event) => patch(index, { value: event.target.value })}
+                className={smallInput}
+              />
+              <input
+                type="text"
+                value={metric.label}
+                placeholder="bot commands"
+                aria-label="Metric label"
+                onChange={(event) => patch(index, { label: event.target.value })}
+                className={smallInput}
+              />
+              <button
+                type="button"
+                onClick={() => setMetrics(metrics.filter((_, i) => i !== index))}
+                className={buttonTone.plain}
+                aria-label="Remove metric"
+              >
+                ×
+              </button>
+            </div>
+          ))}
+          {metrics.length < 6 && (
+            <button
+              type="button"
+              onClick={() => setMetrics([...metrics, { value: '', label: '' }])}
+              className={buttonTone.plain}
+            >
+              + ADD METRIC
+            </button>
+          )}
+        </div>
+      )}
+    </Field>
+  );
+}
+
+/**
+ * The layers of the architecture diagram, top to bottom. Nodes are typed as one
+ * comma-separated line — a layer rarely has more than three, and a nested list
+ * editor per layer would be most of this form.
+ */
+function LayerFields({ draft, set }: Pick<FieldProps, 'draft' | 'set'>) {
+  const layers: Layer[] = Array.isArray(draft.architecture) ? (draft.architecture as Layer[]) : [];
+  const setLayers = (next: Layer[]) => set('architecture', next);
+  const patch = (index: number, change: Partial<Layer>) =>
+    setLayers(layers.map((l, i) => (i === index ? { ...l, ...change } : l)));
+
+  return (
+    <Field
+      label="ARCHITECTURE"
+      hint="ONE ROW PER LAYER, TOP TO BOTTOM. NODES COMMA-SEPARATED; THE LINK LABELS THE ARROW TO THE NEXT LAYER."
+    >
+      {() => (
+        <div className="flex flex-col gap-1">
+          {layers.map((layer, index) => (
+            <div key={index} className="grid grid-cols-[6rem_1fr_1fr_auto] items-center gap-1">
+              <input
+                type="text"
+                value={layer.label}
+                placeholder="API"
+                aria-label="Layer label"
+                onChange={(event) => patch(index, { label: event.target.value })}
+                className={smallInput}
+              />
+              <input
+                type="text"
+                value={layer.nodes.join(', ')}
+                placeholder=".NET API, Role checks"
+                aria-label="Layer nodes"
+                onChange={(event) =>
+                  patch(index, {
+                    nodes: event.target.value
+                      .split(',')
+                      .map((node) => node.trimStart())
+                      .filter((node, i, all) => node !== '' || i === all.length - 1),
+                  })
+                }
+                className={smallInput}
+              />
+              <input
+                type="text"
+                value={layer.link ?? ''}
+                placeholder="link to the next layer"
+                aria-label="Link to the next layer"
+                onChange={(event) => patch(index, { link: event.target.value || undefined })}
+                className={smallInput}
+              />
+              <button
+                type="button"
+                onClick={() => setLayers(layers.filter((_, i) => i !== index))}
+                className={buttonTone.plain}
+                aria-label="Remove layer"
+              >
+                ×
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => setLayers([...layers, { label: '', nodes: [] }])}
+            className={buttonTone.plain}
+          >
+            + ADD LAYER
+          </button>
+        </div>
+      )}
+    </Field>
   );
 }
 
@@ -471,7 +662,11 @@ function initial(kind: Kind, record: Record_ | null): Record<string, unknown> {
         problem: '',
         approach: '',
         result: '',
+        metrics: [],
+        architecture: [],
         stack: [],
+        design: [],
+        keywords: [],
         lessons: [],
         status: 'live',
       }

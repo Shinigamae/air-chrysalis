@@ -11,7 +11,7 @@
  * is not synced from Goodreads.
  */
 import { pickQuote } from '@/config/quotes';
-import { site } from '@/config/site';
+import { site, withBase } from '@/config/site';
 
 interface Props {
   note?: string;
@@ -46,7 +46,13 @@ const quote = pickQuote();
         destination — it belongs on the line that already says who made this and
         which version it is.
       */}
-      <span class="type-meta flex items-center gap-3">
+      <span class="type-meta flex flex-wrap items-center gap-3">
+        <a
+          href={withBase('/resume')}
+          class="transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:text-ink"
+        >
+          RESUME
+        </a>
         <a
           href={site.contact.href}
           rel="me noopener"

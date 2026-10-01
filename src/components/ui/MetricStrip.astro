@@ -1,0 +1,35 @@
+---
+/**
+ * A project's scale in three or four numbers — the line a reader skimming
+ * the page actually reads.
+ *
+ * Values are strings, so "~500" and "$0" can be as exact as they are true
+ * and no more. The figure is set large and the label small, because the
+ * number is the claim and the label only says what it counts.
+ */
+interface Props {
+  metrics: readonly { value: string; label: string }[];
+  class?: string;
+}
+
+const { metrics, class: className = '' }: Props = Astro.props;
+---
+
+{
+  metrics.length > 0 && (
+    <dl
+      class:list={[
+        'm-0 grid grid-cols-2 overflow-hidden rounded-standard border border-line bg-panel',
+        metrics.length >= 4 ? 'md:grid-cols-4' : metrics.length === 3 ? 'md:grid-cols-3' : '',
+        className,
+      ]}
+    >
+      {metrics.map((metric) => (
+        <div class="flex flex-col-reverse gap-0.5 border-line px-2 py-1.5 [&:not(:first-child)]:border-l max-md:[&:nth-child(odd)]:border-l-0 max-md:[&:nth-child(n+3)]:border-t">
+          <dt class="type-micro text-muted">{metric.label.toUpperCase()}</dt>
+          <dd class="type-subhead m-0 text-ink">{metric.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}

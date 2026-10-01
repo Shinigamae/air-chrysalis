@@ -25,21 +25,31 @@ interface Props {
   showTopBar?: boolean;
   /**
    * The link-preview image, as a root-relative path or an absolute URL.
-   * Defaults to the site card rendered by `npm run icons`.
+   * Defaults to the card for the page's section, rendered by `npm run icons`
+   * into public/og/ — or the site card for a page that belongs to none.
    */
   image?: string;
 }
 
-const {
-  title,
-  description = site.description,
-  topBarMeta,
-  showTopBar = true,
-  image = '/og.png',
-} = Astro.props;
-
 const pathname = stripBase(Astro.url.pathname);
 const entry = entryFor(pathname);
+/** 'WORKSHOP' -> 'workshop'. Home has no card of its own; it is the site card. */
+const section = entry && entry.href !== '/' ? entry.href.slice(1) : undefined;
+
+/*
+ * A pasted link should say which page it is. Before these defaults every page
+ * previewed as the home page — the same card and the same sentence — so a
+ * link to the Workshop read as a link to the site in general. A section's
+ * summary is its own one-line description already, and the card carries its
+ * name; a page with something more specific passes both.
+ */
+const {
+  title,
+  description = section && entry ? entry.summary : site.description,
+  topBarMeta,
+  showTopBar = true,
+  image = section ? `/og/${section}.png` : '/og.png',
+} = Astro.props;
 
 const documentTitle = title
   ? `${title} — ${site.name}`
@@ -86,7 +96,10 @@ const imageUrl = new URL(withBase(image), Astro.site).href;
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${site.name} — ${site.tagline}`} />
+    <meta
+      property="og:image:alt"
+      content={section || title ? documentTitle.toUpperCase() : `${site.name} — ${site.tagline}`}
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <slot name="head" />
     {/*

@@ -4,15 +4,92 @@
     "title": "SHINIGAMAE",
     "subtitle": "Personal digital workshop",
     "year": 2026,
+    "from": "2026-09",
+    "role": "Solo: design, build and operate",
     "problem": "Everything I make lived in five different places, none of which I owned, and none of which talked to each other.",
     "approach": "Design the language first in Figma, then build a static Astro shell against it, with a token layer strict enough that the design cannot drift silently. Five sync scripts pull the sources in and commit what they find, so no page waits on someone else's API to render.",
-    "result": "This site — 479 pages off five feeds, a dark ground and a light one, and a drift report that says when code and design have stopped agreeing.",
+    "result": "This site — 480-odd pages off five feeds, a dark ground and a light one, and a drift report that says when code and design have stopped agreeing.",
+    "metrics": [
+      {
+        "value": "5",
+        "label": "synced feeds"
+      },
+      {
+        "value": "494",
+        "label": "records"
+      },
+      {
+        "value": "480+",
+        "label": "pages"
+      },
+      {
+        "value": "2",
+        "label": "themes"
+      }
+    ],
+    "architecture": [
+      {
+        "label": "SOURCES",
+        "nodes": [
+          "Blogger",
+          "Goodreads",
+          "PlayStation Network",
+          "Flickr",
+          "Spotify"
+        ],
+        "link": "sync scripts, committed as JSON"
+      },
+      {
+        "label": "DESIGN",
+        "nodes": [
+          "Figma library",
+          "Design tokens"
+        ],
+        "link": "drift report on every check"
+      },
+      {
+        "label": "BUILD",
+        "nodes": [
+          "Astro static build",
+          "zod content schemas"
+        ],
+        "link": "static HTML"
+      },
+      {
+        "label": "EDGE",
+        "nodes": [
+          "Azure Static Web Apps",
+          "GitHub Pages mirror"
+        ],
+        "link": "edits and comments, over HTTPS"
+      },
+      {
+        "label": "API",
+        "nodes": [
+          ".NET API on App Service",
+          "PostgreSQL: overrides, audit log"
+        ]
+      }
+    ],
     "stack": [
       "Astro",
       "TypeScript",
       "Tailwind CSS",
       "Figma REST API",
       "GitHub Actions"
+    ],
+    "design": [
+      "Design tokens",
+      "Design-to-code drift checks",
+      "Static generation",
+      "Dark and light themes",
+      "Sync-and-commit feeds"
+    ],
+    "keywords": [
+      "Personal site",
+      "Archive",
+      "Design system",
+      "Content pipeline"
     ],
     "lessons": [
       "Publishing styles in Figma matters more than any sync script",
@@ -24,23 +101,115 @@
     "order": 1
   },
   {
-    "id": "build-log-pipeline",
-    "title": "BUILD LOG PIPELINE",
-    "subtitle": "Photo ingest for the model archive",
+    "id": "guild-management-platform",
+    "title": "GUILD MANAGEMENT PLATFORM",
+    "subtitle": "Roster, match records and a Discord bot for a Where Winds Meet guild",
     "year": 2026,
-    "problem": "Build photos sat on a phone in no particular order, and writing them up by hand meant they never got written up.",
-    "approach": "A small ingest step that reads EXIF, groups shots by session, and drafts an entry skeleton to edit rather than author from scratch.",
-    "result": "Drafting a build entry went from an evening to a few minutes.",
+    "from": "2026-06",
+    "role": "Solo: architecture, build and operations, for the guild",
+    "problem": "A guild of about ninety players ran on a Google Sheet that published itself as encrypted files, with the decryption key shipped in the browser bundle, so the private roster was readable by anyone who looked. Events, match footage and player stats lived in three other places on top of that.",
+    "approach": "Three parts, and one of them owns the data. An Angular site on GitHub Pages and a Discord bot both talk to a .NET 10 Minimal API over Postgres. The bot answers Discord over HTTP instead of holding a gateway connection open. Azure Functions sync live player stats from the game's own gateway, but only write when something has changed. Permissions are checked at the API, never in the client, and every design choice answers to one bill: how many hours the database is awake.",
+    "result": "Three repositories and about 500 commits in fifteen weeks, all on free-tier hosting. The guild gets Discord sign-in with three nested roles, GvG match history with footage, self-run PvP tournaments, scouting across some 6,500 opponent players, and a Discord bot with 41 commands.",
+    "metrics": [
+      {
+        "value": "3",
+        "label": "repositories"
+      },
+      {
+        "value": "~500",
+        "label": "commits"
+      },
+      {
+        "value": "41",
+        "label": "bot commands"
+      },
+      {
+        "value": "~95",
+        "label": "members"
+      }
+    ],
+    "architecture": [
+      {
+        "label": "CLIENTS",
+        "nodes": [
+          "Angular site on GitHub Pages",
+          "Discord bot, HTTP interactions"
+        ],
+        "link": "HTTPS: app JWT from Discord sign-in, or a bot key"
+      },
+      {
+        "label": "API",
+        "nodes": [
+          ".NET 10 Minimal API",
+          "Role checks per request"
+        ],
+        "link": "EF Core"
+      },
+      {
+        "label": "DATA",
+        "nodes": [
+          "PostgreSQL on Neon, scales to zero",
+          "Blob storage: change hashes"
+        ],
+        "link": "written only when something changed"
+      },
+      {
+        "label": "SYNC",
+        "nodes": [
+          "Azure Functions: timers and on-demand refresh"
+        ],
+        "link": "signed msgpack"
+      },
+      {
+        "label": "SOURCES",
+        "nodes": [
+          "Game gateway",
+          "Discord REST"
+        ]
+      }
+    ],
     "stack": [
-      ".NET",
-      "SQLite",
-      "ImageSharp"
+      "Angular",
+      "TypeScript",
+      ".NET 10",
+      "ASP.NET Core Minimal API",
+      "EF Core",
+      "PostgreSQL (Neon)",
+      "Azure Functions",
+      "Azure App Service",
+      "NetCord",
+      "SkiaSharp",
+      "GitHub Actions"
+    ],
+    "design": [
+      "Three-tier split",
+      "Server-side authorization",
+      "Role-based access control",
+      "OAuth 2.0 + JWT",
+      "Webhook-only Discord bot",
+      "Change detection",
+      "Scale-to-zero cost model",
+      "Content Security Policy",
+      "Docs generated from code"
+    ],
+    "keywords": [
+      "Community tooling",
+      "Discord",
+      "Game data",
+      "Security remediation",
+      "Data migration",
+      "Free-tier operations"
     ],
     "lessons": [
-      "The bottleneck was writing, not storage",
-      "Generating a draft to edit beats generating a finished thing"
+      "A static site cannot keep a secret from its viewers. An encryption key in the bundle is a key handed out.",
+      "On a serverless database the bill is hours awake, not queries run, so the cheapest sync is one that never wakes it.",
+      "Enforce permissions where the data lives. A role in localStorage is a suggestion anyone can edit.",
+      "A green deploy proves the deploy ran, not that anything works: a 200 means the function ran, not that data arrived.",
+      "Archive a third-party source while it is still up. The community relay that held our match history stopped resolving overnight, and our archive was the last copy.",
+      "Generate the reference from the code. The hand-written command list had gone wrong in three places at once."
     ],
-    "status": "draft",
+    "status": "live",
+    "href": "https://github.com/gamevn4rum/wwm",
     "order": 2
   },
   {
@@ -48,12 +217,24 @@
     "title": "READING TIMELINE",
     "subtitle": "Goodreads without the noise",
     "year": 2025,
+    "from": "2025",
+    "to": "2025",
+    "role": "Solo",
     "problem": "I wanted the shape of a reading year, not a feed of other people's reviews.",
     "approach": "Pull my own shelf data, reduce it to finish dates and a single personal note per book, and render it as one line.",
     "result": "A year of reading readable at a glance.",
     "stack": [
       "TypeScript",
       "D3"
+    ],
+    "design": [
+      "Data reduction",
+      "Timeline visualization"
+    ],
+    "keywords": [
+      "Reading",
+      "Data visualization",
+      "Personal data"
     ],
     "lessons": [
       "One sentence per book is more honest than a star rating",

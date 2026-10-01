@@ -305,13 +305,51 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
+    /** The sort key for the feed. The page prints `from`–`to` where they exist. */
     year: z.number().int(),
     /** Curated display order, ascending. Ties on year are not meaningful. */
     order: z.number().int().positive(),
+    /**
+     * Who did what — "Solo: design, build, operate", or a team size and a
+     * title. The first thing a reader hiring for a role looks for, and the
+     * one a case study most often leaves them to guess.
+     */
+    role: z.string().optional(),
+    /** 'YYYY' or 'YYYY-MM'. */
+    from: z.string().regex(/^\d{4}(-\d{2})?$/).optional(),
+    /** Omitted while the project is still being worked on. */
+    to: z.string().regex(/^\d{4}(-\d{2})?$/).optional(),
+    /**
+     * Three or four numbers that give the scale — members, commits, cost.
+     * `value` is a string so "~500" and "$0" can say what they mean.
+     */
+    metrics: z
+      .array(z.object({ value: z.string(), label: z.string() }))
+      .max(6)
+      .default([]),
+    /**
+     * The system as layers, top to bottom. `link` labels the connection to
+     * the layer below — a protocol, or what crosses it. Drawn by
+     * ArchitectureDiagram; a project with none simply has no diagram.
+     */
+    architecture: z
+      .array(
+        z.object({
+          label: z.string(),
+          nodes: z.array(z.string()).min(1),
+          link: z.string().optional(),
+        }),
+      )
+      .default([]),
     problem: z.string(),
     approach: z.string(),
     result: z.string(),
+    /** Technologies. The first of the three tag rows. */
     stack: z.array(z.string()).default([]),
+    /** Architecture and design patterns — how it was built rather than with what. */
+    design: z.array(z.string()).default([]),
+    /** What it is about: the domain and the kind of problem, for a reader scanning. */
+    keywords: z.array(z.string()).default([]),
     lessons: z.array(z.string()).default([]),
     status: status.default('live'),
     href: z.url().optional(),

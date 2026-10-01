@@ -3,10 +3,13 @@ import { getCollection } from 'astro:content';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
-import SpecList from '@/components/ui/SpecList.astro';
+import TagPanel from '@/components/ui/TagPanel.astro';
+import MetricStrip from '@/components/ui/MetricStrip.astro';
+import ArchitectureDiagram from '@/components/ui/ArchitectureDiagram.astro';
+import StatusLabel from '@/components/ui/StatusLabel.astro';
 import ClientCard from '@/components/ui/ClientCard.astro';
 import { byName } from '@/config/clients';
-import { entryFor, site } from '@/config/site';
+import { entryFor, site, withBase } from '@/config/site';
 import WorkshopEditor from '@/components/edit/WorkshopEditor';
 import { hasBackend } from '@/lib/api';
 
@@ -18,6 +21,11 @@ import { hasBackend } from '@/lib/api';
  * than behind a detail route, because FIGMA.md's routing list has slug pages
  * for builds, games and books only. Ordered by the curated `order` field,
  * not by year.
+ *
+ * Each case study opens with the facts a reader hiring for a role scans for —
+ * when, what state it is in, who did the work, and how big it got — before
+ * the prose. Then the architecture and the tags, the two "how" panels, and
+ * the lessons last.
  *
  * CLIENTS is who the work was for. It sits second deliberately: the projects
  * are the argument and the client list is the evidence, and a page that opens
@@ -34,10 +42,30 @@ const projects = (await getCollection('projects')).sort(
 );
 const clients = (await getCollection('clients')).sort(byName);
 const pad = (n: number) => String(n).padStart(2, '0');
+
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+/** '2026-06' -> 'JUN 2026', '2025' -> '2025'. */
+const month = (date: string) => {
+  const [y, m] = date.split('-');
+  return m ? `${MONTHS[Number(m) - 1]} ${y}` : y;
+};
+/**
+ * The span a project ran, or its year where nothing finer is recorded. An
+ * open `to` reads NOW — these are my own projects, so saying which are still
+ * moving gives nothing away. The client list below is the opposite case and
+ * prints no periods at all; see src/config/clients.ts.
+ */
+const period = ({ from, to, year }: (typeof projects)[number]['data']) => {
+  if (!from) return String(year);
+  if (to === from) return month(from);
+  return `${month(from)} — ${to ? month(to) : 'NOW'}`;
+};
 ---
 
 <AppShell
   topBarMeta={`${pad(projects.length)} PROJECTS / ${pad(clients.length)} CLIENTS`}
+  description="Case studies in systems I design, build and ship — the problem, the approach, the architecture and what each one taught me — and the clients the work was for."
+  image="/og/workshop.png"
 >
   <PageHeader
     eyebrow={`${entry.index} / ${entry.context}`}
@@ -45,8 +73,32 @@ const pad = (n: number) => String(n).padStart(2, '0');
     summary={entry.summary}
   />
 
-  <section class="mt-8 flex flex-col gap-3">
+  <section id="projects" class="mt-8 flex scroll-mt-12 flex-col gap-3">
     <SectionHeader index="01" title="PROJECTS" />
+
+    {/*
+      Shown only while a tag is chosen. It says what the list is filtered by,
+      how much of it is left, and how to get the rest back — a filter that
+      hides projects without saying so reads as projects missing.
+    */}
+    <div
+      data-tag-filter
+      hidden
+      aria-live="polite"
+      class="flex flex-wrap items-center justify-between gap-2 rounded-standard border border-signal/60 bg-signal/5 px-2 py-1"
+    >
+      <p class="type-meta m-0">
+        TAGGED <span data-tag-filter-name class="text-signal"></span>
+        <span class="text-muted"> · <span data-tag-filter-count></span></span>
+      </p>
+      <a
+        href="?#projects"
+        data-tag-filter-clear
+        class="type-micro text-signal transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:opacity-80"
+      >
+        SHOW ALL ×
+      </a>
+    </div>
   </section>
 
   {/*
@@ -59,16 +111,40 @@ const pad = (n: number) => String(n).padStart(2, '0');
   <div class="mt-3 flex flex-col gap-8">
     {
       projects.map((project, i) => (
-        <article class="flex flex-col gap-3">
+        <article
+          id={project.id}
+          data-project
+          data-tags={JSON.stringify(
+            [...project.data.stack, ...project.data.design, ...project.data.keywords].map((t) =>
+              t.toLowerCase(),
+            ),
+          )}
+          class="flex scroll-mt-12 flex-col gap-3"
+        >
           <div class="flex flex-wrap items-baseline justify-between gap-2">
             <div class="flex items-baseline gap-2">
               <span class="type-meta text-signal">{pad(i + 1)}</span>
               <h3 class="type-subhead">{project.data.title}</h3>
             </div>
-            <span class="type-meta">{project.data.year}</span>
+            <div class="flex items-center gap-1.5">
+              <span class="type-meta">{period(project.data)}</span>
+              <StatusLabel status={project.data.status} />
+            </div>
           </div>
 
-          <p class="type-caption">{project.data.subtitle}</p>
+          <div class="flex flex-col gap-0.5">
+            <p class="type-caption">{project.data.subtitle}</p>
+            {
+              project.data.role && (
+                <p class="type-meta">
+                  <span class="text-signal">ROLE</span>
+                  <span class="ml-1 text-ink">{project.data.role}</span>
+                </p>
+              )
+            }
+          </div>
+
+          <MetricStrip metrics={project.data.metrics} />
 
           <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <div class="flex flex-col gap-1">
@@ -85,13 +161,27 @@ const pad = (n: number) => String(n).padStart(2, '0');
             </div>
           </div>
 
-          <SpecList
-            items={[
-              { label: 'STACK', value: project.data.stack.join(' · ') },
-              { label: 'YEAR', value: String(project.data.year) },
+          {/*
+            The diagram and the tags side by side from `lg`: stacked, they
+            would push the lessons a screen down. Without a diagram the tags
+            take the whole row.
+          */}
+          <div
+            class:list={[
+              'grid grid-cols-1 gap-3',
+              project.data.architecture.length > 0 && 'lg:grid-cols-[3fr_2fr] lg:items-start',
             ]}
-            columns={2}
-          />
+          >
+            <ArchitectureDiagram layers={project.data.architecture} title={project.data.title} />
+            <TagPanel
+              filter
+              groups={[
+                { label: 'STACK', tags: project.data.stack },
+                { label: 'DESIGN', tags: project.data.design },
+                { label: 'KEYWORDS', tags: project.data.keywords },
+              ]}
+            />
+          </div>
 
           {
             project.data.lessons.length > 0 && (
@@ -142,7 +232,9 @@ const pad = (n: number) => String(n).padStart(2, '0');
   {/*
     The page's last word is a way to reply. Everything above is the argument;
     a reader it convinced should not have to go looking for how to say so.
-    One door, and deliberately not a form — see `site.contact`.
+    One door, and deliberately not a form — see `site.contact`. The resume
+    sits beside it as the quieter of the two: it is what a reader takes away,
+    and the message is what they do next.
   */}
   <section class="mt-8 flex flex-col gap-3">
     <SectionHeader index="03" title="GET IN TOUCH" />
@@ -153,14 +245,97 @@ const pad = (n: number) => String(n).padStart(2, '0');
         For a project, a team, or a second opinion on an architecture —{' '}
         {site.contact.label} is where I answer.
       </p>
-      <a
-        href={site.contact.href}
-        rel="me noopener"
-        target="_blank"
-        class="type-nav inline-flex h-5 shrink-0 items-center justify-center rounded-compact border border-signal px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/10"
-      >
-        MESSAGE ON {site.contact.label.toUpperCase()} ↗
-      </a>
+      <div class="flex shrink-0 flex-wrap gap-1">
+        <a
+          href={withBase('/resume')}
+          class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-line px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+        >
+          READ THE RESUME →
+        </a>
+        <a
+          href={site.contact.href}
+          rel="me noopener"
+          target="_blank"
+          class="type-nav inline-flex h-5 items-center justify-center rounded-compact border border-signal px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/10"
+        >
+          MESSAGE ON {site.contact.label.toUpperCase()} ↗
+        </a>
+      </div>
     </div>
   </section>
 </AppShell>
+
+<script>
+  /*
+   * The tag filter. Every chip is already a link to `?tag=…`, but a static
+   * page has no server to filter on, so the reload alone would show
+   * everything — this script is what reads the parameter, on load and on
+   * every press, and keeps the URL shareable as it goes.
+   *
+   * One namespace for all three rows: a reader pressing "Angular" wants the
+   * projects that used it, not to know which row it was filed under.
+   */
+  const bar = document.querySelector<HTMLElement>('[data-tag-filter]');
+  const name = document.querySelector<HTMLElement>('[data-tag-filter-name]');
+  const count = document.querySelector<HTMLElement>('[data-tag-filter-count]');
+  const projects = [...document.querySelectorAll<HTMLElement>('[data-project]')];
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>('a[data-tag]')];
+
+  const tagsOf = (el: HTMLElement): string[] => {
+    try {
+      return JSON.parse(el.dataset.tags ?? '[]');
+    } catch {
+      return [];
+    }
+  };
+
+  function apply(raw: string | null) {
+    const tag = raw?.trim().toLowerCase() || null;
+    let shown = 0;
+    for (const project of projects) {
+      const match = !tag || tagsOf(project).includes(tag);
+      project.hidden = !match;
+      if (match) shown += 1;
+    }
+    for (const chip of chips) {
+      if (tag && chip.dataset.tag === tag) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    }
+    if (bar && name && count) {
+      bar.hidden = !tag;
+      // The tag as the chip spells it, not the lower-cased key.
+      name.textContent = (chips.find((c) => c.dataset.tag === tag)?.textContent ?? raw ?? '').trim();
+      count.textContent = `${shown} OF ${projects.length} PROJECTS`;
+    }
+  }
+
+  function go(tag: string | null) {
+    const url = new URL(window.location.href);
+    if (tag) url.searchParams.set('tag', tag);
+    else url.searchParams.delete('tag');
+    url.hash = 'projects';
+    history.pushState(null, '', url);
+    apply(tag);
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  for (const chip of chips) {
+    chip.addEventListener('click', (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+      event.preventDefault();
+      // A second press on the chosen tag lets go of it.
+      go(chip.getAttribute('aria-current') === 'true' ? null : (chip.textContent ?? '').trim());
+    });
+  }
+
+  document.querySelector('[data-tag-filter-clear]')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    go(null);
+  });
+
+  window.addEventListener('popstate', () =>
+    apply(new URLSearchParams(window.location.search).get('tag')),
+  );
+
+  apply(new URLSearchParams(window.location.search).get('tag'));
+</script>

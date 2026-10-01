@@ -1,0 +1,78 @@
+---
+/**
+ * A project's architecture as layers, top to bottom, with what crosses
+ * between each pair written on the rule that joins them.
+ *
+ * HTML and not SVG, on purpose. The node labels are real sentences of
+ * different lengths, and boxes that wrap are what a phone needs — an SVG of
+ * fixed boxes either shrinks its text past reading or scrolls sideways. The
+ * layered shape is also the honest one for these systems: each is a stack
+ * of tiers, not a graph, so a diagram that drew it as a graph would be
+ * drawing something that is not there.
+ *
+ * The connectors have no arrowheads. Most of these links carry traffic both
+ * ways, and an arrow would claim a direction the label does not.
+ */
+interface Props {
+  layers: readonly { label: string; nodes: readonly string[]; link?: string }[];
+  /** For the accessible name, e.g. "GUILD MANAGEMENT PLATFORM". */
+  title: string;
+  class?: string;
+}
+
+const { layers, title, class: className = '' }: Props = Astro.props;
+
+// The editor keeps a trailing empty node while someone is still typing.
+const rows = layers
+  .map((layer) => ({ ...layer, nodes: layer.nodes.map((n) => n.trim()).filter(Boolean) }))
+  .filter((layer) => layer.nodes.length > 0);
+
+// A text version for screen readers, which the boxes are not.
+const described = rows
+  .map((layer, i) => {
+    const next = rows[i + 1];
+    const link = next && layer.link ? `, connected to ${next.label.toLowerCase()} by ${layer.link}` : '';
+    return `${layer.label}: ${layer.nodes.join(', ')}${link}.`;
+  })
+  .join(' ');
+---
+
+{
+  rows.length > 0 && (
+    <figure
+      class:list={['m-0 flex flex-col rounded-standard border border-line bg-panel p-2', className]}
+    >
+      <figcaption class="type-micro mb-1.5 text-signal">ARCHITECTURE</figcaption>
+      <p class="sr-only">Architecture of {title}. {described}</p>
+
+      <ol aria-hidden="true" class="m-0 flex list-none flex-col p-0">
+        {rows.map((layer, i) => (
+          <li class="flex flex-col">
+            <div class="grid grid-cols-[4.5rem_1fr] items-start gap-1.5 sm:grid-cols-[5.5rem_1fr]">
+              <span class="type-micro pt-0.5 text-muted">{layer.label}</span>
+              <div class="flex flex-wrap gap-0.5">
+                {layer.nodes.map((node) => (
+                  <span class="type-fine inline-flex min-h-3 items-center rounded-compact border border-line bg-well px-1 py-0.5 text-ink">
+                    {node}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {i < rows.length - 1 && (
+              <div class="grid grid-cols-[4.5rem_1fr] gap-1.5 sm:grid-cols-[5.5rem_1fr]">
+                <span />
+                <div class="flex min-h-3 items-stretch gap-1 pl-1.5">
+                  <span class="w-px shrink-0 bg-signal/50" />
+                  {layer.link && (
+                    <span class="type-micro self-center py-0.5 text-muted">{layer.link}</span>
+                  )}
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    </figure>
+  )
+}

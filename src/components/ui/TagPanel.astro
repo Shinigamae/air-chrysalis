@@ -1,0 +1,72 @@
+---
+/**
+ * A project's tags, grouped: what it was built with, how it was built, and
+ * what it is about.
+ *
+ * Rows rather than one mixed cloud. "PostgreSQL" and "Server-side
+ * authorization" are different kinds of claim, and a reader scanning for one
+ * should not have to sort them out of the other.
+ *
+ * Shaped like SpecList (same panel, hairlines and cyan key) but not built
+ * from SpecRow: that row is a fixed 40px for a single value, and a row of
+ * chips has to be free to wrap. The chips are the 20px height that
+ * PlatformTags and StatusLabel share.
+ *
+ * With `filter` set, each chip is a link to `?tag=…` and carries `data-tag`,
+ * which the Workshop's filter script reads. A link rather than a button so
+ * the filtered view has a URL — one to send someone, and one a middle-click
+ * opens in a tab of its own.
+ */
+interface Props {
+  groups: readonly { label: string; tags: readonly string[] }[];
+  filter?: boolean;
+  /** The key column's width, for labels longer than KEYWORDS. */
+  keyWidth?: string;
+  class?: string;
+}
+
+const { groups, filter = false, keyWidth = 'sm:w-10', class: className = '' }: Props = Astro.props;
+
+const CHIP =
+  'inline-flex h-2.5 items-center rounded-compact border border-line px-1 font-mono text-micro font-medium tracking-wide text-ink';
+const rows = groups.filter((group) => group.tags.length > 0);
+---
+
+{
+  rows.length > 0 && (
+    <dl
+      class:list={[
+        'm-0 flex flex-col divide-y divide-line overflow-hidden rounded-standard border border-line bg-panel',
+        className,
+      ]}
+    >
+      {rows.map((row) => (
+        <div class="flex flex-col gap-1 px-1.5 py-1.5 sm:flex-row sm:items-baseline sm:gap-4">
+          <dt class:list={['type-meta shrink-0 text-signal', keyWidth]}>{row.label}</dt>
+          <dd class="m-0">
+            <ul class="m-0 flex list-none flex-wrap gap-0.5 p-0">
+              {row.tags.map((tag) =>
+                filter ? (
+                  <li class="flex">
+                    <a
+                      href={`?tag=${encodeURIComponent(tag)}#projects`}
+                      data-tag={tag.toLowerCase()}
+                      class:list={[
+                        CHIP,
+                        'transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal aria-[current=true]:border-signal aria-[current=true]:bg-signal/10 aria-[current=true]:text-signal',
+                      ]}
+                    >
+                      {tag}
+                    </a>
+                  </li>
+                ) : (
+                  <li class={CHIP}>{tag}</li>
+                ),
+              )}
+            </ul>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
