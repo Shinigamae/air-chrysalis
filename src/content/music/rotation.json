@@ -17,14 +17,14 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-06T16:57:48.294Z",
+  "syncedAt": "2026-10-07T17:34:18.169Z",
   "playlists": [
     {
       "id": "2GOwJvLIekuTZjLOL2jhMq",
       "name": "SHNINDIE",
       "description": "",
       "url": "https://open.spotify.com/playlist/2GOwJvLIekuTZjLOL2jhMq",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84651bdff210a58eef8ae120e0",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84651bdff210a58eef8ae120e0",
       "playedAt": "2026-10-06T02:43:21.580Z",
       "trackCount": 37,
       "tracks": [
@@ -232,7 +232,7 @@
       "name": "SHNEDMMS",
       "description": "",
       "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
       "playedAt": "2026-10-05T15:26:28.762Z",
       "trackCount": 40,
       "tracks": [
@@ -457,7 +457,7 @@
       "name": "SHNLNKPK",
       "description": "",
       "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
       "playedAt": "2026-10-05T09:42:41.010Z",
       "trackCount": 38,
       "tracks": [
