@@ -13,8 +13,10 @@ export const site = {
    */
   name: 'SHINIGAMAE',
   tagline: 'CREATE, PLAY, SLAY, ELATE',
+  /** The professional line — the home page's title and its first heading. */
+  role: 'Technical Project Manager & Software Engineer',
   description:
-    'A personal digital workshop and archive — things made, played, read, and shipped.',
+    'Technical Project Manager and software engineer focused on technical delivery, engineering leadership, software architecture, and building things worth keeping.',
   /** Rendered as the ↗ in the header. */
   external: {
     label: 'GitHub',
@@ -53,6 +55,12 @@ export interface NavEntry {
    * rather than falling back to the cyan and reading as a second WORKSHOP.
    */
   accent: string;
+  /**
+   * The header group this page sits under, by the group's href. The four
+   * archives and NOW belong to LIFESTYLE: the header shows the group, and the
+   * page itself is reached from its menu.
+   */
+  group?: string;
 }
 
 export const navigation: readonly NavEntry[] = [
@@ -61,58 +69,116 @@ export const navigation: readonly NavEntry[] = [
     href: '/',
     index: '01',
     context: 'HELLO',
-    summary: 'Engineer by trade. The rest is to recreate.',
+    summary: 'I lead software teams, design systems, and still build things.',
     accent: 'code',
   },
   {
     label: 'WORKSHOP',
     href: '/workshop',
     index: '02',
-    context: 'SECTION',
-    summary: 'Systems I design, build, and ship — and what each one taught me.',
+    context: 'WORK',
+    summary: 'Systems I design, build, lead, and ship — and what each one taught me.',
     accent: 'code',
+  },
+  {
+    label: 'LIFESTYLE',
+    href: '/lifestyle',
+    index: '03',
+    context: 'SECTION',
+    summary: 'The things I build, play, read, collect, explore, and obsess over.',
+    accent: 'life',
   },
   {
     label: 'BUILDS',
     href: '/builds',
     index: '03',
-    context: 'SECTION',
+    context: 'LIFESTYLE',
     summary:
       'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.',
     accent: 'build',
+    group: '/lifestyle',
   },
   {
     label: 'GAMES',
     href: '/games',
-    index: '04',
-    context: 'SECTION',
+    index: '03',
+    context: 'LIFESTYLE',
     summary: '293 games, 98 platinums, and over 600 days I am not getting back.',
     accent: 'play',
+    group: '/lifestyle',
   },
   {
     label: 'BOOKS',
     href: '/books',
-    index: '05',
-    context: 'SECTION',
+    index: '03',
+    context: 'LIFESTYLE',
     summary: "135 books, 18 of them are Murakami's.",
     accent: 'read',
+    group: '/lifestyle',
   },
   {
     label: 'JOURNEYS',
     href: '/journeys',
-    index: '06',
-    context: 'SECTION',
+    index: '03',
+    context: 'LIFESTYLE',
     summary: 'Journeys through the world.',
     accent: 'journeys',
+    group: '/lifestyle',
+  },
+  {
+    label: 'NOW',
+    href: '/now',
+    index: '03',
+    context: 'LIFESTYLE',
+    summary: 'What is on the desk, the shelf and the speakers this week.',
+    accent: 'life',
+    group: '/lifestyle',
+  },
+  {
+    label: 'ABOUT',
+    href: '/about',
+    index: '04',
+    context: 'SECTION',
+    summary: 'Why I think and build this way.',
+    accent: 'code',
+  },
+  {
+    label: 'RESUME',
+    href: '/resume',
+    index: '05',
+    context: 'RECORD',
+    summary:
+      'Technical project manager and .NET engineer — teams, offshore centres and systems shipped.',
+    accent: 'code',
   },
 ] as const;
 
 /**
- * Header navigation omits HOME — the brand lockup is the home link, as in
- * the Figma header. HOME still exists in `navigation` for page metadata and
- * for the mobile menu, which lists every destination explicitly.
+ * The header: four destinations and the resume, per the redesign spec. WORK
+ * is the label a recruiter scans for; the page it opens still calls itself
+ * the Workshop. LIFESTYLE carries its pages as a menu, so a reader can go
+ * straight to the games without passing the hub.
  */
-export const headerNavigation = navigation.filter((entry) => entry.href !== '/');
+export interface NavGroup {
+  label: string;
+  href: string;
+  accent?: string;
+  children: readonly NavEntry[];
+}
+
+const groupOf = (label: string, href: string, accent?: string): NavGroup => ({
+  label,
+  href,
+  accent,
+  children: navigation.filter((entry) => entry.group === href),
+});
+
+export const headerNavigation: readonly NavGroup[] = [
+  groupOf('WORK', '/workshop', 'code'),
+  groupOf('LIFESTYLE', '/lifestyle', 'life'),
+  groupOf('ABOUT', '/about', 'code'),
+  groupOf('RESUME', '/resume', 'code'),
+];
 
 /*
  * Base-path handling.
@@ -173,4 +239,12 @@ export function isActive(pathname: string, href: string): boolean {
 export function entryFor(pathname: string): NavEntry | undefined {
   const path = stripBase(pathname);
   return navigation.find((entry) => isActive(path, entry.href));
+}
+
+/** A group is lit on its own page and on any page filed under it. */
+export function isGroupActive(pathname: string, group: NavGroup): boolean {
+  return (
+    isActive(pathname, group.href) ||
+    group.children.some((child) => isActive(pathname, child.href))
+  );
 }

@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import StatusPanel from '@/components/ui/StatusPanel.astro';
+import Rotation from '@/components/ui/Rotation.astro';
+import StatusEditor from '@/components/edit/StatusEditor';
+import { currentStatus, type StatusItem } from '@/config/home';
+import { section as rotationSection } from '@/config/music';
+import { entryFor } from '@/config/site';
+import { hasBackend } from '@/lib/api';
+
+/**
+ * /now — what is happening this week. The status panel, read the same way
+ * the homepage reads it, and the full music shelf the homepage only points at.
+ * No client and no engagement: "working on" here is the hobby desk, never an
+ * account.
+ */
+const entry = entryFor('/now')!;
+const [games, books, music] = await Promise.all([
+  getCollection('games'),
+  getCollection('books'),
+  getCollection('music'),
+]);
+
+const playing = games.find((game) => game.data.current);
+const readingNow = books
+  .filter((book) => book.data.current)
+  .sort((a, b) => (b.data.addedOn ?? '').localeCompare(a.data.addedOn ?? ''));
+const rotation = music.find((item) => item.data.playlists.length > 0);
+
+const statusItems: StatusItem[] = [
+  currentStatus.building,
+  { label: 'PLAYING', value: playing?.data.title ?? currentStatus.idle },
+  { label: 'READING', value: readingNow[0]?.data.title ?? currentStatus.idle },
+  currentStatus.nextBuild,
+];
+---
+
+<AppShell>
+  <PageHeader eyebrow={`${entry.index} / ${entry.context}`} title={entry.label} summary={entry.summary} />
+
+  <section class="mt-8">
+    <StatusPanel label={currentStatus.label} headline={currentStatus.headline} items={statusItems} />
+    {hasBackend && (
+      <StatusEditor
+        client:idle
+        building={currentStatus.building.value}
+        nextBuild={currentStatus.nextBuild.value}
+      />
+    )}
+
+    {
+      readingNow.length > 1 && (
+        <p class="type-meta mt-2">
+          ALSO ON THE NIGHTSTAND · {readingNow.slice(1).map((book) => book.data.title).join(' · ')}
+        </p>
+      )
+    }
+  </section>
+
+  {
+    rotation && (
+      <section id="rotation" class="mt-8 scroll-mt-12">
+        <PageHeader
+          variant="section"
+          eyebrow="LISTENING"
+          title={rotationSection.title}
+          summary={rotationSection.summary}
+        />
+        <Rotation data={rotation.data} />
+      </section>
+    )
+  }
+</AppShell>

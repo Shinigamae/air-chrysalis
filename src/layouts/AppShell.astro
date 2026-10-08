@@ -51,7 +51,10 @@ const {
   image = section ? `/og/${section}.png` : '/og.png',
 } = Astro.props;
 
-const documentTitle = title
+// Home reads name-first, then the role: the line a search result shows.
+const documentTitle = pathname === '/'
+  ? `${site.name} — ${site.role}`
+  : title
   ? `${title} — ${site.name}`
   : entry
     ? `${entry.label} — ${site.name}`
@@ -64,6 +67,9 @@ const documentTitle = title
  */
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 const imageUrl = new URL(withBase(image), Astro.site).href;
+/** The canonical host serves from its root, so the path goes without a base. */
+const canonicalOrigin = import.meta.env.PUBLIC_CANONICAL_ORIGIN;
+const canonicalUrl = canonicalOrigin ? new URL(pathname, canonicalOrigin).href : undefined;
 ---
 
 {/*
@@ -92,7 +98,13 @@ const imageUrl = new URL(withBase(image), Astro.site).href;
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={documentTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={pageUrl} />
+    <meta property="og:url" content={canonicalUrl ?? pageUrl} />
+    {/*
+      Canonical only once there is a home to point at. PUBLIC_CANONICAL_ORIGIN
+      is unset until the domain is registered; set it in both deploy
+      workflows and every host names the same page as the original.
+    */}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

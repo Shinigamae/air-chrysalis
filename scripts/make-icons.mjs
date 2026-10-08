@@ -105,12 +105,15 @@ async function og() {
  * is the section's accent from tokens.css. Change one there, change it here.
  */
 const SECTIONS = [
-  ['workshop', '02 / SECTION', 'WORKSHOP', 'Systems I design, build, and ship — and what each one taught me.', '#38bdf8'],
-  ['builds', '03 / SECTION', 'BUILDS', 'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.', '#fbbf24'],
-  ['games', '04 / SECTION', 'GAMES', '293 games, 98 platinums, and over 600 days I am not getting back.', '#a78bfa'],
-  ['books', '05 / SECTION', 'BOOKS', "135 books, 18 of them are Murakami's.", '#34d399'],
-  ['journeys', '06 / SECTION', 'JOURNEYS', 'Journeys through the world.', '#f472b6'],
-  ['resume', 'KHANH NGUYEN TUAN', 'RESUME', 'Technical project manager and .NET engineer — fourteen years of teams, offshore centres and systems shipped.', '#38bdf8'],
+  ['workshop', '02 / WORK', 'WORKSHOP', 'Systems I design, build, lead, and ship — and what each one taught me.', '#38bdf8'],
+  ['lifestyle', '03 / SECTION', 'LIFESTYLE', 'The things I build, play, read, collect, explore, and obsess over.', '#fbbf24'],
+  ['now', '03 / LIFESTYLE', 'NOW', 'What is on the desk, the shelf and the speakers this week.', '#fbbf24'],
+  ['about', '04 / SECTION', 'ABOUT', 'Why I think and build this way.', '#38bdf8'],
+  ['builds', '03 / LIFESTYLE', 'BUILDS', 'Nub marks, spilled panel liner, and a growing suspicion that Bandai is overrated.', '#fbbf24'],
+  ['games', '03 / LIFESTYLE', 'GAMES', '293 games, 98 platinums, and over 600 days I am not getting back.', '#a78bfa'],
+  ['books', '03 / LIFESTYLE', 'BOOKS', "135 books, 18 of them are Murakami's.", '#34d399'],
+  ['journeys', '03 / LIFESTYLE', 'JOURNEYS', 'Journeys through the world.', '#f472b6'],
+  ['resume', 'KHANH NGUYEN TUAN', 'RESUME', 'Technical project manager and .NET engineer — teams, offshore centres and systems shipped.', '#38bdf8'],
 ];
 
 const xml = (text) =>

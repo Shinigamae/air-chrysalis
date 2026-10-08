@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
+import { career, capabilities } from '@/config/home';
 import TagPanel from '@/components/ui/TagPanel.astro';
 import MetricStrip from '@/components/ui/MetricStrip.astro';
 import ArchitectureDiagram from '@/components/ui/ArchitectureDiagram.astro';
@@ -142,8 +143,26 @@ const period = ({ from, to, year }: (typeof projects)[number]['data']) => {
                 </p>
               )
             }
+            {
+              project.data.domain && (
+                <p class="type-meta">
+                  <span class="text-signal">DOMAIN</span>
+                  <span class="ml-1 text-ink">{project.data.domain}</span>
+                </p>
+              )
+            }
           </div>
 
+          {
+            project.data.responsibility && (
+              <div class="flex flex-col gap-1">
+                <p class="type-micro text-signal">MY RESPONSIBILITY</p>
+                <p class="type-fine max-w-[80ch]">{project.data.responsibility}</p>
+              </div>
+            )
+          }
+
+          {project.data.metrics.length > 0 && <p class="type-micro -mb-2 text-signal">IMPACT</p>}
           <MetricStrip metrics={project.data.metrics} />
 
           <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
@@ -236,8 +255,33 @@ const period = ({ from, to, year }: (typeof projects)[number]['data']) => {
     sits beside it as the quieter of the two: it is what a reader takes away,
     and the message is what they do next.
   */}
+  {/*
+    Career as a progression, not a chronology — the same ladder the homepage
+    shows, from the same config. No dates: see `career` in config/home.ts.
+  */}
+  <section id="career" class="mt-8 flex scroll-mt-12 flex-col gap-3">
+    <SectionHeader index="03" title="CAREER" />
+    <ol class="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3">
+      {
+        career.steps.map((step, i) => (
+          <li class="flex flex-col gap-1 border-t border-line pt-2">
+            <span class="type-meta text-signal">{i === 0 ? 'START' : '→'}</span>
+            <p class="type-micro text-ink">{step.title}</p>
+            <p class="type-fine">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* The long form of the homepage's WHAT I DO. Grouped, not a keyword wall. */}
+  <section id="capabilities" class="mt-8 flex scroll-mt-12 flex-col gap-3">
+    <SectionHeader index="04" title="CAPABILITIES" />
+    <TagPanel keyWidth="sm:w-20" groups={capabilities.map((group) => ({ label: group.label, tags: group.items }))} />
+  </section>
+
   <section class="mt-8 flex flex-col gap-3">
-    <SectionHeader index="03" title="GET IN TOUCH" />
+    <SectionHeader index="05" title="GET IN TOUCH" />
     <div
       class="flex flex-col gap-2 rounded-standard border border-line bg-panel p-3 md:flex-row md:items-center md:justify-between"
     >

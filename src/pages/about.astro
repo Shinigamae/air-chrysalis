@@ -1,0 +1,75 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import { about } from '@/config/about';
+import { entryFor, site, withBase } from '@/config/site';
+
+/** /about — who, why, and what else. The resume says when; this says why. */
+const entry = entryFor('/about')!;
+---
+
+<AppShell>
+  <PageHeader eyebrow={`${entry.index} / ${entry.context}`} title={entry.label} summary={entry.summary} />
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="01" title="WHO I AM" />
+    {about.who.map((paragraph) => <p class="type-body max-w-[68ch]">{paragraph}</p>)}
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="02" title="PHILOSOPHY" />
+    <blockquote class="type-display m-0 max-w-[32ch] border-l-2 border-signal pl-3">
+      {about.philosophy.quote}
+    </blockquote>
+    <ul class="m-0 flex list-none flex-col gap-1 p-0">
+      {
+        about.philosophy.points.map((point) => (
+          <li class="type-body flex max-w-[68ch] gap-1">
+            <span aria-hidden="true" class="text-muted">—</span>
+            <span>{point}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="03" title="CURRENT INTERESTS" />
+    <ul class="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        about.interests.map((interest) => (
+          <li>
+            <a
+              href={withBase(interest.href)}
+              class="flex h-full flex-col gap-1 rounded-standard border border-line bg-panel p-3 no-underline transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal"
+            >
+              <span class="type-micro text-signal">{interest.label}</span>
+              <span class="type-fine">{interest.body}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-8 flex flex-col gap-3">
+    <SectionHeader index="04" title="CONTACT" />
+    <div class="flex flex-wrap gap-1">
+      <a
+        href={site.contact.href}
+        rel="me noopener"
+        target="_blank"
+        class="type-nav inline-flex h-5 items-center rounded-compact border border-signal px-2 text-signal transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-signal/10"
+      >
+        MESSAGE ON {site.contact.label.toUpperCase()} ↗
+      </a>
+      <a
+        href={withBase('/resume')}
+        class="type-nav inline-flex h-5 items-center rounded-compact border border-line px-2 text-ink transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal hover:text-signal"
+      >
+        READ THE RESUME →
+      </a>
+    </div>
+  </section>
+</AppShell>

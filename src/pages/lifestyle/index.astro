@@ -1,0 +1,58 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import PageHeader from '@/components/ui/PageHeader.astro';
+import EditorialCard from '@/components/ui/EditorialCard.astro';
+import { lifestyle, cardAction } from '@/config/home';
+import { entryFor, withBase } from '@/config/site';
+import { lifestyleStats, statFor } from '@/lib/lifestyle';
+
+/**
+ * /lifestyle — the hub for the four archives and NOW. Not a hobby section:
+ * each door is the full archive it always was, and this page only says how
+ * much is behind it.
+ */
+const entry = entryFor('/lifestyle')!;
+const stats = await lifestyleStats();
+---
+
+<AppShell topBarMeta={`ARCHIVES / ${String(lifestyle.cards.length).padStart(3, '0')}`}>
+  <PageHeader eyebrow={`${entry.index} / ${entry.context}`} title={entry.label} summary={entry.summary} />
+
+  <p class="type-body mt-3 max-w-[60ch]">
+    Work says what I can do. This says who is doing it — the models on the desk, the games
+    and books that took the evenings, and the places that were worth the flight.
+  </p>
+
+  <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      lifestyle.cards.map((card) => {
+        const stat = statFor(stats, card.href);
+        return (
+          <EditorialCard
+            kicker={card.kicker}
+            title={card.title}
+            subtitle={card.subtitle}
+            summary={card.summary}
+            meta={stat ? `${stat.value} ${stat.label}` : undefined}
+            href={withBase(card.href)}
+            action={cardAction}
+            image={card.image}
+            imageAlt=""
+            mediaLabel="PHOTOGRAPHS"
+          />
+        );
+      })
+    }
+  </div>
+
+  <a
+    href={withBase('/now')}
+    class="mt-8 flex flex-col gap-1 rounded-standard border border-line bg-panel p-3 no-underline transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal md:flex-row md:items-center md:justify-between"
+  >
+    <span class="flex flex-col gap-0.5">
+      <span class="type-micro text-signal">NOW</span>
+      <span class="type-subhead">What is on the desk, the shelf and the speakers this week.</span>
+    </span>
+    <span class="type-micro text-signal">{cardAction}</span>
+  </a>
+</AppShell>

@@ -306,6 +306,22 @@ function ProjectFields({ draft, set, str, arr }: FieldProps) {
         )}
       </Field>
 
+      <Field label="DOMAIN" hint="THE INDUSTRY OR KIND OF PRODUCT — “HEALTHCARE”, “COMMUNITY TOOLING”.">
+        {(id) => (
+          <TextInput id={id} value={str('domain')} onChange={(v) => set('domain', v || undefined)} />
+        )}
+      </Field>
+
+      <Field label="MY RESPONSIBILITY" hint="WHAT I PERSONALLY OWNED, IN A SENTENCE OR TWO.">
+        {(id) => (
+          <TextArea
+            id={id}
+            value={str('responsibility')}
+            onChange={(v) => set('responsibility', v || undefined)}
+          />
+        )}
+      </Field>
+
       <div className="grid grid-cols-2 gap-2">
         <Field label="FROM" hint="YYYY OR YYYY-MM">
           {(id) => (

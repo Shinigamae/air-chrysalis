@@ -2,51 +2,47 @@
 import { getCollection } from 'astro:content';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
-import EditorialCard from '@/components/ui/EditorialCard.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
-import Rotation from '@/components/ui/Rotation.astro';
 import SocialCard from '@/components/ui/SocialCard.astro';
 import StatusEditor from '@/components/edit/StatusEditor';
-import { hero, currentStatus, selectedWork, cardAction, type StatusItem } from '@/config/home';
-import { section as rotationSection } from '@/config/music';
-import { section as socialSection, listedProfiles } from '@/config/social';
+import {
+  hero,
+  whatIDo,
+  selectedWork,
+  career,
+  lifestyle,
+  workshopDoor,
+  contact,
+  currentStatus,
+  type StatusItem,
+} from '@/config/home';
+import { byName } from '@/config/clients';
+import { byRecency } from '@/config/music';
+import { yearsInSoftware } from '@/config/resume';
+import { listedProfiles } from '@/config/social';
 import { site, withBase } from '@/config/site';
+import { lifestyleStats, statFor } from '@/lib/lifestyle';
 import { hasBackend } from '@/lib/api';
 
 /**
- * Home — Figma "02 — Homepage" (4:3).
- *
- * No context strip: the hero sits directly on the canvas, as in the frame.
+ * Home — the redesign's funnel: identity → what I do → selected work →
+ * career → lifestyle → now → contact. Professional first, by weight as well
+ * as by order; the archive is one compact strip, and music is one card.
  */
+const [games, books, music, clients, projects] = await Promise.all([
+  getCollection('games'),
+  getCollection('books'),
+  getCollection('music'),
+  getCollection('clients'),
+  getCollection('projects'),
+]);
+const stats = await lifestyleStats();
 
 /**
  * PLAYING and READING come from the collections rather than from config. The
  * syncs already mark what is current, and a second hand-typed copy of the
- * answer only rots — this panel named a game the gaming log had long since
- * stopped calling current.
+ * answer only rots.
  */
-const [games, books, music] = await Promise.all([
-  getCollection('games'),
-  getCollection('books'),
-  getCollection('music'),
-]);
-
-/**
- * One entry, or none before the first `npm run music:sync`. The section is
- * omitted entirely rather than rendered empty — a heading over nothing reads
- * as a bug, and this is the one homepage section whose content can legitimately
- * not exist yet.
- */
-const rotation = music.find((entry) => entry.data.playlists.length > 0);
-
-/**
- * The accounts worth naming. Same shape as `rotation` above: no profiles at
- * all is not a section. What gates a card is the handle rather than a URL —
- * Discord has no username address to link to, so that card shows the name
- * you would type into its search and goes nowhere. See `@/config/social`.
- */
-const socials = listedProfiles();
-
 const playing = games.find((game) => game.data.current);
 // Several books can be on the shelf at once; the panel has room for one, so
 // it takes whichever was picked up most recently.
@@ -56,92 +52,6 @@ const reading = books
 
 // Order matters: the panel fills down each column before moving across, so
 // this is BUILDING / PLAYING, then READING / NEXT BUILD.
-/**
- * The hero words and the cards are one list read twice.
- *
- * `key` is what ties a word to its card: it goes on both, and the CSS below
- * matches them on it. Derived from the kicker rather than hand-assigned, so
- * there is no third place to keep in step.
- */
-const pairs = selectedWork.cards.map((card) => ({
-  key: card.kicker.toLowerCase(),
-  word: `${card.kicker}.`,
-  href: withBase(card.href),
-  label: card.title,
-}));
-
-/**
- * The pairing rules, one set per word, written from the same list.
- *
- * Generated rather than hand-typed because there is a rule per key and a
- * fifth section would otherwise ship with a word that lights nothing. The
- * selectors reach into EditorialCard's root element, which is why the block
- * is global — every rule is contained under `[data-pairing]`, which exists
- * on this page and nowhere else.
- *
- * `:focus-within` rather than `:focus-visible` on the pair: the card's link
- * is a child of the element carrying the key, so the card half only ever
- * matches within. A keyboard tab through the hero lights the card, and a tab
- * through the cards lights the word.
- */
-const active = (key: string) =>
-  `[data-pairing]:has([data-pair='${key}']:is(:hover, :focus-within))`;
-
-/*
- * Both halves of the effect live in this one sheet, and that is not
- * incidental. The dim started life in a scoped `<style>`, where Astro added
- * its own attribute to the selector - which outran the rule meant to light
- * the active word, and left the word you were pointing at the only dim one
- * on the page. Same sheet, same scoping, and specificity decides it the way
- * it reads.
- *
- * The dim is opacity rather than a colour change, so the three words that
- * step back stay the same ink and only recede. 0.45 keeps them legible: a
- * reader who brushes one word by accident should not lose the other three.
- *
- * Each word lights in its own colour rather than all four in the signal
- * cyan. One cyan told you that something was lit; it did not tell you which
- * of the four you were on, and those four words are the only navigation the
- * hero has. The pair is two stops from `tokens.css`, keyed by the word — so
- * the gradient across the letterform and the edge on the card it opens are
- * one reading, and a word with no pair defined still lights in the cyan.
- *
- * The fill is a clipped gradient, which means the text itself is painted
- * transparent while it is lit; `color` therefore cannot be what carries the
- * change, and the anchor transitions opacity and the glow instead. The
- * colour lands at once — on 88px type that reads as the word catching
- * light, where a fade would read as a lag.
- */
-const stops = (key: string) => ({
-  from: `var(--color-word-${key}, var(--color-signal))`,
-  to: `var(--color-word-${key}-end, var(--color-signal))`,
-});
-
-const pairingCss = [
-  `[data-pairing]:has([data-pair]:is(:hover, :focus-within)) [data-hero-word] {
-        opacity: 0.45;
-      }`,
-]
-  .concat(
-    pairs.map(({ key }) => {
-      const { from, to } = stops(key);
-      return `
-      ${active(key)} [data-hero-word][data-pair='${key}'] {
-        opacity: 1;
-        background-image: linear-gradient(100deg, ${from} 15%, ${to} 85%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        filter: drop-shadow(0 0 24px color-mix(in srgb, ${from} 30%, transparent));
-      }
-      ${active(key)} [data-pair='${key}'] article {
-        border-color: ${from};
-        box-shadow: 0 0 28px -12px color-mix(in srgb, ${from} 60%, transparent);
-      }`;
-    }),
-  )
-  .join('\n');
-
 const statusItems: StatusItem[] = [
   currentStatus.building,
   { label: 'PLAYING', value: playing?.data.title ?? currentStatus.idle },
@@ -149,21 +59,75 @@ const statusItems: StatusItem[] = [
   currentStatus.nextBuild,
 ];
 
+/** The last playlist reached for — the whole shelf lives on /now. */
+const onRotation = music.flatMap((entry) => entry.data.playlists).sort(byRecency)[0];
+
 /**
- * Who this site belongs to, for search engines — schema.org's `Person`, with
- * every linked profile in `sameAs`. It is how a search for the name can show
- * the site and the LinkedIn, GitHub and YouTube accounts as one person rather
- * than five unrelated results. Nothing reads it while the site is `noindex`;
- * it is here so going public is only a matter of dropping that tag.
- *
- * No job title and no employer, on purpose: either would say which engagement
- * is current, which the Workshop's client list is careful not to.
+ * Selected work: clients by name, then the chosen projects in the order
+ * config names them. Never by date — a dates-based order puts the current
+ * engagement first. Role titles only, as the client cards print them.
+ */
+const work = [
+  ...[...clients].sort(byName).map((client) => ({
+    name: client.data.name,
+    role: client.data.roles.map((role) => role.title).join(' · '),
+    domain: client.data.industry,
+    href: withBase(`/workshop#${client.id}`),
+  })),
+  ...selectedWork.projects.flatMap((id) => {
+    const project = projects.find((entry) => entry.id === id);
+    return project
+      ? [
+          {
+            name: project.data.title,
+            role: project.data.role,
+            domain: project.data.domain ?? project.data.subtitle,
+            href: withBase(`/workshop#${project.id}`),
+          },
+        ]
+      : [];
+  }),
+];
+
+/**
+ * The brand words, kept beside the role as the second thing read. Each still
+ * opens the section it names, and lights in that section's colour.
+ */
+const words = [workshopDoor, ...lifestyle.cards.filter((card) => card.kicker !== 'TRAVEL')].map(
+  (door) => ({
+    key: door.kicker.toLowerCase(),
+    word: `${door.kicker}.`,
+    href: withBase(door.href),
+    label: door.title,
+  }),
+);
+
+const wordCss = words
+  .map(
+    ({ key }) => `
+    [data-hero-word='${key}']:is(:hover, :focus-visible) {
+      background-image: linear-gradient(100deg, var(--color-word-${key}) 15%, var(--color-word-${key}-end) 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }`,
+  )
+  .join('\n');
+
+const socials = listedProfiles();
+const years = yearsInSoftware();
+
+/**
+ * Who this site belongs to, for search engines — schema.org's `Person`. A
+ * job title and no employer: the role is the hero's own line, and an
+ * employer or client would say which engagement is current.
  */
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   // The brand is uppercase by house style; a name is not.
   name: 'Shinigamae',
+  jobTitle: 'Technical Project Manager',
   url: new URL(withBase('/'), Astro.site).href,
   image: new URL(withBase('/icon-512.png'), Astro.site).href,
   sameAs: [
@@ -171,147 +135,218 @@ const person = {
     site.external.href,
   ],
 };
+
+const button =
+  'type-nav inline-flex h-5 w-fit items-center justify-center rounded-compact border px-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]';
+const primaryButton = `${button} border-signal text-signal hover:bg-signal/10`;
+const quietButton = `${button} border-line text-ink hover:border-signal hover:text-signal`;
+const tile =
+  'flex h-full flex-col gap-1 rounded-standard border border-line bg-panel p-3 no-underline transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)]';
 ---
 
 <AppShell showTopBar={false}>
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
-  {/*
-    The hero and the cards, in one region so `:has()` can see across them.
-    A plain wrapper: it sets no layout of its own, it only gives the pairing
-    rules something to be scoped by.
-  */}
-  <div data-pairing>
-    {/* --- Hero (4:48) ------------------------------------------------- */}
-    <section
-      class="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,570px)] lg:gap-8"
-    >
-      <div>
-        <p class="type-meta text-signal">{hero.eyebrow}</p>
-        {/*
-          Each word is the door to its own section. The accessible name says
-          which one — "CODE." alone tells a screen reader nothing about where
-          it goes, and the visible word is the wrong place to explain it.
-        */}
-        <h1 class="type-hero mt-2">
-          {
-            pairs.map(({ key, word, href, label }) => (
-              <a
-                href={href}
-                data-pair={key}
-                data-hero-word
-                aria-label={`${word} ${label}`}
-                class="block w-fit no-underline transition-[opacity,filter] duration-[var(--duration-base)] ease-[var(--ease-technical)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
-              >
-                {word}
-              </a>
-            ))
-          }
-        </h1>
+
+  {/* --- 01 Hero: the role first ------------------------------------- */}
+  <section
+    class="grid grid-cols-1 items-end gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,300px)] lg:gap-8"
+  >
+    <div class="flex flex-col gap-3">
+      <p class="type-meta text-signal">{hero.eyebrow}</p>
+      <h1 class="m-0 font-display text-[clamp(32px,5.4vw,66px)] leading-[0.98] font-medium text-ink">
+        <span class="block">{hero.title[0]}</span>
+        <span class="block bg-linear-to-r from-(--color-word-code) to-(--color-word-code-end) bg-clip-text text-transparent">
+          {hero.title[1]}
+        </span>
+      </h1>
+      <p class="type-lead max-w-[46ch]">{hero.lead}</p>
+      <p class="type-meta">
+        <span class="text-ink">{years}+ YEARS IN SOFTWARE</span> · {hero.focus}
+      </p>
+      <div class="mt-1 flex flex-wrap gap-1">
+        <a href={withBase(hero.primary.href)} class={primaryButton}>{hero.primary.label}</a>
+        <a href={withBase(hero.secondary.href)} class={quietButton}>{hero.secondary.label}</a>
       </div>
+    </div>
 
-      {/* Offset down to meet the first hero line, as in the frame (4:54 at y=196). */}
-      <div class="flex flex-col gap-2 lg:mt-8">
-        <p class="type-lead">{hero.lead}</p>
-        <p class="type-body">{hero.intro}</p>
-        <div class="mt-3">
-          <StatusPanel
-            label={currentStatus.label}
-            headline={currentStatus.headline}
-            items={statusItems}
-          />
-
-          {/* PLAYING and READING are not editable: the collections already know
-              the answer, and a hand-typed one goes stale silently. */}
-          {hasBackend && (
-            <StatusEditor
-              client:idle
-              building={currentStatus.building.value}
-              nextBuild={currentStatus.nextBuild.value}
-            />
-          )}
-        </div>
-      </div>
-    </section>
-
-    {/* --- Selected work (4:68 - 4:102) -------------------------------- */}
-    <section class="mt-8">
-      <PageHeader
-        variant="section"
-        eyebrow={selectedWork.eyebrow}
-        title={selectedWork.title}
-        summary={selectedWork.summary}
-      />
-
-      <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    {/* The brand statement, now second. Each word is a door to its section. */}
+    <div class="flex flex-col gap-2 border-line lg:border-l lg:pl-5">
+      <p class="type-display m-0 flex flex-col">
         {
-          selectedWork.cards.map((card, index) => (
-            <div data-pair={pairs[index].key} class="h-full">
-              <EditorialCard
-                kicker={card.kicker}
-                title={card.title}
-                subtitle={card.subtitle}
-                summary={card.summary}
-                href={withBase(card.href)}
-                action={cardAction}
-                image={card.image}
-                imageAlt=""
-              />
-            </div>
+          words.map(({ key, word, href, label }) => (
+            <a
+              href={href}
+              data-hero-word={key}
+              aria-label={`${word} ${label}`}
+              class="block w-fit no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
+            >
+              {word}
+            </a>
           ))
         }
+      </p>
+      <p class="type-fine">{hero.intro}</p>
+    </div>
+  </section>
+
+  {/* --- 02 What I do -------------------------------------------------- */}
+  <section class="mt-8">
+    <PageHeader variant="section" eyebrow={whatIDo.eyebrow} title={whatIDo.title} summary={whatIDo.summary} />
+    <ol class="m-0 mt-5 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2 xl:grid-cols-5">
+      {
+        whatIDo.items.map((item, i) => (
+          <li class={tile}>
+            <span class="type-meta text-signal">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="type-micro text-ink">{item.title}</h3>
+            <p class="type-fine">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* --- 03 Selected work ---------------------------------------------- */}
+  <section class="mt-8">
+    <PageHeader
+      variant="section"
+      eyebrow={selectedWork.eyebrow}
+      title={selectedWork.title}
+      summary={selectedWork.summary}
+    />
+    <ul class="m-0 mt-5 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2 lg:grid-cols-3">
+      {
+        work.map((item) => (
+          <li>
+            <a href={item.href} class={`${tile} hover:border-signal`}>
+              <h3 class="type-subhead">{item.name.toUpperCase()}</h3>
+              {item.role && <p class="type-meta text-ink">{item.role}</p>}
+              {item.domain && <p class="type-fine">{item.domain}</p>}
+              <span class="type-micro mt-auto pt-1 text-signal">READ CASE STUDY →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a href={withBase('/workshop')} class={`${quietButton} mt-3`}>{selectedWork.action}</a>
+  </section>
+
+  {/* --- 04 Career: progression, not dates ----------------------------- */}
+  <section class="mt-8">
+    <PageHeader variant="section" eyebrow={career.eyebrow} title={career.title} summary={career.summary} />
+    <ol class="m-0 mt-5 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3">
+      {
+        career.steps.map((step, i) => (
+          <li class="flex flex-col gap-1 border-t border-line pt-2">
+            <span class="type-meta text-signal">
+              {i === 0 ? 'START' : '→'}
+            </span>
+            <h3 class="type-micro text-ink">{step.title}</h3>
+            <p class="type-fine">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* --- 05 Lifestyle: compact, by design ------------------------------ */}
+  <section class="mt-8">
+    <PageHeader variant="section" eyebrow={lifestyle.eyebrow} title={lifestyle.title} summary={lifestyle.summary} />
+    <ul class="m-0 mt-5 grid list-none grid-cols-2 gap-3 p-0 lg:grid-cols-4">
+      {
+        lifestyle.cards.map((card) => {
+          const stat = statFor(stats, card.href);
+          const key = card.kicker === 'TRAVEL' ? 'journeys' : card.kicker.toLowerCase();
+          return (
+            <li>
+              <a
+                href={withBase(card.href)}
+                style={`--tile: var(--color-word-${key})`}
+                class="flex h-full flex-col gap-0.5 rounded-standard border border-line p-2 no-underline transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-[var(--tile)]"
+              >
+                <span class="type-micro text-[var(--tile)]">{card.kicker}</span>
+                <span class="type-display">{stat?.value}</span>
+                <span class="type-meta">{stat?.label}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <a href={withBase('/lifestyle')} class={`${quietButton} mt-3`}>{lifestyle.action}</a>
+  </section>
+
+  {/* --- 06 Now --------------------------------------------------------- */}
+  <section class="mt-8">
+    <PageHeader variant="section" eyebrow={currentStatus.eyebrow} title="NOW" summary="What this week looks like." />
+    <div class="mt-5 grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+      <div>
+        <StatusPanel label={currentStatus.label} headline={currentStatus.headline} items={statusItems} />
+        {/* PLAYING and READING are not editable: the collections already know
+            the answer, and a hand-typed one goes stale silently. */}
+        {hasBackend && (
+          <StatusEditor
+            client:idle
+            building={currentStatus.building.value}
+            nextBuild={currentStatus.nextBuild.value}
+          />
+        )}
       </div>
-    </section>
-  </div>
+      {
+        onRotation && (
+          <a href={withBase('/now#rotation')} class={`${tile} flex-row items-center gap-2 hover:border-signal`}>
+            {onRotation.image && (
+              <img
+                src={onRotation.image}
+                alt=""
+                width="64"
+                height="64"
+                loading="lazy"
+                class="h-8 w-8 shrink-0 rounded-compact object-cover"
+              />
+            )}
+            <span class="flex min-w-0 flex-col gap-0.5">
+              <span class="type-micro text-signal">ON ROTATION</span>
+              <span class="type-subhead truncate">{onRotation.name}</span>
+              <span class="type-micro">LISTEN →</span>
+            </span>
+          </a>
+        )
+      }
+    </div>
+    <a href={withBase('/now')} class={`${quietButton} mt-3`}>MORE ON NOW →</a>
+  </section>
 
-  {/* --- On rotation ---------------------------------------------------
-      Outside `[data-pairing]` on purpose: the hero's four words pair with
-      the four cards above, and a fifth section inside that region would be
-      dimmed by a rule it has no word to answer. */}
-  {
-    rotation && (
-      <section class="mt-8">
-        <PageHeader
-          variant="section"
-          eyebrow={rotationSection.eyebrow}
-          title={rotationSection.title}
-          summary={rotationSection.summary}
-        />
-        <Rotation data={rotation.data} />
-      </section>
-    )
-  }
+  {/* --- 07 Contact ----------------------------------------------------
+      The page's last word is a way to reply. LinkedIn rather than a form or
+      an address — see `site.contact`. The social cards sit under it as the
+      rest of the ways to find me; they leave the site, so they are
+      `SocialCard` and never say VIEW →. */}
+  <section class="mt-8">
+    <p class="type-meta text-signal">{contact.eyebrow}</p>
+    <h2 class="type-display mt-2 max-w-[26ch]">
+      {contact.title[0]} <span class="text-signal">{contact.title[1]}</span>
+    </h2>
+    <p class="type-lead mt-2">{contact.summary}</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <a href={site.contact.href} rel="me noopener" target="_blank" class={primaryButton}>
+        {site.contact.label.toUpperCase()} ↗
+      </a>
+      <a href={withBase('/resume')} class={quietButton}>RESUME →</a>
+      <a href={site.external.href} rel="me noopener" target="_blank" class={quietButton}>
+        {site.external.label.toUpperCase()} ↗
+      </a>
+    </div>
 
-  {/* --- Elsewhere -----------------------------------------------------
-      Outside `[data-pairing]` for the same reason ON ROTATION is: the hero's
-      four words pair with the four cards above, and a section inside that
-      region with no word to answer would be dimmed whenever one is hovered.
-
-      These cards leave the site, so they are `SocialCard` and not
-      `EditorialCard` — `VIEW →` means "a page of mine" everywhere else here,
-      and it would be a lie on a card that opens YouTube. */}
-  {
-    socials.length > 0 && (
-      <section class="mt-8">
-        <PageHeader
-          variant="section"
-          eyebrow={socialSection.eyebrow}
-          title={socialSection.title}
-          summary={socialSection.summary}
-        />
-
-        {/* Three across rather than Selected Work's four: six accounts in a
-            four-column row leave a ragged second line of two. A
-            plain grid of articles, as every other card grid here is — each
-            card already carries its own heading, which is the structure a
-            list would have been standing in for. */}
+    {
+      socials.length > 0 && (
         <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {socials.map((profile) => (
             <SocialCard profile={profile} />
           ))}
         </div>
-      </section>
-    )
-  }
+      )
+    }
+  </section>
 
-  <style is:inline set:html={pairingCss} />
+  <style is:inline set:html={wordCss} />
 </AppShell>

@@ -363,6 +363,10 @@ const projects = defineCollection({
      * one a case study most often leaves them to guess.
      */
     role: z.string().optional(),
+    /** The industry or kind of product — "Healthcare", "Community tooling". */
+    domain: z.string().optional(),
+    /** What I personally owned, as distinct from what the team did. */
+    responsibility: z.string().optional(),
     /** 'YYYY' or 'YYYY-MM'. */
     from: z.string().regex(/^\d{4}(-\d{2})?$/).optional(),
     /** Omitted while the project is still being worked on. */

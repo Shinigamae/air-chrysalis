@@ -42,6 +42,9 @@ export interface ResumeProject {
   keywords: string[];
 }
 
+/** When the first role began — the start of the count the site prints. */
+const FIRST_ROLE = '2011-12';
+
 export const resume = {
   name: 'Khanh Nguyen Tuan',
   headline: 'Technical Project Manager and Team Lead',
@@ -57,7 +60,7 @@ export const resume = {
   },
 
   metrics: [
-    { value: '14+', label: 'years in delivery' },
+    { value: `${yearsSince(FIRST_ROLE)}+`, label: 'years in delivery' },
     { value: '7 → 32', label: 'ODC members, one client' },
     { value: '200', label: 'developers, one programme' },
     { value: '2–12', label: 'month delivery timelines' },
@@ -119,7 +122,7 @@ export const resume = {
       title: 'Software Engineer',
       company: 'TMA Solutions',
       location: 'Ho Chi Minh City',
-      from: '2011-12',
+      from: FIRST_ROLE,
       to: '2013-02',
       points: [
         'Built software shaped by client needs and technical constraints.',
@@ -187,3 +190,15 @@ export const resume = {
     { label: 'TOOLS', tags: ['Jira', 'Confluence', 'Bitbucket', 'Trello', 'Slack', 'Teams', 'Discord'] },
   ],
 } as const;
+
+/** Whole years from a 'YYYY-MM' to the build date. */
+export function yearsSince(from: string, now = new Date()): number {
+  const [year, month] = from.split('-').map(Number);
+  return Math.floor(((now.getFullYear() - year) * 12 + now.getMonth() + 1 - month) / 12);
+}
+
+/**
+ * Whole years in software, counted at build time. The hero and the metrics
+ * both print it, and a typed number is the kind that goes stale.
+ */
+export const yearsInSoftware = () => yearsSince(FIRST_ROLE);

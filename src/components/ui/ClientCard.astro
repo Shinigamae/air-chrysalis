@@ -28,7 +28,8 @@ const roles = [...c.roles].reverse();
 ---
 
 <article
-  class="group relative flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
+  id={client.id}
+  class="group relative scroll-mt-12 flex h-full flex-col gap-1.5 rounded-standard border border-line bg-panel p-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:border-signal focus-within:border-signal"
 >
   <div
     class="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-compact border border-line bg-well"

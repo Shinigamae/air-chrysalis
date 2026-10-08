@@ -87,32 +87,37 @@ export default function MobileMenu({ entries, pathname }: MobileMenuProps) {
           </button>
         </div>
 
-        <nav aria-label="Main" className="flex flex-col">
+        <nav aria-label="Main" className="flex flex-col overflow-y-auto">
           {entries.map((entry) => {
             const active = isActive(entry.href);
-            /* The section's own accent, as in the desktop header — see
-             * NavLink for why it arrives as a variable and not a class. */
             const accent = {
               '--nav-accent': `var(--color-word-${entry.accent}, var(--color-signal))`,
             } as CSSProperties;
+            // Pages filed under a group sit indented beneath it, unnumbered —
+            // they share the group's index, and printing it five times says nothing.
+            const child = Boolean(entry.group);
             return (
               <a
                 key={entry.href}
                 href={withBase(entry.href)}
                 aria-current={active ? 'page' : undefined}
                 style={active ? accent : undefined}
-                className="flex items-baseline gap-2 border-b border-line px-2 py-3 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-panel"
+                className={`flex items-baseline gap-2 border-b border-line px-2 transition-colors duration-[var(--duration-base)] ease-[var(--ease-technical)] hover:bg-panel ${
+                  child ? 'py-1.5 pl-6' : 'py-3'
+                }`}
               >
+                {!child && (
+                  <span
+                    className={`type-meta ${
+                      active ? 'text-[var(--nav-accent,var(--color-signal))]' : ''
+                    }`}
+                  >
+                    {entry.index}
+                  </span>
+                )}
                 <span
-                  className={`type-meta ${
-                    active ? 'text-[var(--nav-accent,var(--color-signal))]' : ''
-                  }`}
-                >
-                  {entry.index}
-                </span>
-                <span
-                  className={`font-display text-title font-medium ${
-                    active ? 'text-[var(--nav-accent,var(--color-signal))]' : 'text-ink'
+                  className={`${child ? 'type-nav' : 'font-display text-title font-medium'} ${
+                    active ? 'text-[var(--nav-accent,var(--color-signal))]' : child ? 'text-muted' : 'text-ink'
                   }`}
                 >
                   {entry.label}

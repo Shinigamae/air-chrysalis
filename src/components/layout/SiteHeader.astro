@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { site, headerNavigation, isActive, withBase } from '@/config/site';
+import { site, headerNavigation, isActive, isGroupActive, withBase } from '@/config/site';
 import NavLink from './NavLink.astro';
 import SessionControl from './SessionControl';
 import ThemeToggle from './ThemeToggle.astro';
@@ -55,15 +55,38 @@ const { pathname } = Astro.props;
       </span>
     </a>
 
+    {/*
+      A group with pages under it opens a menu on hover and on focus — a
+      keyboard tab onto LIFESTYLE shows the list it is about to tab through.
+      The label is still a link to the hub, so a reader who never opens the
+      menu loses nothing.
+    */}
     <nav aria-label="Main" class="flex items-center gap-5 lg:gap-8">
       {
-        headerNavigation.map((entry) => (
-          <NavLink
-            href={withBase(entry.href)}
-            label={entry.label}
-            accent={entry.accent}
-            active={isActive(pathname, entry.href)}
-          />
+        headerNavigation.map((group) => (
+          <div class="group/menu relative">
+            <NavLink
+              href={withBase(group.href)}
+              label={group.label}
+              accent={group.accent}
+              active={isGroupActive(pathname, group)}
+            />
+            {group.children.length > 0 && (
+              <ul class="invisible absolute left-1/2 top-full z-40 m-0 flex min-w-[11rem] -translate-x-1/2 list-none flex-col gap-0.5 rounded-standard border border-line bg-panel p-1.5 opacity-0 transition-opacity duration-[var(--duration-base)] ease-[var(--ease-technical)] group-hover/menu:visible group-hover/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:opacity-100">
+                {group.children.map((child) => (
+                  <li>
+                    <NavLink
+                      href={withBase(child.href)}
+                      label={child.label}
+                      accent={child.accent}
+                      active={isActive(pathname, child.href)}
+                      class="w-full px-1"
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         ))
       }
     </nav>

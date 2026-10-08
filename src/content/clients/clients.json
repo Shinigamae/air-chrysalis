@@ -5,7 +5,7 @@
     "href": "https://bestmed.au/",
     "industry": "Aged care",
     "via": "TMA Solutions",
-    "summary": "Medication administration between pharmacies and nursing homes, started by four developers and three QAs. Eight years on the same system still ships monthly, from an offshore centre that grew to thirty-two.",
+    "summary": "Medication administration between pharmacies and nursing homes, started by four developers and three QAs. The same system shipped monthly for years, from an offshore centre that grew to thirty-two.",
     "roles": [
       { "title": "Team Lead", "from": "2017", "to": "2019" },
       { "title": "Technical Project Manager", "from": "2019" }
@@ -20,7 +20,7 @@
     "href": "https://www.menlosecurity.com/",
     "industry": "Browser security",
     "via": "TMA Solutions",
-    "summary": "The frontend of a multi-tenant platform run by banks, financial firms and the US Department of Defense. Four of us own the face of the product alongside teams in the US, UK and India, keeping production issues short-lived and the test coverage honest.",
+    "summary": "The frontend of a multi-tenant platform run by banks, financial firms and the US Department of Defense. A team of four owned the face of the product alongside teams in the US, UK and India, keeping production issues short-lived and the test coverage honest.",
     "roles": [{ "title": "Technical Project Manager", "from": "2019" }],
     "stack": ["Angular", "Automation testing", "Jenkins", "AWS", "GCP"],
     "logo": "../../assets/clients/us-security-platform-logo.png",
@@ -32,7 +32,7 @@
     "href":  "https://www.soctrip.com",
     "industry": "Social · Commerce",
     "via": "TMA Solutions",
-    "summary": "The Social module of an ecosystem that also carries e-commerce and booking, on Java microservices behind several Angular applications. As assistant architect I held the contracts between modules, the migration plan and the review standard while the team grew past two hundred. The product is no longer under active development.",
+    "summary": "The Social module of an ecosystem that also carries e-commerce and booking, on Java microservices behind several Angular applications. As assistant architect I held the contracts between modules, the migration plan and the review standard while the team grew past two hundred.",
     "roles": [{ "title": "Assistant Architect", "from": "2023", "to": "2025" }],
     "stack": ["Java", "Angular", "PostgreSQL", "Cassandra", "Neo4j", "Maven", "GitLab CI"],
     "logo": "../../assets/clients/social-network-ecosystem-logo.png",

@@ -193,6 +193,9 @@
    */
   --color-word-journeys: #f472b6; /* JOURNEYS — pink → rose   */
   --color-word-journeys-end: #fb7185;
+  /* LIFESTYLE — BUILD's amber into JOURNEYS' pink: the shelf, end to end. */
+  --color-word-life: #fbbf24;
+  --color-word-life-end: #f472b6;
 
   /*
    * Brand accents for ELSEWHERE, the homepage's fourth section — one per

@@ -109,6 +109,9 @@
   --color-word-read-end: #4d7c0f;
   --color-word-journeys: #be185d; /* JOURNEYS — pink → rose */
   --color-word-journeys-end: #be123c;
+  /* LIFESTYLE — BUILD's amber into JOURNEYS' pink: the shelf, end to end. */
+  --color-word-life: #b45309;
+  --color-word-life-end: #be185d;
 
   /* ---- Fault tones ----------------------------------------------------
    * The same four situations, re-lit for paper, and drawn from the section
