@@ -17,8 +17,203 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-07T17:34:18.169Z",
+  "syncedAt": "2026-10-08T17:37:32.239Z",
   "playlists": [
+    {
+      "id": "264jfje3IRYOdrTnKcjZ1M",
+      "name": "SHNJAPAN",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/264jfje3IRYOdrTnKcjZ1M",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84a7ced7834c3efae0bd2398c8",
+      "playedAt": "2026-10-08T01:40:31.644Z",
+      "trackCount": 38,
+      "tracks": [
+        {
+          "name": "Clan",
+          "artists": [
+            "milet"
+          ],
+          "album": "Always You",
+          "durationMs": 216293,
+          "url": "https://open.spotify.com/track/3mmffiLl1qm8rBEhu708aa"
+        },
+        {
+          "name": "KICK BACK",
+          "artists": [
+            "Kenshi Yonezu"
+          ],
+          "album": "KICK BACK",
+          "durationMs": 193495,
+          "url": "https://open.spotify.com/track/3khEEPRyBeOUabbmOPJzAG"
+        },
+        {
+          "name": "海のまにまに",
+          "artists": [
+            "YOASOBI"
+          ],
+          "album": "海のまにまに",
+          "durationMs": 255918,
+          "url": "https://open.spotify.com/track/0loZ1KfQSLJxYR0Y7dImKN"
+        },
+        {
+          "name": "ミスター",
+          "artists": [
+            "YOASOBI"
+          ],
+          "album": "ミスター",
+          "durationMs": 187000,
+          "url": "https://open.spotify.com/track/2YbNZLoiREBYZo4HeKB8Np"
+        },
+        {
+          "name": "新世界",
+          "artists": [
+            "BUMP OF CHICKEN"
+          ],
+          "album": "aurora arc",
+          "durationMs": 225676,
+          "url": "https://open.spotify.com/track/3HksEr55KOyDGjkWF8SFbh"
+        },
+        {
+          "name": "Lemon",
+          "artists": [
+            "Kenshi Yonezu"
+          ],
+          "album": "STRAY SHEEP",
+          "durationMs": 255826,
+          "url": "https://open.spotify.com/track/04TshWXkhV1qkqHzf31Hn6"
+        },
+        {
+          "name": "第ゼロ感",
+          "artists": [
+            "10-FEET"
+          ],
+          "album": "第ゼロ感",
+          "durationMs": 287991,
+          "url": "https://open.spotify.com/track/3GGOKTfxgyluPvAFnB30zE"
+        },
+        {
+          "name": "アイドル",
+          "artists": [
+            "YOASOBI"
+          ],
+          "album": "アイドル",
+          "durationMs": 213233,
+          "url": "https://open.spotify.com/track/7ovUcF5uHTBRzUpB6ZOmvt"
+        },
+        {
+          "name": "コイコガレ",
+          "artists": [
+            "milet",
+            "MAN WITH A MISSION"
+          ],
+          "album": "コイコガレ",
+          "durationMs": 215866,
+          "url": "https://open.spotify.com/track/1RtxMS6dcQuxK5y8TKh4Md"
+        },
+        {
+          "name": "絶頂讃歌",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "絶頂讃歌",
+          "durationMs": 183054,
+          "url": "https://open.spotify.com/track/4cwO2KkiUe6iTfebjmSx6y"
+        },
+        {
+          "name": "ブラウニー",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "青二才",
+          "durationMs": 209173,
+          "url": "https://open.spotify.com/track/78kZFkM3MDS1Fm89ETs0rt"
+        },
+        {
+          "name": "ビーユアセルフ",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "ビーユアセルフ",
+          "durationMs": 196488,
+          "url": "https://open.spotify.com/track/6fuPQmNR5pwfIxDKOMiTGP"
+        },
+        {
+          "name": "寄り酔い",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "寄り酔い",
+          "durationMs": 216959,
+          "url": "https://open.spotify.com/track/154Jycdld9dX9rBLE6L3v4"
+        },
+        {
+          "name": "ミミクリーマン",
+          "artists": [
+            "和ぬか",
+            "NEE"
+          ],
+          "album": "青二才",
+          "durationMs": 235800,
+          "url": "https://open.spotify.com/track/6ZoxTIfJktAWq4LRiFG0JV"
+        },
+        {
+          "name": "ニゲラ",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "青二才",
+          "durationMs": 188160,
+          "url": "https://open.spotify.com/track/2HhbIBTZWUf8MA8qJzeU5W"
+        },
+        {
+          "name": "審美眼",
+          "artists": [
+            "和ぬか"
+          ],
+          "album": "審美眼",
+          "durationMs": 171906,
+          "url": "https://open.spotify.com/track/41BaivhYY4KjzS6jSUsU89"
+        },
+        {
+          "name": "Butterfly - Digimon Adventure",
+          "artists": [
+            "Lime",
+            "로즈 패밀리"
+          ],
+          "album": "Butterfly (Digimon Adventure)",
+          "durationMs": 230035,
+          "url": "https://open.spotify.com/track/2fT7uyBaRdstwnVTiL8moD"
+        },
+        {
+          "name": "天悪",
+          "artists": [
+            "shimamo"
+          ],
+          "album": "天悪",
+          "durationMs": 201754,
+          "url": "https://open.spotify.com/track/6QVXXnFhB9xqos2aqwczhi"
+        },
+        {
+          "name": "未来島",
+          "artists": [
+            "Mori Calliope"
+          ],
+          "album": "未来島",
+          "durationMs": 201104,
+          "url": "https://open.spotify.com/track/0QZXP7ZS064QBr1ZgHUblt"
+        },
+        {
+          "name": "ざわめけ",
+          "artists": [
+            "和ぬか",
+            "Sou"
+          ],
+          "album": "審美眼",
+          "durationMs": 225400,
+          "url": "https://open.spotify.com/track/4g9v1xOpTtnO8NEMFdVPTD"
+        }
+      ]
+    },
     {
       "id": "2GOwJvLIekuTZjLOL2jhMq",
       "name": "SHNINDIE",
@@ -457,7 +652,7 @@
       "name": "SHNLNKPK",
       "description": "",
       "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
       "playedAt": "2026-10-05T09:42:41.010Z",
       "trackCount": 38,
       "tracks": [
