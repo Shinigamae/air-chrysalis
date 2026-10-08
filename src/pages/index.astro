@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import AppShell from '@/layouts/AppShell.astro';
 import PageHeader from '@/components/ui/PageHeader.astro';
 import StatusPanel from '@/components/ui/StatusPanel.astro';
@@ -72,6 +73,7 @@ const work = [
     name: client.data.name,
     role: client.data.roles.map((role) => role.title).join(' · '),
     domain: client.data.industry,
+    logo: client.data.logo,
     href: withBase(`/workshop#${client.id}`),
   })),
   ...selectedWork.projects.flatMap((id) => {
@@ -82,6 +84,7 @@ const work = [
             name: project.data.title,
             role: project.data.role,
             domain: project.data.domain ?? project.data.subtitle,
+            logo: undefined,
             href: withBase(`/workshop#${project.id}`),
           },
         ]
@@ -218,6 +221,31 @@ const tile =
         work.map((item) => (
           <li>
             <a href={item.href} class={`${tile} hover:border-signal`}>
+              {/*
+                The mark on the same light plate the Workshop's client card
+                uses — these logos are drawn for white, and Menlo's near-black
+                wordmark vanishes on the panel. Projects have no mark; the
+                slot keeps its height so the grid's titles still line up.
+              */}
+              <div class="mb-1 flex h-6 items-center">
+                {item.logo ? (
+                  <span class="flex h-full items-center rounded-compact border border-line bg-plate px-1.5">
+                    <Image
+                      src={item.logo}
+                      alt={`${item.name} logo`}
+                      height={56}
+                      densities={[1, 2]}
+                      format="webp"
+                      quality={90}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-3.5 w-auto max-w-[160px] object-contain"
+                    />
+                  </span>
+                ) : (
+                  <span class="type-micro text-muted">PERSONAL PROJECT</span>
+                )}
+              </div>
               <h3 class="type-subhead">{item.name.toUpperCase()}</h3>
               {item.role && <p class="type-meta text-ink">{item.role}</p>}
               {item.domain && <p class="type-fine">{item.domain}</p>}
