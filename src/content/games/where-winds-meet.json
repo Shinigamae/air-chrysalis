@@ -4,8 +4,8 @@
   "year": 2026,
   "progress": 82,
   "playStatus": "finished",
-  "current": true,
-  "status": "live",
+  "current": false,
+  "status": "archive",
   "trophies": {
     "earned": {
       "bronze": 31,
