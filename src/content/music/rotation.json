@@ -17,8 +17,204 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-12T20:01:26.914Z",
+  "syncedAt": "2026-10-13T17:49:12.808Z",
   "playlists": [
+    {
+      "id": "5S5ss02hXM2Yi0GK7ovJd7",
+      "name": "SHNUSUKS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "playedAt": "2026-10-13T06:12:49.657Z",
+      "trackCount": 102,
+      "tracks": [
+        {
+          "name": "My Songs Know What You Did In The Dark (Light Em Up)",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "Save Rock And Roll",
+          "durationMs": 186826,
+          "url": "https://open.spotify.com/track/2E43WFS4rRc09za2r2GmZl"
+        },
+        {
+          "name": "Centuries",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 228360,
+          "url": "https://open.spotify.com/track/04aAxqtGp5pv12UXAg4pkq"
+        },
+        {
+          "name": "Immortals",
+          "artists": [
+            "Fall Out Boy"
+          ],
+          "album": "American Beauty/American Psycho",
+          "durationMs": 189386,
+          "url": "https://open.spotify.com/track/3Te8uLyit6X3ncNW8Fp3K2"
+        },
+        {
+          "name": "Irresistible",
+          "artists": [
+            "Fall Out Boy",
+            "Demi Lovato"
+          ],
+          "album": "Irresistible",
+          "durationMs": 205851,
+          "url": "https://open.spotify.com/track/3Y3gChJoEUTqrtuqJCIPQk"
+        },
+        {
+          "name": "Boulevard of Broken Dreams (feat. John Gallagher Jr., Rebecca Naomi Jones, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 262386,
+          "url": "https://open.spotify.com/track/41pFyxOpS119Pb8JEzhx0w"
+        },
+        {
+          "name": "Wake Me up When September Ends (feat. John Gallagher Jr., Michael Esper, Stark Sands, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 286680,
+          "url": "https://open.spotify.com/track/6fitJO7zDNWwmiaP5PHG14"
+        },
+        {
+          "name": "21 Guns (feat. Rebecca Naomi Jones, Christina Sajous, Mary Faber, Stark Sands, John Gallagher Jr., Michael Esper, The American Idiot Broadway Company)",
+          "artists": [
+            "Green Day"
+          ],
+          "album": "American Idiot - The Original Broadway Cast Recording",
+          "durationMs": 285040,
+          "url": "https://open.spotify.com/track/2dvPnPjTjGYyRqRd7KO7jx"
+        },
+        {
+          "name": "Counting Stars",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 257386,
+          "url": "https://open.spotify.com/track/1QzFhzIOW7CyRJLpmq5CM0"
+        },
+        {
+          "name": "Something I Need",
+          "artists": [
+            "OneRepublic"
+          ],
+          "album": "Native",
+          "durationMs": 240080,
+          "url": "https://open.spotify.com/track/6t1F0FTlVHAw6kEe164SsL"
+        },
+        {
+          "name": "Girlfriend (feat. Lil Mama) - Dr. Luke Mix",
+          "artists": [
+            "Avril Lavigne",
+            "Lil Mama",
+            "Dr. Luke"
+          ],
+          "album": "The Best Damn Thing (Expanded Edition)",
+          "durationMs": 204866,
+          "url": "https://open.spotify.com/track/1wwt0TvrGY3lnvTAVIx8mO"
+        },
+        {
+          "name": "How You Remind Me",
+          "artists": [
+            "Avril Lavigne"
+          ],
+          "album": "Avril Lavigne (Expanded Edition)",
+          "durationMs": 245733,
+          "url": "https://open.spotify.com/track/4H560RqZEEhrgOquGqTCvs"
+        },
+        {
+          "name": "When I'm Gone",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 229653,
+          "url": "https://open.spotify.com/track/518x7yFVDLkbOWNH0SOe9p"
+        },
+        {
+          "name": "Your Love Is a Lie",
+          "artists": [
+            "Simple Plan"
+          ],
+          "album": "Simple Plan",
+          "durationMs": 222426,
+          "url": "https://open.spotify.com/track/0Hv2IWtvPPca1F4zhC4UFs"
+        },
+        {
+          "name": "Ignorance",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Brand New Eyes",
+          "durationMs": 218626,
+          "url": "https://open.spotify.com/track/47No93LxERvV6MtOAmQzHS"
+        },
+        {
+          "name": "Still into You",
+          "artists": [
+            "Paramore"
+          ],
+          "album": "Paramore",
+          "durationMs": 216013,
+          "url": "https://open.spotify.com/track/1yjY7rpaAQvKwpdUliHx0d"
+        },
+        {
+          "name": "The Last Goodbye",
+          "artists": [
+            "Billy Boyd"
+          ],
+          "album": "The Last Goodbye",
+          "durationMs": 247360,
+          "url": "https://open.spotify.com/track/6GJmb404LiyqoDyyE3jDad"
+        },
+        {
+          "name": "SexyBack (feat. Timbaland)",
+          "artists": [
+            "Justin Timberlake",
+            "Timbaland"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 242733,
+          "url": "https://open.spotify.com/track/0O45fw2L5vsWpdsOdXwNAR"
+        },
+        {
+          "name": "The Time (Dirty Bit)",
+          "artists": [
+            "Black Eyed Peas"
+          ],
+          "album": "The Beginning (Deluxe)",
+          "durationMs": 307640,
+          "url": "https://open.spotify.com/track/7vWFaMq63AwkFDhS2OAg5u"
+        },
+        {
+          "name": "What Goes Around.../...Comes Around (Interlude)",
+          "artists": [
+            "Justin Timberlake"
+          ],
+          "album": "FutureSex/LoveSounds",
+          "durationMs": 448573,
+          "url": "https://open.spotify.com/track/3pD0f7hSJg2XdQ6udw5Tey"
+        },
+        {
+          "name": "My Love (feat. T.I.)",
+          "artists": [
+            "Justin Timberlake",
+            "T.I."
+          ],
+          "album": "FutureSex/LoveSounds Deluxe Edition",
+          "durationMs": 276160,
+          "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
+        }
+      ]
+    },
     {
       "id": "3hf0XEmqSRRQ6PtprmrdZU",
       "name": "SHNKOREA",
@@ -403,804 +599,6 @@
           "album": "辞九门回忆",
           "durationMs": 240000,
           "url": "https://open.spotify.com/track/2W45AFyNCxllspYEeHCspG"
-        }
-      ]
-    },
-    {
-      "id": "0RbLALrCsMAydLRiWyEtm6",
-      "name": "SHNAVICI",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/0RbLALrCsMAydLRiWyEtm6",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84278faa2c313d87f9d777a608",
-      "playedAt": "2026-10-12T08:41:07.638Z",
-      "trackCount": 19,
-      "tracks": [
-        {
-          "name": "Heart Upon My Sleeve (feat. Imagine Dragons)",
-          "artists": [
-            "Avicii",
-            "Imagine Dragons"
-          ],
-          "album": "TIM",
-          "durationMs": 254165,
-          "url": "https://open.spotify.com/track/6kXNnS7JJz0nAv4XEwEmQJ"
-        },
-        {
-          "name": "Fades Away (feat. Noonie Bao)",
-          "artists": [
-            "Avicii",
-            "Noonie Bao"
-          ],
-          "album": "TIM",
-          "durationMs": 178958,
-          "url": "https://open.spotify.com/track/6aPDvttLmezuUlv60ExTH9"
-        },
-        {
-          "name": "Bad Reputation (feat. Joe Janiak)",
-          "artists": [
-            "Avicii",
-            "Joe Janiak"
-          ],
-          "album": "TIM",
-          "durationMs": 205416,
-          "url": "https://open.spotify.com/track/0HZgYFimoJG9Ijy8InUWcV"
-        },
-        {
-          "name": "Heaven",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "TIM",
-          "durationMs": 277261,
-          "url": "https://open.spotify.com/track/0vrmHPfoBadXVr2n0m1aqZ"
-        },
-        {
-          "name": "Wake Me Up",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "True",
-          "durationMs": 247426,
-          "url": "https://open.spotify.com/track/4h8VwCb1MTGoLKueQ1WgbD"
-        },
-        {
-          "name": "The Nights",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "The Days / Nights",
-          "durationMs": 176658,
-          "url": "https://open.spotify.com/track/0ct6r3EGTcMLPtrXHDvVjc"
-        },
-        {
-          "name": "Hey Brother",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "True",
-          "durationMs": 255093,
-          "url": "https://open.spotify.com/track/4RXpgGM7A4Hg7cFBoH5KyF"
-        },
-        {
-          "name": "Addicted To You",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "True",
-          "durationMs": 148386,
-          "url": "https://open.spotify.com/track/5GayeBzzXIEl6fY0cP42Z1"
-        },
-        {
-          "name": "You Make Me",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "True",
-          "durationMs": 233346,
-          "url": "https://open.spotify.com/track/1CKtxKqyFsFITCH4SpDrWj"
-        },
-        {
-          "name": "The Days",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "The Days / Nights",
-          "durationMs": 278480,
-          "url": "https://open.spotify.com/track/5Iy2Jj87Ha0C0IBlNE1I4y"
-        },
-        {
-          "name": "Waiting For Love",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "Stories",
-          "durationMs": 230613,
-          "url": "https://open.spotify.com/track/2P4OICZRVAQcYAV2JReRfj"
-        },
-        {
-          "name": "For A Better Day",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "Stories",
-          "durationMs": 206066,
-          "url": "https://open.spotify.com/track/7kbTZWt7DnzIzbkyzFE1PW"
-        },
-        {
-          "name": "Talk To Myself",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "Stories",
-          "durationMs": 235800,
-          "url": "https://open.spotify.com/track/5IZg7Ngm3CTOj9l00YSrt9"
-        },
-        {
-          "name": "Taste The Feeling (Avicii Vs. Conrad Sewell)",
-          "artists": [
-            "Avicii",
-            "Conrad Sewell"
-          ],
-          "album": "Taste The Feeling (Avicii Vs. Conrad Sewell)",
-          "durationMs": 191065,
-          "url": "https://open.spotify.com/track/70mHIUa4beJjFpBNyHYwT2"
-        },
-        {
-          "name": "Friend Of Mine (feat. Vargas & Lagola)",
-          "artists": [
-            "Avicii",
-            "Vargas & Lagola"
-          ],
-          "album": "AVĪCI (01)",
-          "durationMs": 159863,
-          "url": "https://open.spotify.com/track/79UX8fkSsowWI1HOd8VoYt"
-        },
-        {
-          "name": "Lonely Together (feat. Rita Ora)",
-          "artists": [
-            "Avicii",
-            "Rita Ora"
-          ],
-          "album": "AVĪCI (01)",
-          "durationMs": 181812,
-          "url": "https://open.spotify.com/track/75NhhYjHO43mvZgYtnXgti"
-        },
-        {
-          "name": "Without You (feat. Sandro Cavazza)",
-          "artists": [
-            "Avicii",
-            "Sandro Cavazza"
-          ],
-          "album": "AVĪCI (01)",
-          "durationMs": 181672,
-          "url": "https://open.spotify.com/track/6Pgkp4qUoTmJIPn7ReaGxL"
-        },
-        {
-          "name": "Forever Yours - Avicii Tribute",
-          "artists": [
-            "Kygo",
-            "Avicii",
-            "Sandro Cavazza"
-          ],
-          "album": "Forever Yours (Avicii Tribute)",
-          "durationMs": 193846,
-          "url": "https://open.spotify.com/track/3o1CUVeHIid49sabk6A6Nf"
-        },
-        {
-          "name": "Broken Arrows",
-          "artists": [
-            "Avicii"
-          ],
-          "album": "Stories",
-          "durationMs": 232760,
-          "url": "https://open.spotify.com/track/260jSxvzkFt71ksvkcy2ke"
-        }
-      ]
-    },
-    {
-      "id": "1uch56cjgRp6Uiy0DfLgUl",
-      "name": "SHNDDEN",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
-      "playedAt": "2026-10-12T02:17:02.042Z",
-      "trackCount": 22,
-      "tracks": [
-        {
-          "name": "Ta Cứ Đi Cùng Nhau - Live At Show Của Đen",
-          "artists": [
-            "Đen",
-            "Linh Cáo"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 346627,
-          "url": "https://open.spotify.com/track/2mqEoZUVNajcSnNJPEBBfu"
-        },
-        {
-          "name": "Đố em biết anh đang nghĩ gì - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 275498,
-          "url": "https://open.spotify.com/track/1oDaI6OOKaVqEn6H8bgaRo"
-        },
-        {
-          "name": "Mơ - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 233429,
-          "url": "https://open.spotify.com/track/7HYT9fyOhJBpuev4OdicNK"
-        },
-        {
-          "name": "hai triệu năm - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 298197,
-          "url": "https://open.spotify.com/track/0ROEej67C7sB3bk6SnBiEE"
-        },
-        {
-          "name": "Bài Này Chill Phết - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 294768,
-          "url": "https://open.spotify.com/track/6ztkb5MiGLM6TqodbVDGTE"
-        },
-        {
-          "name": "Đi Theo Bóng Mặt Trời - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 236096,
-          "url": "https://open.spotify.com/track/3vrtrHN8QFUdGheMzPs8j3"
-        },
-        {
-          "name": "Anh Đếch Cần Gì Nhiều Ngoài Em - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 246250,
-          "url": "https://open.spotify.com/track/6S7unWwOypztbchdoKA5gP"
-        },
-        {
-          "name": "Cho Toi Lang Thang - Live At Show Của Đen",
-          "artists": [
-            "Đen",
-            "Ngọt"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 272133,
-          "url": "https://open.spotify.com/track/2ncglJOFf6z2LVAV0KAvge"
-        },
-        {
-          "name": "Nhiều Năm Nữa - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 199552,
-          "url": "https://open.spotify.com/track/14Pfh8Z2JpjwjavMYGZw9M"
-        },
-        {
-          "name": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 198400,
-          "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV"
-        },
-        {
-          "name": "Triệu điều nhỏ xíu xiêu lòng",
-          "artists": [
-            "Đen",
-            "Kim Long"
-          ],
-          "album": "Triệu điều nhỏ xíu xiêu lòng",
-          "durationMs": 292932,
-          "url": "https://open.spotify.com/track/1KpPymup1tlWrIBJR2BKAH"
-        },
-        {
-          "name": "FRIENDSHIP",
-          "artists": [
-            "Đen",
-            "Friends"
-          ],
-          "album": "FRIENDSHIP",
-          "durationMs": 294997,
-          "url": "https://open.spotify.com/track/1ZSwYD21wiQCx3VYrnQHMm"
-        },
-        {
-          "name": "Mang Tiền Về Cho Mẹ",
-          "artists": [
-            "Đen",
-            "Nguyên Thảo"
-          ],
-          "album": "Mang Tiền Về Cho Mẹ",
-          "durationMs": 405360,
-          "url": "https://open.spotify.com/track/57lYw21pS9FprSeJimskIC"
-        },
-        {
-          "name": "Lối Nhỏ",
-          "artists": [
-            "Đen",
-            "Phương Anh Đào"
-          ],
-          "album": "Lối Nhỏ",
-          "durationMs": 252953,
-          "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV"
-        },
-        {
-          "name": "Hát cho đời và hát cho em",
-          "artists": [
-            "JGKiD (Da LAB)",
-            "Rabbit Run",
-            "Đen",
-            "Emcee L (Da LAB)"
-          ],
-          "album": "Hát cho đời và hát cho em",
-          "durationMs": 208744,
-          "url": "https://open.spotify.com/track/5RIYXxF2O7aMg2XjbCTWEz"
-        },
-        {
-          "name": "Ai muốn nghe không",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Ai muốn nghe không",
-          "durationMs": 307500,
-          "url": "https://open.spotify.com/track/1WCAkmmTM06in2ojuQ9CK5"
-        },
-        {
-          "name": "Lãng đãng",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Lãng đãng",
-          "durationMs": 322872,
-          "url": "https://open.spotify.com/track/3m0HZdj4sDKWPeZxjIAEUg"
-        },
-        {
-          "name": "MỘT NGÀY NÀO ĐÓ",
-          "artists": [
-            "Hoàng Dũng",
-            "Đen",
-            "Bạn Nhạc."
-          ],
-          "album": "MỘT NGÀY NÀO ĐÓ",
-          "durationMs": 259362,
-          "url": "https://open.spotify.com/track/0y9syFsnSuYnf0RUqxE1Ah"
-        },
-        {
-          "name": "Trốn Tìm",
-          "artists": [
-            "Đen",
-            "MTV Band"
-          ],
-          "album": "Trốn Tìm",
-          "durationMs": 248870,
-          "url": "https://open.spotify.com/track/34uOIsoy6ETS2sxOTWBRDF"
-        },
-        {
-          "name": "Việc lớn",
-          "artists": [
-            "Đen",
-            "Dòng Thời Gian"
-          ],
-          "album": "Việc lớn",
-          "durationMs": 381657,
-          "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
-        }
-      ]
-    },
-    {
-      "id": "264jfje3IRYOdrTnKcjZ1M",
-      "name": "SHNJAPAN",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/264jfje3IRYOdrTnKcjZ1M",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84a7ced7834c3efae0bd2398c8",
-      "playedAt": "2026-10-08T01:40:31.644Z",
-      "trackCount": 38,
-      "tracks": [
-        {
-          "name": "Clan",
-          "artists": [
-            "milet"
-          ],
-          "album": "Always You",
-          "durationMs": 216293,
-          "url": "https://open.spotify.com/track/3mmffiLl1qm8rBEhu708aa"
-        },
-        {
-          "name": "KICK BACK",
-          "artists": [
-            "Kenshi Yonezu"
-          ],
-          "album": "KICK BACK",
-          "durationMs": 193495,
-          "url": "https://open.spotify.com/track/3khEEPRyBeOUabbmOPJzAG"
-        },
-        {
-          "name": "海のまにまに",
-          "artists": [
-            "YOASOBI"
-          ],
-          "album": "海のまにまに",
-          "durationMs": 255918,
-          "url": "https://open.spotify.com/track/0loZ1KfQSLJxYR0Y7dImKN"
-        },
-        {
-          "name": "ミスター",
-          "artists": [
-            "YOASOBI"
-          ],
-          "album": "ミスター",
-          "durationMs": 187000,
-          "url": "https://open.spotify.com/track/2YbNZLoiREBYZo4HeKB8Np"
-        },
-        {
-          "name": "新世界",
-          "artists": [
-            "BUMP OF CHICKEN"
-          ],
-          "album": "aurora arc",
-          "durationMs": 225676,
-          "url": "https://open.spotify.com/track/3HksEr55KOyDGjkWF8SFbh"
-        },
-        {
-          "name": "Lemon",
-          "artists": [
-            "Kenshi Yonezu"
-          ],
-          "album": "STRAY SHEEP",
-          "durationMs": 255826,
-          "url": "https://open.spotify.com/track/04TshWXkhV1qkqHzf31Hn6"
-        },
-        {
-          "name": "第ゼロ感",
-          "artists": [
-            "10-FEET"
-          ],
-          "album": "第ゼロ感",
-          "durationMs": 287991,
-          "url": "https://open.spotify.com/track/3GGOKTfxgyluPvAFnB30zE"
-        },
-        {
-          "name": "アイドル",
-          "artists": [
-            "YOASOBI"
-          ],
-          "album": "アイドル",
-          "durationMs": 213233,
-          "url": "https://open.spotify.com/track/7ovUcF5uHTBRzUpB6ZOmvt"
-        },
-        {
-          "name": "コイコガレ",
-          "artists": [
-            "milet",
-            "MAN WITH A MISSION"
-          ],
-          "album": "コイコガレ",
-          "durationMs": 215866,
-          "url": "https://open.spotify.com/track/1RtxMS6dcQuxK5y8TKh4Md"
-        },
-        {
-          "name": "絶頂讃歌",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "絶頂讃歌",
-          "durationMs": 183054,
-          "url": "https://open.spotify.com/track/4cwO2KkiUe6iTfebjmSx6y"
-        },
-        {
-          "name": "ブラウニー",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "青二才",
-          "durationMs": 209173,
-          "url": "https://open.spotify.com/track/78kZFkM3MDS1Fm89ETs0rt"
-        },
-        {
-          "name": "ビーユアセルフ",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "ビーユアセルフ",
-          "durationMs": 196488,
-          "url": "https://open.spotify.com/track/6fuPQmNR5pwfIxDKOMiTGP"
-        },
-        {
-          "name": "寄り酔い",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "寄り酔い",
-          "durationMs": 216959,
-          "url": "https://open.spotify.com/track/154Jycdld9dX9rBLE6L3v4"
-        },
-        {
-          "name": "ミミクリーマン",
-          "artists": [
-            "和ぬか",
-            "NEE"
-          ],
-          "album": "青二才",
-          "durationMs": 235800,
-          "url": "https://open.spotify.com/track/6ZoxTIfJktAWq4LRiFG0JV"
-        },
-        {
-          "name": "ニゲラ",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "青二才",
-          "durationMs": 188160,
-          "url": "https://open.spotify.com/track/2HhbIBTZWUf8MA8qJzeU5W"
-        },
-        {
-          "name": "審美眼",
-          "artists": [
-            "和ぬか"
-          ],
-          "album": "審美眼",
-          "durationMs": 171906,
-          "url": "https://open.spotify.com/track/41BaivhYY4KjzS6jSUsU89"
-        },
-        {
-          "name": "Butterfly - Digimon Adventure",
-          "artists": [
-            "Lime",
-            "로즈 패밀리"
-          ],
-          "album": "Butterfly (Digimon Adventure)",
-          "durationMs": 230035,
-          "url": "https://open.spotify.com/track/2fT7uyBaRdstwnVTiL8moD"
-        },
-        {
-          "name": "天悪",
-          "artists": [
-            "shimamo"
-          ],
-          "album": "天悪",
-          "durationMs": 201754,
-          "url": "https://open.spotify.com/track/6QVXXnFhB9xqos2aqwczhi"
-        },
-        {
-          "name": "未来島",
-          "artists": [
-            "Mori Calliope"
-          ],
-          "album": "未来島",
-          "durationMs": 201104,
-          "url": "https://open.spotify.com/track/0QZXP7ZS064QBr1ZgHUblt"
-        },
-        {
-          "name": "ざわめけ",
-          "artists": [
-            "和ぬか",
-            "Sou"
-          ],
-          "album": "審美眼",
-          "durationMs": 225400,
-          "url": "https://open.spotify.com/track/4g9v1xOpTtnO8NEMFdVPTD"
-        }
-      ]
-    },
-    {
-      "id": "2GOwJvLIekuTZjLOL2jhMq",
-      "name": "SHNINDIE",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/2GOwJvLIekuTZjLOL2jhMq",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84651bdff210a58eef8ae120e0",
-      "playedAt": "2026-10-06T02:43:21.580Z",
-      "trackCount": 37,
-      "tracks": [
-        {
-          "name": "Bài Này Chill Phết",
-          "artists": [
-            "Đen",
-            "MIN"
-          ],
-          "album": "Bài Này Chill Phết",
-          "durationMs": 276000,
-          "url": "https://open.spotify.com/track/2AiZm17zqkV7llT3SHz4Nu"
-        },
-        {
-          "name": "Lối Nhỏ",
-          "artists": [
-            "Đen",
-            "Phương Anh Đào"
-          ],
-          "album": "Lối Nhỏ",
-          "durationMs": 252953,
-          "url": "https://open.spotify.com/track/25edeHHueINMguqu9emCyV"
-        },
-        {
-          "name": "Bài Ka Tuổi Trẻ",
-          "artists": [
-            "JGKiD (Da LAB)",
-            "Emcee L (Da LAB)",
-            "KraziNoyze",
-            "Vu Bui Thu Thuy",
-            "Linh Cáo",
-            "Mel G"
-          ],
-          "album": "Bài Ka Tuổi Trẻ",
-          "durationMs": 229681,
-          "url": "https://open.spotify.com/track/5Sh5CK6GReVbZJqUOnvg0f"
-        },
-        {
-          "name": "Đời Là Đi",
-          "artists": [
-            "Da LAB"
-          ],
-          "album": "Đời Là Đi",
-          "durationMs": 200376,
-          "url": "https://open.spotify.com/track/6PdTW5kiBEG8fjflRwQWcz"
-        },
-        {
-          "name": "Ngày Nào",
-          "artists": [
-            "Cá Hồi Hoang",
-            "Dat Maniac"
-          ],
-          "album": "2004",
-          "durationMs": 221146,
-          "url": "https://open.spotify.com/track/3d1Aq5IuAEAzBbZesUT8QP"
-        },
-        {
-          "name": "Đôi Mình Đi Bên Nhau",
-          "artists": [
-            "Linh Cáo"
-          ],
-          "album": "Đôi Mình Đi Bên Nhau",
-          "durationMs": 282461,
-          "url": "https://open.spotify.com/track/15KXVj1xhYsWIZmmtRq6KR"
-        },
-        {
-          "name": "Nhiều Người Ôm Giấc Mơ",
-          "artists": [
-            "Lê Cát Trọng Lý"
-          ],
-          "album": "Tuổi 25",
-          "durationMs": 221666,
-          "url": "https://open.spotify.com/track/5yn7wYdBBmWe2AT5CUFKly"
-        },
-        {
-          "name": "Mười Năm (Lộn Xộn 3)",
-          "artists": [
-            "Đen",
-            "Ngọc Linh"
-          ],
-          "album": "Mười Năm (Lộn Xộn 3)",
-          "durationMs": 257560,
-          "url": "https://open.spotify.com/track/1LXX0v5Nk5YR6gip7WL7g1"
-        },
-        {
-          "name": "Trốn Tìm",
-          "artists": [
-            "7UPPERCUTS"
-          ],
-          "album": "Trốn Tìm",
-          "durationMs": 158878,
-          "url": "https://open.spotify.com/track/5EejTyYwzTK8VsolyWqtzj"
-        },
-        {
-          "name": "Cảm ơn",
-          "artists": [
-            "Đen",
-            "Biên"
-          ],
-          "album": "Cảm ơn",
-          "durationMs": 215172,
-          "url": "https://open.spotify.com/track/5ETwIvPHsVW569wYCZo7vw"
-        },
-        {
-          "name": "Tự Do",
-          "artists": [
-            "Cá Hồi Hoang"
-          ],
-          "album": "Tự Do",
-          "durationMs": 234000,
-          "url": "https://open.spotify.com/track/50iRYov8umCB0nHIfQ0plh"
-        },
-        {
-          "name": "No Internet",
-          "artists": [
-            "7UPPERCUTS",
-            "Seachains"
-          ],
-          "album": "No Internet",
-          "durationMs": 185161,
-          "url": "https://open.spotify.com/track/4sccoCUvKgarfGmvfAWoVV"
-        },
-        {
-          "name": "Thiên Hà Trước Hiên Nhà",
-          "artists": [
-            "Datmaniac"
-          ],
-          "album": "Thiên Hà Trước Hiên Nhà",
-          "durationMs": 241889,
-          "url": "https://open.spotify.com/track/1pF37nLLjtp0IW5MYJoN8x"
-        },
-        {
-          "name": "Nghe Mưa (feat. KraziNoyze)",
-          "artists": [
-            "Da LAB",
-            "Emcee L (Da LAB)",
-            "KraziNoyze"
-          ],
-          "album": "Nghe Mưa (feat. KraziNoyze)",
-          "durationMs": 308218,
-          "url": "https://open.spotify.com/track/5rgJzQYfdFgHvzCDN3Epnn"
-        },
-        {
-          "name": "Mây và núi",
-          "artists": [
-            "Vote For 5ive",
-            "O.C.E"
-          ],
-          "album": "Mây và núi",
-          "durationMs": 189714,
-          "url": "https://open.spotify.com/track/1UnQBKhds5iIOa5KyCMOwy"
-        },
-        {
-          "name": "Trời Ơi Con Chưa Muốn Chết - Live At Show Của Đen",
-          "artists": [
-            "Đen"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 198400,
-          "url": "https://open.spotify.com/track/0ehr6CI3E8cCBdqbWCyWEV"
-        },
-        {
-          "name": "Ngày Khác Lạ",
-          "artists": [
-            "Đen",
-            "Giang Pham",
-            "Triple D"
-          ],
-          "album": "Ngày Khác Lạ",
-          "durationMs": 212173,
-          "url": "https://open.spotify.com/track/2WN0b4wVQas5N90CPTmWP4"
-        },
-        {
-          "name": "Luôn Là Mình",
-          "artists": [
-            "Da LAB"
-          ],
-          "album": "Luôn Là Mình",
-          "durationMs": 223518,
-          "url": "https://open.spotify.com/track/3NnadQXGCZfcpLxyJyb1Rv"
-        },
-        {
-          "name": "Đưa Nhau Đi Trốn - Live At Show Của Đen",
-          "artists": [
-            "Đen",
-            "Linh Cáo"
-          ],
-          "album": "Show Của Đen",
-          "durationMs": 265822,
-          "url": "https://open.spotify.com/track/6fH70e3UxJFNmLApdijeGa"
-        },
-        {
-          "name": "Wave Alpha",
-          "artists": [
-            "7UPPERCUTS"
-          ],
-          "album": "CHÁI MÁI",
-          "durationMs": 158611,
-          "url": "https://open.spotify.com/track/4FTH4NljhFV6cA4wdPM8G2"
         }
       ]
     }
