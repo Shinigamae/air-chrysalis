@@ -17,8 +17,199 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-13T17:49:12.808Z",
+  "syncedAt": "2026-10-14T15:32:39.913Z",
   "playlists": [
+    {
+      "id": "3CBrpef7w1Chy6ugeQiCgH",
+      "name": "SHNNGWSH",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
+      "playedAt": "2026-10-14T02:34:18.355Z",
+      "trackCount": 30,
+      "tracks": [
+        {
+          "name": "End Of All Hope",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 233800,
+          "url": "https://open.spotify.com/track/3RqTWAc3noEuDS5B0BimD7"
+        },
+        {
+          "name": "Ever Dream",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 282933,
+          "url": "https://open.spotify.com/track/5SNDGulFALe3DpSbuYarl7"
+        },
+        {
+          "name": "Forever Yours",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Century Child",
+          "durationMs": 230666,
+          "url": "https://open.spotify.com/track/16pngF7qRDnAkXt2FMuUdl"
+        },
+        {
+          "name": "Noise",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Noise",
+          "durationMs": 340281,
+          "url": "https://open.spotify.com/track/2a3sZJP4uTrNQbj0EdiUuV"
+        },
+        {
+          "name": "Nemo",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Highest Hopes-The Best Of Nightwish",
+          "durationMs": 273626,
+          "url": "https://open.spotify.com/track/6PkOmPMlH5nPFeoCPU0lo2"
+        },
+        {
+          "name": "Over The Hills And Far Away",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Over The Hills And Far Away",
+          "durationMs": 302266,
+          "url": "https://open.spotify.com/track/4004xnMLj5QGxWvu6JPcJ7"
+        },
+        {
+          "name": "Élan",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Endless Forms Most Beautiful (Deluxe Version)",
+          "durationMs": 287000,
+          "url": "https://open.spotify.com/track/5oAvb7LpUBwQfBtQ6hmS4Q"
+        },
+        {
+          "name": "Wish I Had An Angel",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Highest Hopes-The Best Of Nightwish",
+          "durationMs": 243213,
+          "url": "https://open.spotify.com/track/2VvmryAbIRod1FwZHtwqC5"
+        },
+        {
+          "name": "Amaranth",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Dark Passion Play",
+          "durationMs": 231444,
+          "url": "https://open.spotify.com/track/1sXdW94CrEIrYdbfON4Sxt"
+        },
+        {
+          "name": "Ghost River",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 324920,
+          "url": "https://open.spotify.com/track/1C1U6AXQ6AuxngZQZLvE6u"
+        },
+        {
+          "name": "Taikatalvi",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 155480,
+          "url": "https://open.spotify.com/track/1h23880XWMggVoX2wtH82N"
+        },
+        {
+          "name": "Storytime",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 322280,
+          "url": "https://open.spotify.com/track/74b5zpkbJuk0VjkNPfOROX"
+        },
+        {
+          "name": "I Want My Tears Back",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 307533,
+          "url": "https://open.spotify.com/track/1V6owHjrKNjJQPZWgBqZWQ"
+        },
+        {
+          "name": "Scaretale",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 452080,
+          "url": "https://open.spotify.com/track/4KBJNTu0z2EObi1zgqbRPm"
+        },
+        {
+          "name": "Turn Loose The Mermaids",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 259120,
+          "url": "https://open.spotify.com/track/42vL5mKekxSsidLMdSvZtv"
+        },
+        {
+          "name": "Rest Calm",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 419080,
+          "url": "https://open.spotify.com/track/3qQr4yvYy4ciSydvFJZRl9"
+        },
+        {
+          "name": "The Crow, The Owl And The Dove",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 250386,
+          "url": "https://open.spotify.com/track/4FxeJ4zsDQfzTrYxaQNduC"
+        },
+        {
+          "name": "Last Ride Of The Day",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 271120,
+          "url": "https://open.spotify.com/track/6c2aL1Jjdy8QCODK2Buqin"
+        },
+        {
+          "name": "Song Of Myself",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Imaginaerum",
+          "durationMs": 809666,
+          "url": "https://open.spotify.com/track/2PLJedTkJ8UadomU9Th5Kl"
+        },
+        {
+          "name": "Bye Bye Beautiful",
+          "artists": [
+            "Nightwish"
+          ],
+          "album": "Dark Passion Play",
+          "durationMs": 254615,
+          "url": "https://open.spotify.com/track/6uwjUM0Y0NfPmLBKVAbUXW"
+        }
+      ]
+    },
     {
       "id": "5S5ss02hXM2Yi0GK7ovJd7",
       "name": "SHNUSUKS",
