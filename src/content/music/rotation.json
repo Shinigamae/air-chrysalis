@@ -17,14 +17,207 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-14T15:32:39.913Z",
+  "syncedAt": "2026-10-15T15:21:16.601Z",
   "playlists": [
+    {
+      "id": "2w2ESyMkamTewdLOKSweIA",
+      "name": "SHNVPOPS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/2w2ESyMkamTewdLOKSweIA",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da840c960f0aba16d6961f242fb6",
+      "playedAt": "2026-10-15T06:18:15.010Z",
+      "trackCount": 42,
+      "tracks": [
+        {
+          "name": "Thầm Mong Anh Quay Về Bên Em",
+          "artists": [
+            "Mây Trắng"
+          ],
+          "album": "Cho Tim Em Nhớ Anh",
+          "durationMs": 224522,
+          "url": "https://open.spotify.com/track/45yKm2pOhl81NxR3sCNtpu"
+        },
+        {
+          "name": "Giáng Trần",
+          "artists": [
+            "Lý Hải"
+          ],
+          "album": "Giáng Trần (Trọn Đời Bên Em 9)",
+          "durationMs": 251742,
+          "url": "https://open.spotify.com/track/1pFdYF8b3AwGRJwXBucNiQ"
+        },
+        {
+          "name": "Tình Yêu Lung Linh",
+          "artists": [
+            "Tuấn Hưng"
+          ],
+          "album": "Tình Yêu Lung Linh",
+          "durationMs": 254066,
+          "url": "https://open.spotify.com/track/1HcTb1tHBEns6LYlDDJ9gh"
+        },
+        {
+          "name": "Nếu Có Lỡ Xa Lìa Nhau",
+          "artists": [
+            "Tuấn Hưng"
+          ],
+          "album": "Vẫn Nhớ 2",
+          "durationMs": 309420,
+          "url": "https://open.spotify.com/track/4a4lXTK9AuDXHrgpvT26rp"
+        },
+        {
+          "name": "Tìm Lại Bầu Trời",
+          "artists": [
+            "Tuấn Hưng"
+          ],
+          "album": "Tìm Lại Bầu Trời",
+          "durationMs": 328803,
+          "url": "https://open.spotify.com/track/0lO9wECCROX9NMHOgvjQ9M"
+        },
+        {
+          "name": "Chỉ chờ em nói yêu anh",
+          "artists": [
+            "Lương Bằng Quang"
+          ],
+          "album": "Không cần phải hứa đâu em",
+          "durationMs": 191568,
+          "url": "https://open.spotify.com/track/77N14YpQXGUQxPHh1hspBz"
+        },
+        {
+          "name": "Một thuở yêu người",
+          "artists": [
+            "Minh Tuyết"
+          ],
+          "album": "Yêu nhau ghét nhau - Minh Tuyết",
+          "durationMs": 263266,
+          "url": "https://open.spotify.com/track/24dE92PknoH3ksse31zQMf"
+        },
+        {
+          "name": "Tình Lỡ Cách Xa",
+          "artists": [
+            "Minh Tuyết"
+          ],
+          "album": "Làm Sao Anh Biết",
+          "durationMs": 250821,
+          "url": "https://open.spotify.com/track/32CFudumROMQkSdSFbijul"
+        },
+        {
+          "name": "Ta Chẳng Còn Ai",
+          "artists": [
+            "Phương Thanh"
+          ],
+          "album": "Kẻ Hát Rong",
+          "durationMs": 314017,
+          "url": "https://open.spotify.com/track/5WIrvaoEAxiHIN95I0ys1S"
+        },
+        {
+          "name": "Phố Xa",
+          "artists": [
+            "Various Artists"
+          ],
+          "album": "Phố Xa",
+          "durationMs": 302811,
+          "url": "https://open.spotify.com/track/7ju2HkwkwBP86fADELvO15"
+        },
+        {
+          "name": "Trở Lại Phố Cũ",
+          "artists": [
+            "Cẩm Ly"
+          ],
+          "album": "Trở Lại Phố Cũ",
+          "durationMs": 329508,
+          "url": "https://open.spotify.com/track/61FXsa4J02VeMmGJb1bw5N"
+        },
+        {
+          "name": "Tôi Vẫn Nhớ",
+          "artists": [
+            "Quang Dũng"
+          ],
+          "album": "Tôi Vẫn Nhớ",
+          "durationMs": 283977,
+          "url": "https://open.spotify.com/track/0YZIB0e549Dw5Rh9v1b2kL"
+        },
+        {
+          "name": "Ngỡ Như Là Giấc Mơ",
+          "artists": [
+            "Minh Tuyết"
+          ],
+          "album": "Yêu Một Người, Sống Bên Một Người",
+          "durationMs": 243043,
+          "url": "https://open.spotify.com/track/0CiFkTYdp0iI4C0rCtYLgA"
+        },
+        {
+          "name": "Tình Đơn Côi",
+          "artists": [
+            "Nguyễn Phi Hùng"
+          ],
+          "album": "Mầm Côi",
+          "durationMs": 278177,
+          "url": "https://open.spotify.com/track/07zs7cHtSmqca9RLRrAsS7"
+        },
+        {
+          "name": "Mai Nhu Bay Gio",
+          "artists": [
+            "Hồ Ngọc Hà"
+          ],
+          "album": "Khi Ta Yeu Nhau",
+          "durationMs": 288106,
+          "url": "https://open.spotify.com/track/605RcLrbYZQZTEiZV2jXsF"
+        },
+        {
+          "name": "Dấu Chôn Tình Buồn",
+          "artists": [
+            "Cẩm Ly"
+          ],
+          "album": "Đau Xót Lý Con Cua",
+          "durationMs": 273136,
+          "url": "https://open.spotify.com/track/2a1Y5ONmPTQoM3Rov36CYw"
+        },
+        {
+          "name": "Khi Giấc Mơ Về",
+          "artists": [
+            "Phương Thanh"
+          ],
+          "album": "Khi Giấc Mơ Về",
+          "durationMs": 279980,
+          "url": "https://open.spotify.com/track/1rOq6mMP5CF8zDwIiYFZ2s"
+        },
+        {
+          "name": "Kiếp Lữ Hành",
+          "artists": [
+            "Various Artists"
+          ],
+          "album": "Ngôi Sao Bạch Kim 1",
+          "durationMs": 261911,
+          "url": "https://open.spotify.com/track/0F9CQvpSpHTdS0UrgqbnFV"
+        },
+        {
+          "name": "Anh Tin Mình Đã Cho Nhau Kỷ Niệm (feat. Lương Bằng Quang)",
+          "artists": [
+            "Thu Thuỷ",
+            "Lương Bằng Quang"
+          ],
+          "album": "Con Đường Tôi Đi",
+          "durationMs": 210520,
+          "url": "https://open.spotify.com/track/6lad61EsGfuVJxYy4P8apN"
+        },
+        {
+          "name": "Vẫn Tin Mình Có Nhau",
+          "artists": [
+            "Quang Vinh",
+            "Bao Thy"
+          ],
+          "album": "Ngôi Nhà Hoa Hồng",
+          "durationMs": 253600,
+          "url": "https://open.spotify.com/track/2gp9r3JdRtr8j6HycC0jLQ"
+        }
+      ]
+    },
     {
       "id": "3CBrpef7w1Chy6ugeQiCgH",
       "name": "SHNNGWSH",
       "description": "",
       "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
       "playedAt": "2026-10-14T02:34:18.355Z",
       "trackCount": 30,
       "tracks": [
@@ -403,393 +596,6 @@
           "album": "FutureSex/LoveSounds Deluxe Edition",
           "durationMs": 276160,
           "url": "https://open.spotify.com/track/4NeOWqHmlrGRuBvsLJC9rL"
-        }
-      ]
-    },
-    {
-      "id": "3hf0XEmqSRRQ6PtprmrdZU",
-      "name": "SHNKOREA",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/3hf0XEmqSRRQ6PtprmrdZU",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84d7b27ce86b22206288a28241",
-      "playedAt": "2026-10-12T10:54:07.275Z",
-      "trackCount": 60,
-      "tracks": [
-        {
-          "name": "10 Minutes",
-          "artists": [
-            "Lee Hyori"
-          ],
-          "album": "Stylish…",
-          "durationMs": 236147,
-          "url": "https://open.spotify.com/track/2Tfv41qZ0U3ahZiKiDBa4a"
-        },
-        {
-          "name": "영원한 사랑",
-          "artists": [
-            "SeeYa",
-            "DAVICHI",
-            "T-ARA"
-          ],
-          "album": "여성시대/영원한 사랑",
-          "durationMs": 212718,
-          "url": "https://open.spotify.com/track/0LbqYcNtVBUKAqzusV9ron"
-        },
-        {
-          "name": "Two Of Us",
-          "artists": [
-            "Chae Yeon"
-          ],
-          "album": "Virginalness Bloom",
-          "durationMs": 183413,
-          "url": "https://open.spotify.com/track/3Kb2FrKuXnwUJkjKGcY1kK"
-        },
-        {
-          "name": "Hot Issue",
-          "artists": [
-            "4Minute"
-          ],
-          "album": "Hot Issue",
-          "durationMs": 208773,
-          "url": "https://open.spotify.com/track/1QqaaKVZxu9ExhYjKGgI4N"
-        },
-        {
-          "name": "Muzik (Japanese Ver.)",
-          "artists": [
-            "4Minute"
-          ],
-          "album": "Muzik",
-          "durationMs": 224409,
-          "url": "https://open.spotify.com/track/3q1VBhuJnhMdYAWYsSePqz"
-        },
-        {
-          "name": "I My Me Mine (Japanese Ver.)",
-          "artists": [
-            "4Minute"
-          ],
-          "album": "I My Me Mine - Standard",
-          "durationMs": 204991,
-          "url": "https://open.spotify.com/track/4OtC7BpXfUN1B2n9AjMNF0"
-        },
-        {
-          "name": "NU ABO",
-          "artists": [
-            "f(x)"
-          ],
-          "album": "NU ABO",
-          "durationMs": 224333,
-          "url": "https://open.spotify.com/track/1NcsCToPRUh9AI6ua83jAm"
-        },
-        {
-          "name": "Lollipop",
-          "artists": [
-            "f(x)",
-            "SHINee"
-          ],
-          "album": "Hot Summer - The 1st Album Repackage",
-          "durationMs": 190586,
-          "url": "https://open.spotify.com/track/1qUyN0NcgiVsQZjPJ239vJ"
-        },
-        {
-          "name": "거짓말 Pt. 1",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "거짓말",
-          "durationMs": 226038,
-          "url": "https://open.spotify.com/track/1cmfZTrDkSjhToby8II7pM"
-        },
-        {
-          "name": "왜 이러니",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "왜 이러니",
-          "durationMs": 237881,
-          "url": "https://open.spotify.com/track/2QBkGosmfFxANzPcSAbikD"
-        },
-        {
-          "name": "Roly-Poly in 코파카바나",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Roly-Poly in 코파카바나",
-          "durationMs": 207530,
-          "url": "https://open.spotify.com/track/54ZLANrcmyyPdZ3z0ZoRpk"
-        },
-        {
-          "name": "Cry Cry",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Black Eyes",
-          "durationMs": 197578,
-          "url": "https://open.spotify.com/track/0IuyHnbTWzMYScoFRyWBAr"
-        },
-        {
-          "name": "DAY BY DAY",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "DAY BY DAY",
-          "durationMs": 209880,
-          "url": "https://open.spotify.com/track/2DkL5Jaz5l47TksGuZ0y33"
-        },
-        {
-          "name": "SEXY LOVE",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "MIRAGE",
-          "durationMs": 227360,
-          "url": "https://open.spotify.com/track/6s6ZgLs7qexSGgzN4lrLQA"
-        },
-        {
-          "name": "Bo Peep Bo Peep",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Absolute First Album",
-          "durationMs": 225040,
-          "url": "https://open.spotify.com/track/72d7SM72TZcTSekEX5UoeE"
-        },
-        {
-          "name": "T.T.L Time To Love",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Absolute First Album",
-          "durationMs": 218773,
-          "url": "https://open.spotify.com/track/4bovnAJ0d6LggfIiv4hIkj"
-        },
-        {
-          "name": "TTL Listen.2",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Absolute First Album",
-          "durationMs": 211773,
-          "url": "https://open.spotify.com/track/2olr7AoagJQviFJxesHZl2"
-        },
-        {
-          "name": "넘버나인",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Again",
-          "durationMs": 228725,
-          "url": "https://open.spotify.com/track/6kdrdb4xGK5njn4ITYadZz"
-        },
-        {
-          "name": "좋은사람",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Absolute First Album",
-          "durationMs": 213093,
-          "url": "https://open.spotify.com/track/55D936gy22MEbQmbVmay7F"
-        },
-        {
-          "name": "처음처럼",
-          "artists": [
-            "T-ARA"
-          ],
-          "album": "Absolute First Album",
-          "durationMs": 245306,
-          "url": "https://open.spotify.com/track/7ALiqQnNpfxWmLB9jFyAsU"
-        }
-      ]
-    },
-    {
-      "id": "3Cg3mcOcAsHHt9Y5HN5deo",
-      "name": "SHNCHYNA",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/3Cg3mcOcAsHHt9Y5HN5deo",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84b2ab2005dba7d187d2f0977a",
-      "playedAt": "2026-10-12T09:44:47.544Z",
-      "trackCount": 37,
-      "tracks": [
-        {
-          "name": "Where Did U Go",
-          "artists": [
-            "G.E.M."
-          ],
-          "album": "G.E.M. EP",
-          "durationMs": 234813,
-          "url": "https://open.spotify.com/track/37uFSaBs84YASznQpqw056"
-        },
-        {
-          "name": "All About U",
-          "artists": [
-            "G.E.M."
-          ],
-          "album": "The Best of G.E.M. 2008 - 2012",
-          "durationMs": 243412,
-          "url": "https://open.spotify.com/track/1S7xJuA0ehsaADXKB8jjQy"
-        },
-        {
-          "name": "你是我心內的一首歌 (with Selina)",
-          "artists": [
-            "Leehom Wang",
-            "Selina"
-          ],
-          "album": "火力全開",
-          "durationMs": 165146,
-          "url": "https://open.spotify.com/track/1J6lLCelrnp0WNMcAC0cnU"
-        },
-        {
-          "name": "忘我",
-          "artists": [
-            "Leehom Wang",
-            "Avicii"
-          ],
-          "album": "你的愛。",
-          "durationMs": 286441,
-          "url": "https://open.spotify.com/track/0YigQPE3sWYPHZqHST9BTW"
-        },
-        {
-          "name": "日不落",
-          "artists": [
-            "JOLIN"
-          ],
-          "album": "特務J",
-          "durationMs": 228506,
-          "url": "https://open.spotify.com/track/2aY9L0d1OPp0eVf5Vco51i"
-        },
-        {
-          "name": "特務J",
-          "artists": [
-            "JOLIN"
-          ],
-          "album": "特務J",
-          "durationMs": 215666,
-          "url": "https://open.spotify.com/track/3lDkci0UwaewOHFFRBU8vE"
-        },
-        {
-          "name": "桃花源",
-          "artists": [
-            "JOLIN"
-          ],
-          "album": "特務J",
-          "durationMs": 212653,
-          "url": "https://open.spotify.com/track/6wuFHVQO1gKyQ0swD7w8LB"
-        },
-        {
-          "name": "等一個他",
-          "artists": [
-            "G.E.M."
-          ],
-          "album": "G.E.M. EP",
-          "durationMs": 184026,
-          "url": "https://open.spotify.com/track/0tNRCXnlrrMMQxnAHsFh64"
-        },
-        {
-          "name": "容易受傷的女人",
-          "artists": [
-            "Faye Wong"
-          ],
-          "album": "Coming Home",
-          "durationMs": 260666,
-          "url": "https://open.spotify.com/track/5g0IODsL7hiPxExwKNjIPo"
-        },
-        {
-          "name": "夜曲",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "11月的蕭邦",
-          "durationMs": 226773,
-          "url": "https://open.spotify.com/track/32nainF4TXsMpuFOGCkzzM"
-        },
-        {
-          "name": "稻香",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "魔杰座",
-          "durationMs": 223453,
-          "url": "https://open.spotify.com/track/6Uq8BnOxvXJsQiJ2XqfO5P"
-        },
-        {
-          "name": "給我一首歌的時間",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "魔杰座",
-          "durationMs": 251560,
-          "url": "https://open.spotify.com/track/1KlVJebZrrMSMxcEKOV5w5"
-        },
-        {
-          "name": "說好的幸福呢",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "魔杰座",
-          "durationMs": 254720,
-          "url": "https://open.spotify.com/track/6W2tmkeuHKaedHhdTPnyVs"
-        },
-        {
-          "name": "愛的飛行日記",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "跨時代",
-          "durationMs": 252586,
-          "url": "https://open.spotify.com/track/1ILwI5d4fRL2XvVVuTL9Wq"
-        },
-        {
-          "name": "黃金甲",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "黃金甲",
-          "durationMs": 212813,
-          "url": "https://open.spotify.com/track/4IX7F70bn0PY0Htqx3YMVV"
-        },
-        {
-          "name": "Mine Mine",
-          "artists": [
-            "Jay Chou"
-          ],
-          "album": "驚嘆號",
-          "durationMs": 268173,
-          "url": "https://open.spotify.com/track/6C07AiFdxKqUPbv92K4CG7"
-        },
-        {
-          "name": "美麗的神話 (Remastered)",
-          "artists": [
-            "Brighton Liu"
-          ],
-          "album": "Flashback",
-          "durationMs": 297293,
-          "url": "https://open.spotify.com/track/2I1YjEuwb5VDSrHfwucqxC"
-        },
-        {
-          "name": "一花一剑",
-          "artists": [
-            "等什么君"
-          ],
-          "album": "一花一剑",
-          "durationMs": 180000,
-          "url": "https://open.spotify.com/track/7FjW1yvEG8Ce3yLK8pONr0"
-        },
-        {
-          "name": "雨中的戀人們",
-          "artists": [
-            "Christopher Wong"
-          ],
-          "album": "從頭認識 - 黃凱芹 - STAY WITH ME",
-          "durationMs": 258133,
-          "url": "https://open.spotify.com/track/5ZZUeqoDrKOZs0YAsFF7pR"
-        },
-        {
-          "name": "辞九门回忆",
-          "artists": [
-            "等什么君"
-          ],
-          "album": "辞九门回忆",
-          "durationMs": 240000,
-          "url": "https://open.spotify.com/track/2W45AFyNCxllspYEeHCspG"
         }
       ]
     }
