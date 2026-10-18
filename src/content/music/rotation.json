@@ -17,7 +17,7 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-17T13:58:06.610Z",
+  "syncedAt": "2026-10-18T14:11:04.062Z",
   "playlists": [
     {
       "id": "2w2ESyMkamTewdLOKSweIA",
@@ -408,7 +408,7 @@
       "name": "SHNUSUKS",
       "description": "",
       "url": "https://open.spotify.com/playlist/5S5ss02hXM2Yi0GK7ovJd7",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84394ba302aa5b41231b1ed521",
       "playedAt": "2026-10-13T06:12:49.657Z",
       "trackCount": 102,
       "tracks": [
