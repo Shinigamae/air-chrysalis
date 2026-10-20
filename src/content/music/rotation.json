@@ -17,14 +17,207 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-19T17:11:38.604Z",
+  "syncedAt": "2026-10-20T15:24:33.130Z",
   "playlists": [
+    {
+      "id": "6YeexGXN1ooWARw4W8NhvJ",
+      "name": "SHNCLASS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/6YeexGXN1ooWARw4W8NhvJ",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
+      "playedAt": "2026-10-20T03:33:49.358Z",
+      "trackCount": 50,
+      "tracks": [
+        {
+          "name": "Stairway to Heaven - Remaster",
+          "artists": [
+            "Led Zeppelin"
+          ],
+          "album": "Led Zeppelin IV (Deluxe Edition)",
+          "durationMs": 482830,
+          "url": "https://open.spotify.com/track/5CQ30WqJwcep0pYcV4AMNc"
+        },
+        {
+          "name": "Behind Blue Eyes",
+          "artists": [
+            "The Who"
+          ],
+          "album": "Who's Next (Deluxe Edition)",
+          "durationMs": 221426,
+          "url": "https://open.spotify.com/track/0cKk8BKEi7zXbdrYdyqBP5"
+        },
+        {
+          "name": "Immigrant Song - Remaster",
+          "artists": [
+            "Led Zeppelin"
+          ],
+          "album": "Led Zeppelin III (Remaster)",
+          "durationMs": 146250,
+          "url": "https://open.spotify.com/track/78lgmZwycJ3nzsdgmPPGNx"
+        },
+        {
+          "name": "Paint It, Black",
+          "artists": [
+            "The Rolling Stones"
+          ],
+          "album": "Aftermath",
+          "durationMs": 202266,
+          "url": "https://open.spotify.com/track/63T7DJ1AFDD6Bn8VzG6JE8"
+        },
+        {
+          "name": "Scarborough Fair / Canticle",
+          "artists": [
+            "Simon & Garfunkel"
+          ],
+          "album": "Parsley, Sage, Rosemary And Thyme",
+          "durationMs": 194044,
+          "url": "https://open.spotify.com/track/3g2fYZW5v2od8KIF7VktT0"
+        },
+        {
+          "name": "April Come She Will",
+          "artists": [
+            "Simon & Garfunkel"
+          ],
+          "album": "The Graduate",
+          "durationMs": 112240,
+          "url": "https://open.spotify.com/track/3T9BSF5aI9NsxMwoyG5e9x"
+        },
+        {
+          "name": "The Sound of Silence - Reprise",
+          "artists": [
+            "Simon & Garfunkel"
+          ],
+          "album": "The Graduate",
+          "durationMs": 186786,
+          "url": "https://open.spotify.com/track/6rWcj4WPPODZIRtJenwce3"
+        },
+        {
+          "name": "Still Crazy After All These Years",
+          "artists": [
+            "Paul Simon"
+          ],
+          "album": "Still Crazy After All These Years",
+          "durationMs": 206041,
+          "url": "https://open.spotify.com/track/3gIBSlXYIN1mru35l4LWPB"
+        },
+        {
+          "name": "Sweet Dreams (Are Made of This) - 2005 Remaster",
+          "artists": [
+            "Eurythmics",
+            "Annie Lennox",
+            "Dave Stewart"
+          ],
+          "album": "Sweet Dreams (Are Made Of This)",
+          "durationMs": 216933,
+          "url": "https://open.spotify.com/track/1TfqLAPs4K3s2rJMoCokcS"
+        },
+        {
+          "name": "Holding Out for a Hero - From \"Footloose\" Soundtrack",
+          "artists": [
+            "Bonnie Tyler"
+          ],
+          "album": "Secret Dreams And Forbidden Fire",
+          "durationMs": 348333,
+          "url": "https://open.spotify.com/track/7L2eFj0KFJDmHTPMUL4ZxR"
+        },
+        {
+          "name": "Rasputin",
+          "artists": [
+            "Boney M."
+          ],
+          "album": "Nightflight to Venus",
+          "durationMs": 351573,
+          "url": "https://open.spotify.com/track/5jkFvD4UJrmdoezzT1FRoP"
+        },
+        {
+          "name": "Beat It",
+          "artists": [
+            "Michael Jackson"
+          ],
+          "album": "Thriller 25 Super Deluxe Edition",
+          "durationMs": 258040,
+          "url": "https://open.spotify.com/track/1OOtq8tRnDM8kG2gqUPjAj"
+        },
+        {
+          "name": "Bohemian Rhapsody - Remastered 2011",
+          "artists": [
+            "Queen"
+          ],
+          "album": "A Night At The Opera (2011 Remaster)",
+          "durationMs": 354320,
+          "url": "https://open.spotify.com/track/1AhDOtG9vPSOmsWgNW0BEY"
+        },
+        {
+          "name": "We Will Rock You - Remastered 2011",
+          "artists": [
+            "Queen"
+          ],
+          "album": "News Of The World (2011 Remaster)",
+          "durationMs": 122066,
+          "url": "https://open.spotify.com/track/4pbJqGIASGPr0ZpGpnWkDn"
+        },
+        {
+          "name": "I Hate Myself for Loving You",
+          "artists": [
+            "Joan Jett & the Blackhearts"
+          ],
+          "album": "Up Your Alley",
+          "durationMs": 246800,
+          "url": "https://open.spotify.com/track/2HXixVqzzm9rEUIMAWzshl"
+        },
+        {
+          "name": "Hotel California - 2013 Remaster",
+          "artists": [
+            "Eagles"
+          ],
+          "album": "Hotel California (2013 Remaster)",
+          "durationMs": 391376,
+          "url": "https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv"
+        },
+        {
+          "name": "Hey Jude - Remastered 2009",
+          "artists": [
+            "The Beatles"
+          ],
+          "album": "The Beatles 1967 - 1970 (Remastered 2009)",
+          "durationMs": 431333,
+          "url": "https://open.spotify.com/track/3m7V717IKZqZLW5qUIOxdD"
+        },
+        {
+          "name": "Norwegian Wood (This Bird Has Flown) - Remastered",
+          "artists": [
+            "The Beatles"
+          ],
+          "album": "Rubber Soul (Remastered)",
+          "durationMs": 124693,
+          "url": "https://open.spotify.com/track/4DE42oDol0KHxympBsaiYu"
+        },
+        {
+          "name": "Black or White",
+          "artists": [
+            "Michael Jackson"
+          ],
+          "album": "Dangerous",
+          "durationMs": 256017,
+          "url": "https://open.spotify.com/track/7EsjkelQuoUlJXEw7SeVV4"
+        },
+        {
+          "name": "Heal the World",
+          "artists": [
+            "Michael Jackson"
+          ],
+          "album": "Dangerous",
+          "durationMs": 384460,
+          "url": "https://open.spotify.com/track/7woW97CfcWaKtuC6W5BP2K"
+        }
+      ]
+    },
     {
       "id": "3MeifJ4CCZwf0PMsl1DbIM",
       "name": "SHNEMNEM",
       "description": "",
       "url": "https://open.spotify.com/playlist/3MeifJ4CCZwf0PMsl1DbIM",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
       "playedAt": "2026-10-19T09:57:32.960Z",
       "trackCount": 34,
       "tracks": [
@@ -223,7 +416,7 @@
       "name": "SHNDDEN",
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
       "playedAt": "2026-10-19T02:26:37.302Z",
       "trackCount": 22,
       "tracks": [
@@ -612,197 +805,6 @@
           "album": "Ngôi Nhà Hoa Hồng",
           "durationMs": 253600,
           "url": "https://open.spotify.com/track/2gp9r3JdRtr8j6HycC0jLQ"
-        }
-      ]
-    },
-    {
-      "id": "3CBrpef7w1Chy6ugeQiCgH",
-      "name": "SHNNGWSH",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/3CBrpef7w1Chy6ugeQiCgH",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841cd1da721886642234a2bb5d",
-      "playedAt": "2026-10-14T02:34:18.355Z",
-      "trackCount": 30,
-      "tracks": [
-        {
-          "name": "End Of All Hope",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 233800,
-          "url": "https://open.spotify.com/track/3RqTWAc3noEuDS5B0BimD7"
-        },
-        {
-          "name": "Ever Dream",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 282933,
-          "url": "https://open.spotify.com/track/5SNDGulFALe3DpSbuYarl7"
-        },
-        {
-          "name": "Forever Yours",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Century Child",
-          "durationMs": 230666,
-          "url": "https://open.spotify.com/track/16pngF7qRDnAkXt2FMuUdl"
-        },
-        {
-          "name": "Noise",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Noise",
-          "durationMs": 340281,
-          "url": "https://open.spotify.com/track/2a3sZJP4uTrNQbj0EdiUuV"
-        },
-        {
-          "name": "Nemo",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Highest Hopes-The Best Of Nightwish",
-          "durationMs": 273626,
-          "url": "https://open.spotify.com/track/6PkOmPMlH5nPFeoCPU0lo2"
-        },
-        {
-          "name": "Over The Hills And Far Away",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Over The Hills And Far Away",
-          "durationMs": 302266,
-          "url": "https://open.spotify.com/track/4004xnMLj5QGxWvu6JPcJ7"
-        },
-        {
-          "name": "Élan",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Endless Forms Most Beautiful (Deluxe Version)",
-          "durationMs": 287000,
-          "url": "https://open.spotify.com/track/5oAvb7LpUBwQfBtQ6hmS4Q"
-        },
-        {
-          "name": "Wish I Had An Angel",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Highest Hopes-The Best Of Nightwish",
-          "durationMs": 243213,
-          "url": "https://open.spotify.com/track/2VvmryAbIRod1FwZHtwqC5"
-        },
-        {
-          "name": "Amaranth",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Dark Passion Play",
-          "durationMs": 231444,
-          "url": "https://open.spotify.com/track/1sXdW94CrEIrYdbfON4Sxt"
-        },
-        {
-          "name": "Ghost River",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 324920,
-          "url": "https://open.spotify.com/track/1C1U6AXQ6AuxngZQZLvE6u"
-        },
-        {
-          "name": "Taikatalvi",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 155480,
-          "url": "https://open.spotify.com/track/1h23880XWMggVoX2wtH82N"
-        },
-        {
-          "name": "Storytime",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 322280,
-          "url": "https://open.spotify.com/track/74b5zpkbJuk0VjkNPfOROX"
-        },
-        {
-          "name": "I Want My Tears Back",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 307533,
-          "url": "https://open.spotify.com/track/1V6owHjrKNjJQPZWgBqZWQ"
-        },
-        {
-          "name": "Scaretale",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 452080,
-          "url": "https://open.spotify.com/track/4KBJNTu0z2EObi1zgqbRPm"
-        },
-        {
-          "name": "Turn Loose The Mermaids",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 259120,
-          "url": "https://open.spotify.com/track/42vL5mKekxSsidLMdSvZtv"
-        },
-        {
-          "name": "Rest Calm",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 419080,
-          "url": "https://open.spotify.com/track/3qQr4yvYy4ciSydvFJZRl9"
-        },
-        {
-          "name": "The Crow, The Owl And The Dove",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 250386,
-          "url": "https://open.spotify.com/track/4FxeJ4zsDQfzTrYxaQNduC"
-        },
-        {
-          "name": "Last Ride Of The Day",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 271120,
-          "url": "https://open.spotify.com/track/6c2aL1Jjdy8QCODK2Buqin"
-        },
-        {
-          "name": "Song Of Myself",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Imaginaerum",
-          "durationMs": 809666,
-          "url": "https://open.spotify.com/track/2PLJedTkJ8UadomU9Th5Kl"
-        },
-        {
-          "name": "Bye Bye Beautiful",
-          "artists": [
-            "Nightwish"
-          ],
-          "album": "Dark Passion Play",
-          "durationMs": 254615,
-          "url": "https://open.spotify.com/track/6uwjUM0Y0NfPmLBKVAbUXW"
         }
       ]
     }
