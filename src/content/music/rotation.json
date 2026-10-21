@@ -17,14 +17,239 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-20T15:24:33.130Z",
+  "syncedAt": "2026-10-21T15:40:04.475Z",
   "playlists": [
+    {
+      "id": "4xHvEBGh8kCxQVWT1OztLL",
+      "name": "SHNEDMMS",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
+      "playedAt": "2026-10-21T04:50:03.431Z",
+      "trackCount": 40,
+      "tracks": [
+        {
+          "name": "Next To Me (feat. Tina Stachowiak)",
+          "artists": [
+            "Axel Johansson",
+            "Tina Stachowiak"
+          ],
+          "album": "Next To Me (feat. Tina Stachowiak)",
+          "durationMs": 179500,
+          "url": "https://open.spotify.com/track/0jvqmWRCyv7xnxqrtinbHJ"
+        },
+        {
+          "name": "Lonely Together - (feat. Rita Ora) Alan Walker Remix",
+          "artists": [
+            "Avicii",
+            "Rita Ora",
+            "Alan Walker"
+          ],
+          "album": "Lonely Together (Remixes)",
+          "durationMs": 179760,
+          "url": "https://open.spotify.com/track/4QwNKEWMM7dyLB7Ew9DHHg"
+        },
+        {
+          "name": "I Can Fly",
+          "artists": [
+            "TonyZ",
+            "Antrikc"
+          ],
+          "album": "I Can Fly",
+          "durationMs": 184806,
+          "url": "https://open.spotify.com/track/1k99aiuqQfWB26PCRr9jxd"
+        },
+        {
+          "name": "Forever Young",
+          "artists": [
+            "John De Sohn",
+            "LIAMOO"
+          ],
+          "album": "Made For You",
+          "durationMs": 167911,
+          "url": "https://open.spotify.com/track/0343bYQtSfznf6v90jRLRK"
+        },
+        {
+          "name": "Heading Home",
+          "artists": [
+            "Alan Walker",
+            "Ruben"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 187085,
+          "url": "https://open.spotify.com/track/6GZaY8DSHOgllwQ28ok7Rs"
+        },
+        {
+          "name": "Play",
+          "artists": [
+            "K-391",
+            "Alan Walker",
+            "Tungevaag",
+            "Mangoo"
+          ],
+          "album": "Play",
+          "durationMs": 167976,
+          "url": "https://open.spotify.com/track/4jp4Z02kzzg8gK0NmDGgml"
+        },
+        {
+          "name": "All Falls Down (feat. Juliander) - Mark Villa Remix",
+          "artists": [
+            "Alan Walker",
+            "Noah Cyrus",
+            "Digital Farm Animals",
+            "Juliander",
+            "Mark Villa"
+          ],
+          "album": "All Falls Down (feat. Juliander) [Remixes]",
+          "durationMs": 157373,
+          "url": "https://open.spotify.com/track/2NpLHVuBP1wvryEbnecfbD"
+        },
+        {
+          "name": "Hello World",
+          "artists": [
+            "Alan Walker",
+            "Torine"
+          ],
+          "album": "Walkerverse Pt. I & II",
+          "durationMs": 171585,
+          "url": "https://open.spotify.com/track/7dRlvfMWDLG11RidzmLrWe"
+        },
+        {
+          "name": "End of Time",
+          "artists": [
+            "K-391",
+            "Alan Walker",
+            "Ahrix"
+          ],
+          "album": "End of Time",
+          "durationMs": 187560,
+          "url": "https://open.spotify.com/track/67O8CWXxPsfz8orZVGMQwf"
+        },
+        {
+          "name": "On My Way - Da Tweekaz Remix",
+          "artists": [
+            "Alan Walker",
+            "Sabrina Carpenter",
+            "Farruko",
+            "Da Tweekaz"
+          ],
+          "album": "On My Way (Da Tweekaz Remix)",
+          "durationMs": 204198,
+          "url": "https://open.spotify.com/track/4Sp0jLZN8MgPnoGDufJS7N"
+        },
+        {
+          "name": "Alone, Pt. II",
+          "artists": [
+            "Alan Walker",
+            "Ava Max"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 179052,
+          "url": "https://open.spotify.com/track/28VbwtsYnj85UEODGpQRem"
+        },
+        {
+          "name": "I Don't Wanna Go",
+          "artists": [
+            "Alan Walker",
+            "Julie Bergan"
+          ],
+          "album": "Different World",
+          "durationMs": 161666,
+          "url": "https://open.spotify.com/track/7kVDkZkZc8qBUBsF6klUoY"
+        },
+        {
+          "name": "Ignite",
+          "artists": [
+            "Alan Walker",
+            "Julie Bergan",
+            "K-391",
+            "SEUNGRI"
+          ],
+          "album": "Ignite",
+          "durationMs": 210288,
+          "url": "https://open.spotify.com/track/1jLsirPDkUS2g4gnkYua58"
+        },
+        {
+          "name": "Lost Control",
+          "artists": [
+            "Alan Walker",
+            "Sorana"
+          ],
+          "album": "Different World",
+          "durationMs": 222320,
+          "url": "https://open.spotify.com/track/0lG6QM1jjbbX5UUn3DPmrZ"
+        },
+        {
+          "name": "Darkside",
+          "artists": [
+            "Alan Walker",
+            "Au/Ra",
+            "Tomine Harket"
+          ],
+          "album": "Different World",
+          "durationMs": 211680,
+          "url": "https://open.spotify.com/track/6SRWhUJcD2YKahCwHavz3X"
+        },
+        {
+          "name": "Lily",
+          "artists": [
+            "Alan Walker",
+            "K-391",
+            "Emelie Hollow"
+          ],
+          "album": "Different World",
+          "durationMs": 195840,
+          "url": "https://open.spotify.com/track/0lks2Kt9veMOFEAPN0fsqN"
+        },
+        {
+          "name": "Paradise",
+          "artists": [
+            "Alan Walker",
+            "K-391",
+            "Boy In Space"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 183344,
+          "url": "https://open.spotify.com/track/2sVcG5mresyV79qpYr3M1C"
+        },
+        {
+          "name": "Unity",
+          "artists": [
+            "The Walkers",
+            "Alan Walker"
+          ],
+          "album": "Unity",
+          "durationMs": 204533,
+          "url": "https://open.spotify.com/track/66TdgLCf9Bic8nBsNv0YuD"
+        },
+        {
+          "name": "Man On The Moon",
+          "artists": [
+            "Alan Walker",
+            "Benjamin Ingrosso"
+          ],
+          "album": "World Of Walker",
+          "durationMs": 178625,
+          "url": "https://open.spotify.com/track/0zqBZqm5czQ3A4EoSdKFHj"
+        },
+        {
+          "name": "Shut Up",
+          "artists": [
+            "Alan Walker",
+            "UPSAHL"
+          ],
+          "album": "Walkerverse Pt. I & II",
+          "durationMs": 132954,
+          "url": "https://open.spotify.com/track/1hf9Wu2l0XIgAcTZLSAUJe"
+        }
+      ]
+    },
     {
       "id": "6YeexGXN1ooWARw4W8NhvJ",
       "name": "SHNCLASS",
       "description": "",
       "url": "https://open.spotify.com/playlist/6YeexGXN1ooWARw4W8NhvJ",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da849c42517db0db13c286e7e617",
       "playedAt": "2026-10-20T03:33:49.358Z",
       "trackCount": 50,
       "tracks": [
@@ -217,7 +442,7 @@
       "name": "SHNEMNEM",
       "description": "",
       "url": "https://open.spotify.com/playlist/3MeifJ4CCZwf0PMsl1DbIM",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
       "playedAt": "2026-10-19T09:57:32.960Z",
       "trackCount": 34,
       "tracks": [
@@ -612,199 +837,6 @@
           "album": "Việc lớn",
           "durationMs": 381657,
           "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
-        }
-      ]
-    },
-    {
-      "id": "2w2ESyMkamTewdLOKSweIA",
-      "name": "SHNVPOPS",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/2w2ESyMkamTewdLOKSweIA",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da840c960f0aba16d6961f242fb6",
-      "playedAt": "2026-10-15T06:18:15.010Z",
-      "trackCount": 42,
-      "tracks": [
-        {
-          "name": "Thầm Mong Anh Quay Về Bên Em",
-          "artists": [
-            "Mây Trắng"
-          ],
-          "album": "Cho Tim Em Nhớ Anh",
-          "durationMs": 224522,
-          "url": "https://open.spotify.com/track/45yKm2pOhl81NxR3sCNtpu"
-        },
-        {
-          "name": "Giáng Trần",
-          "artists": [
-            "Lý Hải"
-          ],
-          "album": "Giáng Trần (Trọn Đời Bên Em 9)",
-          "durationMs": 251742,
-          "url": "https://open.spotify.com/track/1pFdYF8b3AwGRJwXBucNiQ"
-        },
-        {
-          "name": "Tình Yêu Lung Linh",
-          "artists": [
-            "Tuấn Hưng"
-          ],
-          "album": "Tình Yêu Lung Linh",
-          "durationMs": 254066,
-          "url": "https://open.spotify.com/track/1HcTb1tHBEns6LYlDDJ9gh"
-        },
-        {
-          "name": "Nếu Có Lỡ Xa Lìa Nhau",
-          "artists": [
-            "Tuấn Hưng"
-          ],
-          "album": "Vẫn Nhớ 2",
-          "durationMs": 309420,
-          "url": "https://open.spotify.com/track/4a4lXTK9AuDXHrgpvT26rp"
-        },
-        {
-          "name": "Tìm Lại Bầu Trời",
-          "artists": [
-            "Tuấn Hưng"
-          ],
-          "album": "Tìm Lại Bầu Trời",
-          "durationMs": 328803,
-          "url": "https://open.spotify.com/track/0lO9wECCROX9NMHOgvjQ9M"
-        },
-        {
-          "name": "Chỉ chờ em nói yêu anh",
-          "artists": [
-            "Lương Bằng Quang"
-          ],
-          "album": "Không cần phải hứa đâu em",
-          "durationMs": 191568,
-          "url": "https://open.spotify.com/track/77N14YpQXGUQxPHh1hspBz"
-        },
-        {
-          "name": "Một thuở yêu người",
-          "artists": [
-            "Minh Tuyết"
-          ],
-          "album": "Yêu nhau ghét nhau - Minh Tuyết",
-          "durationMs": 263266,
-          "url": "https://open.spotify.com/track/24dE92PknoH3ksse31zQMf"
-        },
-        {
-          "name": "Tình Lỡ Cách Xa",
-          "artists": [
-            "Minh Tuyết"
-          ],
-          "album": "Làm Sao Anh Biết",
-          "durationMs": 250821,
-          "url": "https://open.spotify.com/track/32CFudumROMQkSdSFbijul"
-        },
-        {
-          "name": "Ta Chẳng Còn Ai",
-          "artists": [
-            "Phương Thanh"
-          ],
-          "album": "Kẻ Hát Rong",
-          "durationMs": 314017,
-          "url": "https://open.spotify.com/track/5WIrvaoEAxiHIN95I0ys1S"
-        },
-        {
-          "name": "Phố Xa",
-          "artists": [
-            "Various Artists"
-          ],
-          "album": "Phố Xa",
-          "durationMs": 302811,
-          "url": "https://open.spotify.com/track/7ju2HkwkwBP86fADELvO15"
-        },
-        {
-          "name": "Trở Lại Phố Cũ",
-          "artists": [
-            "Cẩm Ly"
-          ],
-          "album": "Trở Lại Phố Cũ",
-          "durationMs": 329508,
-          "url": "https://open.spotify.com/track/61FXsa4J02VeMmGJb1bw5N"
-        },
-        {
-          "name": "Tôi Vẫn Nhớ",
-          "artists": [
-            "Quang Dũng"
-          ],
-          "album": "Tôi Vẫn Nhớ",
-          "durationMs": 283977,
-          "url": "https://open.spotify.com/track/0YZIB0e549Dw5Rh9v1b2kL"
-        },
-        {
-          "name": "Ngỡ Như Là Giấc Mơ",
-          "artists": [
-            "Minh Tuyết"
-          ],
-          "album": "Yêu Một Người, Sống Bên Một Người",
-          "durationMs": 243043,
-          "url": "https://open.spotify.com/track/0CiFkTYdp0iI4C0rCtYLgA"
-        },
-        {
-          "name": "Tình Đơn Côi",
-          "artists": [
-            "Nguyễn Phi Hùng"
-          ],
-          "album": "Mầm Côi",
-          "durationMs": 278177,
-          "url": "https://open.spotify.com/track/07zs7cHtSmqca9RLRrAsS7"
-        },
-        {
-          "name": "Mai Nhu Bay Gio",
-          "artists": [
-            "Hồ Ngọc Hà"
-          ],
-          "album": "Khi Ta Yeu Nhau",
-          "durationMs": 288106,
-          "url": "https://open.spotify.com/track/605RcLrbYZQZTEiZV2jXsF"
-        },
-        {
-          "name": "Dấu Chôn Tình Buồn",
-          "artists": [
-            "Cẩm Ly"
-          ],
-          "album": "Đau Xót Lý Con Cua",
-          "durationMs": 273136,
-          "url": "https://open.spotify.com/track/2a1Y5ONmPTQoM3Rov36CYw"
-        },
-        {
-          "name": "Khi Giấc Mơ Về",
-          "artists": [
-            "Phương Thanh"
-          ],
-          "album": "Khi Giấc Mơ Về",
-          "durationMs": 279980,
-          "url": "https://open.spotify.com/track/1rOq6mMP5CF8zDwIiYFZ2s"
-        },
-        {
-          "name": "Kiếp Lữ Hành",
-          "artists": [
-            "Various Artists"
-          ],
-          "album": "Ngôi Sao Bạch Kim 1",
-          "durationMs": 261911,
-          "url": "https://open.spotify.com/track/0F9CQvpSpHTdS0UrgqbnFV"
-        },
-        {
-          "name": "Anh Tin Mình Đã Cho Nhau Kỷ Niệm (feat. Lương Bằng Quang)",
-          "artists": [
-            "Thu Thuỷ",
-            "Lương Bằng Quang"
-          ],
-          "album": "Con Đường Tôi Đi",
-          "durationMs": 210520,
-          "url": "https://open.spotify.com/track/6lad61EsGfuVJxYy4P8apN"
-        },
-        {
-          "name": "Vẫn Tin Mình Có Nhau",
-          "artists": [
-            "Quang Vinh",
-            "Bao Thy"
-          ],
-          "album": "Ngôi Nhà Hoa Hồng",
-          "durationMs": 253600,
-          "url": "https://open.spotify.com/track/2gp9r3JdRtr8j6HycC0jLQ"
         }
       ]
     }
