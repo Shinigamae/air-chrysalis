@@ -17,7 +17,7 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-22T15:41:31.095Z",
+  "syncedAt": "2026-10-23T15:30:13.276Z",
   "playlists": [
     {
       "id": "4xHvEBGh8kCxQVWT1OztLL",
@@ -442,7 +442,7 @@
       "name": "SHNEMNEM",
       "description": "",
       "url": "https://open.spotify.com/playlist/3MeifJ4CCZwf0PMsl1DbIM",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da843e9b0830202b6ea3f6328c1d",
       "playedAt": "2026-10-19T09:57:32.960Z",
       "trackCount": 34,
       "tracks": [
