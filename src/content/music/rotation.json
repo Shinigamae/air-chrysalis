@@ -17,14 +17,14 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-24T14:08:44.276Z",
+  "syncedAt": "2026-10-25T14:36:17.948Z",
   "playlists": [
     {
       "id": "4xHvEBGh8kCxQVWT1OztLL",
       "name": "SHNEDMMS",
       "description": "",
       "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
       "playedAt": "2026-10-21T04:50:03.431Z",
       "trackCount": 40,
       "tracks": [
