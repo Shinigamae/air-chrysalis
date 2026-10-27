@@ -17,8 +17,396 @@
     "See the header of scripts/spotify-sync.mjs for what the fields mean and",
     "README.md for the three credentials it needs."
   ],
-  "syncedAt": "2026-10-26T17:01:34.810Z",
+  "syncedAt": "2026-10-27T16:03:31.226Z",
   "playlists": [
+    {
+      "id": "4LXS1oGBPXYhVGWgK7fBTh",
+      "name": "SHNLNKPK",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/4LXS1oGBPXYhVGWgK7fBTh",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84c0d826b4169e55ebfc9e1b4e",
+      "playedAt": "2026-10-27T09:40:35.148Z",
+      "trackCount": 38,
+      "tracks": [
+        {
+          "name": "In the End",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 216880,
+          "url": "https://open.spotify.com/track/60a0Rd6pjrkxjPbaKzXjfq"
+        },
+        {
+          "name": "Numb",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora",
+          "durationMs": 187520,
+          "url": "https://open.spotify.com/track/2nLtzopw4rPReszdYBJU6h"
+        },
+        {
+          "name": "New Divide",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Iridescent",
+          "durationMs": 268613,
+          "url": "https://open.spotify.com/track/7EbpUdQ4nQ5VnnFlZjvqYl"
+        },
+        {
+          "name": "One Step Closer",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 157333,
+          "url": "https://open.spotify.com/track/3K4HG9evC7dg3N0R9cYqk4"
+        },
+        {
+          "name": "Papercut",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 184866,
+          "url": "https://open.spotify.com/track/1Vej0qeQ3ioKwpI6FUbRv1"
+        },
+        {
+          "name": "Pushing Me Away",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Hybrid Theory (Bonus Edition)",
+          "durationMs": 191440,
+          "url": "https://open.spotify.com/track/1gAaRSN57UYVRI4eWRyAvP"
+        },
+        {
+          "name": "BURN IT DOWN",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 230253,
+          "url": "https://open.spotify.com/track/7oVEtyuv9NBmnytsCIsY5I"
+        },
+        {
+          "name": "Bleed It Out",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Minutes to Midnight",
+          "durationMs": 164426,
+          "url": "https://open.spotify.com/track/0UFDKFqW2oGspYeYqo9wjA"
+        },
+        {
+          "name": "Somewhere I Belong",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora (Bonus Edition)",
+          "durationMs": 213933,
+          "url": "https://open.spotify.com/track/3fjmSxt0PskST13CSdBUFx"
+        },
+        {
+          "name": "Breaking the Habit",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora",
+          "durationMs": 196133,
+          "url": "https://open.spotify.com/track/6n8TMVyFKoUmDc4apxceRD"
+        },
+        {
+          "name": "CASTLE OF GLASS",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 205400,
+          "url": "https://open.spotify.com/track/1r1fPuhj9H4VdXr7OK6FL5"
+        },
+        {
+          "name": "LOST IN THE ECHO",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 205120,
+          "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
+        },
+        {
+          "name": "Lying from You",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "Meteora (Bonus Edition)",
+          "durationMs": 175053,
+          "url": "https://open.spotify.com/track/4qVR3CF8FuFvHN4L6vXlB1"
+        },
+        {
+          "name": "Talking to Myself",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 231306,
+          "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
+        },
+        {
+          "name": "Battle Symphony",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 216281,
+          "url": "https://open.spotify.com/track/3FQCJI2t5LTbsRPfYVBSVB"
+        },
+        {
+          "name": "Heavy (feat. Kiiara)",
+          "artists": [
+            "Linkin Park",
+            "Kiiara"
+          ],
+          "album": "One More Light",
+          "durationMs": 169800,
+          "url": "https://open.spotify.com/track/104buTcnP2AsxqB7U1FIZ4"
+        },
+        {
+          "name": "Good Goodbye (feat. Pusha T and Stormzy)",
+          "artists": [
+            "Linkin Park",
+            "Pusha T",
+            "Stormzy"
+          ],
+          "album": "One More Light",
+          "durationMs": 211413,
+          "url": "https://open.spotify.com/track/650OeHTLxZAQmb4aEbGmaA"
+        },
+        {
+          "name": "IN MY REMAINS",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "LIVING THINGS",
+          "durationMs": 200693,
+          "url": "https://open.spotify.com/track/00KfIFi2TpAaQGPbRbFbKJ"
+        },
+        {
+          "name": "Invisible",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 214346,
+          "url": "https://open.spotify.com/track/6OocN63GLU7NF0wHdewhID"
+        },
+        {
+          "name": "Nobody Can Save Me",
+          "artists": [
+            "Linkin Park"
+          ],
+          "album": "One More Light",
+          "durationMs": 225546,
+          "url": "https://open.spotify.com/track/3dJj6o9o1fRgrojWjailuz"
+        }
+      ]
+    },
+    {
+      "id": "3hf0XEmqSRRQ6PtprmrdZU",
+      "name": "SHNKOREA",
+      "description": "",
+      "url": "https://open.spotify.com/playlist/3hf0XEmqSRRQ6PtprmrdZU",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84d7b27ce86b22206288a28241",
+      "playedAt": "2026-10-27T02:04:29.707Z",
+      "trackCount": 61,
+      "tracks": [
+        {
+          "name": "10 Minutes",
+          "artists": [
+            "Lee Hyori"
+          ],
+          "album": "Stylish…",
+          "durationMs": 236147,
+          "url": "https://open.spotify.com/track/2Tfv41qZ0U3ahZiKiDBa4a"
+        },
+        {
+          "name": "영원한 사랑",
+          "artists": [
+            "SeeYa",
+            "DAVICHI",
+            "T-ARA"
+          ],
+          "album": "여성시대/영원한 사랑",
+          "durationMs": 212718,
+          "url": "https://open.spotify.com/track/0LbqYcNtVBUKAqzusV9ron"
+        },
+        {
+          "name": "Two Of Us",
+          "artists": [
+            "Chae Yeon"
+          ],
+          "album": "Virginalness Bloom",
+          "durationMs": 183413,
+          "url": "https://open.spotify.com/track/3Kb2FrKuXnwUJkjKGcY1kK"
+        },
+        {
+          "name": "Hot Issue",
+          "artists": [
+            "4Minute"
+          ],
+          "album": "Hot Issue",
+          "durationMs": 208773,
+          "url": "https://open.spotify.com/track/1QqaaKVZxu9ExhYjKGgI4N"
+        },
+        {
+          "name": "Muzik (Japanese Ver.)",
+          "artists": [
+            "4Minute"
+          ],
+          "album": "Muzik",
+          "durationMs": 224409,
+          "url": "https://open.spotify.com/track/3q1VBhuJnhMdYAWYsSePqz"
+        },
+        {
+          "name": "I My Me Mine (Japanese Ver.)",
+          "artists": [
+            "4Minute"
+          ],
+          "album": "I My Me Mine - Standard",
+          "durationMs": 204991,
+          "url": "https://open.spotify.com/track/4OtC7BpXfUN1B2n9AjMNF0"
+        },
+        {
+          "name": "NU ABO",
+          "artists": [
+            "f(x)"
+          ],
+          "album": "NU ABO",
+          "durationMs": 224333,
+          "url": "https://open.spotify.com/track/1NcsCToPRUh9AI6ua83jAm"
+        },
+        {
+          "name": "Lollipop",
+          "artists": [
+            "f(x)",
+            "SHINee"
+          ],
+          "album": "Hot Summer - The 1st Album Repackage",
+          "durationMs": 190586,
+          "url": "https://open.spotify.com/track/1qUyN0NcgiVsQZjPJ239vJ"
+        },
+        {
+          "name": "거짓말 Pt. 1",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "거짓말",
+          "durationMs": 226038,
+          "url": "https://open.spotify.com/track/1cmfZTrDkSjhToby8II7pM"
+        },
+        {
+          "name": "왜 이러니",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "왜 이러니",
+          "durationMs": 237881,
+          "url": "https://open.spotify.com/track/2QBkGosmfFxANzPcSAbikD"
+        },
+        {
+          "name": "Roly-Poly in 코파카바나",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Roly-Poly in 코파카바나",
+          "durationMs": 207530,
+          "url": "https://open.spotify.com/track/54ZLANrcmyyPdZ3z0ZoRpk"
+        },
+        {
+          "name": "Cry Cry",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Black Eyes",
+          "durationMs": 197578,
+          "url": "https://open.spotify.com/track/0IuyHnbTWzMYScoFRyWBAr"
+        },
+        {
+          "name": "DAY BY DAY",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "DAY BY DAY",
+          "durationMs": 209880,
+          "url": "https://open.spotify.com/track/2DkL5Jaz5l47TksGuZ0y33"
+        },
+        {
+          "name": "SEXY LOVE",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "MIRAGE",
+          "durationMs": 227360,
+          "url": "https://open.spotify.com/track/6s6ZgLs7qexSGgzN4lrLQA"
+        },
+        {
+          "name": "Bo Peep Bo Peep",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Absolute First Album",
+          "durationMs": 225040,
+          "url": "https://open.spotify.com/track/72d7SM72TZcTSekEX5UoeE"
+        },
+        {
+          "name": "T.T.L Time To Love",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Absolute First Album",
+          "durationMs": 218773,
+          "url": "https://open.spotify.com/track/4bovnAJ0d6LggfIiv4hIkj"
+        },
+        {
+          "name": "TTL Listen.2",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Absolute First Album",
+          "durationMs": 211773,
+          "url": "https://open.spotify.com/track/2olr7AoagJQviFJxesHZl2"
+        },
+        {
+          "name": "넘버나인",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Again",
+          "durationMs": 228725,
+          "url": "https://open.spotify.com/track/6kdrdb4xGK5njn4ITYadZz"
+        },
+        {
+          "name": "좋은사람",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Absolute First Album",
+          "durationMs": 213093,
+          "url": "https://open.spotify.com/track/55D936gy22MEbQmbVmay7F"
+        },
+        {
+          "name": "처음처럼",
+          "artists": [
+            "T-ARA"
+          ],
+          "album": "Absolute First Album",
+          "durationMs": 245306,
+          "url": "https://open.spotify.com/track/7ALiqQnNpfxWmLB9jFyAsU"
+        }
+      ]
+    },
     {
       "id": "26ffuq9usKzE1IEWAjcAt7",
       "name": "SHNFNFTS",
@@ -220,7 +608,7 @@
       "name": "SHNDDEN",
       "description": "",
       "url": "https://open.spotify.com/playlist/1uch56cjgRp6Uiy0DfLgUl",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847f5df1f198cca54308364661",
       "playedAt": "2026-10-26T03:50:28.164Z",
       "trackCount": 23,
       "tracks": [
@@ -416,231 +804,6 @@
           "album": "Việc lớn",
           "durationMs": 381657,
           "url": "https://open.spotify.com/track/6latLAc0XAK79L1JH6AvPm"
-        }
-      ]
-    },
-    {
-      "id": "4xHvEBGh8kCxQVWT1OztLL",
-      "name": "SHNEDMMS",
-      "description": "",
-      "url": "https://open.spotify.com/playlist/4xHvEBGh8kCxQVWT1OztLL",
-      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84ef90a5194f7489c98f8ec939",
-      "playedAt": "2026-10-21T04:50:03.431Z",
-      "trackCount": 40,
-      "tracks": [
-        {
-          "name": "Next To Me (feat. Tina Stachowiak)",
-          "artists": [
-            "Axel Johansson",
-            "Tina Stachowiak"
-          ],
-          "album": "Next To Me (feat. Tina Stachowiak)",
-          "durationMs": 179500,
-          "url": "https://open.spotify.com/track/0jvqmWRCyv7xnxqrtinbHJ"
-        },
-        {
-          "name": "Lonely Together - (feat. Rita Ora) Alan Walker Remix",
-          "artists": [
-            "Avicii",
-            "Rita Ora",
-            "Alan Walker"
-          ],
-          "album": "Lonely Together (Remixes)",
-          "durationMs": 179760,
-          "url": "https://open.spotify.com/track/4QwNKEWMM7dyLB7Ew9DHHg"
-        },
-        {
-          "name": "I Can Fly",
-          "artists": [
-            "TonyZ",
-            "Antrikc"
-          ],
-          "album": "I Can Fly",
-          "durationMs": 184806,
-          "url": "https://open.spotify.com/track/1k99aiuqQfWB26PCRr9jxd"
-        },
-        {
-          "name": "Forever Young",
-          "artists": [
-            "John De Sohn",
-            "LIAMOO"
-          ],
-          "album": "Made For You",
-          "durationMs": 167911,
-          "url": "https://open.spotify.com/track/0343bYQtSfznf6v90jRLRK"
-        },
-        {
-          "name": "Heading Home",
-          "artists": [
-            "Alan Walker",
-            "Ruben"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 187085,
-          "url": "https://open.spotify.com/track/6GZaY8DSHOgllwQ28ok7Rs"
-        },
-        {
-          "name": "Play",
-          "artists": [
-            "K-391",
-            "Alan Walker",
-            "Tungevaag",
-            "Mangoo"
-          ],
-          "album": "Play",
-          "durationMs": 167976,
-          "url": "https://open.spotify.com/track/4jp4Z02kzzg8gK0NmDGgml"
-        },
-        {
-          "name": "All Falls Down (feat. Juliander) - Mark Villa Remix",
-          "artists": [
-            "Alan Walker",
-            "Noah Cyrus",
-            "Digital Farm Animals",
-            "Juliander",
-            "Mark Villa"
-          ],
-          "album": "All Falls Down (feat. Juliander) [Remixes]",
-          "durationMs": 157373,
-          "url": "https://open.spotify.com/track/2NpLHVuBP1wvryEbnecfbD"
-        },
-        {
-          "name": "Hello World",
-          "artists": [
-            "Alan Walker",
-            "Torine"
-          ],
-          "album": "Walkerverse Pt. I & II",
-          "durationMs": 171585,
-          "url": "https://open.spotify.com/track/7dRlvfMWDLG11RidzmLrWe"
-        },
-        {
-          "name": "End of Time",
-          "artists": [
-            "K-391",
-            "Alan Walker",
-            "Ahrix"
-          ],
-          "album": "End of Time",
-          "durationMs": 187560,
-          "url": "https://open.spotify.com/track/67O8CWXxPsfz8orZVGMQwf"
-        },
-        {
-          "name": "On My Way - Da Tweekaz Remix",
-          "artists": [
-            "Alan Walker",
-            "Sabrina Carpenter",
-            "Farruko",
-            "Da Tweekaz"
-          ],
-          "album": "On My Way (Da Tweekaz Remix)",
-          "durationMs": 204198,
-          "url": "https://open.spotify.com/track/4Sp0jLZN8MgPnoGDufJS7N"
-        },
-        {
-          "name": "Alone, Pt. II",
-          "artists": [
-            "Alan Walker",
-            "Ava Max"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 179052,
-          "url": "https://open.spotify.com/track/28VbwtsYnj85UEODGpQRem"
-        },
-        {
-          "name": "I Don't Wanna Go",
-          "artists": [
-            "Alan Walker",
-            "Julie Bergan"
-          ],
-          "album": "Different World",
-          "durationMs": 161666,
-          "url": "https://open.spotify.com/track/7kVDkZkZc8qBUBsF6klUoY"
-        },
-        {
-          "name": "Ignite",
-          "artists": [
-            "Alan Walker",
-            "Julie Bergan",
-            "K-391",
-            "SEUNGRI"
-          ],
-          "album": "Ignite",
-          "durationMs": 210288,
-          "url": "https://open.spotify.com/track/1jLsirPDkUS2g4gnkYua58"
-        },
-        {
-          "name": "Lost Control",
-          "artists": [
-            "Alan Walker",
-            "Sorana"
-          ],
-          "album": "Different World",
-          "durationMs": 222320,
-          "url": "https://open.spotify.com/track/0lG6QM1jjbbX5UUn3DPmrZ"
-        },
-        {
-          "name": "Darkside",
-          "artists": [
-            "Alan Walker",
-            "Au/Ra",
-            "Tomine Harket"
-          ],
-          "album": "Different World",
-          "durationMs": 211680,
-          "url": "https://open.spotify.com/track/6SRWhUJcD2YKahCwHavz3X"
-        },
-        {
-          "name": "Lily",
-          "artists": [
-            "Alan Walker",
-            "K-391",
-            "Emelie Hollow"
-          ],
-          "album": "Different World",
-          "durationMs": 195840,
-          "url": "https://open.spotify.com/track/0lks2Kt9veMOFEAPN0fsqN"
-        },
-        {
-          "name": "Paradise",
-          "artists": [
-            "Alan Walker",
-            "K-391",
-            "Boy In Space"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 183344,
-          "url": "https://open.spotify.com/track/2sVcG5mresyV79qpYr3M1C"
-        },
-        {
-          "name": "Unity",
-          "artists": [
-            "The Walkers",
-            "Alan Walker"
-          ],
-          "album": "Unity",
-          "durationMs": 204533,
-          "url": "https://open.spotify.com/track/66TdgLCf9Bic8nBsNv0YuD"
-        },
-        {
-          "name": "Man On The Moon",
-          "artists": [
-            "Alan Walker",
-            "Benjamin Ingrosso"
-          ],
-          "album": "World Of Walker",
-          "durationMs": 178625,
-          "url": "https://open.spotify.com/track/0zqBZqm5czQ3A4EoSdKFHj"
-        },
-        {
-          "name": "Shut Up",
-          "artists": [
-            "Alan Walker",
-            "UPSAHL"
-          ],
-          "album": "Walkerverse Pt. I & II",
-          "durationMs": 132954,
-          "url": "https://open.spotify.com/track/1hf9Wu2l0XIgAcTZLSAUJe"
         }
       ]
     }
