@@ -21,9 +21,6 @@
     }
   },
   "platinum": true,
-  "playtimeHours": 29.2,
-  "firstPlayedOn": "2024-11-15",
   "lastPlayedOn": "2024-12-16",
-  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23378_00/2ef8f325-47bd-4e1d-b731-cb8647b06a70.png",
-  "art": "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/1c7b75d8ed9271516546560d219ad0b22ee0a263b4537bd8.png"
+  "icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR23378_00/2ef8f325-47bd-4e1d-b731-cb8647b06a70.png"
 }
